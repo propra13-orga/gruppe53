@@ -1,0 +1,6 @@
+workspace/.metadata/*
+workspace/Game/.settings/*
+workspace/Game/.project
+workspace/Game/bin/*
+
+*~
