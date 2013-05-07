@@ -31,10 +31,13 @@ public class GamePanel extends JPanel {
 		this.setPreferredSize(new Dimension(800,600));
 		sprites = new Vector<Sprite>();
 		for(int i=0;i<10;i++){
-			sprites.add(new Sprite(100 + i*16,100));
+			sprites.add(new Wall(100 + i*16,100));
 		}
 		for(int i=0;i<9;i++){
-			sprites.add(new Sprite(100,116 + i*16));
+			sprites.add(new Wall(100,116 + i*16));
+		}
+		for(int i=0;i<9;i++){
+			sprites.add(new Wall(116 +i*16,244));
 		}
 		
 	}

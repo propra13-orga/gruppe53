@@ -8,7 +8,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-public class Sprite extends Rectangle2D.Double implements Drawable {
+abstract public class Sprite extends Rectangle2D.Double implements Drawable {
 
 
 	private static final long serialVersionUID = -3479809511724931446L;
@@ -17,16 +17,18 @@ public class Sprite extends Rectangle2D.Double implements Drawable {
 	 * The Spriteimage (no Animation!!!!)
 	 */
 	BufferedImage image;
+	String imagePath;
 	
 	
-	public Sprite(int x, int y) {
+	public Sprite(int x, int y, String imagePath) {
+		this.imagePath = imagePath;
 		loadImage();
 		this.x = x;
 		this.y = y;
 	}
 
 	private void loadImage(){
-		URL picUrl = getClass().getClassLoader().getResource("images/wall.png");
+		URL picUrl = getClass().getClassLoader().getResource(imagePath);
 		try {
 			image = ImageIO.read(picUrl);
 		} catch (IOException e) {
