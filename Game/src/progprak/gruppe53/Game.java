@@ -4,20 +4,35 @@ import javax.swing.JFrame;
 
 public class Game implements Runnable {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Thread t = new Thread(new Game());
 		t.start();
-
 	}
 
 	
+	/*
+	 * Gameloop Started
+	 */
 	private boolean started = false;
+	
+	/*
+	 * last Gameloop starttime in nanoseconds
+	 */
 	private long last;
+	
+	/*
+	 * last Gameloop execution time in nanoseconds
+	 */
 	private long delta;
+	
+	/*
+	 * The Gamepanel
+	 */
 	private GamePanel gamePanel;
+	
+	/*
+	 * The main Frame
+	 */
 	private JFrame frame;
 	
 	public Game() {
@@ -58,7 +73,7 @@ public class Game implements Runnable {
 				Thread.sleep(10);
 			}
 			catch(InterruptedException e){
-				System.out.println(e);
+				e.printStackTrace();
 			}
 		}
 		
