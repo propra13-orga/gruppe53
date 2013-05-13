@@ -8,7 +8,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-abstract public class Sprite extends Rectangle2D.Double implements Drawable {
+abstract public class Sprite extends Rectangle2D.Double implements Drawable,Movable  {
 
 
 	private static final long serialVersionUID = -3479809511724931446L;
@@ -18,6 +18,8 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable {
 	 */
 	BufferedImage image;
 	String imagePath;
+	protected int dx = 0;
+	protected int dy = 0;
 	
 	
 	public Sprite(int x, int y, String imagePath) {
@@ -41,6 +43,10 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable {
 	@Override
 	public void drawObjects(Graphics g) {
 		g.drawImage(image, (int)x, (int)y, null);
+	}
+	public void move(long delta){
+		x = x+dx;
+		y = y+dy;
 	}
 	
 }

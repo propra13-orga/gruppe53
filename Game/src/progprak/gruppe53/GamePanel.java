@@ -30,16 +30,6 @@ public class GamePanel extends JPanel {
 	private void doInitializations() {
 		this.setPreferredSize(new Dimension(800,600));
 		sprites = new Vector<Sprite>();
-		for(int i=0;i<10;i++){
-			sprites.add(new Wall(100 + i*16,100));
-		}
-		for(int i=0;i<9;i++){
-			sprites.add(new Wall(100,116 + i*16));
-		}
-		for(int i=0;i<9;i++){
-			sprites.add(new Wall(116 +i*16,244));
-		}
-		
 	}
 
 	
@@ -55,8 +45,9 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	public void render(long delta) {
+	public void render(long delta,Vector<Sprite> sprites) {
 		fps = ((long)1e9)/delta;
+		this.sprites = sprites;
 	}
 	
 

@@ -1,5 +1,8 @@
 package progprak.gruppe53;
 
+import java.util.ListIterator;
+import java.util.Vector;
+
 import javax.swing.JFrame;
 
 public class Game implements Runnable {
@@ -35,6 +38,9 @@ public class Game implements Runnable {
 	 */
 	private JFrame frame;
 	
+	
+	private Vector<Sprite> sprites;
+	
 	public Game() {
 		doInitalizations();
 	}
@@ -49,6 +55,7 @@ public class Game implements Runnable {
 
 
 	private void doInitalizations() {
+		sprites =  new Vector<Sprite>();
 		gamePanel = new GamePanel();
 		frame = new JFrame("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,6 +63,15 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
+		for(int i=0;i<10;i++){
+			sprites.add(new Wall(100 + i*16,100));
+		}
+		for(int i=0;i<9;i++){
+			sprites.add(new Wall(100,116 + i*16));
+		}
+		for(int i=0;i<9;i++){
+			sprites.add(new Wall(116 +i*16,244));
+		}
 	}
 
 
@@ -67,7 +83,17 @@ public class Game implements Runnable {
 			try {
 				computeDelta();
 				
-				gamePanel.render(delta);
+				for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+					Sprite s = it.next();
+					s.doLogic(delta);
+				
+				}
+				
+				for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+					Sprite s = it.next();
+					s.move(delta);
+				}
+				gamePanel.render(delta,sprites);
 				
 				gamePanel.repaint();
 				Thread.sleep(10);
