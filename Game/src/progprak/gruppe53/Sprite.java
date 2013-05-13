@@ -17,6 +17,9 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	 * The Spriteimage (no Animation!!!!)
 	 */
 	BufferedImage image;
+	/*
+	 * Path to the Image
+	 */
 	String imagePath;
 	protected int dx = 0;
 	protected int dy = 0;
