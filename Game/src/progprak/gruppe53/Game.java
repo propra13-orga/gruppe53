@@ -76,6 +76,11 @@ public class Game implements Runnable, KeyListener {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
+		
+		/*
+		 * add walls and hero to the panel
+		 * !!! for testing !!!
+		 */
 		for(int i=0;i<10;i++){
 			sprites.add(new Wall(100 + i*16,100));
 		}
