@@ -8,7 +8,7 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel{
 
 	private static final long serialVersionUID = -2238063440895511947L;
 	
@@ -20,7 +20,11 @@ public class GamePanel extends JPanel {
 	/*
 	 * All Sprites to draw on the panel
 	 */
-	private Vector<Sprite> sprites;
+	Vector<Sprite> sprites;
+	
+	
+	
+	int speed=10;
 	
 	public GamePanel() {
 		super();
@@ -30,6 +34,8 @@ public class GamePanel extends JPanel {
 	private void doInitializations() {
 		this.setPreferredSize(new Dimension(800,600));
 		sprites = new Vector<Sprite>();
+		
+		
 	}
 
 	
@@ -49,6 +55,5 @@ public class GamePanel extends JPanel {
 		fps = ((long)1e9)/delta;
 		this.sprites = sprites;
 	}
-	
 
 }

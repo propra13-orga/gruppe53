@@ -2,10 +2,11 @@ package progprak.gruppe53;
 
 import java.util.ListIterator;
 import java.util.Vector;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
-public class Game implements Runnable {
+public class Game implements Runnable, KeyListener {
 
 	public static void main(String[] args) {
 		Thread t = new Thread(new Game());
@@ -41,6 +42,17 @@ public class Game implements Runnable {
 	
 	private Vector<Sprite> sprites;
 	
+	//Directions
+	private boolean up;
+	private boolean down;
+	private boolean left;
+	private boolean right;
+	//Movementspeed
+	private int speed = 2;
+	
+	
+	Hero hero;
+
 	public Game() {
 		doInitalizations();
 	}
@@ -60,6 +72,7 @@ public class Game implements Runnable {
 		frame = new JFrame("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(gamePanel);
+		frame.addKeyListener(this);
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
@@ -72,6 +85,7 @@ public class Game implements Runnable {
 		for(int i=0;i<9;i++){
 			sprites.add(new Wall(116 +i*16,244));
 		}
+		sprites.add(hero = new Hero(10,10));
 	}
 
 
@@ -94,6 +108,9 @@ public class Game implements Runnable {
 					s.move(delta);
 				}
 				gamePanel.render(delta,sprites);
+				checkKeys();
+				doLogic();
+				gamePanel.render(delta,sprites);
 				
 				gamePanel.repaint();
 				Thread.sleep(10);
@@ -104,4 +121,57 @@ public class Game implements Runnable {
 		}
 		
 	}
+	
+	public void keyPressed(KeyEvent e)
+	{
+		if(e.getKeyCode()==KeyEvent.VK_UP)
+			up=true;
+		if(e.getKeyCode()==KeyEvent.VK_DOWN)
+			down=true;
+		if(e.getKeyCode()==KeyEvent.VK_LEFT)
+			left=true;
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT)
+			right=true;
+	}
+	
+	public void keyReleased(KeyEvent e)
+	{
+		if(e.getKeyCode()==KeyEvent.VK_UP)
+			up=false;
+		if(e.getKeyCode()==KeyEvent.VK_DOWN)
+			down=false;
+		if(e.getKeyCode()==KeyEvent.VK_LEFT)
+			left=false;
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT)
+			right=false;
+	}
+
+	
+	public void keyTyped(KeyEvent e) {
+	
+		
+	}
+	
+	private void checkKeys()
+	{
+		if(up)
+			hero.moveVertical(-speed);
+		if(down)
+			hero.moveVertical(speed);
+		if(right)
+			hero.moveHorizontal(speed);
+		if(left)
+			hero.moveHorizontal(-speed);
+	}
+	
+	//Do Logics for every Sprite-Object
+	private void doLogic()
+	{
+		for(ListIterator<Sprite> it = gamePanel.sprites.listIterator(); it.hasNext();)
+		{
+			Sprite r = it.next();
+			r.doLogic();
+		}
+	}
+
 }

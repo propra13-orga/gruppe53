@@ -24,7 +24,7 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	protected int dx = 0;
 	protected int dy = 0;
 	
-	
+
 	public Sprite(int x, int y, String imagePath) {
 		this.imagePath = imagePath;
 		loadImage();
@@ -52,4 +52,22 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 		y = y+dy;
 	}
 	
+	//horizontal movement
+	public void moveHorizontal(int speed)
+	{
+		this.x = x+speed;
+	}
+	
+	//vertical movement
+	public void moveVertical(int speed)
+	{
+		this.y = y+speed;
+	}
+	
+	//declared in subclasses
+	public void doLogic()
+	{
+		
+	}
+
 }
