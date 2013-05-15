@@ -51,14 +51,12 @@ public class Hero extends Sprite{
 			else if(ce.getEvent() == CollisionEvent.DAMAGE){
 				game.restart();
 			}
+			else if (ce.getEvent() == CollisionEvent.TO_NEXT_LEVEL) {
+				x = 500;
+				y = 500;
+				
+			}
 		}
-		/*if(game.testForCollision(getMinX()+dx,getMinY()+dy) != null 
-			|| game.testForCollision(getMaxX()+dx,getMaxY()+dy) != null
-			|| game.testForCollision(getMinX()+dx,getMaxY()+dy) != null
-			|| game.testForCollision(getMaxX()+dx,getMinY()+dy) != null
-			){
-			dx = dy = 0;
-		}*/
 		
 	}
 
