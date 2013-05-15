@@ -30,6 +30,8 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 		loadImage();
 		this.x = x;
 		this.y = y;
+		this.width = 16;
+		this.height = 16;
 	}
 
 	private void loadImage(){

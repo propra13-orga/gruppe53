@@ -2,11 +2,9 @@ package progprak.gruppe53;
 
 import java.util.ListIterator;
 import java.util.Vector;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
-public class Game implements Runnable, KeyListener {
+public class Game implements Runnable {
 
 	public static void main(String[] args) {
 		Thread t = new Thread(new Game());
@@ -42,14 +40,9 @@ public class Game implements Runnable, KeyListener {
 	
 	private Vector<Sprite> sprites;
 	
-	//Directions
-	private boolean up;
-	private boolean down;
-	private boolean left;
-	private boolean right;
-	//Movementspeed
-	private int speed = 2;
+	private KeyboardInput keyboardInput;
 	
+
 	
 	Hero hero;
 
@@ -72,7 +65,8 @@ public class Game implements Runnable, KeyListener {
 		frame = new JFrame("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(gamePanel);
-		frame.addKeyListener(this);
+		keyboardInput = new KeyboardInput();
+		frame.addKeyListener(keyboardInput);
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
@@ -90,7 +84,7 @@ public class Game implements Runnable, KeyListener {
 		for(int i=0;i<9;i++){
 			sprites.add(new Wall(116 +i*16,244));
 		}
-		sprites.add(hero = new Hero(10,10));
+		sprites.add(hero = new Hero(180,180,this,keyboardInput));
 	}
 
 
@@ -102,19 +96,14 @@ public class Game implements Runnable, KeyListener {
 			try {
 				computeDelta();
 				
-				for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
-					Sprite s = it.next();
-					s.doLogic(delta);
-				
-				}
+				doLogic();
 				
 				for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
 					Sprite s = it.next();
 					s.move(delta);
 				}
 				gamePanel.render(delta,sprites);
-				checkKeys();
-				doLogic();
+				
 				gamePanel.render(delta,sprites);
 				
 				gamePanel.repaint();
@@ -127,56 +116,39 @@ public class Game implements Runnable, KeyListener {
 		
 	}
 	
-	public void keyPressed(KeyEvent e)
-	{
-		if(e.getKeyCode()==KeyEvent.VK_UP)
-			up=true;
-		if(e.getKeyCode()==KeyEvent.VK_DOWN)
-			down=true;
-		if(e.getKeyCode()==KeyEvent.VK_LEFT)
-			left=true;
-		if(e.getKeyCode()==KeyEvent.VK_RIGHT)
-			right=true;
-	}
-	
-	public void keyReleased(KeyEvent e)
-	{
-		if(e.getKeyCode()==KeyEvent.VK_UP)
-			up=false;
-		if(e.getKeyCode()==KeyEvent.VK_DOWN)
-			down=false;
-		if(e.getKeyCode()==KeyEvent.VK_LEFT)
-			left=false;
-		if(e.getKeyCode()==KeyEvent.VK_RIGHT)
-			right=false;
-	}
-
-	
-	public void keyTyped(KeyEvent e) {
-	
-		
-	}
-	
-	private void checkKeys()
-	{
-		if(up)
-			hero.moveVertical(-speed);
-		if(down)
-			hero.moveVertical(speed);
-		if(right)
-			hero.moveHorizontal(speed);
-		if(left)
-			hero.moveHorizontal(-speed);
-	}
 	
 	//Do Logics for every Sprite-Object
 	private void doLogic()
 	{
-		for(ListIterator<Sprite> it = gamePanel.sprites.listIterator(); it.hasNext();)
-		{
-			Sprite r = it.next();
-			r.doLogic();
+		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+			Sprite s = it.next();
+			s.doLogic(delta);
+		
 		}
 	}
 
+
+
+	public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
+		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+			Sprite s = it.next();
+			if(
+				(
+				s.contains(maxX,maxY)
+				|| s.contains(maxX,minY)
+				|| s.contains(minX,maxY)
+				|| s.contains(minX,minY)
+				)
+				&& s instanceof Collidable){
+				return ((Collidable)s).getCollisonEvent();
+			}
+		}
+		return null;
+	}
+
+
+
+	public void restart() {
+		System.exit(0);	
+	}
 }
