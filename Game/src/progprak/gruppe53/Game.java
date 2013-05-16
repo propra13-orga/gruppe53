@@ -43,9 +43,10 @@ public class Game implements Runnable {
 	private KeyboardInput keyboardInput;
 	
 
-	
+	PortalEntrance portal;
 	Hero hero;
-
+	Trap trap;
+	Enemy enemy;
 	public Game() {
 		doInitalizations();
 	}
@@ -75,17 +76,28 @@ public class Game implements Runnable {
 		 * add walls and hero to the panel
 		 * !!! for testing !!!
 		 */
-		for(int i=0;i<10;i++){
-			sprites.add(new Wall(100 + i*16,100));
-		}
-		for(int i=0;i<9;i++){
-			sprites.add(new Wall(100,116 + i*16));
-		}
-		for(int i=0;i<9;i++){
-			sprites.add(new Wall(116 +i*16,244));
-		}
+		
+		//Horizontal Walls
+		for(int i=0;i<21;i++)
+			sprites.add(new Wall(100 +i*16 ,100));
+		for(int i=0;i<21;i++)
+			sprites.add(new Wall(100 +i*16 ,244));
+		//for(int i=0;i<7;i++)
+		//	sprites.add(new Wall(132 +i*16 ,132));		
+		//Vertical Walls
+		for(int i=0;i<8;i++)
+			sprites.add(new Wall(100, 116 +i*16));
+		for(int i=0;i<6;i++)
+			sprites.add(new Wall(260, 116 +i*16));
+		for(int i=0;i<8;i++)
+			sprites.add(new Wall(420, 116 +i*16));
+
+		
+		sprites.add(portal = new PortalEntrance(244,116));
 		sprites.add(hero = new Hero(180,180,this,keyboardInput));
-	}
+		sprites.add(trap = new Trap(120,145));
+		sprites.add(enemy = new Enemy(200,200));
+				}
 
 
 
@@ -140,7 +152,7 @@ public class Game implements Runnable {
 				|| s.contains(minX,minY)
 				)
 				&& s instanceof Collidable){
-				return ((Collidable)s).getCollisonEvent();
+				return ((Collidable)s).getCollisionEvent();
 			}
 		}
 		return null;
