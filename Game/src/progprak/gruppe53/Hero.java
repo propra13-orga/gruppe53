@@ -35,6 +35,7 @@ public class Hero extends Sprite{
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
 			dx = 0;
 		}
+		/*uninteresting
 		//Can't move through left border
 		if(this.x+dx < 0){
 			dx = 0;
@@ -43,6 +44,7 @@ public class Hero extends Sprite{
 		if(this.y+dy < 0){
 			dy = 0;
 		}
+		*/
 		CollisionEvent ce;
 		if((ce = game.testForCollision(getMaxX()+dx,getMinX()+dx,getMaxY()+dy,getMinY()+dy)) != null){
 			if(ce.getEvent() == CollisionEvent.MASSIVE){
@@ -52,8 +54,8 @@ public class Hero extends Sprite{
 				game.restart();
 			}
 			else if (ce.getEvent() == CollisionEvent.TO_NEXT_LEVEL) {
-				x = 500;
-				y = 500;
+				x = 403; //+1 wallbug
+				y = 227; //+1 wallbug
 				
 			}
 		}

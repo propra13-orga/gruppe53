@@ -19,7 +19,7 @@ public class Wall extends Sprite implements Collidable{
 	}
 
 	@Override
-	public CollisionEvent getCollisonEvent() {
+	public CollisionEvent getCollisionEvent() {
 		return collisionEvent;
 	}
 
