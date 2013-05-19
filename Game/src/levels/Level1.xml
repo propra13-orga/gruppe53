@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<level>
+<dimension>800x600</dimension>
+<spawn>180:180</spawn>
+<wall>[0-800]:0, 0:[0-600], [0-800]:600, 800:[0-600]</wall>
+
+</level>

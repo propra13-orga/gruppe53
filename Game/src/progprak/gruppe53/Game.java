@@ -71,7 +71,7 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-		
+		new LevelLoader().loadLevel("levels/Level1.xml", sprites);
 		/*
 		 * add walls and hero to the panel
 		 * !!! for testing !!!
@@ -97,7 +97,8 @@ public class Game implements Runnable {
 		sprites.add(hero = new Hero(180,180,this,keyboardInput));
 		sprites.add(trap = new Trap(120,145));
 		sprites.add(enemy = new Enemy(200,200));
-				}
+		sprites.add(new FireballTrap(160,160,this,-1,1));
+		}
 
 
 
