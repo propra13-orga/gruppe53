@@ -8,9 +8,9 @@ public class Hero extends Sprite{
 	
 	private Game game;
 	
-	public Hero(int x, int y, Game game, KeyboardInput keyboardInput){
+	public Hero(int x, int y, Game game){
 		super(x,y,"images/profi.png");
-		this.keyboardInput = keyboardInput;
+		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
 	}
 	
@@ -53,9 +53,9 @@ public class Hero extends Sprite{
 			else if(ce.getEvent() == CollisionEvent.DAMAGE){
 				game.restart();
 			}
-			else if (ce.getEvent() == CollisionEvent.TO_NEXT_LEVEL) {
-				x = 403; //+1 wallbug
-				y = 227; //+1 wallbug
+			else if (ce.getEvent() == CollisionEvent.TELEPORT) {
+				x = ce.getNewX();
+				y = ce.getNewY();
 				
 			}
 		}

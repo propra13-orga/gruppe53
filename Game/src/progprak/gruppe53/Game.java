@@ -1,7 +1,7 @@
 package progprak.gruppe53;
 
 import java.util.ListIterator;
-import java.util.Vector;
+
 import javax.swing.JFrame;
 
 public class Game implements Runnable {
@@ -37,16 +37,12 @@ public class Game implements Runnable {
 	 */
 	private JFrame frame;
 	
-	
-	private Vector<Sprite> sprites;
-	
-	private KeyboardInput keyboardInput;
-	
 
-	PortalEntrance portal;
-	Hero hero;
-	Trap trap;
-	Enemy enemy;
+	public KeyboardInput keyboardInput;
+	
+	private GameLogic gameLogic;
+	
+	
 	public Game() {
 		doInitalizations();
 	}
@@ -61,12 +57,12 @@ public class Game implements Runnable {
 
 
 	private void doInitalizations() {
-		sprites =  new Vector<Sprite>();
+		keyboardInput = new KeyboardInput();
+		gameLogic = new GameLogic(this);
 		gamePanel = new GamePanel();
 		frame = new JFrame("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(gamePanel);
-		keyboardInput = new KeyboardInput();
 		frame.addKeyListener(keyboardInput);
 		frame.pack();
 		frame.setVisible(true);
@@ -77,27 +73,7 @@ public class Game implements Runnable {
 		 * !!! for testing !!!
 		 */
 		
-		//Horizontal Walls
-		for(int i=0;i<21;i++)
-			sprites.add(new Wall(100 +i*16 ,100));
-		for(int i=0;i<21;i++)
-			sprites.add(new Wall(100 +i*16 ,244));
-		//for(int i=0;i<7;i++)
-		//	sprites.add(new Wall(132 +i*16 ,132));		
-		//Vertical Walls
-		for(int i=0;i<8;i++)
-			sprites.add(new Wall(100, 116 +i*16));
-		for(int i=0;i<6;i++)
-			sprites.add(new Wall(260, 116 +i*16));
-		for(int i=0;i<8;i++)
-			sprites.add(new Wall(420, 116 +i*16));
-
-		
-		sprites.add(portal = new PortalEntrance(244,116));
-		sprites.add(hero = new Hero(180,180,this,keyboardInput));
-		sprites.add(trap = new Trap(120,145));
-		sprites.add(enemy = new Enemy(200,200));
-				}
+						}
 
 
 
@@ -108,15 +84,13 @@ public class Game implements Runnable {
 			try {
 				computeDelta();
 				
-				doLogic();
+				gameLogic.doLogic(delta);
 				
-				for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
-					Sprite s = it.next();
-					s.move(delta);
-				}
-				gamePanel.render(delta,sprites);
 				
-				gamePanel.render(delta,sprites);
+				gameLogic.move(delta);
+				
+				gamePanel.render(delta,gameLogic.getSprites());
+				
 				
 				gamePanel.repaint();
 				Thread.sleep(10);
@@ -129,20 +103,10 @@ public class Game implements Runnable {
 	}
 	
 	
-	//Do Logics for every Sprite-Object
-	private void doLogic()
-	{
-		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
-			Sprite s = it.next();
-			s.doLogic(delta);
-		
-		}
-	}
-
 
 
 	public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
-		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+		for(ListIterator<Sprite> it = gameLogic.getSprites().listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(
 				(
@@ -161,6 +125,12 @@ public class Game implements Runnable {
 
 
 	public void restart() {
-		System.exit(0);	
+		gameLogic = new GameLogic(this);
+	}
+
+
+
+	public KeyboardInput getKeyboardInput() {
+		return keyboardInput;
 	}
 }
