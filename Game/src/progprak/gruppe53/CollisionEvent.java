@@ -8,6 +8,7 @@ public class CollisionEvent {
 	public static final int DAMAGE				= 2;
 	public static final int TELEPORT			= 3;
 	public static final int SWITCH_LEVEL		= 4;
+	public static final int GOAL				= 5;
 	
 	private int event = 0;
 	

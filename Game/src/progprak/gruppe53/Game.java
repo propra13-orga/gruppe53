@@ -10,7 +10,6 @@ public class Game implements Runnable {
 		Thread t = new Thread(new Game());
 		t.start();
 	}
-
 	
 	/*
 	 * Gameloop Started
@@ -37,16 +36,17 @@ public class Game implements Runnable {
 	 */
 	private JFrame frame;
 	
-
-	public KeyboardInput keyboardInput;
-	
 	private GameLogic gameLogic;
 	
 	
+
+	private KeyboardInput keyboardInput;
+
+	Hero hero;
+
 	public Game() {
 		doInitalizations();
 	}
-
 
 
 	private void computeDelta() {
@@ -67,15 +67,10 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-		
-		/*
-		 * add walls and hero to the panel
-		 * !!! for testing !!!
-		 */
-		
-						}
 
 
+		
+	}
 
 	@Override
 	public void run() {
@@ -90,8 +85,9 @@ public class Game implements Runnable {
 				gameLogic.move(delta);
 				
 				gamePanel.render(delta,gameLogic.getSprites());
-				
-				
+
+
+
 				gamePanel.repaint();
 				Thread.sleep(10);
 			}
@@ -99,14 +95,12 @@ public class Game implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
-	
-	
+		
 
-
-	public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
-		for(ListIterator<Sprite> it = gameLogic.getSprites().listIterator();it.hasNext();){
+    public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
+    	for(ListIterator<Sprite> it = gameLogic.getSprites().listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(
 				(
@@ -121,8 +115,6 @@ public class Game implements Runnable {
 		}
 		return null;
 	}
-
-
 
 	public void restart() {
 		gameLogic = new GameLogic(this);

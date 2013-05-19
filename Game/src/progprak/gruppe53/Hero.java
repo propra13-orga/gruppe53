@@ -2,8 +2,8 @@ package progprak.gruppe53;
 
 public class Hero extends Sprite{
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -8077486599395198634L;
+
 	private KeyboardInput keyboardInput;
 	
 	private Game game;
@@ -35,16 +35,7 @@ public class Hero extends Sprite{
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
 			dx = 0;
 		}
-		/*uninteresting
-		//Can't move through left border
-		if(this.x+dx < 0){
-			dx = 0;
-		}
-		//Can't move through top border
-		if(this.y+dy < 0){
-			dy = 0;
-		}
-		*/
+
 		CollisionEvent ce;
 		if((ce = game.testForCollision(getMaxX()+dx,getMinX()+dx,getMaxY()+dy,getMinY()+dy)) != null){
 			if(ce.getEvent() == CollisionEvent.MASSIVE){
@@ -56,10 +47,10 @@ public class Hero extends Sprite{
 			else if (ce.getEvent() == CollisionEvent.TELEPORT) {
 				x = ce.getNewX();
 				y = ce.getNewY();
-				
+			}
+			else if (ce.getEvent() == CollisionEvent.GOAL){
+				game.restart();
 			}
 		}
-		
 	}
-
 }
