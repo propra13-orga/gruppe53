@@ -55,5 +55,5 @@ public class GamePanel extends JPanel{
 		fps = ((long)1e9)/delta;
 		this.sprites = sprites;
 	}
-
+	
 }

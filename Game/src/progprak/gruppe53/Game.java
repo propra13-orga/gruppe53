@@ -10,7 +10,6 @@ public class Game implements Runnable {
 		Thread t = new Thread(new Game());
 		t.start();
 	}
-
 	
 	/*
 	 * Gameloop Started
@@ -36,21 +35,16 @@ public class Game implements Runnable {
 	 * The main Frame
 	 */
 	private JFrame frame;
-	
-	
-	private Vector<Sprite> sprites;
-	
-	private KeyboardInput keyboardInput;
-	
 
-	PortalEntrance portal;
+	private Vector<Sprite> sprites;
+
+	private KeyboardInput keyboardInput;
+
 	Hero hero;
-	Trap trap;
-	Enemy enemy;
+
 	public Game() {
 		doInitalizations();
 	}
-
 
 
 	private void computeDelta() {
@@ -71,35 +65,64 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-		
+
 		/*
 		 * add walls and hero to the panel
 		 * !!! for testing !!!
 		 */
-		
+
 		//Horizontal Walls
 		for(int i=0;i<21;i++)
 			sprites.add(new Wall(100 +i*16 ,100));
 		for(int i=0;i<21;i++)
 			sprites.add(new Wall(100 +i*16 ,244));
-		//for(int i=0;i<7;i++)
-		//	sprites.add(new Wall(132 +i*16 ,132));		
+		for(int i=0;i<21;i++)
+			sprites.add(new Wall(100 +i*16 ,372));
+		
+		
 		//Vertical Walls
 		for(int i=0;i<8;i++)
 			sprites.add(new Wall(100, 116 +i*16));
-		for(int i=0;i<6;i++)
+		for(int i=0;i<8;i++)
+			sprites.add(new Wall(100, 260 +i*16));
+		for(int i=0;i<8;i++)
 			sprites.add(new Wall(260, 116 +i*16));
 		for(int i=0;i<8;i++)
+			sprites.add(new Wall(260, 260 +i*16));
+		for(int i=0;i<8;i++)
 			sprites.add(new Wall(420, 116 +i*16));
-
+		for(int i=0;i<8;i++)
+			sprites.add(new Wall(420, 260 +i*16));
 		
-		sprites.add(portal = new PortalEntrance(244,116));
+		//Background
+		for(int i=0;i<8;i++)
+			sprites.add(new Ground(116 +i*16, 116));
+		for(int i=0;i<8;i++) 
+			sprites.add(new Ground(292 +i*16, 116));
+		for(int j=0;j<7;j++){
+		for(int i=0;i<9;i++)
+			sprites.add(new Ground(116 +i*16, 132 +j*16));
+		for(int i=0;i<9;i++)
+			sprites.add(new Ground(276 +i*16, 132 +j*16));
+		}
+		for(int i=0;i<8;i++)
+			sprites.add(new Ground(116 +i*16, 260));
+		for(int i=0;i<8;i++)
+			sprites.add(new Ground(292 +i*16, 260));
+		for(int j=0;j<6;j++){
+			for(int i=0;i<9;i++)
+				sprites.add(new Ground(116 +i*16, 276 +j*16));
+			for(int i=0;i<9;i++)
+				sprites.add(new Ground(276 +i*16, 276 +j*16));
+		}
+		
+		sprites.add(new PortalEntrance(244,116));
+		sprites.add(new PortalEntrance(276,116));
+		sprites.add(new PortalEntrance(244,260));
+		sprites.add(new PortalEntrance(276,260));
 		sprites.add(hero = new Hero(180,180,this,keyboardInput));
-		sprites.add(trap = new Trap(120,145));
-		sprites.add(enemy = new Enemy(200,200));
-				}
-
-
+		sprites.add(new Trap(120,145));
+	}
 
 	@Override
 	public void run() {
@@ -107,17 +130,17 @@ public class Game implements Runnable {
 		while(started){
 			try {
 				computeDelta();
-				
+
 				doLogic();
-				
+
 				for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
 					Sprite s = it.next();
 					s.move(delta);
 				}
 				gamePanel.render(delta,sprites);
-				
+
 				gamePanel.render(delta,sprites);
-				
+
 				gamePanel.repaint();
 				Thread.sleep(10);
 			}
@@ -125,24 +148,20 @@ public class Game implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
-	
-	
+		
 	//Do Logics for every Sprite-Object
 	private void doLogic()
 	{
 		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.doLogic(delta);
-		
 		}
 	}
 
-
-
-	public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
-		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+    public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
+    	for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(
 				(
@@ -157,8 +176,6 @@ public class Game implements Runnable {
 		}
 		return null;
 	}
-
-
 
 	public void restart() {
 		System.exit(0);	

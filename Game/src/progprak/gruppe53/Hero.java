@@ -7,6 +7,7 @@ public class Hero extends Sprite{
 	private KeyboardInput keyboardInput;
 	
 	private Game game;
+	private int currentLevel = 0;
 	
 	public Hero(int x, int y, Game game, KeyboardInput keyboardInput){
 		super(x,y,"images/profi.png");
@@ -35,16 +36,7 @@ public class Hero extends Sprite{
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
 			dx = 0;
 		}
-		/*uninteresting
-		//Can't move through left border
-		if(this.x+dx < 0){
-			dx = 0;
-		}
-		//Can't move through top border
-		if(this.y+dy < 0){
-			dy = 0;
-		}
-		*/
+
 		CollisionEvent ce;
 		if((ce = game.testForCollision(getMaxX()+dx,getMinX()+dx,getMaxY()+dy,getMinY()+dy)) != null){
 			if(ce.getEvent() == CollisionEvent.MASSIVE){
@@ -54,8 +46,27 @@ public class Hero extends Sprite{
 				game.restart();
 			}
 			else if (ce.getEvent() == CollisionEvent.TO_NEXT_LEVEL) {
-				x = 403; //+1 wallbug
-				y = 227; //+1 wallbug
+				if(this.currentLevel == 0){
+					x = 403; //+1 wallbug
+					y = 227; //+1 wallbug
+					currentLevel = currentLevel+1;
+				}
+				else if(this.currentLevel == 1){
+					x = 117; //+1 wallbug
+					y = 355; //+1 wallbug
+					currentLevel = currentLevel+1;
+				}
+				else if(this.currentLevel == 2){
+					x = 403; //""
+					y = 355; //""
+					currentLevel = currentLevel+1;
+				}
+				else if(this.currentLevel == 3){
+					game.restart();
+				}
+			}
+			else if (ce.getEvent() == CollisionEvent.NOTHING)
+			{
 				
 			}
 		}
