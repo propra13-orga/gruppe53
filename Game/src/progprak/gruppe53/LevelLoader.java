@@ -26,13 +26,15 @@ public class LevelLoader {
 			while (scanner.hasNextLine()) {
 				String line = scanner.nextLine();
 				levelString += line + "\n";
-				
 			}
-		} catch (FileNotFoundException e) {
+			scanner.close();
+		} 
+		catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
-		} catch (URISyntaxException e1) {
+		}
+		catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			return false;
@@ -145,7 +147,6 @@ public class LevelLoader {
 		FireballTrap fireballTraps [] = new FireballTrap [fireballTrapArray.length];
 		for (int i = 0; i < fireballTrapArray.length; i++) {
 			String fireballTrapData[] = fireballTrapArray[i].split(";");
-			System.out.println(fireballTrapData[0] + "\n");
 			String fireballTrapLocation[] = fireballTrapData[0].split(":");
 			String fireballTrapMovement[] = fireballTrapData[1].split(":");
 			int xLocation = Integer.parseInt(fireballTrapLocation[0]);
@@ -156,4 +157,26 @@ public class LevelLoader {
 		}
 		return fireballTraps;
 	}
+	/* Funktioniert erst mit dem aktuellen Portalentrance - nach dem Merge aktivieren
+	public PortalEntrance [] spawnPortalEntrances(Vector<Sprite> sprites, Game game) {
+		int portalEntranceStart = levelString.indexOf("<portal>");
+		int portalEntranceEnd = levelString.indexOf("</portal>");
+		String spawnPortalEntrance = levelString.substring(portalEntranceStart + "<portal>".length(),
+				portalEntranceEnd);
+		System.out.println("Portals: " + spawnPortalEntrance);
+		String portalEntranceArray[] = spawnPortalEntrance.split(",");
+		PortalEntrance portalEntrances [] = new PortalEntrance [portalEntranceArray.length];
+		for (int i = 0; i < portalEntranceArray.length; i++) {
+			String portalEntranceData[] = portalEntranceArray[i].split(";");
+			String portalEntranceStart[] = portalEntranceData[0].split(":");
+			String portalEntranceEnd[] = portalEntranceData[1].split(":");
+			int startLocationX = Integer.parseInt(portalEntranceLocation[0]);
+			int startLocationY = Integer.parseInt(portalEntranceLocation[1]);
+			int endLocationX = Integer.parseInt(portalEntranceMovement[0]);
+			int endLocationY = Integer.parseInt(portalEntranceMovement[1]);
+			sprites.add(portalEntrances [i] = new PortalEntrance(startLocationX, StartLocationY, endLocationX, endLocationY));
+		}
+		return portalEntrances;
+	}
+	*/
 }
