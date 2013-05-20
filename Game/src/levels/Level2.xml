@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-
+<dimension>800x600</dimension>
+<ground>0-784:0-784</ground>
+<spawn>24:24</spawn>
+<wall>0-784:0-0,0-0:0-584,0-784:584-584,784-784:0-584</wall>
+<enemy>800:600</enemy>
+<trap>800:600</trap>
+<fireballtrap>800:600;0:0</fireballtrap>
+<portal>800:600;800:600</portal>
+<goal>800:600</goal>
+<levelswitch>752:552;levels/Level2.xml</levelswitch>
 </level>
