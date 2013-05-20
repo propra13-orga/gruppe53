@@ -1,14 +1,47 @@
 package progprak.gruppe53;
 
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ListIterator;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Game implements Runnable {
-
+	
+	
 	public static void main(String[] args) {
-		Thread t = new Thread(new Game());
-		t.start();
+		JFrame f = new JFrame();
+		JButton start = new JButton("start");
+		ActionListener alStart = new ActionListener(
+				) {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread t = new Thread(new Game());
+				t.start();
+			}
+		};
+		start.addActionListener(alStart);
+		JButton end = new JButton("end");
+		ActionListener alEnd = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		};
+		end.addActionListener(alEnd);
+		f.setLayout(new FlowLayout());
+		f.add(start);
+		f.add(end);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		f.pack();
+		f.setVisible(true);
+		/*Thread t = new Thread(new Game());
+		t.start();*/
 	}
 	
 	/*
