@@ -45,6 +45,8 @@ public class LevelLoader {
 	public void generateLevel(Vector<Sprite> sprites, Game game) {
 
 		setDimensions();
+		
+		generateGround(sprites, game);
 
 		spawnHero(sprites, game);
 
@@ -192,5 +194,27 @@ public class LevelLoader {
 			sprites.add(goal = new Goal(Integer.parseInt(goalArray[0]), Integer
 					.parseInt(goalArray[1])));
 			return goal;
+		}
+		private void generateGround(Vector<Sprite> sprites, Game game) {
+			int groundStart = levelString.indexOf("<ground>");
+			int groundEnd = levelString.indexOf("</ground>");
+			String ground = levelString.substring(groundStart + "<ground>".length(),
+					groundEnd);
+			System.out.println("W�nde:" + ground);
+			String groundArray[] = ground.split(",");
+			for (int i = 0; i < groundArray.length; i++) {
+				String groundData[] = groundArray[i].split(":");
+				String groundDataX[] = groundData[0].split("-");
+				String groundDataY[] = groundData[1].split("-");
+				int xStart = Integer.parseInt(groundDataX[0]);
+				int xEnd = Integer.parseInt(groundDataX[1]);
+				int yStart = Integer.parseInt(groundDataY[0]);
+				int yEnd = Integer.parseInt(groundDataY[1]);
+				for (int j = xStart;j<=xEnd;j+=16){
+					for (int k = yStart;k<=yEnd;k+=16){
+						sprites.add(new Ground(j, k));
+					}
+				}
+			}
 		}
 }
