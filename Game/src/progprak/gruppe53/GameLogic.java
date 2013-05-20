@@ -18,6 +18,10 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
+		
+		new LevelLoader("levels/Level1.xml").generateLevel(sprites, game);
+		
+		/*
 		//Horizontal Walls
 		for(int i=0;i<21;i++)
 			sprites.add(new Wall(100 +i*16 ,100));
@@ -71,7 +75,7 @@ public class GameLogic {
 		sprites.add(new Trap(120,145));
 		sprites.add(new Trap(350,145));
 		sprites.add(new Enemy(150,290));
-
+		*/
 	}
 	
 	//Do Logics for every Sprite-Object

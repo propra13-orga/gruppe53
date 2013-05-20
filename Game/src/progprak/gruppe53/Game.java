@@ -67,9 +67,6 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-
-
-		
 	}
 
 	@Override

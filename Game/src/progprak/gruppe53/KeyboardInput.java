@@ -13,26 +13,28 @@ public class KeyboardInput implements KeyListener {
 	
 	
 	public void keyPressed(KeyEvent e)
-	{
-		if(e.getKeyCode()==KeyEvent.VK_UP)
+	{	
+		int keyCode = e.getKeyCode();
+		if(keyCode==KeyEvent.VK_UP)
 			up=true;
-		if(e.getKeyCode()==KeyEvent.VK_DOWN)
+		if(keyCode==KeyEvent.VK_DOWN)
 			down=true;
-		if(e.getKeyCode()==KeyEvent.VK_LEFT)
+		if(keyCode==KeyEvent.VK_LEFT)
 			left=true;
-		if(e.getKeyCode()==KeyEvent.VK_RIGHT)
+		if(keyCode==KeyEvent.VK_RIGHT)
 			right=true;
 	}
 	
 	public void keyReleased(KeyEvent e)
 	{
-		if(e.getKeyCode()==KeyEvent.VK_UP)
+		int keyCode = e.getKeyCode();
+		if(keyCode==KeyEvent.VK_UP)
 			up=false;
-		if(e.getKeyCode()==KeyEvent.VK_DOWN)
+		if(keyCode==KeyEvent.VK_DOWN)
 			down=false;
-		if(e.getKeyCode()==KeyEvent.VK_LEFT)
+		if(keyCode==KeyEvent.VK_LEFT)
 			left=false;
-		if(e.getKeyCode()==KeyEvent.VK_RIGHT)
+		if(keyCode==KeyEvent.VK_RIGHT)
 			right=false;
 	}
 

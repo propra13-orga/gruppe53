@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<level>
+<dimension>800x600</dimension>
+<spawn>180:180</spawn>
+<wall>0-784:0-0,0-0:0-584,0-784:584-584,784-784:0-584</wall>
+<enemy>200:200,250:300,400:150</enemy>
+<trap>120:145,300:400,50:100</trap>
+<fireballtrap>160:160;-1:1,400:400;1:0</fireballtrap>
+<portal>244:116;403:227,500:500;100:600</portal>
+</level>
