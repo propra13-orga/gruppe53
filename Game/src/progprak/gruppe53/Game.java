@@ -51,7 +51,9 @@ public class Game implements Runnable {
 		doInitalizations();
 	}
 
-
+	public KeyboardInput getKeyboardInput(){
+		return keyboardInput;
+	}
 
 	private void computeDelta() {
 		delta = System.nanoTime() - last;
@@ -71,13 +73,14 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-		new LevelLoader().loadLevel("levels/Level1.xml", sprites);
+		new LevelLoader("levels/Level1.xml").generateLevel(sprites, this);
 		/*
 		 * add walls and hero to the panel
 		 * !!! for testing !!!
 		 */
 		
 		//Horizontal Walls
+		/* no longer needed
 		for(int i=0;i<21;i++)
 			sprites.add(new Wall(100 +i*16 ,100));
 		for(int i=0;i<21;i++)
@@ -91,10 +94,9 @@ public class Game implements Runnable {
 			sprites.add(new Wall(260, 116 +i*16));
 		for(int i=0;i<8;i++)
 			sprites.add(new Wall(420, 116 +i*16));
-
+		*/
 		
 		sprites.add(portal = new PortalEntrance(244,116));
-		sprites.add(hero = new Hero(180,180,this,keyboardInput));
 		sprites.add(trap = new Trap(120,145));
 		sprites.add(enemy = new Enemy(200,200));
 		sprites.add(new FireballTrap(160,160,this,-1,1));
