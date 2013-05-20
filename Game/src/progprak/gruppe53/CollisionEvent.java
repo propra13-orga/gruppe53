@@ -13,7 +13,7 @@ public class CollisionEvent {
 	private int event = 0;
 	
 	private int newX,newY;
-	private int newLevel;
+	private String newLevel;
 	
 	public CollisionEvent(int event){
 		this.event = event;
@@ -37,7 +37,7 @@ public class CollisionEvent {
 	 * @param newX the newX to set
 	 */
 	public void setNewX(int newX) {
-		if(event == TELEPORT || event == SWITCH_LEVEL){
+		if(event == TELEPORT){
 			this.newX = newX;
 		}
 		else {
@@ -48,7 +48,7 @@ public class CollisionEvent {
 	 * @param newY the newY to set
 	 */
 	public void setNewY(int newY) {
-		if(event == TELEPORT || event == SWITCH_LEVEL){
+		if(event == TELEPORT){
 			this.newY = newY;
 		}
 		else {
@@ -58,13 +58,13 @@ public class CollisionEvent {
 	/**
 	 * @return the newLevel
 	 */
-	public int getNewLevel() {
+	public String getNewLevel() {
 		return newLevel;
 	}
 	/**
 	 * @param newLevel the newLevel to set
 	 */
-	public void setNewLevel(int newLevel) {
+	public void setNewLevel(String newLevel) {
 		if(event == SWITCH_LEVEL){
 			this.newLevel = newLevel;
 		}
