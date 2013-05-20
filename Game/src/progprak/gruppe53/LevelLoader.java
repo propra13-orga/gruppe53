@@ -61,6 +61,8 @@ public class LevelLoader {
 		spawnPortalEntrances(sprites, game);
 		
 		spawnGoal(sprites, game);
+		
+		spawnLevelSwitch(sprites, game);
 
 	}
 
@@ -163,7 +165,7 @@ public class LevelLoader {
 		}
 		return fireballTraps;
 	}
-		public PortalEntrance [] spawnPortalEntrances(Vector<Sprite> sprites, Game game) {
+	public PortalEntrance [] spawnPortalEntrances(Vector<Sprite> sprites, Game game) {
 		int portalEntranceStart = levelString.indexOf("<portal>");
 		int portalEntranceEnd = levelString.indexOf("</portal>");
 		String spawnPortalEntrance = levelString.substring(portalEntranceStart + "<portal>".length(),
@@ -183,38 +185,53 @@ public class LevelLoader {
 		}
 		return portalEntrances;
 	}
-		public Goal spawnGoal(Vector<Sprite> sprites, Game game) {
-			int goalStart = levelString.indexOf("<goal>");
-			int goalEnd = levelString.indexOf("</goal>");
-			String spawnGoal = levelString.substring(goalStart + "<goal>".length(),
-					goalEnd);
-			System.out.println("Goal: " + spawnGoal);
-			String goalArray[] = spawnGoal.split(":");
-			Goal goal;
-			sprites.add(goal = new Goal(Integer.parseInt(goalArray[0]), Integer
-					.parseInt(goalArray[1])));
-			return goal;
-		}
-		private void generateGround(Vector<Sprite> sprites, Game game) {
-			int groundStart = levelString.indexOf("<ground>");
-			int groundEnd = levelString.indexOf("</ground>");
-			String ground = levelString.substring(groundStart + "<ground>".length(),
-					groundEnd);
-			System.out.println("W�nde:" + ground);
-			String groundArray[] = ground.split(",");
-			for (int i = 0; i < groundArray.length; i++) {
-				String groundData[] = groundArray[i].split(":");
-				String groundDataX[] = groundData[0].split("-");
-				String groundDataY[] = groundData[1].split("-");
-				int xStart = Integer.parseInt(groundDataX[0]);
-				int xEnd = Integer.parseInt(groundDataX[1]);
-				int yStart = Integer.parseInt(groundDataY[0]);
-				int yEnd = Integer.parseInt(groundDataY[1]);
-				for (int j = xStart;j<=xEnd;j+=16){
-					for (int k = yStart;k<=yEnd;k+=16){
-						sprites.add(new Ground(j, k));
-					}
+	public Goal spawnGoal(Vector<Sprite> sprites, Game game) {
+		int goalStart = levelString.indexOf("<goal>");
+		int goalEnd = levelString.indexOf("</goal>");
+		String spawnGoal = levelString.substring(goalStart + "<goal>".length(),goalEnd);
+		System.out.println("Goal: " + spawnGoal);
+		String goalArray[] = spawnGoal.split(":");
+		Goal goal;
+		sprites.add(goal = new Goal(Integer.parseInt(goalArray[0]), Integer.parseInt(goalArray[1])));
+		return goal;
+	}
+	private void generateGround(Vector<Sprite> sprites, Game game) {
+		int groundStart = levelString.indexOf("<ground>");
+		int groundEnd = levelString.indexOf("</ground>");
+		String ground = levelString.substring(groundStart + "<ground>".length(),groundEnd);
+		System.out.println("W�nde:" + ground);
+		String groundArray[] = ground.split(",");
+		for (int i = 0; i < groundArray.length; i++) {
+			String groundData[] = groundArray[i].split(":");
+			String groundDataX[] = groundData[0].split("-");
+			String groundDataY[] = groundData[1].split("-");
+			int xStart = Integer.parseInt(groundDataX[0]);
+			int xEnd = Integer.parseInt(groundDataX[1]);
+			int yStart = Integer.parseInt(groundDataY[0]);
+			int yEnd = Integer.parseInt(groundDataY[1]);
+			for (int j = xStart;j<=xEnd;j+=16){
+				for (int k = yStart;k<=yEnd;k+=16){
+					sprites.add(new Ground(j, k));
 				}
 			}
 		}
+	}
+	public LevelSwitch [] spawnLevelSwitch(Vector<Sprite> sprites, Game game) {
+		int levelSwitchStart = levelString.indexOf("<portal>");
+		int levelSwitchEnd = levelString.indexOf("</portal>");
+		String spawnLevelSwitch = levelString.substring(levelSwitchStart + "<portal>".length(),
+				levelSwitchEnd);
+		System.out.println("Portals: " + spawnLevelSwitch);
+		String levelSwitchArray[] = spawnLevelSwitch.split(",");
+		LevelSwitch levelSwitches [] = new LevelSwitch [levelSwitchArray.length];
+		for (int i = 0; i < levelSwitchArray.length; i++) {
+			String levelSwitchData[] = levelSwitchArray[i].split(";");
+			String levelSwitchLocation[] = levelSwitchData[0].split(":");
+			String levelSwitchNewLevelPath = levelSwitchData[1];
+			int xLocation = Integer.parseInt(levelSwitchLocation[0]);
+			int yLocation = Integer.parseInt(levelSwitchLocation[1]);
+			sprites.add(levelSwitches [i] = new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
+		}
+		return levelSwitches;
+	}
 }
