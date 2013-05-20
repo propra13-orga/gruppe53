@@ -57,6 +57,8 @@ public class LevelLoader {
 		spawnFireballTraps(sprites, game);
 		
 		spawnPortalEntrances(sprites, game);
+		
+		spawnGoal(sprites, game);
 
 	}
 
@@ -179,4 +181,16 @@ public class LevelLoader {
 		}
 		return portalEntrances;
 	}
+		public Goal spawnGoal(Vector<Sprite> sprites, Game game) {
+			int goalStart = levelString.indexOf("<goal>");
+			int goalEnd = levelString.indexOf("</goal>");
+			String spawnGoal = levelString.substring(goalStart + "<goal>".length(),
+					goalEnd);
+			System.out.println("Goal: " + spawnGoal);
+			String goalArray[] = spawnGoal.split(":");
+			Goal goal;
+			sprites.add(goal = new Goal(Integer.parseInt(goalArray[0]), Integer
+					.parseInt(goalArray[1])));
+			return goal;
+		}
 }

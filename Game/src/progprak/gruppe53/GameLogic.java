@@ -19,7 +19,7 @@ public class GameLogic {
 	
 	private void doInitalizations(){
 		
-		new LevelLoader("levels/Level1.xml").generateLevel(sprites, game);
+		new LevelLoader("levels/TestLevel.xml").generateLevel(sprites, game);
 		
 		/*
 		//Horizontal Walls
