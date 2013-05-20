@@ -55,6 +55,8 @@ public class LevelLoader {
 		spawnTraps(sprites, game);
 		
 		spawnFireballTraps(sprites, game);
+		
+		spawnPortalEntrances(sprites, game);
 
 	}
 
@@ -157,8 +159,7 @@ public class LevelLoader {
 		}
 		return fireballTraps;
 	}
-	/* Funktioniert erst mit dem aktuellen Portalentrance - nach dem Merge aktivieren
-	public PortalEntrance [] spawnPortalEntrances(Vector<Sprite> sprites, Game game) {
+		public PortalEntrance [] spawnPortalEntrances(Vector<Sprite> sprites, Game game) {
 		int portalEntranceStart = levelString.indexOf("<portal>");
 		int portalEntranceEnd = levelString.indexOf("</portal>");
 		String spawnPortalEntrance = levelString.substring(portalEntranceStart + "<portal>".length(),
@@ -168,15 +169,14 @@ public class LevelLoader {
 		PortalEntrance portalEntrances [] = new PortalEntrance [portalEntranceArray.length];
 		for (int i = 0; i < portalEntranceArray.length; i++) {
 			String portalEntranceData[] = portalEntranceArray[i].split(";");
-			String portalEntranceStart[] = portalEntranceData[0].split(":");
-			String portalEntranceEnd[] = portalEntranceData[1].split(":");
-			int startLocationX = Integer.parseInt(portalEntranceLocation[0]);
-			int startLocationY = Integer.parseInt(portalEntranceLocation[1]);
-			int endLocationX = Integer.parseInt(portalEntranceMovement[0]);
-			int endLocationY = Integer.parseInt(portalEntranceMovement[1]);
-			sprites.add(portalEntrances [i] = new PortalEntrance(startLocationX, StartLocationY, endLocationX, endLocationY));
+			String portalEntranceEntry[] = portalEntranceData[0].split(":");
+			String portalEntranceExit[] = portalEntranceData[1].split(":");
+			int startLocationX = Integer.parseInt(portalEntranceEntry[0]);
+			int startLocationY = Integer.parseInt(portalEntranceEntry[1]);
+			int endLocationX = Integer.parseInt(portalEntranceExit[0]);
+			int endLocationY = Integer.parseInt(portalEntranceExit[1]);
+			sprites.add(portalEntrances [i] = new PortalEntrance(startLocationX, startLocationY, endLocationX, endLocationY));
 		}
 		return portalEntrances;
 	}
-	*/
 }
