@@ -51,6 +51,9 @@ public class Hero extends Sprite{
 			else if (ce.getEvent() == CollisionEvent.GOAL){
 				game.restart();
 			}
+			else if(ce.getEvent() == CollisionEvent.SWITCH_LEVEL){
+				game.switchLevel(ce.getNewLevel());
+			}
 		}
 	}
 }

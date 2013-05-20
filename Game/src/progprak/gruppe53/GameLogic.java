@@ -94,4 +94,10 @@ public class GameLogic {
 	public Vector<Sprite> getSprites() {
 		return sprites;
 	}
+
+	public void switchLevel(String newLevel) {
+		Vector<Sprite> sp = new Vector<Sprite>();
+		new LevelLoader(newLevel).generateLevel(sp, game);
+		sprites = sp;
+	}
 }

@@ -18,6 +18,7 @@ public class LevelLoader {
 	}
 
 	private boolean loadLevelData(String levelPath) {
+		System.out.println(levelPath);
 		URL levelUrl = getClass().getClassLoader().getResource(levelPath);
 		File levelFile;
 		try {
@@ -217,11 +218,11 @@ public class LevelLoader {
 		}
 	}
 	public LevelSwitch [] spawnLevelSwitch(Vector<Sprite> sprites, Game game) {
-		int levelSwitchStart = levelString.indexOf("<portal>");
-		int levelSwitchEnd = levelString.indexOf("</portal>");
-		String spawnLevelSwitch = levelString.substring(levelSwitchStart + "<portal>".length(),
+		int levelSwitchStart = levelString.indexOf("<levelswitch>");
+		int levelSwitchEnd = levelString.indexOf("</levelswitch>");
+		String spawnLevelSwitch = levelString.substring(levelSwitchStart + "<levelswitch>".length(),
 				levelSwitchEnd);
-		System.out.println("Portals: " + spawnLevelSwitch);
+		System.out.println("LevelSwitch: " + spawnLevelSwitch);
 		String levelSwitchArray[] = spawnLevelSwitch.split(",");
 		LevelSwitch levelSwitches [] = new LevelSwitch [levelSwitchArray.length];
 		for (int i = 0; i < levelSwitchArray.length; i++) {

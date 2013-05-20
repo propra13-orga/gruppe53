@@ -155,4 +155,9 @@ public class Game implements Runnable {
 	public KeyboardInput getKeyboardInput() {
 		return keyboardInput;
 	}
+
+
+	public void switchLevel(String newLevel) {
+		gameLogic.switchLevel(newLevel);
+	}
 }
