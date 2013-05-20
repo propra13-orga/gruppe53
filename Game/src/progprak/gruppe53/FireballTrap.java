@@ -7,6 +7,8 @@ public class FireballTrap extends Sprite implements Collidable{
 	private static final long serialVersionUID = 1L;
 
 	private CollisionEvent collisionEvent;
+	
+	private int startX, startY;
 		
 	public FireballTrap(int x, int y, Game game, int dx, int dy){
 		super(x,y,"images/FireballRed.png");
@@ -14,7 +16,8 @@ public class FireballTrap extends Sprite implements Collidable{
 			this.game = game;
 			this.dx = dx;
 			this.dy = dy;
-			
+			startX = x;
+			startY = y;
 	}
 	
 	@Override
@@ -23,7 +26,8 @@ public class FireballTrap extends Sprite implements Collidable{
 	CollisionEvent ce;
 	  if((ce = game.testForCollision(getMaxX()+dx,getMinX()+dx,getMaxY()+dy,getMinY()+dy)) != null){
 	   if(ce.getEvent() == CollisionEvent.MASSIVE){
-	        x = y = 160;
+	        x = startX;
+	        y = startY;
 	   }
 	   else if(ce.getEvent() == CollisionEvent.DAMAGE){
 	   

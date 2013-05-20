@@ -97,9 +97,6 @@ public class Game implements Runnable {
 		*/
 		
 		sprites.add(portal = new PortalEntrance(244,116));
-		sprites.add(trap = new Trap(120,145));
-		sprites.add(enemy = new Enemy(200,200));
-		sprites.add(new FireballTrap(160,160,this,-1,1));
 		}
 
 
