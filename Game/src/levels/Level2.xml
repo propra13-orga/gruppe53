@@ -9,5 +9,5 @@
 <fireballtrap>300:144;0:1,400:144;0:1,500:144;0:1,516:350;1:0,584:240;-1:0,224:450;1:0,320:500;-1:0</fireballtrap>
 <portal>320:550;650:550,750:150;24:280,750:420;24:280</portal>
 <goal>800:600</goal>
-<levelswitch>752:552;levels/Level2.xml</levelswitch>
+<levelswitch>752:552;levels/Level3.xml</levelswitch>
 </level>
