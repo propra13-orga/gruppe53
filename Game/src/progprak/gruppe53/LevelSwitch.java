@@ -2,6 +2,8 @@ package progprak.gruppe53;
 
 public class LevelSwitch extends Sprite implements Collidable{
 
+	private static final long serialVersionUID = -8792805825772150907L;
+	
 	private CollisionEvent collisionEvent;
 
 	public LevelSwitch(int x, int y, String newLevel) {

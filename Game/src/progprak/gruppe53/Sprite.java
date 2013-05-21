@@ -3,10 +3,6 @@ package progprak.gruppe53;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-
-import javax.imageio.ImageIO;
 
 abstract public class Sprite extends Rectangle2D.Double implements Drawable,Movable  {
 
@@ -35,14 +31,15 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	}
 
 	private void loadImage(){
-		URL picUrl = getClass().getClassLoader().getResource(imagePath);
+		image = ImageLoader.loadImage(imagePath);	
+		/*URL picUrl = getClass().getClassLoader().getResource(imagePath);
 		try {
 			image = ImageIO.read(picUrl);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(picUrl);
+		System.out.println(picUrl);*/
 	}
 
 	@Override
