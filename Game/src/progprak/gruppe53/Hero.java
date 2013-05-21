@@ -15,7 +15,7 @@ public class Hero extends Sprite{
 		super(x,y,"images/profi.png");
 		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
-		health = 3;
+		health = 12;
 	}
 	
 	@Override
