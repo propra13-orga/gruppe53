@@ -101,7 +101,7 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-		gameLogic.switchLevel("levels/Level2.xml");
+		gameLogic.switchLevel("levels/Level1.xml");
 	}
 
 	@Override
