@@ -8,10 +8,14 @@ public class Hero extends Sprite{
 	
 	private Game game;
 	
+	private int health;
+	private long lastDamage = 0L;
+	
 	public Hero(int x, int y, Game game){
 		super(x,y,"images/profi.png");
 		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
+		health = 3;
 	}
 	
 	@Override
@@ -42,7 +46,13 @@ public class Hero extends Sprite{
 				dx = dy = 0;
 			}
 			else if(ce.getEvent() == CollisionEvent.DAMAGE){
-				game.restart();
+				long current = System.nanoTime();
+				if((current - lastDamage)> 1e9){
+					lastDamage = current;
+					if(--health < 0){
+						game.restart();
+					}
+				}
 			}
 			else if (ce.getEvent() == CollisionEvent.TELEPORT) {
 				x = ce.getNewX();
@@ -55,5 +65,19 @@ public class Hero extends Sprite{
 				game.switchLevel(ce.getNewLevel());
 			}
 		}
+	}
+
+	/**
+	 * @return the health
+	 */
+	public int getHealth() {
+		return health;
+	}
+
+	public void setX(int newX) {
+		x = newX;		
+	}
+	public void setY(int newY) {
+		y = newY;		
 	}
 }

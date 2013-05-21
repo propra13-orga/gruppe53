@@ -13,6 +13,7 @@ public class Game implements Runnable {
 	
 	public static void main(String[] args) {
 		JFrame f = new JFrame();
+		f.setLocation(800,600);
 		JButton start = new JButton("start");
 		ActionListener alStart = new ActionListener(
 				) {
@@ -100,6 +101,7 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
+		gameLogic.switchLevel("levels/Level1.xml");
 	}
 
 	@Override
@@ -114,7 +116,7 @@ public class Game implements Runnable {
 				
 				gameLogic.move(delta);
 				
-				gamePanel.render(delta,gameLogic.getSprites());
+				gamePanel.render(delta,gameLogic.getHero().getHealth(),gameLogic.getSprites());
 
 
 
@@ -148,6 +150,7 @@ public class Game implements Runnable {
 
 	public void restart() {
 		gameLogic = new GameLogic(this);
+		gameLogic.switchLevel("levels/Level1.xml");
 	}
 
 
@@ -159,5 +162,10 @@ public class Game implements Runnable {
 
 	public void switchLevel(String newLevel) {
 		gameLogic.switchLevel(newLevel);
+	}
+
+
+	public GameLogic getGameLogic() {
+		return gameLogic;
 	}
 }

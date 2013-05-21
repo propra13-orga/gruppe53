@@ -18,8 +18,8 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		
-		new LevelLoader("levels/Level1.xml").generateLevel(sprites, game);
+		hero = new Hero(0, 0, game);
+		//new LevelLoader("levels/Level1.xml").generateLevel(sprites, game);
 		
 		/*
 		//Horizontal Walls
@@ -99,5 +99,9 @@ public class GameLogic {
 		Vector<Sprite> sp = new Vector<Sprite>();
 		new LevelLoader(newLevel).generateLevel(sp, game);
 		sprites = sp;
+	}
+
+	public Hero getHero() {
+		return hero;
 	}
 }

@@ -72,7 +72,7 @@ public class LevelLoader {
 		int wallEnd = levelString.indexOf("</wall>");
 		String wall = levelString.substring(wallStart + "<wall>".length(),
 				wallEnd);
-		System.out.println("W�nde:" + wall);
+		System.out.println("Waende:" + wall);
 		String wallArray[] = wall.split(",");
 		for (int i = 0; i < wallArray.length; i++) {
 			String wallData[] = wallArray[i].split(":");
@@ -109,9 +109,12 @@ public class LevelLoader {
 				spawnEnd);
 		System.out.println("Spawnpoint: " + spawn);
 		String spawnArray[] = spawn.split(":");
-		Hero hero;
-		sprites.add(hero = new Hero(Integer.parseInt(spawnArray[0]), Integer
-				.parseInt(spawnArray[1]), game));
+		Hero hero = game.getGameLogic().getHero();
+		hero.setX(Integer.parseInt(spawnArray[0]));
+		hero.setY(Integer.parseInt(spawnArray[1]));
+		sprites.add(hero);
+		//sprites.add(hero = new Hero(Integer.parseInt(spawnArray[0]), Integer
+		//		.parseInt(spawnArray[1]), game));
 		return hero;
 	}
 	public Enemy [] spawnEnemies(Vector<Sprite> sprites, Game game){
@@ -200,7 +203,7 @@ public class LevelLoader {
 		int groundStart = levelString.indexOf("<ground>");
 		int groundEnd = levelString.indexOf("</ground>");
 		String ground = levelString.substring(groundStart + "<ground>".length(),groundEnd);
-		System.out.println("W�nde:" + ground);
+		System.out.println("Boden:" + ground);
 		String groundArray[] = ground.split(",");
 		for (int i = 0; i < groundArray.length; i++) {
 			String groundData[] = groundArray[i].split(":");

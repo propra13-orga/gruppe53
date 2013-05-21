@@ -24,7 +24,6 @@ public class ImageLoader {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(picUrl);
 		}
 		return image;
 	}

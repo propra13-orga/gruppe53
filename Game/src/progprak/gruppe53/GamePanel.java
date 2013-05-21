@@ -25,6 +25,8 @@ public class GamePanel extends JPanel{
 	
 	
 	int speed=10;
+
+	private int health;
 	
 	public GamePanel() {
 		super();
@@ -42,18 +44,20 @@ public class GamePanel extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.red);
-		g.drawString("fps:" + Long.toString(fps), 10, 10);
 		
 		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.drawObjects(g);
 		}
+		g.setColor(Color.red);
+		g.drawString("fps:" + Long.toString(fps), 10, 10);
+		g.drawString("Health:" + Integer.toString(health), 600, 10);
 	}
 
-	public void render(long delta,Vector<Sprite> sprites) {
+	public void render(long delta,int health, Vector<Sprite> sprites) {
 		fps = ((long)1e9)/delta;
 		this.sprites = sprites;
+		this.health = health;
 	}
 	
 }
