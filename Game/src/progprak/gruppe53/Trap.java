@@ -8,7 +8,7 @@ public class Trap extends Sprite implements Collidable{
 	
 	public Trap(int x, int y){
 		super(x,y,"images/trap.png");
-			collisionEvent = new CollisionEvent(CollisionEvent.DAMAGE);
+			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
 	}
 
 	@Override

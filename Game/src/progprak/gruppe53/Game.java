@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ListIterator;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -131,22 +132,32 @@ public class Game implements Runnable {
 	}
 		
 
-    public CollisionEvent testForCollision(double maxX,double minX,double maxY,double minY) {
+    public Vector<Sprite> testForCollision(double maxX,double minX,double maxY,double minY, int dx, int dy) {
+    	Vector<Sprite> cs = new Vector<Sprite>();
     	for(ListIterator<Sprite> it = gameLogic.getSprites().listIterator();it.hasNext();){
 			Sprite s = it.next();
-			if(
-				(
-				s.contains(maxX,maxY)
-				|| s.contains(maxX,minY)
-				|| s.contains(minX,maxY)
-				|| s.contains(minX,minY)
-				)
-				&& s instanceof Collidable){
-				return ((Collidable)s).getCollisionEvent();
+			if(s instanceof Collidable && collisionContains(s, maxX+dx, minX+dx, maxY, minY)){
+				((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
+				cs.add(s);
+			}
+			if(s instanceof Collidable && collisionContains(s, maxX, minX, maxY+dy, minY+dy)){
+				((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
+				cs.add(s);
 			}
 		}
-		return null;
+		return cs;
 	}
+    private boolean collisionContains(Sprite s,double maxX,double minX,double maxY,double minY){
+		if(
+			s.contains(maxX,maxY)
+			|| s.contains(maxX,minY)
+			|| s.contains(minX,maxY)
+			|| s.contains(minX,minY)
+		){
+			return true;
+		}
+		else return false;
+    }
 
 	public void restart() {
 		gameLogic = new GameLogic(this);

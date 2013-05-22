@@ -8,7 +8,7 @@ public class Goal extends Sprite implements Collidable {
 	
 	public Goal(int x, int y) {
 		super(x, y, "images/exit.png");
-		collisionEvent = new CollisionEvent(CollisionEvent.GOAL);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_GOAL);
 		
 	}
 

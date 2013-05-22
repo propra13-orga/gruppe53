@@ -8,7 +8,7 @@ public class Enemy extends Sprite implements Collidable{
 	
 	public Enemy(int x, int y){
 		super(x,y,"images/Monster1.png");
-			collisionEvent = new CollisionEvent(CollisionEvent.DAMAGE);
+			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
 	}
 
 	@Override

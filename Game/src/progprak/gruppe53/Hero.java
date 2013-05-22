@@ -1,5 +1,8 @@
 package progprak.gruppe53;
 
+import java.util.ListIterator;
+import java.util.Vector;
+
 public class Hero extends Sprite{
 
 	private static final long serialVersionUID = -8077486599395198634L;
@@ -40,12 +43,21 @@ public class Hero extends Sprite{
 			dx = 0;
 		}
 
-		CollisionEvent ce;
-		if((ce = game.testForCollision(getMaxX()+dx,getMinX()+dx,getMaxY()+dy,getMinY()+dy)) != null){
-			if(ce.getEvent() == CollisionEvent.MASSIVE){
-				dx = dy = 0;
+		testForCollision();
+		
+		
+	}
+	
+	private void testForCollision(){
+		Vector<Sprite> cs = game.testForCollision(getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
+		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
+			Sprite s = it.next();
+			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
+			if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
+				if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx = 0;
+				else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy = 0;
 			}
-			else if(ce.getEvent() == CollisionEvent.DAMAGE){
+			else if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
 				long current = System.nanoTime();
 				if((current - lastDamage)> 1e9){
 					lastDamage = current;
@@ -54,17 +66,18 @@ public class Hero extends Sprite{
 					}
 				}
 			}
-			else if (ce.getEvent() == CollisionEvent.TELEPORT) {
+			else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
 				x = ce.getNewX();
 				y = ce.getNewY();
 			}
-			else if (ce.getEvent() == CollisionEvent.GOAL){
+			else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
 				game.restart();
 			}
-			else if(ce.getEvent() == CollisionEvent.SWITCH_LEVEL){
+			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
 				game.switchLevel(ce.getNewLevel());
 			}
 		}
+		
 	}
 
 	/**

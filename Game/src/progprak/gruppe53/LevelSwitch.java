@@ -8,7 +8,7 @@ public class LevelSwitch extends Sprite implements Collidable{
 
 	public LevelSwitch(int x, int y, String newLevel) {
 		super(x,y,"images/entrance2.png");
-		collisionEvent = new CollisionEvent(CollisionEvent.SWITCH_LEVEL);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_SWITCH_LEVEL);
 		collisionEvent.setNewLevel(newLevel);
 	}
 

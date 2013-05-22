@@ -9,7 +9,7 @@ public class PortalEntrance extends Sprite implements Collidable{
 	public PortalEntrance(int x, int y,int newX, int newY)
 	{
 		super(x,y,"images/entrance.png");
-		collisionEvent = new CollisionEvent(CollisionEvent.TELEPORT);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_TELEPORT);
 		collisionEvent.setNewX(newX);
 		collisionEvent.setNewY(newY);
 		
