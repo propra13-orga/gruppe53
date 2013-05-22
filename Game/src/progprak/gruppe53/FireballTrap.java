@@ -11,16 +11,16 @@ public class FireballTrap extends Sprite implements Collidable{
 
 	private CollisionEvent collisionEvent;
 	
-	private int startX, startY;
+	private int reSpY, reSpX;
 		
-	public FireballTrap(int x, int y, Game game, int dx, int dy){
+	public FireballTrap(int x, int y, Game game, int dx, int dy, int reSpX, int reSpY){
 		super(x,y,"images/FireballRed.png");
 			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
 			this.game = game;
 			this.dx = dx;
 			this.dy = dy;
-			startX = x;
-			startY = y;
+			this.reSpX = reSpX;
+			this.reSpY = reSpY;
 	}
 	
 	@Override
@@ -32,8 +32,8 @@ public class FireballTrap extends Sprite implements Collidable{
 			Sprite s = it.next();
 			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
 			if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
-				x = startX;
-				y = startY;
+				x = reSpX;
+				y = reSpY;
 				break;
 			}
 		}

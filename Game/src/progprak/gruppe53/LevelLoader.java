@@ -161,11 +161,14 @@ public class LevelLoader {
 			String fireballTrapData[] = fireballTrapArray[i].split(";");
 			String fireballTrapLocation[] = fireballTrapData[0].split(":");
 			String fireballTrapMovement[] = fireballTrapData[1].split(":");
+			String fireballTrapRespawn[] = fireballTrapData[2].split(":");
 			int xLocation = Integer.parseInt(fireballTrapLocation[0]);
 			int yLocation = Integer.parseInt(fireballTrapLocation[1]);
 			int xMovement = Integer.parseInt(fireballTrapMovement[0]);
 			int yMovement = Integer.parseInt(fireballTrapMovement[1]);
-			sprites.add(fireballTraps [i] = new FireballTrap(xLocation, yLocation, game, xMovement, yMovement));
+			int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
+			int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
+			sprites.add(fireballTraps [i] = new FireballTrap(xLocation, yLocation, game, xMovement, yMovement, xRespawn, yRespawn));
 		}
 		return fireballTraps;
 	}
