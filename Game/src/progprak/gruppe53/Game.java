@@ -22,6 +22,7 @@ public class Game implements Runnable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Thread t = new Thread(new Game());
+				t.setName("GameLoop");
 				t.start();
 			}
 		};
@@ -76,8 +77,10 @@ public class Game implements Runnable {
 	
 
 	private KeyboardInput keyboardInput;
+	
+	private String startLevel = "levels/TestLevel.xml";
 
-	Hero hero;
+	private Hero hero;
 
 	public Game() {
 		doInitalizations();
@@ -102,7 +105,7 @@ public class Game implements Runnable {
 		frame.pack();
 		frame.setVisible(true);
 		last = System.nanoTime();
-		gameLogic.switchLevel("levels/Level1.xml");
+		gameLogic.switchLevel(startLevel);
 	}
 
 	@Override
@@ -161,7 +164,7 @@ public class Game implements Runnable {
 
 	public void restart() {
 		gameLogic = new GameLogic(this);
-		gameLogic.switchLevel("levels/Level1.xml");
+		gameLogic.switchLevel(startLevel);
 	}
 
 

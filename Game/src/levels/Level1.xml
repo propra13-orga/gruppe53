@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-<dimension>800x600</dimension>
-<ground>0-784:0-784</ground>
-<spawn>58:48</spawn>
-<wall>0-784:0-0,0-0:0-584,0-784:584-584,784-784:0-584,16-32:16-130,80-300:16-130,304-500:16-32,512-550:16-180,560-784:16-130,16-150:176-400,16-150:470-584,160-780:550-584,600-780:175-240,540-784:254-350,600-780:365-500,200-350:180-500,360-450:120-355</wall>
-<enemy>480:500,550:220</enemy>
-<trap>32:150,570:390</trap>
-<fireballtrap>16:435;1:0;16:435,475:48;0:1;475:48,360:435;1:0;360:435</fireballtrap>
-<portal>800:600;800:600</portal>
-<goal>800:600</goal>
-<levelswitch>752:532;levels/Level2.xml</levelswitch>
+	<dimension>800x600</dimension>
+	<ground>0-784:0-784</ground>
+	<spawn>58:48</spawn>
+	<walls>
+			<wall>0-784:0-0</wall>
+			<wall>0-0:0-584</wall>
+			<wall>0-784:584-584</wall>
+			<wall>784-784:0-584</wall>
+			<wall>16-32:16-130</wall>
+			<wall>80-300:16-130</wall>
+			<wall>304-500:16-32</wall>
+			<wall>512-550:16-180</wall>
+			<wall>560-784:16-130</wall>
+			<wall>16-150:176-400</wall>
+			<wall>16-150:470-584</wall>
+			<wall>160-780:550-584</wall>
+			<wall>600-780:175-240</wall>
+			<wall>540-784:254-350</wall>
+			<wall>600-780:365-500</wall>
+			<wall>200-350:180-500</wall>
+			<wall>360-450:120-355</wall>
+	</walls>
+	<enemys>
+		<enemy>480:500</enemy>
+		<enemy>550:220</enemy>
+	</enemys>
+	<traps>
+		<trap>32:150</trap>
+		<trap>570:390</trap>
+	</traps>
+	<fireballtraps>
+		<fireballtrap>16:435;1:0;16:435</fireballtrap>
+		<fireballtrap>475:48;0:1;475:48</fireballtrap>
+		<fireballtrap>360:435;1:0;360:435</fireballtrap>
+	</fireballtraps>
+	<!--<goal>800:600</goal>-->
+	<levelswitch>752:532;levels/Level2.xml</levelswitch>
 </level>
