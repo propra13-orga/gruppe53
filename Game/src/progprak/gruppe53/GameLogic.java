@@ -97,7 +97,7 @@ public class GameLogic {
 
 	public void switchLevel(String newLevel) {
 		Vector<Sprite> sp = new Vector<Sprite>();
-		LevelLoaderSax.generateLevel(newLevel,sp, game);
+		new LevelLoader(newLevel).generateLevel(sp, game);
 		sprites = sp;
 	}
 

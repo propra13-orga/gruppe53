@@ -34,7 +34,7 @@ public class GamePanel extends JPanel{
 	}
 
 	private void doInitializations() {
-		this.setPreferredSize(new Dimension(800,640));
+		this.setPreferredSize(new Dimension(800,600));
 		sprites = new Vector<Sprite>();
 		
 		
