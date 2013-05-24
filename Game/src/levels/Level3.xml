@@ -3,56 +3,11 @@
 <dimension>800x600</dimension>
 <ground>0-784:0-784</ground>
 <spawn>22:46</spawn>
-<walls>
-	<wall>0-784:0-0</wall>
-	<wall>0-0:0-584</wall>
-	<wall>0-784:584-584</wall>
-	<wall>784-784:0-584</wall>
-	<wall>40-160:50-50</wall>
-	<wall>200-320:50-50</wall>
-	<wall>360-480:50-50</wall>
-	<wall>520-640:50-50</wall>
-	<wall>680-748:50-50</wall>
-	<wall>16-748:64-64</wall>
-	<wall>48-768:134-134</wall>
-	<wall>16-768:520-520</wall>
-</walls>
-<enemys>
-	<enemy>40:114</enemy>
-	<enemy>250:100</enemy>
-	<enemy>330:90</enemy>
-	<enemy>500:85</enemy>
-	<enemy>520:100</enemy>
-	<enemy>620:100</enemy>
-	<enemy>30:220</enemy>
-</enemys>
-<traps>
-	<trap>60:104</trap>
-	<trap>120:94</trap>
-	<trap>180:110</trap>
-	<trap>430:118</trap>
-	<trap>430:102</trap>
-	<trap>600:115</trap>
-	<trap>640:115</trap>
-	<trap>50:310</trap>
-</traps>
-<fireballtraps>
-	<fireballtrap>752:24;-2:0;752:24</fireballtrap>
-	<fireballtrap>16:160;2:0;16:160</fireballtrap>
-	<fireballtrap>752:190;-2:0;752:190</fireballtrap>
-	<fireballtrap>16:220;1:0;16:220</fireballtrap>
-	<fireballtrap>752:250;-3:0;752:250</fireballtrap>
-	<fireballtrap>16:280;2:0;16:280</fireballtrap>
-	<fireballtrap>752:310;-1:0;752:310</fireballtrap>
-	<fireballtrap>16:340;3:0;16:340</fireballtrap>
-	<fireballtrap>752:370;-3:1;752:370</fireballtrap>
-	<fireballtrap>16:400;2:1;16:400</fireballtrap>
-	<fireballtrap>752:430;-5:1;752:430</fireballtrap>
-	<fireballtrap>16:450;3:0;16:450</fireballtrap>
-	<fireballtrap>16:552;1:0;16:552</fireballtrap>
-</fireballtraps>
-<portals>
-	<portal>732:488;24:552</portal>
-</portals>
+<wall>0-784:0-0,0-0:0-584,0-784:584-584,784-784:0-584,40-160:50-50,200-320:50-50,360-480:50-50,520-640:50-50,680-748:50-50,16-748:64-64,48-768:134-134,16-768:520-520</wall>
+<enemy>40:114,250:100,330:90,500:85,520:100,620:100,30:220</enemy>
+<trap>60:104,120:94,180:110,430:118,430:102,600:115,640:115,50:310</trap>
+<fireballtrap>752:24;-2:0;752:24,16:160;2:0;16:160,752:190;-2:0;752:190,16:220;1:0;16:220,752:250;-3:0;752:250,16:280;2:0;16:280,752:310;-1:0;752:310,16:340;3:0;16:340,752:370;-3:1;752:370,16:400;2:1;16:400,752:430;-5:1;752:430,16:450;3:0;16:450,16:552;1:0;16:552</fireballtrap>
+<portal>732:488;24:552</portal>
 <goal>752:552</goal>
+<levelswitch>800:600;levels/Level4.xml</levelswitch>
 </level>
