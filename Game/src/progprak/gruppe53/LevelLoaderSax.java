@@ -29,7 +29,7 @@ public class LevelLoaderSax extends DefaultHandler {
 			SAXParser saxParser = factory.newSAXParser();
 			DefaultHandler handler = new LevelLoaderSax(sprites,game);
 		
-			saxParser.parse( LevelLoader.class.getClassLoader().getResource(level).getFile(), handler );
+			saxParser.parse( LevelLoaderSax.class.getClassLoader().getResource(level).getFile(), handler );
 			
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
@@ -176,14 +176,14 @@ public class LevelLoaderSax extends DefaultHandler {
 		String trapData[] = content.split(":");
 		int trapX = Integer.parseInt(trapData[0]);
 		int trapY = Integer.parseInt(trapData[1]);
-		sprites.add(new Trap(trapX, trapY));		
+		sprites.add(new GroundTrap(trapX, trapY));		
 	}
 
 	private void spawnEnemy(String content) {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
-		sprites.add(new Enemy(enemyX, enemyY));		
+		sprites.add(new EnemyGhost(enemyX, enemyY));		
 	}
 
 	private void spawnWall(String content) {

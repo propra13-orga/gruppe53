@@ -1,13 +1,13 @@
 package progprak.gruppe53;
 
-public class Enemy extends Sprite implements Collidable{
+public abstract class Enemy extends Sprite implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
 	private CollisionEvent collisionEvent;
 	
-	public Enemy(int x, int y){
-		super(x,y,"images/Monster1.png");
+	public Enemy(int x, int y,String imagePath){
+		super(x,y,imagePath);
 			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
 	}
 

@@ -1,13 +1,13 @@
 package progprak.gruppe53;
 
-public class Trap extends Sprite implements Collidable{
+public abstract class Trap extends Sprite implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
 	private CollisionEvent collisionEvent;
 	
-	public Trap(int x, int y){
-		super(x,y,"images/trap.png");
+	public Trap(int x, int y,String imagePath){
+		super(x,y,imagePath);
 			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
 	}
 
