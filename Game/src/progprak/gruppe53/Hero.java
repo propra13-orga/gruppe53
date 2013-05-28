@@ -15,7 +15,7 @@ public class Hero extends Sprite{
 	private long lastDamage = 0L;
 	
 	public Hero(int x, int y, Game game){
-		super(x,y,"images/profi.png");
+		super(x,y,"images/hero.png");
 		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
 		health = 12;

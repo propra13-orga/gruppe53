@@ -16,7 +16,6 @@ public class LevelLoaderSax extends DefaultHandler {
 	private Vector<Sprite> sprites;
 	private Game game;
 	private StringBuilder elementName;
-	private String className;
 
 	public LevelLoaderSax(Vector<Sprite> sprites, Game game) {
 		this.sprites = sprites;
@@ -75,9 +74,6 @@ public class LevelLoaderSax extends DefaultHandler {
 		System.out.println("Start Element");
 		System.out.println("qName:" + qName);
 		for(int i=0;i < attributes.getLength();i++){
-			if(attributes.getQName(i).equals("class")){
-				className = attributes.getValue(i);
-			}
 		}
 		if(elementName.length() == 0){
 			elementName.append(qName.toString());	
