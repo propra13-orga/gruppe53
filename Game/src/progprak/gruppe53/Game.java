@@ -1,14 +1,11 @@
 package progprak.gruppe53;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.util.ListIterator;
 import java.util.Vector;
 
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 
 public class Game implements Runnable {
 	
@@ -51,9 +48,11 @@ public class Game implements Runnable {
 	private String startLevel = "levels/TestLevel.xml";
 
 
-	private GameMenu gameMenu;
+	private Menu menu;
 
 	private boolean alive = true;
+
+	private InfoWindow infoWindow;
 
 	public Game() {
 		doInitalizations();
@@ -71,12 +70,14 @@ public class Game implements Runnable {
 		keyboardInput = new KeyboardInput();
 		gameLogic = new GameLogic(this);
 		gamePanel = new GamePanel();
-		gameMenu = new GameMenu(this);
+		menu = new Menu(this);
+		infoWindow = new InfoWindow(this);
 		frame = new JFrame("Game");
 		frame.setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(gamePanel);
-		frame.add(gameMenu,BorderLayout.NORTH);
+		frame.add(menu,BorderLayout.NORTH);
+		frame.add(infoWindow,BorderLayout.SOUTH);
 		frame.pack();
 		frame.setVisible(true);
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyboardInput);
@@ -99,9 +100,8 @@ public class Game implements Runnable {
 				
 				}
 				gamePanel.render(delta,gameLogic.getSprites());
-				gameMenu.render();
-
-
+				menu.render();
+				infoWindow.render();
 				gamePanel.repaint();
 				Thread.sleep(10);
 			}

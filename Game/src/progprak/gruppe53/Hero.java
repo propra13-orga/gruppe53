@@ -12,13 +12,15 @@ public class Hero extends Sprite{
 	private Game game;
 	
 	private int health;
+	private int maxHealth;
 	private long lastDamage = 0L;
 	
 	public Hero(int x, int y, Game game){
 		super(x,y,"images/hero.png");
 		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
-		health = 2;
+		maxHealth = 10;
+		health = maxHealth;
 	}
 	
 	@Override
@@ -92,5 +94,12 @@ public class Hero extends Sprite{
 	}
 	public void setY(int newY) {
 		y = newY;		
+	}
+
+	/**
+	 * @return the maxHealth
+	 */
+	public int getMaxHealth() {
+		return maxHealth;
 	}
 }

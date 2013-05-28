@@ -2,7 +2,6 @@ package progprak.gruppe53;
 
 import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class KeyboardInput implements KeyEventDispatcher {
 	

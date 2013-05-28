@@ -2,14 +2,13 @@ package progprak.gruppe53;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class GameMenu extends JPanel {
+public class Menu extends JPanel {
 
 	private static final long serialVersionUID = -8905247101110071179L;
 
@@ -22,14 +21,14 @@ public class GameMenu extends JPanel {
 
 	private JButton restartBtn;
 	
-	public GameMenu(Game game) {
+	public Menu(Game game) {
 		super();
 		this.game = game;
 		doInitializations();
 	}
 
 	private void doInitializations() {
-		setPreferredSize(new Dimension(800,40));
+		//setPreferredSize(new Dimension(800,40));
 		setBackground(Color.WHITE);
 		startBtn = new JButton("Start Game");
 		startBtn.addActionListener(new ActionListener() {
@@ -50,7 +49,11 @@ public class GameMenu extends JPanel {
 				game.restart();
 			}
 		});
+		restartBtn.setEnabled(false);
 		add(restartBtn);
+		
+		
+		setPreferredSize(getPreferredSize());
 	}
 	
 	public void render(){
