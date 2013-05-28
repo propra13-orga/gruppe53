@@ -1,18 +1,20 @@
 package progprak.gruppe53;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.KeyboardFocusManager;
 import java.util.ListIterator;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 public class Game implements Runnable {
 	
 	
 	public static void main(String[] args) {
-		Thread t = new Thread(new Game());
-		t.setName("GameLoop");
-		t.start();
+		new Game();
 	}
 	
 	/*
@@ -49,7 +51,9 @@ public class Game implements Runnable {
 	private String startLevel = "levels/TestLevel.xml";
 
 
-	private GameGui gameGui;
+	private GameMenu gameMenu;
+
+	private boolean alive = true;
 
 	public Game() {
 		doInitalizations();
@@ -67,17 +71,15 @@ public class Game implements Runnable {
 		keyboardInput = new KeyboardInput();
 		gameLogic = new GameLogic(this);
 		gamePanel = new GamePanel();
-		gameGui = new GameGui(gameLogic);
+		gameMenu = new GameMenu(this);
 		frame = new JFrame("Game");
-		frame.setLayout(null);
+		frame.setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(0, 0, 800, 760);
-		gamePanel.setBounds(0, 0, 800, 640);
-		gameGui.setBounds(0, 640, 800, 120);
 		frame.add(gamePanel);
-		frame.add(gameGui);
-		frame.addKeyListener(keyboardInput);
+		frame.add(gameMenu,BorderLayout.NORTH);
+		frame.pack();
 		frame.setVisible(true);
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyboardInput);
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
 	}
@@ -89,13 +91,15 @@ public class Game implements Runnable {
 			try {
 				computeDelta();
 				
-				gameLogic.doLogic(delta);
+				if(alive){
+					gameLogic.doLogic(delta);
 				
 				
-				gameLogic.move(delta);
+					gameLogic.move(delta);
 				
+				}
 				gamePanel.render(delta,gameLogic.getSprites());
-
+				gameMenu.render();
 
 
 				gamePanel.repaint();
@@ -139,6 +143,7 @@ public class Game implements Runnable {
 	public void restart() {
 		gameLogic = new GameLogic(this);
 		gameLogic.switchLevel(startLevel);
+		alive = true;
 	}
 
 
@@ -156,4 +161,27 @@ public class Game implements Runnable {
 	public GameLogic getGameLogic() {
 		return gameLogic;
 	}
+
+
+	public void startGame() {
+		if(!started){
+			Thread t = new Thread(this);
+			t.setName("Gameloop");
+			t.start();
+		}
+	}
+
+
+	public boolean isStarted() {
+		return started;
+	}
+	public boolean isAlive(){
+		return alive;
+	}
+
+
+	public void loose() {
+		alive = false;
+	}
+
 }

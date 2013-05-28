@@ -1,9 +1,10 @@
 package progprak.gruppe53;
 
+import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyboardInput implements KeyListener {
+public class KeyboardInput implements KeyEventDispatcher {
 	
 	//Directions
 	private boolean up;
@@ -11,32 +12,6 @@ public class KeyboardInput implements KeyListener {
 	private boolean left;
 	private boolean right;
 	
-	
-	public void keyPressed(KeyEvent e)
-	{	
-		int keyCode = e.getKeyCode();
-		if(keyCode==KeyEvent.VK_UP)
-			up=true;
-		if(keyCode==KeyEvent.VK_DOWN)
-			down=true;
-		if(keyCode==KeyEvent.VK_LEFT)
-			left=true;
-		if(keyCode==KeyEvent.VK_RIGHT)
-			right=true;
-	}
-	
-	public void keyReleased(KeyEvent e)
-	{
-		int keyCode = e.getKeyCode();
-		if(keyCode==KeyEvent.VK_UP)
-			up=false;
-		if(keyCode==KeyEvent.VK_DOWN)
-			down=false;
-		if(keyCode==KeyEvent.VK_LEFT)
-			left=false;
-		if(keyCode==KeyEvent.VK_RIGHT)
-			right=false;
-	}
 
 	
 	public void keyTyped(KeyEvent e) {
@@ -70,5 +45,32 @@ public class KeyboardInput implements KeyListener {
 	 */
 	public boolean isRight() {
 		return right;
+	}
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+		if(e.getID() == KeyEvent.KEY_PRESSED){
+			if(keyCode==KeyEvent.VK_UP)
+				up=true;
+			if(keyCode==KeyEvent.VK_DOWN)
+				down=true;
+			if(keyCode==KeyEvent.VK_LEFT)
+				left=true;
+			if(keyCode==KeyEvent.VK_RIGHT)
+				right=true;
+		}
+		else if(e.getID() == KeyEvent.KEY_RELEASED){
+			if(keyCode==KeyEvent.VK_UP)
+				up=false;
+			if(keyCode==KeyEvent.VK_DOWN)
+				down=false;
+			if(keyCode==KeyEvent.VK_LEFT)
+				left=false;
+			if(keyCode==KeyEvent.VK_RIGHT)
+				right=false;			
+			
+		}
+		return false;
 	}
 }

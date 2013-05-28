@@ -18,7 +18,7 @@ public class Hero extends Sprite{
 		super(x,y,"images/hero.png");
 		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
-		health = 12;
+		health = 2;
 	}
 	
 	@Override
@@ -62,7 +62,7 @@ public class Hero extends Sprite{
 				if((current - lastDamage)> 1e9){
 					lastDamage = current;
 					if(--health < 0){
-						game.restart();
+						game.loose();
 					}
 				}
 			}
