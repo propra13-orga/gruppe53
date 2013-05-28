@@ -1,20 +1,24 @@
 package progprak.gruppe53;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.LayoutManager;
-
 import javax.swing.JPanel;
 
 public class GameGui extends JPanel {
 
 	private static final long serialVersionUID = -8905247101110071179L;
 
-	public GameGui() {
+	
+	private GameLogic gameLogic;
+	
+	public GameGui(GameLogic gameLogic) {
 		super();
+		this.gameLogic = gameLogic;
 		doInitializations();
 	}
 
 	private void doInitializations() {
 		setPreferredSize(new Dimension(800,120));
+		setBackground(Color.MAGENTA);
 	}
 }
