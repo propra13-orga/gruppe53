@@ -3,8 +3,6 @@ package progprak.gruppe53;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.HeadlessException;
-
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 

@@ -31,13 +31,10 @@ public class LevelLoaderSax extends DefaultHandler {
 			saxParser.parse( LevelLoaderSax.class.getClassLoader().getResource(level).getFile(), handler );
 			
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -68,8 +65,7 @@ public class LevelLoaderSax extends DefaultHandler {
 	}
 
 	@Override
-	public void startElement(String uri, String localName, String qName,
-			Attributes attributes) throws SAXException {
+	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, qName, attributes);
 		System.out.println("Start Element");
 		System.out.println("qName:" + qName);
