@@ -131,6 +131,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		spawn.addActionListener(this);
 		tools.add(spawn);
 		JButton save = new JButton("Save");
+		save.setPreferredSize(new Dimension(66,45));
 		save.setActionCommand(SAVE);
 		save.addActionListener(this);
 		tools.add(save);
