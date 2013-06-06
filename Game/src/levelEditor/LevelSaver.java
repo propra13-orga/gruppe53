@@ -9,6 +9,7 @@ import java.util.Vector;
 import progprak.gruppe53.EnemyGhost;
 import progprak.gruppe53.GroundTrap;
 import progprak.gruppe53.Sprite;
+import progprak.gruppe53.Wall;
 
 public class LevelSaver {
 	private String fileName = "";
@@ -24,6 +25,7 @@ public class LevelSaver {
 		input += createSpawnXml();
 		input += createEnemyGhostXml();
 		input += createTrapXml();
+		input += createWallXml();
 		input += "</level>";
 		createFile(input);
 
@@ -80,5 +82,17 @@ public class LevelSaver {
 		trapXml += "	</traps>";
 		trapXml += "\n";
 		return trapXml;
+	}
+	private String createWallXml() {
+		String wallXml = "	<walls>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof Wall) {
+				wallXml += "		<wall>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</wall>" +"\n";
+			}
+		}
+		wallXml += "	</walls>";
+		wallXml += "\n";
+		return wallXml;
 	}
 }
