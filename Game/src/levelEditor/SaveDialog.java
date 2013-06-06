@@ -1,6 +1,5 @@
 package levelEditor;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SaveDialog extends JDialog implements ActionListener {
+	private static final long serialVersionUID = 1;
+	
 	private JTextField textField;
 	private LevelEditor le;
 

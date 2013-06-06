@@ -10,7 +10,7 @@
 	<traps>
 		<trap>400:400</trap>
 	</traps>
-	<enemys>
+	<enemies>
 		<enemy type="ghost">300:300</enemy>
-	</enemys>
+	</enemies>
 </level>

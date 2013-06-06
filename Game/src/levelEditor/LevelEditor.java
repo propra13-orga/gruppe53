@@ -1,5 +1,6 @@
 package levelEditor;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -16,7 +17,9 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import progprak.gruppe53.EnemyGhost;
 import progprak.gruppe53.FireballTrap;
@@ -35,10 +38,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 	private static final String WINDOW_NAME = "LevelEditor";
 	private static final int DEFAULT_WINDOW_WIDTH = 900;
-	private static final int DEFAULT_WINDOW_HEIGHT = 640;
+	private static final int DEFAULT_WINDOW_HEIGHT = 830;
 	private static final int GAMEPANEL_WIDTH = 800;
 	private static final int GAMEPANEL_HEIGHT = 640;
 	private static final int SEPARATOR_WIDTH = 20;
+	private static final int ATTRIBUTEBAR_HEIGHT = 30;
 	private static final String OBJECT_WALL = "wall";
 	private static final String ENEMY_GHOST = "enemyGhost";
 	private static final String TRAP_SPEARS = "trapSpears";
@@ -49,12 +53,23 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_SPAWN = "spawn";
 	private static final String SAVE = "save";
 	
+	private String labelString1 = "X: ";
+	private String labelString2 = "Y: ";
+	private String labelString3 = "XSpeed: ";
+	private String labelString4 = "YSpeed: ";
+	private String labelString5 = "XSpawn: ";
+	private String labelString6 = "YSpawn: ";
+	private String labelString7 = "TeleportLocation: ";
+	private String labelString8 = "NextLevelPath: ";
+	
 	public static void main(String[] args) {
 		new LevelEditor();
 
 	}
 	
-	private JPanel tools, level, separator;
+	private JPanel tools, level, separator, attributeBar;
+	private JTextField attribute1, attribute2, attribute3, attribute4, attribute5, attribute6;
+	private JLabel attributeLabel1, attributeLabel2, attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
 
 	private Vector<Sprite> sprites;
 	private String currentSprite = "";
@@ -74,27 +89,48 @@ public class LevelEditor extends JFrame implements ActionListener,
 		setLocationRelativeTo(null);
 		setResizable(false);
 
-		getContentPane().setLayout(
-				new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+		//getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+		getContentPane().setLayout(new BorderLayout());
 		level = new GamePanel();
 		separator = new JPanel();
 		tools = new JPanel();
-
-		separator.setPreferredSize(new Dimension(SEPARATOR_WIDTH,
-				GAMEPANEL_HEIGHT));
-		tools.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH
-				- GAMEPANEL_WIDTH - SEPARATOR_WIDTH, DEFAULT_WINDOW_HEIGHT));
-
+		attributeBar = new JPanel();
+		attribute1 = new JTextField(10);
+		attribute2 = new JTextField(10);
+		attribute3 = new JTextField(10);
+		attribute4 = new JTextField(10);
+		attribute5 = new JTextField(10);
+		attribute6 = new JTextField(10);
+		
+		
+		separator.setPreferredSize(new Dimension(SEPARATOR_WIDTH,GAMEPANEL_HEIGHT));
+		tools.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH - GAMEPANEL_WIDTH - SEPARATOR_WIDTH, DEFAULT_WINDOW_HEIGHT));
+		attributeBar.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH, ATTRIBUTEBAR_HEIGHT));
+		
 		separator.setBackground(Color.YELLOW);
 		tools.setBackground(Color.BLUE);
+		attributeBar.setBackground(Color.RED);
 
 		setupTools();
 
 		level.addMouseListener(this);
 
-		add(level);
-		add(separator);
-		add(tools);
+		JPanel editorPanel = new JPanel();
+		editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.X_AXIS));
+		editorPanel.add(level);
+		editorPanel.add(separator);
+		editorPanel.add(tools);
+		add(editorPanel,BorderLayout.CENTER);
+		add(attributeBar,BorderLayout.SOUTH);
+		attributeBar.add(attribute1);
+		attributeBar.add(attribute2);
+		attributeBar.add(attribute3);
+		attributeBar.add(attribute4);
+		attributeBar.add(attribute5);
+		attributeBar.add(attribute6);
+		
+		
+		
 
 	}
 

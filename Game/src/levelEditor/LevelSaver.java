@@ -60,14 +60,14 @@ public class LevelSaver {
 	}
 	
 	private String createEnemyGhostXml() {
-		String enemyGhostXml = "	<enemys>" + "\n";
+		String enemyGhostXml = "	<enemies>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof EnemyGhost) {
 				enemyGhostXml += "		<enemy type=\"ghost\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
 			}
 		}
-		enemyGhostXml += "	</enemys>";
+		enemyGhostXml += "	</enemies>";
 		enemyGhostXml += "\n";
 		return enemyGhostXml;
 	}
@@ -95,4 +95,5 @@ public class LevelSaver {
 		wallXml += "\n";
 		return wallXml;
 	}
+	
 }

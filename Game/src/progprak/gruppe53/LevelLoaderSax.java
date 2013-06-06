@@ -89,7 +89,7 @@ public class LevelLoaderSax extends DefaultHandler {
 		case "level.walls.wall":
 			spawnWall(content);
 			break;
-		case "level.enemys.enemy":
+		case "level.enemies.enemy":
 			spawnEnemy(content);
 			break;
 		case "level.traps.trap":
