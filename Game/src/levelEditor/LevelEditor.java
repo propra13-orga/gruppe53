@@ -31,6 +31,7 @@ import progprak.gruppe53.Wall;
 
 public class LevelEditor extends JFrame implements ActionListener,
 		MouseListener {
+	private static final long serialVersionUID = 1;
 
 	private static final String WINDOW_NAME = "LevelEditor";
 	private static final int DEFAULT_WINDOW_WIDTH = 900;

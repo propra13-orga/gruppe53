@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
 
+import progprak.gruppe53.EnemyGhost;
 import progprak.gruppe53.Sprite;
 
 public class LevelSaver {
@@ -20,6 +21,7 @@ public class LevelSaver {
 	public void saveLevel() {
 		String input = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" + "\n"+ "<level>" + "\n";
 		input += createSpawnXml();
+		input += createEnemyGhostXml();
 		input += "</level>";
 		createFile(input);
 
@@ -49,7 +51,20 @@ public class LevelSaver {
 			}
 		}
 		spawnXml += "</spawn>";
-		spawnXml +="\n";
+		spawnXml += "\n";
 		return spawnXml;
+	}
+	
+	private String createEnemyGhostXml() {
+		String enemyGhostXml = "<Enemys>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof EnemyGhost) {
+				enemyGhostXml += "<enemy type=\"ghost\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
+			}
+		}
+		enemyGhostXml += "</Enemys>";
+		enemyGhostXml += "\n";
+		return enemyGhostXml;
 	}
 }
