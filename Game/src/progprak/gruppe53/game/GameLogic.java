@@ -8,6 +8,10 @@ public class GameLogic {
 	private Vector<Sprite> sprites;
 	private Game game;
 	
+	private Sword sword;
+	private Jacket jacket;
+	
+	
 	public Hero hero;
 	
 
@@ -18,7 +22,8 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		hero = new Hero(0, 0, game);
+		hero = new Hero(0, 0, game, sword, jacket);
+		
 	}
 	
 	//Do Logics for every Sprite-Object

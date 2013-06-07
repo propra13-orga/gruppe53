@@ -16,8 +16,10 @@ public class Hero extends Sprite{
 	private long lastDamage = 0L;
 	private int mana;
 	private int maxMana;
+	private int damage;
+	private int armorLVL;
 	
-	public Hero(int x, int y, Game game){
+	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
 		super(x,y,"images/hero.png");
 		this.keyboardInput = game.getKeyboardInput();
 		this.game = game;
@@ -25,6 +27,8 @@ public class Hero extends Sprite{
 		health = maxHealth;
 		maxMana = 100;
 		mana = maxMana;
+		damage = weapon.getdamage();
+		armorLVL = armor.getarmorLVL();
 	}
 	
 	@Override
