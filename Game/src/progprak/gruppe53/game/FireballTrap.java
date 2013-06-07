@@ -28,7 +28,7 @@ public class FireballTrap extends Sprite implements Collidable{
 	public void doLogic(long delta){
 		
 		
-		Vector<Sprite> cs = game.testForCollision(getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
+		/*Vector<Sprite> cs = game.testForCollision(getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
 		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
 			Sprite s = it.next();
 			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
@@ -37,7 +37,7 @@ public class FireballTrap extends Sprite implements Collidable{
 				y = reSpY;
 				break;
 			}
-		}
+		}*/
 	}
 
 	@Override

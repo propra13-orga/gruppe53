@@ -113,7 +113,7 @@ public class Game implements Runnable {
 	}
 		
 
-    public Vector<Sprite> testForCollision(double maxX,double minX,double maxY,double minY, int dx, int dy) {
+    public Vector<Sprite> testForCollision(double maxX,double minX,double maxY,double minY, float dx, float dy) {
     	Vector<Sprite> cs = new Vector<Sprite>();
     	for(ListIterator<Sprite> it = gameLogic.getActors().listIterator();it.hasNext();){
 			Sprite s = it.next();

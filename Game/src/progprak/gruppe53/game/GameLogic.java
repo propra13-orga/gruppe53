@@ -1,12 +1,12 @@
 package progprak.gruppe53.game;
 
-import java.util.ArrayList;
+import java.util.Vector;
 import java.util.ListIterator;
 
 public class GameLogic {
 	
-	private ArrayList<Sprite> actors;
-	private ArrayList<Sprite> sprites;
+	private Vector<Sprite> actors;
+	private Vector<Sprite> sprites;
 	private Game game;
 	
 	
@@ -14,7 +14,7 @@ public class GameLogic {
 	
 
 	public GameLogic(Game game) {
-		sprites =  new ArrayList<Sprite>();
+		sprites =  new Vector<Sprite>();
 		this.game = game;
 		doInitalizations();
 	}
@@ -26,15 +26,15 @@ public class GameLogic {
 	
 	//Do Logics for every Sprite-Object
 	public void doLogic(long delta){
-		actors = (ArrayList<Sprite>) sprites.clone();
+		actors = (Vector<Sprite>) sprites.clone();
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.doLogic(delta);
 			if (s instanceof CombatObject) {
 				((CombatObject) s).testForCollision(game);
-				
+				((CombatObject) s).resetHandleEvents();
 			}
-		}
+		} 
 	}
 	public void move(long delta){
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
@@ -42,12 +42,12 @@ public class GameLogic {
 			s.move(delta);
 		}
 	}
-	public ArrayList<Sprite> getActors() {
+	public Vector<Sprite> getActors() {
 		return actors;
 	}
 
 	public void switchLevel(String newLevel) {
-		ArrayList<Sprite> sp = new ArrayList<Sprite>();
+		Vector<Sprite> sp = new Vector<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
 		sp.add(hero.getWeapon());

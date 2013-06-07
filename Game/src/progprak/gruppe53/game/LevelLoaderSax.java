@@ -1,7 +1,7 @@
 package progprak.gruppe53.game;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Vector;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -12,16 +12,16 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
-	private ArrayList<Sprite> sprites;
+	private Vector<Sprite> sprites;
 	private Game game;
 	private StringBuilder elementName;
 
-	public LevelLoaderSax(ArrayList<Sprite> sp, Game game) {
+	public LevelLoaderSax(Vector<Sprite> sp, Game game) {
 		this.sprites = sp;
 		this.game = game;
 	}
 
-	public static void generateLevel(String level, ArrayList<Sprite> sp, Game game){
+	public static void generateLevel(String level, Vector<Sprite> sp, Game game){
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();

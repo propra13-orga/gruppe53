@@ -4,14 +4,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Vector;
 import progprak.gruppe53.game.Sprite;
 
 public class LevelSaver {
 	private String fileName = "";
-	private ArrayList<Sprite> sprites;
+	private Vector<Sprite> sprites;
 
-	public LevelSaver(String fileName, ArrayList<Sprite> sprites2) {
+	public LevelSaver(String fileName, Vector<Sprite> sprites2) {
 		this.fileName = fileName;
 		this.sprites = sprites2;
 	}

@@ -18,6 +18,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	
 	protected CollisionEvent collisionEvent;
 
+	protected boolean handleEvents = true;
+	
 	protected Game game;
 	
 	public CombatObject(int x, int y, String imagePath,Game game) {
@@ -26,8 +28,12 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 
 	protected void doInitalizations() {
+		initCollisionEvent();
+	}
+	protected void initCollisionEvent() {
 		collisionEvent = new DamageCollisionEvent(1,faction);
 	}
+
 	@Override
 	public void doLogic(long delta) {
 
@@ -65,24 +71,35 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 
 	protected void handleColliosionEvent(CollisionEvent ce) {
-		if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
-			if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx = 0;
-			else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy = 0;
-		}
-		else if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
-			handleDamageEvent(ce);
-		}
-		else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
-			x = ce.getNewX();
-			y = ce.getNewY();
-		}
-		else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
-			//game.restart();
-		}
-		else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
-			//game.switchLevel(ce.getNewLevel());
+		if(handleEvents){
+			if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
+				handleMassiveEvent(ce);
+				
+			}
+			else if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
+				handleDamageEvent(ce);
+			}
+			else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
+				x = ce.getNewX();
+				y = ce.getNewY();
+			}
+			else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
+				//game.restart();
+			}
+			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
+				//game.switchLevel(ce.getNewLevel());
+			}
 		}
 		
+	}
+
+	protected void handleMassiveEvent(CollisionEvent ce) {
+		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx = 0;
+		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy = 0;		
+	}
+
+	public void resetHandleEvents() {
+		handleEvents = true;
 	}
 
 

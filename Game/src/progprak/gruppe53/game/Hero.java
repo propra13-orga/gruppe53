@@ -1,5 +1,7 @@
 package progprak.gruppe53.game;
 
+import java.awt.Event;
+
 public class Hero extends CombatObject{
 
 	private static final long serialVersionUID = -8077486599395198634L;
@@ -23,6 +25,9 @@ public class Hero extends CombatObject{
 		this.weapon = weapon;
 		this.weapon.setOwner(this);
 		doInitalizations();
+	}
+	protected void initCollisionEvent() {
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 	}
 	
 	@Override

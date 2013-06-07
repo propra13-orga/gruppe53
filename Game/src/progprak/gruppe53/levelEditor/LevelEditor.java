@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -54,7 +54,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	
 	private JPanel tools, level, separator;
 
-	private ArrayList<Sprite> sprites;
+	private Vector<Sprite> sprites;
 	private String currentSprite = "";
 	private String fileName = "";
 
@@ -65,7 +65,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 
 	private void setupEditor() {
-		sprites = new ArrayList<Sprite>();
+		sprites = new Vector<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
