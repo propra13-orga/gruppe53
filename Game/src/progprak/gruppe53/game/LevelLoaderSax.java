@@ -1,8 +1,7 @@
 package progprak.gruppe53.game;
 
 import java.io.IOException;
-import java.util.Vector;
-
+import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -13,20 +12,20 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 	private Game game;
 	private StringBuilder elementName;
 
-	public LevelLoaderSax(Vector<Sprite> sprites, Game game) {
-		this.sprites = sprites;
+	public LevelLoaderSax(ArrayList<Sprite> sp, Game game) {
+		this.sprites = sp;
 		this.game = game;
 	}
 
-	public static void generateLevel(String level, Vector<Sprite> sprites, Game game){
+	public static void generateLevel(String level, ArrayList<Sprite> sp, Game game){
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();
-			DefaultHandler handler = new LevelLoaderSax(sprites,game);
+			DefaultHandler handler = new LevelLoaderSax(sp,game);
 		
 			saxParser.parse( LevelLoaderSax.class.getClassLoader().getResource(level).getFile(), handler );
 			
@@ -168,14 +167,14 @@ public class LevelLoaderSax extends DefaultHandler {
 		String trapData[] = content.split(":");
 		int trapX = Integer.parseInt(trapData[0]);
 		int trapY = Integer.parseInt(trapData[1]);
-		sprites.add(new GroundTrap(trapX, trapY));		
+		sprites.add(new GroundTrap(trapX, trapY,game));		
 	}
 
 	private void spawnEnemy(String content) {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
-		sprites.add(new EnemyGhost(enemyX, enemyY));		
+		sprites.add(new EnemyGhost(enemyX, enemyY,game));		
 	}
 
 	private void spawnWall(String content) {

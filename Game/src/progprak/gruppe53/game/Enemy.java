@@ -1,14 +1,14 @@
 package progprak.gruppe53.game;
 
-public abstract class Enemy extends Sprite implements Collidable{
+public abstract class Enemy extends CombatObject implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
-	private CollisionEvent collisionEvent;
 	
-	public Enemy(int x, int y,String imagePath){
-		super(x,y,imagePath);
-			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
+	public Enemy(int x, int y,String imagePath,Game game){
+		super(x,y,imagePath,game);
+		faction = 2;
+		doInitalizations();
 	}
 
 	@Override
@@ -16,8 +16,4 @@ public abstract class Enemy extends Sprite implements Collidable{
 		
 	}
 
-	@Override
-	public CollisionEvent getCollisionEvent() {
-		return collisionEvent;
-	}
 }

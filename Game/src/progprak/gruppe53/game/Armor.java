@@ -1,6 +1,6 @@
 package progprak.gruppe53.game;
 
-abstract public class Armor extends Items {
+abstract public class Armor extends Item {
 
 	/**
 	 * 

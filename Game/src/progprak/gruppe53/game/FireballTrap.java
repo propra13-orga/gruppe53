@@ -17,7 +17,6 @@ public class FireballTrap extends Sprite implements Collidable{
 		super(x,y,"images/FireballRed.png");
 			this.width = 16;
 			this.height = 16;
-			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_DAMAGE);
 			this.game = game;
 			this.dx = dx;
 			this.dy = dy;

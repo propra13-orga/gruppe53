@@ -19,6 +19,7 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	String imagePath;
 	protected int dx = 0;
 	protected int dy = 0;
+	protected boolean draw = true;
 	
 
 	public Sprite(int x, int y, String imagePath) {
@@ -55,6 +56,10 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	public void doLogic()
 	{
 		
+	}
+
+	public boolean isDraw() {
+		return draw;
 	}
 
 }

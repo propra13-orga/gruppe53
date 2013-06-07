@@ -11,8 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Vector;
-
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -71,7 +70,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private JTextField attribute1, attribute2, attribute3, attribute4, attribute5, attribute6;
 	private JLabel attributeLabel1, attributeLabel2, attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
 
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 	private String currentSprite = "";
 	private String fileName = "";
 
@@ -82,7 +81,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 
 	private void setupEditor() {
-		sprites = new Vector<Sprite>();
+		sprites = new ArrayList<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -239,12 +238,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (currentSprite == ENEMY_GHOST) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new EnemyGhost(e.getX(),e.getY()));
+			sprites.add(new EnemyGhost(e.getX(),e.getY(),null));
 			}
 		} 
 		else if (currentSprite == TRAP_SPEARS) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new GroundTrap(e.getX(),e.getY()));
+			sprites.add(new GroundTrap(e.getX(),e.getY(),null));
 			}
 		}
 		else if (currentSprite == TRAP_FIREBALL) {

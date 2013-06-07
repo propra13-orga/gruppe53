@@ -1,34 +1,28 @@
 package progprak.gruppe53.game;
 
-import java.util.ListIterator;
-import java.util.Vector;
-
-public class Hero extends Sprite{
+public class Hero extends CombatObject{
 
 	private static final long serialVersionUID = -8077486599395198634L;
 
 	private KeyboardInput keyboardInput;
 	
-	private Game game;
 	
-	private int health;
-	private int maxHealth;
-	private long lastDamage = 0L;
 	private int mana;
 	private int maxMana;
-	private int damage;
-	private int armorLVL;
+	
+	private Weapon weapon;
 	
 	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
-		super(x,y,"images/hero.png");
+		super(x,y,"images/hero.png",game);
+		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
-		this.game = game;
 		maxHealth = 10;
 		health = maxHealth;
 		maxMana = 100;
 		mana = maxMana;
-		damage = weapon.getdamage();
-		armorLVL = armor.getarmorLVL();
+		this.weapon = weapon;
+		this.weapon.setOwner(this);
+		doInitalizations();
 	}
 	
 	@Override
@@ -52,44 +46,15 @@ public class Hero extends Sprite{
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
 			dx = 0;
 		}
-
-		testForCollision();
-		
+		if(keyboardInput.isAttack()){
+			weapon.attack(true);
+		}
+		else
+			weapon.attack(false);
 		
 	}
 	
-	private void testForCollision(){
-		Vector<Sprite> cs = game.testForCollision(getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
-		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
-			Sprite s = it.next();
-			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
-			if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
-				if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx = 0;
-				else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy = 0;
-			}
-			else if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
-				long current = System.nanoTime();
-				if((current - lastDamage)> 1e9){
-					lastDamage = current;
-					if(--health <= 0){
-						game.loose();
-					}
-				}
-			}
-			else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
-				x = ce.getNewX();
-				y = ce.getNewY();
-			}
-			else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
-				game.restart();
-			}
-			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
-				game.switchLevel(ce.getNewLevel());
-			}
-		}
-		
-	}
-
+	
 	/**
 	 * @return the health
 	 */
@@ -123,5 +88,12 @@ public class Hero extends Sprite{
 	 */
 	public int getMaxMana(){
 		return maxMana;
+	}
+
+	/**
+	 * @return the weapon
+	 */
+	public Weapon getWeapon() {
+		return weapon;
 	}
 }

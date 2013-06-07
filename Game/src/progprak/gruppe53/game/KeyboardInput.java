@@ -10,13 +10,8 @@ public class KeyboardInput implements KeyEventDispatcher {
 	private boolean down;
 	private boolean left;
 	private boolean right;
-	
+	private boolean attack;
 
-	
-	public void keyTyped(KeyEvent e) {
-	
-		
-	}
 
 	/**
 	 * @return the up
@@ -46,6 +41,13 @@ public class KeyboardInput implements KeyEventDispatcher {
 		return right;
 	}
 
+	/**
+	 * @return the attack
+	 */
+	public boolean isAttack() {
+		return attack;
+	}
+
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent e) {
 		int keyCode = e.getKeyCode();
@@ -58,6 +60,8 @@ public class KeyboardInput implements KeyEventDispatcher {
 				left=true;
 			if(keyCode==KeyEvent.VK_RIGHT)
 				right=true;
+			if(keyCode==KeyEvent.VK_Y)
+				attack=true;
 		}
 		else if(e.getID() == KeyEvent.KEY_RELEASED){
 			if(keyCode==KeyEvent.VK_UP)
@@ -67,9 +71,12 @@ public class KeyboardInput implements KeyEventDispatcher {
 			if(keyCode==KeyEvent.VK_LEFT)
 				left=false;
 			if(keyCode==KeyEvent.VK_RIGHT)
-				right=false;			
+				right=false;
+			if(keyCode==KeyEvent.VK_Y)
+				attack=false;
 			
 		}
 		return false;
 	}
+
 }

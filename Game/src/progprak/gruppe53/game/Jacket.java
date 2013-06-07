@@ -7,8 +7,8 @@ public class Jacket extends Armor {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Jacket(int x, int y, String imagePath) {
-		super(x, y, imagePath);
+	public Jacket(int x, int y) {
+		super(x, y, "");
 		armorLVL = 1;
 		// TODO Auto-generated constructor stub
 	}

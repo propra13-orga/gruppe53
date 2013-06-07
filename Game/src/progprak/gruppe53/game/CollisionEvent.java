@@ -9,6 +9,7 @@ public class CollisionEvent {
 	public static final int EVENT_TELEPORT				= 3;
 	public static final int EVENT_SWITCH_LEVEL			= 4;
 	public static final int EVENT_GOAL					= 5;
+	public static final int EVENT_PICKUP				= 6;
 	
 	public static final int DIRECTION_HORIZONTAL		= 1;
 	public static final int DIRECTION_VERTICAL			= 2;

@@ -12,5 +12,8 @@
 	</traps>
 	<enemies>
 		<enemy type="ghost">300:300</enemy>
+		<enemy type="ghost">400:300</enemy>
+		<enemy type="ghost">300:400</enemy>
+		<enemy type="ghost">400:400</enemy>
 	</enemies>
 </level>

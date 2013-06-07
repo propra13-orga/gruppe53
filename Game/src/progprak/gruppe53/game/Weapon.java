@@ -1,6 +1,6 @@
 package progprak.gruppe53.game;
 
-abstract public class Weapon extends Items implements Collidable {
+abstract public class Weapon extends Item implements Collidable {
 
 	/**
 	 * 
@@ -8,6 +8,9 @@ abstract public class Weapon extends Items implements Collidable {
 	private static final long serialVersionUID = 1L;
 	
 	protected int damage;
+	
+	protected int ww = 0;
+	protected int wh = 0;
 	
 	public Weapon(int x, int y, String imagePath) {
 		super(x, y, imagePath);
@@ -17,5 +20,6 @@ abstract public class Weapon extends Items implements Collidable {
 	public int getdamage(){
 		return damage;
 	}
+	abstract public void attack(boolean attack);
 	
 }

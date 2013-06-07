@@ -99,7 +99,7 @@ public class Game implements Runnable {
 					gameLogic.move(delta);
 				
 				}
-				gamePanel.render(delta,gameLogic.getSprites());
+				gamePanel.render(delta,gameLogic.getActors());
 				menu.render();
 				infoWindow.render();
 				gamePanel.repaint();
@@ -115,7 +115,7 @@ public class Game implements Runnable {
 
     public Vector<Sprite> testForCollision(double maxX,double minX,double maxY,double minY, int dx, int dy) {
     	Vector<Sprite> cs = new Vector<Sprite>();
-    	for(ListIterator<Sprite> it = gameLogic.getSprites().listIterator();it.hasNext();){
+    	for(ListIterator<Sprite> it = gameLogic.getActors().listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(s instanceof Collidable && collisionContains(s, maxX+dx, minX+dx, maxY, minY)){
 				((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
