@@ -9,9 +9,8 @@ public class EnemyGhost extends Enemy {
 
 	public EnemyGhost(int x, int y, Game game) {
 		super(x, y, "images/ghost1.png",game);
-		Random rnd = new Random();
-		dx = rnd.nextFloat()/4;
-		dy = rnd.nextFloat()/4;
+		dx = Math.random()*3-1.5;
+		dy = Math.random()*3-1.5;
 		System.out.println(dx);
 	}
 	protected void handleMassiveEvent(CollisionEvent ce){

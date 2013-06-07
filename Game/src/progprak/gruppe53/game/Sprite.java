@@ -17,8 +17,8 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	 * Path to the Image
 	 */
 	String imagePath;
-	protected float dx = 0;
-	protected float dy = 0;
+	protected double dx = 0;
+	protected double dy = 0;
 	protected boolean draw = true;
 	
 
