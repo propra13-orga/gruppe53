@@ -14,6 +14,8 @@ public class Hero extends Sprite{
 	private int health;
 	private int maxHealth;
 	private long lastDamage = 0L;
+	private int mana;
+	private int maxMana;
 	
 	public Hero(int x, int y, Game game){
 		super(x,y,"images/hero.png");
@@ -21,6 +23,8 @@ public class Hero extends Sprite{
 		this.game = game;
 		maxHealth = 10;
 		health = maxHealth;
+		maxMana = 100;
+		mana = maxMana;
 	}
 	
 	@Override
@@ -63,7 +67,7 @@ public class Hero extends Sprite{
 				long current = System.nanoTime();
 				if((current - lastDamage)> 1e9){
 					lastDamage = current;
-					if(--health < 0){
+					if(--health <= 0){
 						game.loose();
 					}
 				}
@@ -101,5 +105,19 @@ public class Hero extends Sprite{
 	 */
 	public int getMaxHealth() {
 		return maxHealth;
+	}
+	
+	/**
+	 * @return the mana
+	 */
+	public int getMana(){
+		return mana;
+	}
+	
+	/**
+	 * @return the maxMana
+	 */
+	public int getMaxMana(){
+		return maxMana;
 	}
 }
