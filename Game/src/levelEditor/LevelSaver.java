@@ -6,10 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
 
-import progprak.gruppe53.EnemyGhost;
-import progprak.gruppe53.GroundTrap;
-import progprak.gruppe53.Sprite;
-import progprak.gruppe53.Wall;
+import progprak.gruppe53.game.EnemyGhost;
+import progprak.gruppe53.game.GroundTrap;
+import progprak.gruppe53.game.Sprite;
+import progprak.gruppe53.game.Wall;
 
 public class LevelSaver {
 	private String fileName = "";

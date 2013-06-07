@@ -1,4 +1,4 @@
-package levelEditor;
+package progprak.gruppe53.levelEditor;
 
 import progprak.gruppe53.game.Sprite;
 
