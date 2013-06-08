@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
+import progprak.gruppe53.game.EnemyGhost;
+import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.Sprite;
+import progprak.gruppe53.game.Wall;
 
 public class LevelSaver {
 	private String fileName = "";
@@ -16,9 +19,13 @@ public class LevelSaver {
 		this.sprites = sprites2;
 	}
 
+
 	public void saveLevel() {
 		String input = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" + "\n"+ "<level>" + "\n";
 		input += createSpawnXml();
+		input += createEnemyGhostXml();
+		input += createTrapXml();
+		input += createWallXml();
 		input += "</level>";
 		createFile(input);
 
@@ -40,7 +47,7 @@ public class LevelSaver {
 	}
 
 	private String createSpawnXml() {
-		String spawnXml = "<spawn>";
+		String spawnXml = "	<spawn>";
 		for (int i = 0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof HeroEditor) {
@@ -48,7 +55,45 @@ public class LevelSaver {
 			}
 		}
 		spawnXml += "</spawn>";
-		spawnXml +="\n";
+		spawnXml += "\n";
 		return spawnXml;
 	}
+	
+	private String createEnemyGhostXml() {
+		String enemyGhostXml = "	<enemies>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof EnemyGhost) {
+				enemyGhostXml += "		<enemy type=\"ghost\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
+			}
+		}
+		enemyGhostXml += "	</enemies>";
+		enemyGhostXml += "\n";
+		return enemyGhostXml;
+	}
+	private String createTrapXml() {
+		String trapXml = "	<traps>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof GroundTrap) {
+				trapXml += "		<trap>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</trap>" +"\n";
+			}
+		}
+		trapXml += "	</traps>";
+		trapXml += "\n";
+		return trapXml;
+	}
+	private String createWallXml() {
+		String wallXml = "	<walls>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof Wall) {
+				wallXml += "		<wall>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</wall>" +"\n";
+			}
+		}
+		wallXml += "	</walls>";
+		wallXml += "\n";
+		return wallXml;
+	}
+	
 }
