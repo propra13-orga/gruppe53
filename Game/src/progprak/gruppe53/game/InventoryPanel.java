@@ -20,9 +20,11 @@ private InventorySlot[] inventorySlot;
 
 	private void doInitalizations(){
 		setLayout(new FlowLayout());
-		inventorySlot[9] = new InventorySlot(60,60,null);
-		for(int i=0;i<10;i++)
+		inventorySlot = new InventorySlot[10];
+		for(int i=0;i<10;i++){
+			inventorySlot[i] = new InventorySlot(60,60,null);
 			this.add(inventorySlot[i]);
+		}
 //for(int i=0;i<10;i++){
 
 //a.setPreferredSize(new Dimension(60,60));
