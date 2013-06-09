@@ -23,7 +23,7 @@ public class Hero extends CombatObject{
 		this.weapon = weapon;
 		this.weapon.setOwner(this);
 		this.armor = armor;
-		this.armor.setOwner(this);
+		//this.armor.setOwner(this);
 		doInitalizations();
 	} 
 	protected void initCollisionEvent() {
