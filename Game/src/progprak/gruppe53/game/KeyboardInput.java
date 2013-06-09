@@ -11,6 +11,7 @@ public class KeyboardInput implements KeyEventDispatcher {
 	private boolean left;
 	private boolean right;
 	private boolean attack;
+	private boolean pickUp;
 
 
 	/**
@@ -48,6 +49,12 @@ public class KeyboardInput implements KeyEventDispatcher {
 		return attack;
 	}
 
+	/**
+	 * @return the pickUp
+	 */
+	public boolean isPickUp(){
+		return pickUp;
+	}
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent e) {
 		int keyCode = e.getKeyCode();
@@ -62,6 +69,8 @@ public class KeyboardInput implements KeyEventDispatcher {
 				right=true;
 			if(keyCode==KeyEvent.VK_Y)
 				attack=true;
+			if(keyCode==KeyEvent.VK_F)
+				pickUp=true;
 		}
 		else if(e.getID() == KeyEvent.KEY_RELEASED){
 			if(keyCode==KeyEvent.VK_UP)
@@ -74,6 +83,8 @@ public class KeyboardInput implements KeyEventDispatcher {
 				right=false;
 			if(keyCode==KeyEvent.VK_Y)
 				attack=false;
+			if(keyCode==KeyEvent.VK_F)
+				pickUp=false;
 			
 		}
 		return false;

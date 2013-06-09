@@ -1,7 +1,5 @@
 package progprak.gruppe53.game;
 
-import java.util.Random;
-
 public class EnemyGhost extends Enemy {
 
 

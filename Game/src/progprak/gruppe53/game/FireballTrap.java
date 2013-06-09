@@ -1,27 +1,17 @@
 package progprak.gruppe53.game;
 
-import java.util.ListIterator;
-import java.util.Vector;
-
 public class FireballTrap extends Sprite implements Collidable{
-	
-	private Game game;
 	
 	private static final long serialVersionUID = 1L;
 
 	private CollisionEvent collisionEvent;
 	
-	private int reSpY, reSpX;
-		
 	public FireballTrap(int x, int y, Game game, int dx, int dy, int reSpX, int reSpY){
 		super(x,y,"images/FireballRed.png");
 			this.width = 16;
 			this.height = 16;
-			this.game = game;
 			this.dx = dx;
 			this.dy = dy;
-			this.reSpX = reSpX;
-			this.reSpY = reSpY;
 	}
 	
 	@Override

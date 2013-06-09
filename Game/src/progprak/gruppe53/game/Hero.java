@@ -1,7 +1,5 @@
 package progprak.gruppe53.game;
 
-import java.awt.Event;
-
 public class Hero extends CombatObject{
 
 	private static final long serialVersionUID = -8077486599395198634L;
@@ -13,8 +11,8 @@ public class Hero extends CombatObject{
 	private int maxMana;
 	
 	private Weapon weapon;
-	
-	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
+	private Armor armor;
+	public Hero(int x, int y, Game game,InventoryPanel inventory, Weapon weapon, Armor armor){
 		super(x,y,"images/hero.png",game);
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
@@ -24,8 +22,10 @@ public class Hero extends CombatObject{
 		mana = maxMana;
 		this.weapon = weapon;
 		this.weapon.setOwner(this);
+		this.armor = armor;
+		this.armor.setOwner(this);
 		doInitalizations();
-	}
+	} 
 	protected void initCollisionEvent() {
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 	}
@@ -100,5 +100,11 @@ public class Hero extends CombatObject{
 	 */
 	public Weapon getWeapon() {
 		return weapon;
+	}
+	/**
+	 * @return the armor
+	 */
+	public Armor getArmor(){
+		return armor;
 	}
 }
