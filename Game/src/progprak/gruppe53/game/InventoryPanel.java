@@ -1,6 +1,8 @@
 package progprak.gruppe53.game;
 
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
 public class InventoryPanel extends JPanel {
@@ -28,13 +30,11 @@ private InventorySlot[] inventorySlot;
 		}
 	}
 
-	public void render(){
-
-	}
 
 	// Add new Item to Inventory(-Slot)
 	public void newItem(InventorySlot slot,Item item){
 		slot.newItem(item);
+		slot.repaint();
 	}
 	
 	// Remove the Item
@@ -46,17 +46,24 @@ private InventorySlot[] inventorySlot;
 			//Remove the Item
 			if(inventorySlot[n].isItem() == item){
 				inventorySlot[n].removeItem();
+				inventorySlot[n].repaint();
 				break;
 			}
 		}
 	}
 	
 	// Check for Free InventorySlot
-	public InventorySlot isFreeSlot(){
-		for(int n=0; n<9; n++)
-			if(inventorySlot[n].isUsed() == false)
+	public InventorySlot getFreeSlot(){
+		for(int n=0; n<9; n++){
+			if(inventorySlot[n].isUsed() == false){
 				return inventorySlot[n];
+			}
+		}
 		return null;
 	}
+	@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+		}
 
 }

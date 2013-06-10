@@ -108,10 +108,10 @@ public class Hero extends CombatObject{
 	}
 	protected void handlePickupEvent(CollisionEvent ce){
 		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
-		InventorySlot slot = game.getInfoWindow().getInventoryPanel().isFreeSlot();
+		InventorySlot slot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null){
 			game.getGameLogic().removeSprite(pe.getItem());
-			slot.newItem(pe.getItem());
+			game.getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
 			handleEvents = false;
 		}
 	}

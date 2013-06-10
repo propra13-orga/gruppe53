@@ -1,5 +1,8 @@
 package progprak.gruppe53.game;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
 public class InventorySlot extends JPanel{
@@ -13,7 +16,7 @@ private boolean used;
 private Item item;
 
 	public InventorySlot(int x, int y, Item item){
-
+		setPreferredSize(new Dimension(40,40));
 	}
 
 
@@ -42,5 +45,12 @@ private Item item;
 	 */
 	public Item isItem(){
 		return item;
+	}
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(item != null){
+			g.drawImage(item.getImage().getScaledInstance(40, 40, 1), 0, 0, null);
+		}
 	}
 }

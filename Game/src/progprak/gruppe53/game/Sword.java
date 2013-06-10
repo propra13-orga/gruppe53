@@ -8,16 +8,19 @@ public class Sword extends Weapon {
 	private CollisionEvent attackCe;
 	
 	public Sword(int x, int y){
-		super( x, y, "images/sword1.png");
+		super( x, y, "images/sword.png");
+		
 		doInitalizations();
 	}
 	public Sword(){
-		super(0,0, "images/sword1.png");
+		super(0,0, "images/sword.png");
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
 		doInitalizations();
 	}
 	private void doInitalizations(){
-		ww = wh = 20;
+		ww = 16;
+		wh = 7;
 		notAttackCe = collisionEvent;
 		attackCe = new DamageCollisionEvent(1, 1);
 	}
@@ -28,8 +31,8 @@ public class Sword extends Weapon {
 	@Override
 	public void attack(boolean attack) {
 		if(attack){
-			x = owner.getX()+20;
-			y = owner.getY(); 
+			x = owner.getX()+24;
+			y = owner.getY()+16; 
 			width = ww;
 			height = wh;
 			draw = true;

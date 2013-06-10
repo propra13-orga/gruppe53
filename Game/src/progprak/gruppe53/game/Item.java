@@ -1,5 +1,7 @@
 package progprak.gruppe53.game;
 
+import java.awt.image.BufferedImage;
+
 abstract public class Item extends Sprite implements Collidable {
 
 	private static final long serialVersionUID = -7562614880016250784L;
@@ -15,6 +17,9 @@ abstract public class Item extends Sprite implements Collidable {
 	}
 	public void setOwner(Hero owner){
 		this.owner = owner;
+	}
+	public BufferedImage getImage(){
+		return image;
 	}
 
 }

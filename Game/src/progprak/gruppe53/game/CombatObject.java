@@ -70,7 +70,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	
 	protected void handlePickupEvent(CollisionEvent ce){
 		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
-		InventorySlot slot = game.getInfoWindow().getInventoryPanel().isFreeSlot();
+		InventorySlot slot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null);
 			slot.newItem(pe.getItem());
 	}
