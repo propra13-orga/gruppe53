@@ -183,5 +183,9 @@ public class Game implements Runnable {
 	public void loose() {
 		alive = false;
 	}
+	
+	public InfoWindow getInfoWindow(){
+		return infoWindow;
+	}
 
 }

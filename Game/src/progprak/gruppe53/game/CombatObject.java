@@ -16,6 +16,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	protected int maxHealth;
 	protected long lastDamage = 0L;
 	
+	protected Item item;
+	
 	protected CollisionEvent collisionEvent;
 
 	protected boolean handleEvents = true;
@@ -32,6 +34,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	protected void initCollisionEvent() {
 		collisionEvent = new DamageCollisionEvent(1,faction);
+		collisionEvent = new PickupCollisionEvent(item);
 	}
 
 	@Override
@@ -65,7 +68,14 @@ abstract public class CombatObject extends Sprite implements Collidable{
 			}
 		}
 	}
-
+	
+	protected void handlePickupEvent(CollisionEvent ce){
+		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
+		InventorySlot slot = game.getInfoWindow().getInventoryPanel().isFreeSlot();
+		if(slot != null);
+			slot.newItem(pe.getItem());
+	}
+	
 	private void handleDie() {
 		game.getGameLogic().removeSprite(this);
 	}
@@ -101,6 +111,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	public void resetHandleEvents() {
 		handleEvents = true;
 	}
+	
+
 
 
 }

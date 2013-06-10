@@ -13,17 +13,20 @@ private boolean used;
 private Item item;
 
 	public InventorySlot(int x, int y, Item item){
-		doInitialisations();
-	}
-
-	private void doInitialisations(){
 
 	}
 
-	public boolean getUsed(){
+
+	/**
+	 * @return is Used
+	 */
+	public boolean isUsed(){
 		return used;
 	}
 
+	/**
+	 * @param newItem
+	 */
 	public void newItem(Item newItem){
 		item = newItem;
 		this.used = true;
@@ -31,9 +34,13 @@ private Item item;
 
 	public void removeItem(){
 		item = null;
+		this.used = false;
 	}
 	
-	public Item getItem(){
+	/**
+	 * @return Item
+	 */
+	public Item isItem(){
 		return item;
 	}
 }

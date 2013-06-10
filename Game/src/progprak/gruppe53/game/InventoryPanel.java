@@ -12,57 +12,52 @@ private static final long serialVersionUID = 1L;
 
 private InventorySlot[] inventorySlot;
 
-
 	public InventoryPanel() {
 		super();
 		doInitalizations();
 	}
 
+	
 	private void doInitalizations(){
 		setLayout(new FlowLayout());
 		inventorySlot = new InventorySlot[10];
-		for(int i=0;i<10;i++){
+		for(int i=0;i<9;i++){
+			inventorySlot[i] = new InventorySlot(60,60,null);
 			inventorySlot[i] = new InventorySlot(60,60,null);
 			this.add(inventorySlot[i]);
 		}
-//for(int i=0;i<10;i++){
-
-//a.setPreferredSize(new Dimension(60,60));
-//if(i%2==0)a.setBackground(Color.magenta);
-//else a.setBackground(Color.cyan);
-//add(a);
-//}
-
 	}
 
 	public void render(){
 
 	}
 
-	public void newItem(Item item){
-		int n;
-		for(n=0; n<10;n++)
-		{
-			if(inventorySlot[n].getUsed() == false)
-			{
-				inventorySlot[n].newItem(item);
-				break;
-			}
-		}
-		if(n==10)
-			System.out.println("no free Itemslot.");
+	// Add new Item to Inventory(-Slot)
+	public void newItem(InventorySlot slot,Item item){
+		slot.newItem(item);
 	}
 	
+	// Remove the Item
 	public void removeItem(Item item)
 	{
 		int n;
+		// Check for the right Item
 		for(n=0; n<10;n++)
 		{
-			if(inventorySlot[n].getItem() == item){
+			//Remove the Item
+			if(inventorySlot[n].isItem() == item){
 				inventorySlot[n].removeItem();
 				break;
 			}
 		}
+	}
+	
+	// Check for Free InventorySlot
+	public InventorySlot isFreeSlot(){
+		for(int n=0; n<10; n++)
+			if(inventorySlot[n].isUsed() == false)
+				return inventorySlot[n];
+		return null;
 	}
 
 }

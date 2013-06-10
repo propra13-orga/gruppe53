@@ -12,7 +12,7 @@ public class Hero extends CombatObject{
 	
 	private Weapon weapon;
 	private Armor armor;
-	public Hero(int x, int y, Game game,InventoryPanel inventory, Weapon weapon, Armor armor){
+	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
 		super(x,y,"images/hero.png",game);
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
@@ -33,30 +33,29 @@ public class Hero extends CombatObject{
 	@Override
 	public void doLogic(long delta)
 	{
-		if(keyboardInput.isUp()){
+		if(keyboardInput.isUp())
 			dy = -1;
-		}
-		if(keyboardInput.isDown()){
+		
+		if(keyboardInput.isDown())
 			dy = 1;
-		}
-		if(!keyboardInput.isUp() && !keyboardInput.isDown()){
+		
+		if(!keyboardInput.isUp() && !keyboardInput.isDown())
 			dy = 0;
-		}
-		if(keyboardInput.isLeft()){
+		
+		if(keyboardInput.isLeft())
 			dx = -1;
-		}
-		if(keyboardInput.isRight()){
+		
+		if(keyboardInput.isRight())
 			dx = 1;
-		}
-		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
+		
+		if(!keyboardInput.isLeft() && !keyboardInput.isRight())
 			dx = 0;
-		}
-		if(keyboardInput.isAttack()){
+		
+		if(keyboardInput.isAttack())
 			weapon.attack(true);
-		}
+		
 		else
 			weapon.attack(false);
-		
 	}
 	
 	

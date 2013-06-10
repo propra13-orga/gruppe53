@@ -8,7 +8,6 @@ public class GameLogic {
 	private Vector<Sprite> actors;
 	private Vector<Sprite> sprites;
 	private Game game;
-	private InventoryPanel inventory;
 	
 	
 	public Hero hero;
@@ -21,7 +20,7 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		hero = new Hero(0, 0, game,inventory, new Sword() , null);
+		hero = new Hero(0, 0, game, new Sword() , null);
 		
 	}
 	

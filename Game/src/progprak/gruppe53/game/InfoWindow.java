@@ -58,4 +58,7 @@ public class InfoWindow extends JPanel {
 		manaBar.setValue(game.getGameLogic().getHero().getMana());
 	}
 
+	public InventoryPanel getInventoryPanel(){
+		return inventoryPanel;
+	}
 }
