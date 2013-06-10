@@ -106,4 +106,13 @@ public class Hero extends CombatObject{
 	public Armor getArmor(){
 		return armor;
 	}
+	protected void handlePickupEvent(CollisionEvent ce){
+		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
+		InventorySlot slot = game.getInfoWindow().getInventoryPanel().isFreeSlot();
+		if(slot != null){
+			game.getGameLogic().removeSprite(pe.getItem());
+			slot.newItem(pe.getItem());
+			handleEvents = false;
+		}
+	}
 }

@@ -34,7 +34,6 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	protected void initCollisionEvent() {
 		collisionEvent = new DamageCollisionEvent(1,faction);
-		collisionEvent = new PickupCollisionEvent(item);
 	}
 
 	@Override
@@ -88,6 +87,9 @@ abstract public class CombatObject extends Sprite implements Collidable{
 			}
 			else if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
 				handleDamageEvent(ce);
+			}
+			else if(ce.getEvent() == CollisionEvent.EVENT_PICKUP){
+				handlePickupEvent(ce);
 			}
 			else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
 				x = ce.getNewX();

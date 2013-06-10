@@ -40,9 +40,8 @@ private InventorySlot[] inventorySlot;
 	// Remove the Item
 	public void removeItem(Item item)
 	{
-		int n;
 		// Check for the right Item
-		for(n=0; n<10;n++)
+		for(int n=0; n<9;n++)
 		{
 			//Remove the Item
 			if(inventorySlot[n].isItem() == item){
@@ -54,7 +53,7 @@ private InventorySlot[] inventorySlot;
 	
 	// Check for Free InventorySlot
 	public InventorySlot isFreeSlot(){
-		for(int n=0; n<10; n++)
+		for(int n=0; n<9; n++)
 			if(inventorySlot[n].isUsed() == false)
 				return inventorySlot[n];
 		return null;

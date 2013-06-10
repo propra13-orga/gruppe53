@@ -51,6 +51,7 @@ public class GameLogic {
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
 		sp.add(hero.getWeapon());
+		sp.add(new Sword(60,60));
 	}
 
 	public Hero getHero() {
