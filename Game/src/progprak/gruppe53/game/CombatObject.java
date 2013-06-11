@@ -74,13 +74,14 @@ abstract public class CombatObject extends Sprite implements Collidable{
 
 	protected void handleColliosionEvent(CollisionEvent ce) {
 		if(handleEvents){
-			if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
+			if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
+				handleDamageEvent(ce);
+			}
+			else if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
 				handleMassiveEvent(ce);
 				
 			}
-			else if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
-				handleDamageEvent(ce);
-			}
+
 			else if(ce.getEvent() == CollisionEvent.EVENT_PICKUP){
 				handlePickupEvent(ce);
 			}
