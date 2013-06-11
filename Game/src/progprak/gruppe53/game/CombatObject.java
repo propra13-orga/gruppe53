@@ -5,9 +5,6 @@ import java.util.Vector;
 
 abstract public class CombatObject extends Sprite implements Collidable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6996362585746746561L;
 	
 	protected int faction = 0;
@@ -69,13 +66,9 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	
 	protected void handlePickupEvent(CollisionEvent ce){
-		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
-		InventorySlot slot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
-		if(slot != null);
-			slot.newItem(pe.getItem());
 	}
 	
-	private void handleDie() {
+	protected void handleDie() {
 		game.getGameLogic().removeSprite(this);
 	}
 
@@ -113,8 +106,4 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	public void resetHandleEvents() {
 		handleEvents = true;
 	}
-	
-
-
-
 }

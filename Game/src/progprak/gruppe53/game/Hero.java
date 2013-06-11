@@ -13,7 +13,7 @@ public class Hero extends CombatObject{
 	private Weapon weapon;
 	private Armor armor;
 	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
-		super(x,y,"images/hero.png",game);
+		super(x,y,"images/held.png",game);
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
 		maxHealth = 10;
@@ -108,11 +108,15 @@ public class Hero extends CombatObject{
 	}
 	protected void handlePickupEvent(CollisionEvent ce){
 		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
+		System.out.println(pe.getItem());
 		InventorySlot slot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null){
 			game.getGameLogic().removeSprite(pe.getItem());
 			game.getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
 			handleEvents = false;
 		}
+	}
+	protected void handleDie(){
+		game.loose();
 	}
 }

@@ -31,8 +31,8 @@ public class Sword extends Weapon {
 	@Override
 	public void attack(boolean attack) {
 		if(attack){
-			x = owner.getX()+24;
-			y = owner.getY()+16; 
+			x = owner.getX()+26;
+			y = owner.getY()+22; 
 			width = ww;
 			height = wh;
 			draw = true;
@@ -44,5 +44,4 @@ public class Sword extends Weapon {
 			collisionEvent = notAttackCe;
 		}
 	}
-	
 }
