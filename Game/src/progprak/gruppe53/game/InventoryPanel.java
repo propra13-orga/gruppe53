@@ -66,6 +66,16 @@ private InventorySlot[] inventorySlot;
 		}
 		return null;
 	}
+	
+	// Resets the Inventory
+	public void resetInventory()
+	{
+		for(int n=0; n<9;n++)
+		{
+			inventorySlot[n].removeItem();
+			inventorySlot[n].repaint();
+		}
+	}
 	@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);

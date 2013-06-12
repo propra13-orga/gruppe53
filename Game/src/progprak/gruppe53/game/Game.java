@@ -157,6 +157,7 @@ public class Game implements Runnable {
 	public void restart() {
 		gameLogic = new GameLogic(this);
 		gameLogic.switchLevel(startLevel);
+		infoWindow.getInventoryPanel().resetInventory();
 		alive = true;
 	}
 
