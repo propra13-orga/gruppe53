@@ -26,6 +26,9 @@ public class GameLogic {
 	
 	//Do Logics for every Sprite-Object
 	public void doLogic(long delta){
+		if(game.getKeyboardInput().isShop()){
+			game.showShop();
+		}
 		actors = (Vector<Sprite>) sprites.clone();
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();

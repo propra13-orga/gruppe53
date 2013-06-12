@@ -6,6 +6,7 @@ import java.util.ListIterator;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
 public class Game implements Runnable {
 	
@@ -53,7 +54,11 @@ public class Game implements Runnable {
 	private boolean alive = true;
 
 	private InfoWindow infoWindow;
+	
+	private ShopPanel shop;
 
+	private JLayeredPane mainPane;
+	
 	public Game() {
 		doInitalizations();
 	}
@@ -68,14 +73,23 @@ public class Game implements Runnable {
 
 	private void doInitalizations() {
 		keyboardInput = new KeyboardInput();
+		mainPane = new JLayeredPane();
 		gameLogic = new GameLogic(this);
 		gamePanel = new GamePanel();
 		menu = new Menu(this);
 		infoWindow = new InfoWindow(this);
+		mainPane.setPreferredSize(gamePanel.getPreferredSize());
+		gamePanel.setLocation(0, 0);
+		gamePanel.setSize(gamePanel.getPreferredSize());
+		mainPane.add(gamePanel,new Integer(1));
+		shop = new ShopPanel(this);
+		shop.setLocation(mainPane.getPreferredSize().width/2 - shop.getPreferredSize().width/2,mainPane.getPreferredSize().height/2 - shop.getPreferredSize().height/2);
+		shop.setSize(shop.getPreferredSize());
+		mainPane.add(shop,new Integer(0));
 		frame = new JFrame("Game");
 		frame.setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(gamePanel);
+		frame.add(mainPane);
 		frame.add(menu,BorderLayout.NORTH);
 		frame.add(infoWindow,BorderLayout.SOUTH);
 		frame.pack();
@@ -186,6 +200,25 @@ public class Game implements Runnable {
 	
 	public InfoWindow getInfoWindow(){
 		return infoWindow;
+	}
+
+
+	/**
+	 * @return the shop
+	 */
+	public ShopPanel getShop() {
+		return shop;
+	}
+
+
+	public void showShop() {
+		mainPane.setLayer(shop, 2);
+	}
+
+
+	public void hideShop() {
+		mainPane.setLayer(shop, 0);
+		
 	}
 
 }

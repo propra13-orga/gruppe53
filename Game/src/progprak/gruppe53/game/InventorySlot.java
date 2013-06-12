@@ -15,7 +15,7 @@ private static final long serialVersionUID = 2129304223986847233L;
 private boolean used;
 private Item item;
 
-	public InventorySlot(int x, int y, Item item){
+	public InventorySlot(){
 		setPreferredSize(new Dimension(40,40));
 	}
 
@@ -43,7 +43,7 @@ private Item item;
 	/**
 	 * @return Item
 	 */
-	public Item isItem(){
+	public Item getItem(){
 		return item;
 	}
 	@Override

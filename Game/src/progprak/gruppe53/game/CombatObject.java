@@ -9,8 +9,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	
 	protected int faction = 0;
 
-	protected int health;
-	protected int maxHealth;
+	protected int health = 1;
+	protected int maxHealth = 1;
 	protected long lastDamage = 0L;
 	
 	protected Item item;

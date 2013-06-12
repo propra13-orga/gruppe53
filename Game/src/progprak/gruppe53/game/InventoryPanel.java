@@ -24,14 +24,19 @@ private InventorySlot[] inventorySlot;
 		setLayout(new FlowLayout());
 		inventorySlot = new InventorySlot[10];
 		for(int i=0;i<9;i++){
-			inventorySlot[i] = new InventorySlot(60,60,null);
-			inventorySlot[i] = new InventorySlot(60,60,null);
+			inventorySlot[i] = new InventorySlot();
 			this.add(inventorySlot[i]);
 		}
 	}
 
 
 	// Add new Item to Inventory(-Slot)
+	public void newItem(Item item){
+		InventorySlot slot = getFreeSlot();
+		if(slot != null){
+			newItem(slot,item);
+		}
+	}
 	public void newItem(InventorySlot slot,Item item){
 		slot.newItem(item);
 		slot.repaint();
@@ -44,7 +49,7 @@ private InventorySlot[] inventorySlot;
 		for(int n=0; n<9;n++)
 		{
 			//Remove the Item
-			if(inventorySlot[n].isItem() == item){
+			if(inventorySlot[n].getItem() == item){
 				inventorySlot[n].removeItem();
 				inventorySlot[n].repaint();
 				break;

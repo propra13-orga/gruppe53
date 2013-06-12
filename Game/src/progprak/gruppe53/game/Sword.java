@@ -16,6 +16,7 @@ public class Sword extends Weapon {
 		super(0,0, "images/sword.png");
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
+		price = 50;
 		doInitalizations();
 	}
 	private void doInitalizations(){

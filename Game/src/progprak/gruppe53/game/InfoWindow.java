@@ -3,6 +3,8 @@ package progprak.gruppe53.game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -22,6 +24,7 @@ public class InfoWindow extends JPanel {
 	
 	private InventoryPanel inventoryPanel;
 	
+	private JPanel infoPanel;
 	
 	public InfoWindow(Game game) {
 		this.game = game;
@@ -31,11 +34,14 @@ public class InfoWindow extends JPanel {
 	private void doInitalizations() {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
+		
+		inventoryPanel = new InventoryPanel();
+		add(inventoryPanel,BorderLayout.CENTER);
+		
 		barPanel = new JPanel();
 		barPanel.setLayout(new BoxLayout(barPanel, BoxLayout.PAGE_AXIS));
 		healthBar = new JProgressBar();
 		manaBar = new JProgressBar();
-		inventoryPanel = new InventoryPanel();
 		healthBar.setForeground(Color.RED);
 		manaBar.setForeground(Color.BLUE);
 		barPanel.add(healthBar);
@@ -47,7 +53,20 @@ public class InfoWindow extends JPanel {
 		healthBar.setPreferredSize(hpb);
 		manaBar.setPreferredSize(mpb);
 		add(barPanel,BorderLayout.NORTH);
-		add(inventoryPanel,BorderLayout.SOUTH);
+		
+		infoPanel = new JPanel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.setColor(Color.BLUE);
+				g.drawString("Money:" + game.getGameLogic().getHero().getMoney(), 2, 10);
+			}
+		};
+		infoPanel.setPreferredSize(new Dimension(800,12));
+		add(infoPanel,BorderLayout.SOUTH);
+		
+		
+		
 		setPreferredSize(getPreferredSize());
 	}
 
@@ -56,6 +75,7 @@ public class InfoWindow extends JPanel {
 		healthBar.setValue(game.getGameLogic().getHero().getHealth());
 		manaBar.setMaximum(game.getGameLogic().getHero().getMaxMana());
 		manaBar.setValue(game.getGameLogic().getHero().getMana());
+		infoPanel.repaint();
 	}
 
 	public InventoryPanel getInventoryPanel(){

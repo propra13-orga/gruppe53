@@ -12,6 +12,9 @@ public class Hero extends CombatObject{
 	
 	private Weapon weapon;
 	private Armor armor;
+
+	private int money = 100;
+	
 	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
 		super(x,y,"images/held.png",game);
 		faction = 1;
@@ -118,5 +121,11 @@ public class Hero extends CombatObject{
 	}
 	protected void handleDie(){
 		game.loose();
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
 	}
 }

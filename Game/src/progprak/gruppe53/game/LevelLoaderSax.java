@@ -41,42 +41,32 @@ public class LevelLoaderSax extends DefaultHandler {
 	@Override
 	public void endDocument() throws SAXException {
 		super.endDocument();
-		System.out.println("End Document");
 	}
 
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		super.endElement(uri, localName, qName);
-		System.out.println("qName:" + qName);
 		int start = elementName.length()-qName.length()-1;
 		if(start<0)start=0;
 		elementName.delete(start, elementName.length());
-		System.out.println(elementName);
-		System.out.println("End Element");
 	}
 
 	@Override
 	public void startDocument() throws SAXException {
 		super.startDocument();
 		elementName = new StringBuilder();
-		System.out.println("Start Document");
 	}
 
 	@Override
 	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, qName, attributes);
-		System.out.println("Start Element");
-		System.out.println("qName:" + qName);
-		for(int i=0;i < attributes.getLength();i++){
-		}
 		if(elementName.length() == 0){
 			elementName.append(qName.toString());	
 		}
 		else {
 			elementName.append("." + qName.toString());
 		}
-		System.out.println(elementName);
 	}
 
 	@Override
@@ -179,7 +169,6 @@ public class LevelLoaderSax extends DefaultHandler {
 
 	private void spawnWall(String content) {
 		String wallData[] = content.split(":");
-		System.out.println(wallData.length);
 		String wallDataX[] = wallData[0].split("-");
 		String wallDataY[] = wallData[1].split("-");
 		int xStart,xEnd;

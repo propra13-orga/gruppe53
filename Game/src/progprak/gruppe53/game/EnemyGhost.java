@@ -9,7 +9,6 @@ public class EnemyGhost extends Enemy {
 		super(x, y, "images/ghost1.png",game);
 		dx = Math.random()*3-1.5;
 		dy = Math.random()*3-1.5;
-		System.out.println(dx);
 	}
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx *= -1;

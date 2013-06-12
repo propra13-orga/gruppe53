@@ -7,6 +7,7 @@ abstract public class Item extends Sprite implements Collidable {
 	private static final long serialVersionUID = -7562614880016250784L;
 	protected CollisionEvent collisionEvent;
 	protected Hero owner;
+	protected int price = 0;
 	
 	public Item(int x, int y, String imagePath) {
 		super(x, y, imagePath);
@@ -20,6 +21,12 @@ abstract public class Item extends Sprite implements Collidable {
 	}
 	public BufferedImage getImage(){
 		return image;
+	}
+	/**
+	 * @return the price
+	 */
+	public int getPrice() {
+		return price;
 	}
 
 }
