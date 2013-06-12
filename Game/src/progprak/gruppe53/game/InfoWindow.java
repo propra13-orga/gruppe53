@@ -55,6 +55,11 @@ public class InfoWindow extends JPanel {
 		add(barPanel,BorderLayout.NORTH);
 		
 		infoPanel = new JPanel(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 7461788149130464989L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
