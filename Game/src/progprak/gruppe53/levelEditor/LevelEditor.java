@@ -57,6 +57,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_SWORD = "woodenSword";
 	private static final String OBJECT_JACKET = "clothArmor";
 	private static final String SAVE = "save";
+	private static final String DELETE = "delete";
 	
 	private String labelString1 = "X: ";
 	private String labelString2 = "Y: ";
@@ -112,7 +113,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		
 		
 		separator.setPreferredSize(new Dimension(SEPARATOR_WIDTH,GAMEPANEL_HEIGHT));
-		tools.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH - GAMEPANEL_WIDTH - SEPARATOR_WIDTH, DEFAULT_WINDOW_HEIGHT));
+		tools.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH - GAMEPANEL_WIDTH - SEPARATOR_WIDTH, GAMEPANEL_HEIGHT));
 		attributeBar.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH, ATTRIBUTEBAR_HEIGHT));
 		
 		separator.setBackground(Color.YELLOW);
@@ -137,9 +138,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attributeBar.add(attribute5);
 		attributeBar.add(attribute6);
 		
-		
-		
-
 	}
 
 	private void setupTools() {
@@ -179,11 +177,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		spawn.setActionCommand(OBJECT_SPAWN);
 		spawn.addActionListener(this);
 		tools.add(spawn);
-		JButton save = new JButton("Save");
-		save.setPreferredSize(new Dimension(66,42));
-		save.setActionCommand(SAVE);
-		save.addActionListener(this);
-		tools.add(save);
 		JButton woodenSword = new JButton(new ImageIcon(ImageLoader.loadImage("images/sword.png")));
 		woodenSword.setPreferredSize(new Dimension(66,42));
 		woodenSword.setActionCommand(OBJECT_SWORD);
@@ -193,6 +186,17 @@ public class LevelEditor extends JFrame implements ActionListener,
 		clothArmor.setActionCommand(OBJECT_JACKET);
 		clothArmor.addActionListener(this);
 		tools.add(clothArmor);
+		JButton save = new JButton("Save");
+		save.setPreferredSize(new Dimension(66,42));
+		save.setActionCommand(SAVE);
+		save.addActionListener(this);
+		tools.add(save);		
+		/*JButton delete = new JButton("Del");
+		delete.setPreferredSize(new Dimension(66,42));
+		delete.setActionCommand(DELETE);
+		delete.addActionListener(this);
+		tools.add(delete);*/
+				
 	}
 
 	@Override
@@ -275,6 +279,9 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (actionCommand == SAVE) {
 			new SaveDialog(this);
 		}
+		else if (actionCommand == DELETE) {
+			currentSprite = actionCommand;
+		}
 	}
 
 	@Override
@@ -295,24 +302,32 @@ public class LevelEditor extends JFrame implements ActionListener,
 				}
 			}
 			else if(multiWallStarted == true){
-				if (e.getX() < multiWallStartX) {
-					for (int i = multiWallStartX;i >= e.getX();i-=32){
+				if (e.getX()+32 < multiWallStartX) {
+					for (int i = multiWallStartX;i >= e.getX()-32;i-=32){
+						if(checkCollision(i,multiWallStartY,32,32)==false){
 						sprites.add(new Wall(i,multiWallStartY));
+						}
 					}
 				}
 				else if (e.getX() > multiWallStartX+32) {
-					for (int i = multiWallStartX+32; i<=e.getX();i+=32){
+					for (int i = multiWallStartX+32; i<=e.getX()+32;i+=32){
+						if(checkCollision(i,multiWallStartY,32,32)==false){
 						sprites.add(new Wall(i,multiWallStartY));
+						}
 					}
 				}
-				else if (e.getY() < multiWallStartY) {
-					for (int i = multiWallStartY; i >= e.getY();i-=32){
+				else if (e.getY()+32 < multiWallStartY) {
+					for (int i = multiWallStartY; i >= e.getY()-32;i-=32){
+						if(checkCollision(multiWallStartX,i,32,32)==false){
 						sprites.add(new Wall(multiWallStartX,i));
+						}
 					}
 				}
 				else if (e.getY() > multiWallStartY+32) {
-					for (int i = multiWallStartY+32; i <= e.getY();i+=32){
+					for (int i = multiWallStartY+32; i <= e.getY()+32;i+=32){
+						if(checkCollision(multiWallStartX,i,32,32)==false){
 						sprites.add(new Wall(multiWallStartX,i));
+						}
 					}
 				}
 				multiWallStarted = false;
@@ -361,6 +376,44 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (currentSprite == OBJECT_JACKET) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 			sprites.add(new ClothArmor(e.getX(),e.getY()));
+			}
+		}
+		else if (currentSprite == DELETE){
+			int x = e.getX();
+			int y = e.getY();
+			for(int i=0;i<sprites.size();i++){
+				Sprite sprite = sprites.get(i);
+				int size = 32;
+				
+				if(sprite instanceof FireballTrap){
+					size = 16;
+					
+				}
+				if(sprite.getX()<=x && sprite.getX()+size>x){
+					if(sprite.getY()<=y && sprite.getY()+size>y){
+						sprites.remove(i);
+					}
+					if(sprite.getY()>=y && sprite.getY()<y+1){
+						
+						sprites.remove(i);
+					}
+				}
+				if(sprite.getX()>=x && sprite.getX()<x+1){
+					if(sprite.getY()>=y && sprite.getY()<y+1){
+						
+						sprites.remove(i);
+					}
+					if(sprite.getY()<=y && sprite.getY()+size>y){
+						
+						sprites.remove(i);
+					}
+				}
+				if(sprite.getX()==x && sprite.getX()==x+1){
+					if(sprite.getY()==y && sprite.getY()==y+1){
+						
+						sprites.remove(i);
+					}
+				}
 			}
 		}
 		((GamePanel)level).render(1,sprites);

@@ -93,7 +93,7 @@ public class LevelSaver {
 		return trapXml;
 	}
 	private String createWallXml() {
-		String wallXml = "	<walls>" + "\n";
+		String wallXml = "	<walls>" + "\n" + "		<wall>0:0-608</wall>" + "\n" + "		<wall>768:0-608</wall>" + "\n" + "		<wall>32-736:0</wall>" + "\n" + "		<wall>32-736:608</wall>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof Wall) {
