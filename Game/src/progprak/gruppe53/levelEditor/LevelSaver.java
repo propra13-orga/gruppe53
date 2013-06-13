@@ -110,10 +110,10 @@ public class LevelSaver {
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof FireballTrap) {
-				fireballTrapXml += "		<fireballtrap>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</wall>" + "\n";
+				fireballTrapXml += "		<fireballtrap>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</fireballtrap>" + "\n";
 			}
 		}
-		fireballTrapXml += "	</walls>";
+		fireballTrapXml += "	</fireballtraps>";
 		fireballTrapXml += "\n";
 		return fireballTrapXml;
 	}

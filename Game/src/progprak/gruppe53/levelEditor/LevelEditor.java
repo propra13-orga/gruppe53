@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +26,7 @@ import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.ImageLoader;
+import progprak.gruppe53.game.LevelLoaderSax;
 import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
@@ -58,6 +58,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_JACKET = "clothArmor";
 	private static final String SAVE = "save";
 	private static final String DELETE = "delete";
+	private static final String LOAD = "load";
+	private static final String SELECT = "select";
 	
 	private String labelString1 = "X: ";
 	private String labelString2 = "Y: ";
@@ -83,7 +85,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 	private Vector<Sprite> sprites;
 	private String currentSprite = "";
-	private String fileName = "";
+	private String saveFileName = "";
+	private String loadFileName = "";
 
 	public LevelEditor() {
 		super(WINDOW_NAME);
@@ -200,7 +203,16 @@ public class LevelEditor extends JFrame implements ActionListener,
 		delete.setActionCommand(DELETE);
 		delete.addActionListener(this);
 		tools.add(delete);
-				
+		JButton load = new JButton("Load");
+		load.setPreferredSize(new Dimension(66,42));
+		load.setActionCommand(LOAD);
+		load.addActionListener(this);
+		tools.add(load);
+		JButton select = new JButton("Sel");
+		select.setPreferredSize(new Dimension(66,42));
+		select.setActionCommand(SELECT);
+		select.addActionListener(this);
+		tools.add(select);
 	}
 
 	@Override
@@ -281,9 +293,23 @@ public class LevelEditor extends JFrame implements ActionListener,
 			currentSprite = actionCommand;
 		}
 		else if (actionCommand == SAVE) {
+			c = Cursor.getDefaultCursor();
+			level.setCursor(c);
 			new SaveDialog(this);
 		}
 		else if (actionCommand == DELETE) {
+			c = Cursor.getDefaultCursor();
+			level.setCursor(c);
+			currentSprite = actionCommand;
+			}
+		else if (actionCommand == LOAD) {
+			c = Cursor.getDefaultCursor();
+			level.setCursor(c);
+			new LoadDialog(this);
+		}
+		else if (actionCommand == SELECT) {
+			c = Cursor.getDefaultCursor();
+			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
 	}
@@ -293,16 +319,16 @@ public class LevelEditor extends JFrame implements ActionListener,
 		
 		if (currentSprite == OBJECT_WALL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new Wall(e.getX(),e.getY()));
+				sprites.add(new Wall(e.getX(),e.getY()));
 			}
 		}
 		else if (currentSprite == OBJECT_MULTIWALL) {
 			if(multiWallStarted == false){
 				if(checkCollision(e.getX(),e.getY(),32,32)==false){
-				sprites.add(new Wall(e.getX(),e.getY()));
-				multiWallStartX = e.getX();
-				multiWallStartY = e.getY();
-				multiWallStarted = true;
+					sprites.add(new Wall(e.getX(),e.getY()));
+					multiWallStartX = e.getX();
+					multiWallStartY = e.getY();
+					multiWallStarted = true;
 				}
 			}
 			else if(multiWallStarted == true){
@@ -339,47 +365,47 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (currentSprite == ENEMY_GHOST) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new EnemyGhost(e.getX(),e.getY(),null));
+				sprites.add(new EnemyGhost(e.getX(),e.getY(),null));
 			}
 		} 
 		else if (currentSprite == TRAP_SPEARS) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new GroundTrap(e.getX(),e.getY(),null));
+				sprites.add(new GroundTrap(e.getX(),e.getY(),null));
 			}
 		}
 		else if (currentSprite == TRAP_FIREBALL) {
 			if(checkCollision(e.getX(),e.getY(),16,16)==false){
-			sprites.add(new FireballTrap(e.getX(),e.getY(),null,1,0,100,100));
+				sprites.add(new FireballTrap(e.getX(),e.getY(),null,1,0,100,100));
 			}
 		}
 		else if (currentSprite == OBJECT_PORTAL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new PortalEntrance(e.getX(),e.getY(),300,300));
+				sprites.add(new PortalEntrance(e.getX(),e.getY(),300,300));
 			}
 		} 
 		else if (currentSprite == OBJECT_LEVELSWITCH) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new LevelSwitch(e.getX(),e.getY(),"levels/TestLevel.xml"));
+				sprites.add(new LevelSwitch(e.getX(),e.getY(),"levels/TestLevel.xml"));
 			}
 		} 
 		else if (currentSprite == OBJECT_GOAL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new Goal(e.getX(),e.getY()));
+				sprites.add(new Goal(e.getX(),e.getY()));
 			}
 		} 
 		else if (currentSprite == OBJECT_SPAWN) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new HeroEditor(e.getX(),e.getY()));
+				sprites.add(new HeroEditor(e.getX(),e.getY()));
 			}
 		}
 		else if (currentSprite == OBJECT_SWORD) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new WoodenSword(e.getX(),e.getY()));
+				sprites.add(new WoodenSword(e.getX(),e.getY()));
 			}
 		}
 		else if (currentSprite == OBJECT_JACKET) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new ClothArmor(e.getX(),e.getY()));
+				sprites.add(new ClothArmor(e.getX(),e.getY()));
 			}
 		}
 		else if (currentSprite == DELETE){
@@ -417,6 +443,47 @@ public class LevelEditor extends JFrame implements ActionListener,
 						
 						sprites.remove(i);
 					}
+				}
+			}
+		}
+		else if (currentSprite == SELECT){
+			int x = e.getX();
+			int y = e.getY();
+			for(int i=0;i<sprites.size();i++){
+				Sprite sprite = sprites.get(i);
+				int size = 32;
+				
+				if(sprite instanceof FireballTrap){
+					size = 16;
+					
+				}
+				if(sprite instanceof Wall){
+				if(sprite.getX()<=x && sprite.getX()+size>x){
+					if(sprite.getY()<=y && sprite.getY()+size>y){
+						
+						attribute1.setText("" + sprite.getX());
+					}
+					if(sprite.getY()>=y && sprite.getY()<y){
+						
+						attribute1.setText("" + sprite.getX());
+					}
+				}
+				if(sprite.getX()>=x && sprite.getX()<x){
+					if(sprite.getY()>=y && sprite.getY()<y){
+						
+						attribute1.setText("" + sprite.getX());
+					}
+					if(sprite.getY()<=y && sprite.getY()+size>y){
+						
+						attribute1.setText("" + sprite.getX());
+					}
+				}
+				if(sprite.getX()==x && sprite.getX()==x){
+					if(sprite.getY()==y && sprite.getY()==y){
+						
+						attribute1.setText("" + sprite.getX());
+					}
+				}
 				}
 			}
 		}
@@ -481,10 +548,15 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		return false;
 	}
-	public void setFileName(String fileName){
-		this.fileName = fileName;
+	public void setSaveFileName(String saveFileName){
+		this.saveFileName = saveFileName;
 	}
 	public void saveLevel(){
-		new LevelSaver(fileName, sprites).saveLevel();
+		new LevelSaver(saveFileName, sprites).saveLevel();
+	}
+	public void loadLevel(String newLevel){
+		Vector<Sprite> sp = new Vector<Sprite>();
+		EditorLevelLoader.generateLevel(newLevel,sp);
+		sprites = sp;
 	}
 }
