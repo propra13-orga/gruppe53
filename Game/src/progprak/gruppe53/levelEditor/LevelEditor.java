@@ -46,6 +46,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final int SEPARATOR_WIDTH = 20;
 	private static final int ATTRIBUTEBAR_HEIGHT = 30;
 	private static final String OBJECT_WALL = "wall";
+	private static final String OBJECT_MULTIWALL = "multiwall";
 	private static final String ENEMY_GHOST = "enemyGhost";
 	private static final String TRAP_SPEARS = "trapSpears";
 	private static final String TRAP_FIREBALL = "trapFireball";
@@ -142,6 +143,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		wall.setActionCommand(OBJECT_WALL);
 		wall.addActionListener(this);
 		tools.add(wall);
+		JButton multiwall = new JButton(new ImageIcon(ImageLoader.loadImage("images/wall.png)")));
+		multiwall.setActionCommand(OBJECT_MULTIWALL);
+		multiwall.addActionListener(this);
+		tools.add(multiwall);
 		JButton enemyGhost = new JButton(new ImageIcon(ImageLoader.loadImage("images/ghost1.png")));
 		enemyGhost.setActionCommand(ENEMY_GHOST);
 		enemyGhost.addActionListener(this);
@@ -195,6 +200,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 		if (actionCommand == OBJECT_WALL) {
 			image = ImageLoader.loadImage("images/wall.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "wall");
+			level.setCursor(c);
+			currentSprite = actionCommand;
+			
+		}
+		else if (actionCommand == OBJECT_MULTIWALL) {
+			image = ImageLoader.loadImage("images/wall.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "multiwall");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 			
@@ -266,6 +278,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		
 		if (currentSprite == OBJECT_WALL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+			sprites.add(new Wall(e.getX(),e.getY()));
+			}
+		}
+		else if (currentSprite == OBJECT_MULTIWALL) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+				
 			sprites.add(new Wall(e.getX(),e.getY()));
 			}
 		}
