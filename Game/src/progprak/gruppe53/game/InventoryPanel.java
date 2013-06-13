@@ -16,6 +16,7 @@ private InventorySlot[] inventorySlot;
 
 	private final int inventorySlots = 10;
 	private Game game;
+	private SlotAction useAction;
 	
 	public InventoryPanel(Game game) {
 		super();
@@ -27,15 +28,16 @@ private InventorySlot[] inventorySlot;
 	private void doInitalizations(){
 		setLayout(new FlowLayout());
 		inventorySlot = new InventorySlot[10];
-		for(int i=0;i<inventorySlots;i++){
-			inventorySlot[i] = new InventorySlot(new SlotAction() {
+		useAction = new SlotAction() {
+			
+			@Override
+			public void slotClicked(InventorySlot inventorySlot) {
 				
-				@Override
-				public void slotClicked(InventorySlot inventorySlot) {
-					// TODO Auto-generated method stub
-					
-				}
-			});
+			}
+		};
+
+		for(int i=0;i<inventorySlots;i++){
+			inventorySlot[i] = new InventorySlot(useAction);		
 			this.add(inventorySlot[i]);
 		}
 	}
@@ -91,7 +93,7 @@ private InventorySlot[] inventorySlot;
 		}
 
 
-	public void setSell() {
+	public void slotsSell() {
 		for(int i=0;i<inventorySlots;i++){
 			inventorySlot[i].setSlotAction(new SlotAction() {
 				
@@ -102,6 +104,11 @@ private InventorySlot[] inventorySlot;
 					}
 				}
 			});
+		}
+	}
+	public void slotsUse() {
+		for(int i=0;i<inventorySlots;i++){
+			inventorySlot[i].setSlotAction(useAction);
 		}
 	}
 
