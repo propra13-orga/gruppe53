@@ -2,21 +2,22 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
+import progprak.gruppe53.game.Game;
 
-public class StoneSword extends Weapon {
+public class StoneSword extends MeleeWeapons {
 
 	private static final long serialVersionUID = 123456789L;
 
 	private CollisionEvent notAttackCe;
 	private CollisionEvent attackCe;
 	
-	public StoneSword(int x, int y){
-		super( x, y, "images/sword.png");
+	public StoneSword(int x, int y,Game game){
+		super( x, y, "images/sword.png", game);
 		
 		doInitalizations();
 	}
-	public StoneSword(){
-		super(0,0, "images/sword.png");
+	public StoneSword(Game game){
+		super(0,0, "images/sword.png", game);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
 		doInitalizations();

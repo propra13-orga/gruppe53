@@ -9,9 +9,6 @@ public class Hero extends CombatObject{
 
 	private KeyboardInput keyboardInput;
 	
-	private int xPos;
-	private int yPos;
-	
 	private int mana;
 	private int maxMana;
 	
@@ -34,8 +31,6 @@ public class Hero extends CombatObject{
 		this.weapon = weapon;
 		this.weapon.setOwner(this);
 		this.armor = armor;
-		this.xPos = xPos;
-		this.yPos = yPos;
 		//this.armor.setOwner(this);
 		doInitalizations();
 	} 
@@ -56,8 +51,9 @@ public class Hero extends CombatObject{
 			lastdx = 0;
 		}	
 		
-		if(!keyboardInput.isUp() && !keyboardInput.isDown())
+		if(!keyboardInput.isUp() && !keyboardInput.isDown()){
 			dy = 0;
+		}
 		
 		if(keyboardInput.isLeft()){
 			dx = lastdx = -1;
@@ -69,9 +65,10 @@ public class Hero extends CombatObject{
 			lastdy = 0;
 		}
 		
-		if(keyboardInput.isRight() && keyboardInput.isUp())
+		if(keyboardInput.isRight() && keyboardInput.isUp()){
 			lastdx = 1;
 			lastdy = -1;
+		}
 		
 		if(keyboardInput.isRight() && keyboardInput.isDown()){
 			lastdx = 1;
@@ -88,14 +85,16 @@ public class Hero extends CombatObject{
 			lastdy = 1;
 		}
 		
-		if(!keyboardInput.isLeft() && !keyboardInput.isRight())
+		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
 			dx = 0;
+		}
 		
-		if(keyboardInput.isAttack())
+		if(keyboardInput.isAttack()){
 			weapon.attack(true);
-		
-		else
+		}
+		else{
 			weapon.attack(false);
+		}
 	}
 	
 	
@@ -174,15 +173,11 @@ public class Hero extends CombatObject{
 		return lastdy;
 	}
 	
-	public int getXPos(){
-		return xPos;
-	}
-	
-	public int getYPos(){
-		return yPos;
-	}
-	
 	public int getFaction(){
 		return faction;
+	}
+	public void drainMana(int manaCost) {
+		mana -= manaCost;
+		
 	}
 }

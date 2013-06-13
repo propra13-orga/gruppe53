@@ -4,7 +4,7 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.Game;
 
-public class LongBow extends Weapon{
+public class LongBow extends RangeWeapon{
 
 	/**
 	 * 
@@ -14,15 +14,15 @@ public class LongBow extends Weapon{
 	private Game game;
 
 	public LongBow(int x, int y,Game game) {
-		super(x, y, "");
+		super(x, y, "",game);
 		this.game = game;
 		
 		doInitalizations();
 
 	}
 	
-	public LongBow(){
-		super(0,0, "");
+	public LongBow(Game game){
+		super(0,0, "",game);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
 		doInitalizations();
@@ -42,8 +42,8 @@ public class LongBow extends Weapon{
 	public void attack(boolean attack) {
 		if(attack)
 		{
-			game.getGameLogic().getActors().add(new FireballTrap(game.getGameLogic().getHero().getXPos(),
-					game.getGameLogic().getHero().getYPos(), game, game.getGameLogic().getHero().getLastDx(),
+			game.getGameLogic().getActors().add(new FireballTrap((int)game.getGameLogic().getHero().getX(),
+					(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx(),
 					game.getGameLogic().getHero().getLastDy(), game.getGameLogic().getHero().getFaction()));
 		}
 	}

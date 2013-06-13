@@ -1,28 +1,26 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.Game;
 
-public class PinkGlitterWand extends Weapon{
+public class PinkGlitterWand extends RangeWeapon{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4274376584235570942L;
 	
-	private Game game;
 
 	public PinkGlitterWand(int x, int y,Game game) {
-		super(x, y, "");
+		super(x, y, "images/pinkwand.png", game);
 		this.game = game;
 		
 		doInitalizations();
 
 	}
 	
-	public PinkGlitterWand(){
-		super(0,0, "");
+	public PinkGlitterWand(Game game){
+		super(0,0, "images/pinkwand.png", game);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
 		doInitalizations();
@@ -30,6 +28,9 @@ public class PinkGlitterWand extends Weapon{
 	
 	private void doInitalizations(){
 		price = 100;
+		manaCost = 1;
+		xOffset = 26;
+		yOffset = 22;
 	}
 
 	@Override
@@ -38,14 +39,5 @@ public class PinkGlitterWand extends Weapon{
 		
 	}
 
-	@Override
-	public void attack(boolean attack) {
-		if(attack)
-		{
-			game.getGameLogic().getActors().add(new FireballTrap(game.getGameLogic().getHero().getXPos(),
-					game.getGameLogic().getHero().getYPos(), game, game.getGameLogic().getHero().getLastDx(),
-					game.getGameLogic().getHero().getLastDy(), game.getGameLogic().getHero().getFaction()));
-		}
-	}
 
 }

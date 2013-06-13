@@ -33,14 +33,6 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 
 	private void loadImage(){
 		image = ImageLoader.loadImage(imagePath);	
-		/*URL picUrl = getClass().getClassLoader().getResource(imagePath);
-		try {
-			image = ImageIO.read(picUrl);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(picUrl);*/
 	}
 
 	@Override

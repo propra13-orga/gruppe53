@@ -1,47 +1,39 @@
 package progprak.gruppe53.game;
 
-public class FireballTrap extends Sprite implements Collidable{
+public class FireballTrap extends CombatObject implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
-	private CollisionEvent collisionEvent;
-	
 	public FireballTrap(int x, int y, Game game, int dx, int dy, int reSpX, int reSpY){
-		super(x,y,"images/FireballRed.png");
+		super(x,y,"images/FireballRed.png", game);
 			this.width = 16;
 			this.height = 16;
 			this.dx = dx;
 			this.dy = dy;
+			doInitalizations();
 	}
 	
-	public FireballTrap(int x, int y, Game game, int dx, int dy, int faction)
+	public FireballTrap(int x, int y, Game game, double d, double e, int faction)
 	{
-		super(x,y,"images/FireballRed.png");
+		super(x,y,"images/FireballRed.png", game);
 		this.width = 16;
 		this.height = 16;
-		this.dx = dx;
-		this.dy = dy;
+		this.dx = d;
+		this.dy = e;
+		this.faction = faction;
+		doInitalizations();
 	}
 	
 	@Override
 	public void doLogic(long delta){
 		
-		
-		/*Vector<Sprite> cs = game.testForCollision(getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
-		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
-			Sprite s = it.next();
-			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
-			if(ce.getEvent() == CollisionEvent.EVENT_MASSIVE){
-				x = reSpX;
-				y = reSpY;
-				break;
-			}
-		}*/
+
+	}
+	@Override
+	protected void handleMassiveEvent(CollisionEvent ce) {
+		super.handleMassiveEvent(ce);
+		game.getGameLogic().removeSprite(this);
 	}
 
-	@Override
-	public CollisionEvent getCollisionEvent() {
-		return collisionEvent;
-	}
 	
 }

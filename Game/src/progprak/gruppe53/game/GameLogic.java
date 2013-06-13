@@ -4,6 +4,8 @@ import java.util.Vector;
 import java.util.ListIterator;
 
 import progprak.gruppe53.items.ClothArmor;
+import progprak.gruppe53.items.FireStaff;
+import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
 
 public class GameLogic {
@@ -23,7 +25,8 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		hero = new Hero(0, 0, game, new WoodenSword() , new ClothArmor());
+		//hero = new Hero(0, 0, game, new WoodenSword() , new ClothArmor());
+		hero = new Hero(0, 0, game, new PinkGlitterWand(game) , new ClothArmor());
 		
 	}
 	
@@ -57,7 +60,7 @@ public class GameLogic {
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
 		sp.add(hero.getWeapon());
-		sp.add(new WoodenSword(60,60));
+		sp.add(new WoodenSword(60,60, game));
 	}
 
 	public Hero getHero() {
@@ -66,5 +69,8 @@ public class GameLogic {
 
 	public void removeSprite(Sprite s) {
 		sprites.remove(s);
+	}
+	public void addSprite(Sprite s){
+		sprites.add(s);
 	}
 }

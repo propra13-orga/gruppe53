@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -374,7 +373,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (currentSprite == OBJECT_SWORD) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new WoodenSword(e.getX(),e.getY()));
+			sprites.add(new WoodenSword(e.getX(),e.getY(), null));
 			}
 		}
 		else if (currentSprite == OBJECT_JACKET) {

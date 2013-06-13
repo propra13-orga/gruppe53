@@ -1,28 +1,26 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.Game;
 
-public class FireStaff extends Weapon{
+public class FireStaff extends RangeWeapon{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4274376584235570942L;
 	
-	private Game game;
+
 
 	public FireStaff(int x, int y,Game game) {
-		super(x, y, "");
-		this.game = game;
+		super(x, y, "",game);
 		
 		doInitalizations();
 
 	}
 	
-	public FireStaff(){
-		super(0,0, "");
+	public FireStaff(Game game){
+		super(0,0, "",game);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
 		doInitalizations();
@@ -35,17 +33,8 @@ public class FireStaff extends Weapon{
 	@Override
 	public void doLogic(long delta) {
 
-		
 	}
 
-	@Override
-	public void attack(boolean attack) {
-		if(attack)
-		{
-			game.getGameLogic().getActors().add(new FireballTrap(game.getGameLogic().getHero().getXPos(),
-					game.getGameLogic().getHero().getYPos(), game, game.getGameLogic().getHero().getLastDx(),
-					game.getGameLogic().getHero().getLastDy(), game.getGameLogic().getHero().getFaction()));
-		}
-	}
+
 
 }

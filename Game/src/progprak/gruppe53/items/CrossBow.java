@@ -14,15 +14,15 @@ public class CrossBow extends Weapon{
 	private Game game;
 
 	public CrossBow(int x, int y,Game game) {
-		super(x, y, "");
+		super(x, y, "", game);
 		this.game = game;
 		
 		doInitalizations();
 
 	}
 	
-	public CrossBow(){
-		super(0,0, "");
+	public CrossBow(Game game){
+		super(0,0, "", game);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;
 		doInitalizations();
@@ -42,8 +42,8 @@ public class CrossBow extends Weapon{
 	public void attack(boolean attack) {
 		if(attack)
 		{
-			game.getGameLogic().getActors().add(new FireballTrap(game.getGameLogic().getHero().getXPos(),
-					game.getGameLogic().getHero().getYPos(), game, game.getGameLogic().getHero().getLastDx(),
+			game.getGameLogic().getActors().add(new FireballTrap((int)game.getGameLogic().getHero().getX(),
+					(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx(),
 					game.getGameLogic().getHero().getLastDy(), game.getGameLogic().getHero().getFaction()));
 		}
 	}
