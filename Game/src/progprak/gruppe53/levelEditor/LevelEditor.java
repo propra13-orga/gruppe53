@@ -54,8 +54,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_LEVELSWITCH = "levelSwitch";
 	private static final String OBJECT_GOAL = "goal";
 	private static final String OBJECT_SPAWN = "spawn";
-	private static final String OBJECT_SWORD = "sword";
-	private static final String OBJECT_JACKET = "jacket";
+	private static final String OBJECT_SWORD = "woodenSword";
+	private static final String OBJECT_JACKET = "clothArmor";
 	private static final String SAVE = "save";
 	
 	private String labelString1 = "X: ";
@@ -66,6 +66,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private String labelString6 = "YSpawn: ";
 	private String labelString7 = "TeleportLocation: ";
 	private String labelString8 = "NextLevelPath: ";
+	
+	private int multiWallStartX = 0;
+	private int multiWallStartY = 0;
+	private boolean multiWallStarted = false;
 	
 	public static void main(String[] args) {
 		new LevelEditor();
@@ -143,7 +147,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		wall.setActionCommand(OBJECT_WALL);
 		wall.addActionListener(this);
 		tools.add(wall);
-		JButton multiwall = new JButton(new ImageIcon(ImageLoader.loadImage("images/wall.png)")));
+		JButton multiwall = new JButton(new ImageIcon(ImageLoader.loadImage("images/wall.png")));
 		multiwall.setActionCommand(OBJECT_MULTIWALL);
 		multiwall.addActionListener(this);
 		tools.add(multiwall);
@@ -176,19 +180,19 @@ public class LevelEditor extends JFrame implements ActionListener,
 		spawn.addActionListener(this);
 		tools.add(spawn);
 		JButton save = new JButton("Save");
-		save.setPreferredSize(new Dimension(66,45));
+		save.setPreferredSize(new Dimension(66,42));
 		save.setActionCommand(SAVE);
 		save.addActionListener(this);
 		tools.add(save);
-		JButton sword = new JButton(new ImageIcon(ImageLoader.loadImage("images/sword.png")));
-		sword.setPreferredSize(new Dimension(66,45));
-		sword.setActionCommand(OBJECT_SWORD);
-		sword.addActionListener(this);
-		tools.add(sword);
-		JButton jacket = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
-		jacket.setActionCommand(OBJECT_JACKET);
-		jacket.addActionListener(this);
-		tools.add(jacket);
+		JButton woodenSword = new JButton(new ImageIcon(ImageLoader.loadImage("images/sword.png")));
+		woodenSword.setPreferredSize(new Dimension(66,42));
+		woodenSword.setActionCommand(OBJECT_SWORD);
+		woodenSword.addActionListener(this);
+		tools.add(woodenSword);
+		JButton clothArmor = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
+		clothArmor.setActionCommand(OBJECT_JACKET);
+		clothArmor.addActionListener(this);
+		tools.add(clothArmor);
 	}
 
 	@Override
@@ -258,13 +262,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (actionCommand == OBJECT_SWORD) {
 			image = ImageLoader.loadImage("images/sword.png");
-			c = toolkit.createCustomCursor(image, new Point(0, 0), "sword");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "woodenSword");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
 		else if (actionCommand == OBJECT_JACKET) {
 			image = ImageLoader.loadImage("images/hero.png");
-			c = toolkit.createCustomCursor(image, new Point(0, 0), "jacket");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "clothArmor");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
@@ -282,9 +286,36 @@ public class LevelEditor extends JFrame implements ActionListener,
 			}
 		}
 		else if (currentSprite == OBJECT_MULTIWALL) {
-			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-				
-			sprites.add(new Wall(e.getX(),e.getY()));
+			if(multiWallStarted == false){
+				if(checkCollision(e.getX(),e.getY(),32,32)==false){
+				sprites.add(new Wall(e.getX(),e.getY()));
+				multiWallStartX = e.getX();
+				multiWallStartY = e.getY();
+				multiWallStarted = true;
+				}
+			}
+			else if(multiWallStarted == true){
+				if (e.getX() < multiWallStartX) {
+					for (int i = multiWallStartX;i >= e.getX();i-=32){
+						sprites.add(new Wall(i,multiWallStartY));
+					}
+				}
+				else if (e.getX() > multiWallStartX+32) {
+					for (int i = multiWallStartX+32; i<=e.getX();i+=32){
+						sprites.add(new Wall(i,multiWallStartY));
+					}
+				}
+				else if (e.getY() < multiWallStartY) {
+					for (int i = multiWallStartY; i >= e.getY();i-=32){
+						sprites.add(new Wall(multiWallStartX,i));
+					}
+				}
+				else if (e.getY() > multiWallStartY+32) {
+					for (int i = multiWallStartY+32; i <= e.getY();i+=32){
+						sprites.add(new Wall(multiWallStartX,i));
+					}
+				}
+				multiWallStarted = false;
 			}
 		}
 		else if (currentSprite == ENEMY_GHOST) {
@@ -342,6 +373,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+	
 		
 	}
 
