@@ -14,8 +14,12 @@ private static final long serialVersionUID = 1L;
 
 private InventorySlot[] inventorySlot;
 
-	public InventoryPanel() {
+	private final int inventorySlots = 10;
+	private Game game;
+	
+	public InventoryPanel(Game game) {
 		super();
+		this.game = game;
 		doInitalizations();
 	}
 
@@ -23,8 +27,15 @@ private InventorySlot[] inventorySlot;
 	private void doInitalizations(){
 		setLayout(new FlowLayout());
 		inventorySlot = new InventorySlot[10];
-		for(int i=0;i<9;i++){
-			inventorySlot[i] = new InventorySlot();
+		for(int i=0;i<inventorySlots;i++){
+			inventorySlot[i] = new InventorySlot(new SlotAction() {
+				
+				@Override
+				public void slotClicked(InventorySlot inventorySlot) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			this.add(inventorySlot[i]);
 		}
 	}
@@ -39,19 +50,17 @@ private InventorySlot[] inventorySlot;
 	}
 	public void newItem(InventorySlot slot,Item item){
 		slot.newItem(item);
-		slot.repaint();
+		//slot.repaint();
 	}
 	
 	// Remove the Item
 	public void removeItem(Item item)
 	{
 		// Check for the right Item
-		for(int n=0; n<9;n++)
-		{
+		for(int i=0; i<inventorySlots;i++){
 			//Remove the Item
-			if(inventorySlot[n].getItem() == item){
-				inventorySlot[n].removeItem();
-				inventorySlot[n].repaint();
+			if(inventorySlot[i].getItem() == item){
+				inventorySlot[i].removeItem();
 				break;
 			}
 		}
@@ -59,9 +68,9 @@ private InventorySlot[] inventorySlot;
 	
 	// Check for Free InventorySlot
 	public InventorySlot getFreeSlot(){
-		for(int n=0; n<9; n++){
-			if(inventorySlot[n].isUsed() == false){
-				return inventorySlot[n];
+		for(int i=0; i<inventorySlots; i++){
+			if(inventorySlot[i].isUsed() == false){
+				return inventorySlot[i];
 			}
 		}
 		return null;
@@ -70,5 +79,26 @@ private InventorySlot[] inventorySlot;
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 		}
+
+
+	public void setSell() {
+		for(int i=0;i<inventorySlots;i++){
+			inventorySlot[i].setSlotAction(new SlotAction() {
+				
+				@Override
+				public void slotClicked(InventorySlot inventorySlot) {
+					if(inventorySlot.isUsed()){
+						sellItem(inventorySlot);
+					}
+				}
+			});
+		}
+	}
+
+
+	protected void sellItem(InventorySlot slot) {
+		game.getGameLogic().getHero().setMoney(game.getGameLogic().getHero().getMoney() + slot.getItem().getPrice());
+		slot.removeItem();
+	}
 
 }

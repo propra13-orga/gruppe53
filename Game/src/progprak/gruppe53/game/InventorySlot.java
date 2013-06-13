@@ -2,21 +2,53 @@ package progprak.gruppe53.game;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 public class InventorySlot extends JPanel{
 
-/**
-*
-*/
-private static final long serialVersionUID = 2129304223986847233L;
+	private static final long serialVersionUID = 2129304223986847233L;
 
-private boolean used;
-private Item item;
+	private boolean used;
+	private Item item;
+	private SlotAction slotAction;
 
-	public InventorySlot(){
+	public InventorySlot(SlotAction sa){
+		slotAction = sa;
 		setPreferredSize(new Dimension(40,40));
+		addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				slotAction.slotClicked((InventorySlot) e.getSource());
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 
@@ -33,11 +65,13 @@ private Item item;
 	public void newItem(Item newItem){
 		item = newItem;
 		this.used = true;
+		repaint();
 	}
 
 	public void removeItem(){
 		item = null;
 		this.used = false;
+		repaint();
 	}
 	
 	/**
@@ -52,5 +86,10 @@ private Item item;
 		if(item != null){
 			g.drawImage(item.getImage().getScaledInstance(40, 40, 1), 0, 0, null);
 		}
+	}
+
+
+	public void setSlotAction(SlotAction slotAction) {
+		this.slotAction = slotAction;
 	}
 }

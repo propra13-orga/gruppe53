@@ -35,7 +35,7 @@ public class InfoWindow extends JPanel {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
 		
-		inventoryPanel = new InventoryPanel();
+		inventoryPanel = new InventoryPanel(game);
 		add(inventoryPanel,BorderLayout.CENTER);
 		
 		barPanel = new JPanel();

@@ -212,6 +212,7 @@ public class Game implements Runnable {
 
 
 	public void showShop() {
+		infoWindow.getInventoryPanel().setSell();
 		mainPane.setLayer(shop, 2);
 	}
 

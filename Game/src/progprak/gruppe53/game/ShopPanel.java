@@ -46,40 +46,18 @@ public class ShopPanel extends JPanel {
 		
 		itemPanel.setLayout(new GridLayout(0, 2,5,5));
 		for(int i=0;i<12;i++){
-			InventorySlot slot = new InventorySlot();
-			slot.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-			slot.newItem(new Sword());
-			slot.addMouseListener(new MouseListener() {
+			InventorySlot slot = new InventorySlot(new SlotAction() {
 				
 				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
-					buyItem((InventorySlot) e.getSource());
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
+				public void slotClicked(InventorySlot inventorySlot) {
+					if(inventorySlot.isUsed()){
+						buyItem(inventorySlot);
+					}
 					
 				}
 			});
+			slot.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+			slot.newItem(new Sword());
 			itemPanel.add(slot);
 		}
 	}
@@ -95,7 +73,6 @@ public class ShopPanel extends JPanel {
 				slot.removeItem();
 			}
 		}
-		
 	}
 	
 }
