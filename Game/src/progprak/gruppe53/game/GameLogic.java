@@ -20,7 +20,7 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		hero = new Hero(0, 0, game, new Sword() , null);
+		hero = new Hero(0, 0, game, new Sword() , new Jacket());
 		
 	}
 	

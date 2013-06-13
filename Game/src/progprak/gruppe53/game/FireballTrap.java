@@ -14,6 +14,15 @@ public class FireballTrap extends Sprite implements Collidable{
 			this.dy = dy;
 	}
 	
+	public FireballTrap(int x, int y, Game game, int dx, int dy)
+	{
+		super(x,y,"images/FireballRed.png");
+		this.width = 16;
+		this.height = 16;
+		this.dx = dx;
+		this.dy = dy;
+	}
+	
 	@Override
 	public void doLogic(long delta){
 		
