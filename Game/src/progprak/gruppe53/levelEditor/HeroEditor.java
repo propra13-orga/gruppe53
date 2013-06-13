@@ -4,7 +4,7 @@ import progprak.gruppe53.game.Sprite;
 
 public class HeroEditor extends Sprite{
 	public HeroEditor(int x, int y) {
-		super(x, y, "images/profi.png");
+		super(x, y, "images/held.png");
 	}
 
 	@Override

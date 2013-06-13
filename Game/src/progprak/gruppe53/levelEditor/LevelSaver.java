@@ -5,8 +5,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
+
 import progprak.gruppe53.game.EnemyGhost;
+import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
+import progprak.gruppe53.game.LevelSwitch;
+import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
 
@@ -25,6 +30,10 @@ public class LevelSaver {
 		input += createSpawnXml();
 		input += createEnemyGhostXml();
 		input += createTrapXml();
+		input += createFireballTrapXml();
+		input += createPortalXml();
+		input += createGoalXml();
+		input += createLevelSwitchXml();
 		input += createWallXml();
 		input += "</level>";
 		createFile(input);
@@ -96,4 +105,69 @@ public class LevelSaver {
 		return wallXml;
 	}
 	
+	private String createFireballTrapXml() {
+		String fireballTrapXml = "	<fireballtraps>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof FireballTrap) {
+				fireballTrapXml += "		<fireballtrap>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</wall>" + "\n";
+			}
+		}
+		fireballTrapXml += "	</walls>";
+		fireballTrapXml += "\n";
+		return fireballTrapXml;
+	}
+	
+	/* Für später um mehrere Goals möglich zu machen
+	private String createGoalXml() {
+		String goalXml = "	<goals>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof Goal) {
+				goalXml += "		<goal>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</goal>" +"\n";
+			}
+		}
+		goalXml += "	</goals>";
+		goalXml += "\n";
+		return goalXml;
+	}
+	*/
+	
+	private String createGoalXml() {
+		String goalXml = "	<goal>";
+		for (int i = 0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof Goal) {
+				goalXml += ((int)sprite.getX()) + ":" + ((int)sprite.getY());
+			}
+		}
+		goalXml += "</goal>";
+		goalXml += "\n";
+		return goalXml;
+	}
+	
+	private String createLevelSwitchXml() {
+		String levelSwitchXml = "	<levelswitch>";
+		for (int i = 0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof LevelSwitch) {
+				levelSwitchXml += ((int)sprite.getX()) + ":" + ((int)sprite.getY());
+			}
+		}
+		levelSwitchXml += "</levelswitch>";
+		levelSwitchXml += "\n";
+		return levelSwitchXml;
+	}
+	private String createPortalXml() {
+		String portalXml = "	<portals>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof PortalEntrance) {
+				portalXml += "		<portal>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</portal>" +"\n";
+			}
+		}
+		portalXml += "	</portals>";
+		portalXml += "\n";
+		return portalXml;
+	}
 }

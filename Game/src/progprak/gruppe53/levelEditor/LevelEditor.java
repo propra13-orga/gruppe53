@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
+
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,9 +27,11 @@ import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.ImageLoader;
+import progprak.gruppe53.game.Jacket;
 import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
+import progprak.gruppe53.game.Sword;
 import progprak.gruppe53.game.Wall;
 
 public class LevelEditor extends JFrame implements ActionListener,
@@ -50,6 +53,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_LEVELSWITCH = "levelSwitch";
 	private static final String OBJECT_GOAL = "goal";
 	private static final String OBJECT_SPAWN = "spawn";
+	private static final String OBJECT_SWORD = "sword";
+	private static final String OBJECT_JACKET = "jacket";
 	private static final String SAVE = "save";
 	
 	private String labelString1 = "X: ";
@@ -88,7 +93,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		setLocationRelativeTo(null);
 		setResizable(false);
 
-		//getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 		getContentPane().setLayout(new BorderLayout());
 		level = new GamePanel();
 		separator = new JPanel();
@@ -162,7 +166,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		goal.setActionCommand(OBJECT_GOAL);
 		goal.addActionListener(this);
 		tools.add(goal);
-		JButton spawn = new JButton(new ImageIcon(ImageLoader.loadImage("images/profi.png")));
+		JButton spawn = new JButton(new ImageIcon(ImageLoader.loadImage("images/held.png")));
 		spawn.setActionCommand(OBJECT_SPAWN);
 		spawn.addActionListener(this);
 		tools.add(spawn);
@@ -171,6 +175,15 @@ public class LevelEditor extends JFrame implements ActionListener,
 		save.setActionCommand(SAVE);
 		save.addActionListener(this);
 		tools.add(save);
+		JButton sword = new JButton(new ImageIcon(ImageLoader.loadImage("images/sword.png")));
+		sword.setPreferredSize(new Dimension(66,45));
+		sword.setActionCommand(OBJECT_SWORD);
+		sword.addActionListener(this);
+		tools.add(sword);
+		JButton jacket = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
+		jacket.setActionCommand(OBJECT_JACKET);
+		jacket.addActionListener(this);
+		tools.add(jacket);
 	}
 
 	@Override
@@ -185,45 +198,65 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.setCursor(c);
 			currentSprite = actionCommand;
 			
-		} else if (actionCommand == ENEMY_GHOST) {
+		}
+		else if (actionCommand == ENEMY_GHOST) {
 			image = ImageLoader.loadImage("images/ghost1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "enemyGhost");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 			
-		} else if (actionCommand == TRAP_SPEARS) {
+		}
+		else if (actionCommand == TRAP_SPEARS) {
 			image = ImageLoader.loadImage("images/groundTrap1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "trapSpears");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 			
-		} else if (actionCommand == TRAP_FIREBALL) {
+		}
+		else if (actionCommand == TRAP_FIREBALL) {
 			image = ImageLoader.loadImage("images/FireballRedEditor2.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0),"trapFireball");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 			
-		} else if (actionCommand == OBJECT_PORTAL) {
+		}
+		else if (actionCommand == OBJECT_PORTAL) {
 			image = ImageLoader.loadImage("images/entrance.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "portal");
 			level.setCursor(c);
 			currentSprite = actionCommand;
-		} else if (actionCommand == OBJECT_LEVELSWITCH) {
+		}
+		else if (actionCommand == OBJECT_LEVELSWITCH) {
 			image = ImageLoader.loadImage("images/entrance2.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0),"levelSwitch");
 			level.setCursor(c);
 			currentSprite = actionCommand;
-		} else if (actionCommand == OBJECT_GOAL) {
+		}
+		else if (actionCommand == OBJECT_GOAL) {
 			image = ImageLoader.loadImage("images/exit.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "goal");
 			level.setCursor(c);
 			currentSprite = actionCommand;
-		} else if (actionCommand == OBJECT_SPAWN) {
-			image = ImageLoader.loadImage("images/profi.png");
+		}
+		else if (actionCommand == OBJECT_SPAWN) {
+			image = ImageLoader.loadImage("images/held.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "spawn");
 			level.setCursor(c);
 			currentSprite = actionCommand;
-		} else if (actionCommand == SAVE) {
+		}
+		else if (actionCommand == OBJECT_SWORD) {
+			image = ImageLoader.loadImage("images/sword.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "sword");
+			level.setCursor(c);
+			currentSprite = actionCommand;
+		}
+		else if (actionCommand == OBJECT_JACKET) {
+			image = ImageLoader.loadImage("images/hero.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "jacket");
+			level.setCursor(c);
+			currentSprite = actionCommand;
+		}
+		else if (actionCommand == SAVE) {
 			new SaveDialog(this);
 		}
 	}
@@ -269,6 +302,16 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (currentSprite == OBJECT_SPAWN) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 			sprites.add(new HeroEditor(e.getX(),e.getY()));
+			}
+		}
+		else if (currentSprite == OBJECT_SWORD) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+			sprites.add(new Sword(e.getX(),e.getY()));
+			}
+		}
+		else if (currentSprite == OBJECT_JACKET) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+			sprites.add(new Jacket(e.getX(),e.getY()));
 			}
 		}
 		((GamePanel)level).render(1,sprites);
