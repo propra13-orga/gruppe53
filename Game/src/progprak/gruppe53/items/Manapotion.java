@@ -1,4 +1,6 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.items;
+
+import progprak.gruppe53.game.Collidable;
 
 public class Manapotion extends Potion implements Collidable  {
 	

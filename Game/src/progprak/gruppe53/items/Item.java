@@ -1,6 +1,12 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.items;
 
 import java.awt.image.BufferedImage;
+
+import progprak.gruppe53.game.Collidable;
+import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.Hero;
+import progprak.gruppe53.game.PickupCollisionEvent;
+import progprak.gruppe53.game.Sprite;
 
 abstract public class Item extends Sprite implements Collidable {
 

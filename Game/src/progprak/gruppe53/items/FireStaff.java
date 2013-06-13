@@ -1,4 +1,7 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.items;
+
+import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Game;
 
 public class FireStaff extends Weapon{
 

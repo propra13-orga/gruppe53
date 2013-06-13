@@ -1,4 +1,7 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.items;
+
+import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.DamageCollisionEvent;
 
 public class Sword extends Weapon {
 

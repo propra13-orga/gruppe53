@@ -3,6 +3,8 @@ package progprak.gruppe53.game;
 import java.util.ListIterator;
 import java.util.Vector;
 
+import progprak.gruppe53.items.Item;
+
 abstract public class CombatObject extends Sprite implements Collidable{
 
 	private static final long serialVersionUID = -6996362585746746561L;

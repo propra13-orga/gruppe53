@@ -12,6 +12,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.Item;
+import progprak.gruppe53.items.Sword;
+
 public class ShopPanel extends JPanel {
 
 	private static final long serialVersionUID = -7147459534307392461L;

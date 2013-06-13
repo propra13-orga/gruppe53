@@ -27,12 +27,12 @@ import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.ImageLoader;
-import progprak.gruppe53.game.Jacket;
 import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
-import progprak.gruppe53.game.Sword;
 import progprak.gruppe53.game.Wall;
+import progprak.gruppe53.items.Jacket;
+import progprak.gruppe53.items.Sword;
 
 public class LevelEditor extends JFrame implements ActionListener,
 		MouseListener {

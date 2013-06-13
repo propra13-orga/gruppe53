@@ -1,5 +1,7 @@
 package progprak.gruppe53.game;
 
+import progprak.gruppe53.items.Item;
+
 public class PickupCollisionEvent extends CollisionEvent {
 
 	private Item item;

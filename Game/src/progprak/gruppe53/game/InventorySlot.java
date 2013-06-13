@@ -7,6 +7,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.Item;
+
 public class InventorySlot extends JPanel{
 
 	private static final long serialVersionUID = 2129304223986847233L;

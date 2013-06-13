@@ -1,5 +1,8 @@
 package progprak.gruppe53.game;
 
+import progprak.gruppe53.items.Armor;
+import progprak.gruppe53.items.Weapon;
+
 public class Hero extends CombatObject{
 
 	private static final long serialVersionUID = -8077486599395198634L;

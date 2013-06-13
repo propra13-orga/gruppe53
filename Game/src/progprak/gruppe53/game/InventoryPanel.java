@@ -5,6 +5,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.Item;
+
 public class InventoryPanel extends JPanel {
 
 /**

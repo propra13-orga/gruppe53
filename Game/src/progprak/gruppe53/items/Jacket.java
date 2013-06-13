@@ -1,4 +1,5 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.items;
+
 
 public class Jacket extends Armor {
 

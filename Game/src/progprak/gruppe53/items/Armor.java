@@ -1,4 +1,5 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.items;
+
 
 abstract public class Armor extends Item {
 
