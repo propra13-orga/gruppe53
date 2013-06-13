@@ -79,10 +79,10 @@ private InventorySlot[] inventorySlot;
 	// Resets the Inventory
 	public void resetInventory()
 	{
-		for(int n=0; n<9;n++)
+		for(int i=0; i<inventorySlots;i++)
 		{
-			inventorySlot[n].removeItem();
-			inventorySlot[n].repaint();
+			inventorySlot[i].removeItem();
+			inventorySlot[i].repaint();
 		}
 	}
 	@Override
