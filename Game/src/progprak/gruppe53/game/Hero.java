@@ -6,17 +6,22 @@ public class Hero extends CombatObject{
 
 	private KeyboardInput keyboardInput;
 	
+	private int xPos;
+	private int yPos;
 	
 	private int mana;
 	private int maxMana;
 	
 	private Weapon weapon;
 	private Armor armor;
+	
+	private int lastdx;
+	private int lastdy;
 
 	private int money = 100;
 	
-	public Hero(int x, int y, Game game, Weapon weapon, Armor armor){
-		super(x,y,"images/held.png",game);
+	public Hero(int xPos, int yPos, Game game, Weapon weapon, Armor armor){
+		super(xPos,yPos,"images/held.png",game);
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
 		maxHealth = 10;
@@ -26,6 +31,8 @@ public class Hero extends CombatObject{
 		this.weapon = weapon;
 		this.weapon.setOwner(this);
 		this.armor = armor;
+		this.xPos = xPos;
+		this.yPos = yPos;
 		//this.armor.setOwner(this);
 		doInitalizations();
 	} 
@@ -36,20 +43,46 @@ public class Hero extends CombatObject{
 	@Override
 	public void doLogic(long delta)
 	{
-		if(keyboardInput.isUp())
-			dy = -1;
+		if(keyboardInput.isUp()){
+			dy = lastdy = -1;
+			lastdx = 0;
+		}
 		
-		if(keyboardInput.isDown())
-			dy = 1;
+		if(keyboardInput.isDown()){
+			dy = lastdy = 1;
+			lastdx = 0;
+		}	
 		
 		if(!keyboardInput.isUp() && !keyboardInput.isDown())
 			dy = 0;
 		
-		if(keyboardInput.isLeft())
-			dx = -1;
+		if(keyboardInput.isLeft()){
+			dx = lastdx = -1;
+			lastdy = 0;
+		}
 		
-		if(keyboardInput.isRight())
-			dx = 1;
+		if(keyboardInput.isRight()){
+			dx = lastdx = 1;
+			lastdy = 0;
+		}
+		
+		if(keyboardInput.isRight() && keyboardInput.isUp())
+			dx = dy = lastdx = lastdy = 1;
+		
+		if(keyboardInput.isRight() && keyboardInput.isDown()){
+			dx = lastdx = 1;
+			dy = lastdy = -1;
+		}
+		
+		if(keyboardInput.isLeft() && keyboardInput.isUp()){
+			dx = lastdx = -1;
+			dy = lastdy = 1;
+		}
+		
+		if(keyboardInput.isLeft() && keyboardInput.isDown()){
+			dx = lastdx = -1;
+			dy = lastdy = -1;
+		}
 		
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight())
 			dx = 0;
@@ -127,5 +160,25 @@ public class Hero extends CombatObject{
 	}
 	public void setMoney(int money) {
 		this.money = money;
+	}
+	
+	public int getLastDx(){
+		return lastdx;
+	}
+	
+	public int getLastDy(){
+		return lastdy;
+	}
+	
+	public int getXPos(){
+		return xPos;
+	}
+	
+	public int getYPos(){
+		return yPos;
+	}
+	
+	public int getFaction(){
+		return faction;
 	}
 }
