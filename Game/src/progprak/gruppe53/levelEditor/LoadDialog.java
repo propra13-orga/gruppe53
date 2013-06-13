@@ -10,19 +10,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class SaveDialog extends JDialog implements ActionListener {
+public class LoadDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1;
 	
 	private JTextField textField;
 	private LevelEditor le;
 
-	private String btnString1 = "Save";
+	private String btnString1 = "Load";
 	private String btnString2 = "Cancel";
+	private String levelPath ="";
 	
 	private static final int DEFAULT_WINDOW_WIDTH = 320;
 	private static final int DEFAULT_WINDOW_HEIGHT = 160;
 
-	public SaveDialog(LevelEditor parent) {
+	public LoadDialog(LevelEditor parent) {
 		super();
 		le = parent;
 
@@ -36,9 +37,9 @@ public class SaveDialog extends JDialog implements ActionListener {
 
 		String msgString1 = "Please enter filename:";
 		JLabel label = new JLabel(msgString1);
-		JButton saveButton = new JButton(btnString1);
-		saveButton.setActionCommand(btnString1);
-		saveButton.addActionListener(this);
+		JButton loadButton = new JButton(btnString1);
+		loadButton.setActionCommand(btnString1);
+		loadButton.addActionListener(this);
 		JButton cancelButton = new JButton(btnString2);
 		cancelButton.setActionCommand(btnString2);
 		cancelButton.addActionListener(this);
@@ -49,7 +50,7 @@ public class SaveDialog extends JDialog implements ActionListener {
 		text.add(textField);
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new BoxLayout(buttons,BoxLayout.X_AXIS));
-		buttons.add(saveButton);
+		buttons.add(loadButton);
 		buttons.add(cancelButton);
 		add(text);
 		add(buttons);
@@ -61,8 +62,8 @@ public class SaveDialog extends JDialog implements ActionListener {
 			
 		}
 		else if(e.getActionCommand() == btnString1){
-			le.setSaveFileName(textField.getText());
-			le.saveLevel();
+			levelPath = "levels/" + textField.getText() + ".xml";
+			le.loadLevel(levelPath);
 			dispose();
 			
 		}
