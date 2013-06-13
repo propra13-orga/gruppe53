@@ -3,19 +3,19 @@ package progprak.gruppe53.items;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
 
-public class Sword extends Weapon {
+public class WoodenSword extends Weapon {
 
 	private static final long serialVersionUID = 123456789L;
 
 	private CollisionEvent notAttackCe;
 	private CollisionEvent attackCe;
 	
-	public Sword(int x, int y){
+	public WoodenSword(int x, int y){
 		super( x, y, "images/sword.png");
 		
 		doInitalizations();
 	}
-	public Sword(){
+	public WoodenSword(){
 		super(0,0, "images/sword.png");
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;

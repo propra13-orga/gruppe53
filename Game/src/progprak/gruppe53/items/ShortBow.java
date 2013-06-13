@@ -4,7 +4,7 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.Game;
 
-public class FireStaff extends Weapon{
+public class ShortBow extends Weapon{
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class FireStaff extends Weapon{
 	
 	private Game game;
 
-	public FireStaff(int x, int y,Game game) {
+	public ShortBow(int x, int y,Game game) {
 		super(x, y, "");
 		this.game = game;
 		
@@ -21,7 +21,7 @@ public class FireStaff extends Weapon{
 
 	}
 	
-	public FireStaff(){
+	public ShortBow(){
 		super(0,0, "");
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
 		draw = false;

@@ -1,23 +1,23 @@
 package progprak.gruppe53.items;
 
 
-public class Jacket extends Armor {
+public class ChainArmor extends Armor {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Jacket(int x, int y) {
+	public ChainArmor(int x, int y) {
 		super(x, y, "");
-		armorLVL = 1;
+		armorLVL = 3;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Jacket()
+	public ChainArmor()
 	{
 		super(0,0,"");
-		armorLVL = 1;
+		armorLVL = 3;
 	}
 
 	@Override

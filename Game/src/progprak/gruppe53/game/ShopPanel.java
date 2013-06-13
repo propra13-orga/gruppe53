@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import progprak.gruppe53.items.Item;
-import progprak.gruppe53.items.Sword;
+import progprak.gruppe53.items.WoodenSword;
 
 public class ShopPanel extends JPanel {
 
@@ -60,7 +60,7 @@ public class ShopPanel extends JPanel {
 				}
 			});
 			slot.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-			slot.newItem(new Sword());
+			slot.newItem(new WoodenSword());
 			itemPanel.add(slot);
 		}
 	}

@@ -70,21 +70,22 @@ public class Hero extends CombatObject{
 		}
 		
 		if(keyboardInput.isRight() && keyboardInput.isUp())
-			dx = dy = lastdx = lastdy = 1;
+			lastdx = 1;
+			lastdy = -1;
 		
 		if(keyboardInput.isRight() && keyboardInput.isDown()){
-			dx = lastdx = 1;
-			dy = lastdy = -1;
+			lastdx = 1;
+			lastdy = 1;
 		}
 		
 		if(keyboardInput.isLeft() && keyboardInput.isUp()){
-			dx = lastdx = -1;
-			dy = lastdy = 1;
+			lastdx = -1;
+			lastdy = -1;
 		}
 		
 		if(keyboardInput.isLeft() && keyboardInput.isDown()){
-			dx = lastdx = -1;
-			dy = lastdy = -1;
+			lastdx = -1;
+			lastdy = 1;
 		}
 		
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight())

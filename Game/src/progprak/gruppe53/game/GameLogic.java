@@ -3,8 +3,8 @@ package progprak.gruppe53.game;
 import java.util.Vector;
 import java.util.ListIterator;
 
-import progprak.gruppe53.items.Jacket;
-import progprak.gruppe53.items.Sword;
+import progprak.gruppe53.items.ClothArmor;
+import progprak.gruppe53.items.WoodenSword;
 
 public class GameLogic {
 	
@@ -23,7 +23,7 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		hero = new Hero(0, 0, game, new Sword() , new Jacket());
+		hero = new Hero(0, 0, game, new WoodenSword() , new ClothArmor());
 		
 	}
 	
@@ -57,7 +57,7 @@ public class GameLogic {
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
 		sp.add(hero.getWeapon());
-		sp.add(new Sword(60,60));
+		sp.add(new WoodenSword(60,60));
 	}
 
 	public Hero getHero() {

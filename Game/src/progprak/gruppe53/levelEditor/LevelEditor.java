@@ -31,8 +31,8 @@ import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
-import progprak.gruppe53.items.Jacket;
-import progprak.gruppe53.items.Sword;
+import progprak.gruppe53.items.ClothArmor;
+import progprak.gruppe53.items.WoodenSword;
 
 public class LevelEditor extends JFrame implements ActionListener,
 		MouseListener {
@@ -324,12 +324,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (currentSprite == OBJECT_SWORD) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new Sword(e.getX(),e.getY()));
+			sprites.add(new WoodenSword(e.getX(),e.getY()));
 			}
 		}
 		else if (currentSprite == OBJECT_JACKET) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-			sprites.add(new Jacket(e.getX(),e.getY()));
+			sprites.add(new ClothArmor(e.getX(),e.getY()));
 			}
 		}
 		((GamePanel)level).render(1,sprites);
