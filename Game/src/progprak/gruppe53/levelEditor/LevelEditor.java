@@ -124,12 +124,16 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 		level.addMouseListener(this);
 
-		JPanel editorPanel = new JPanel();
+		/*JPanel editorPanel = new JPanel();
 		editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.X_AXIS));
 		editorPanel.add(level);
 		editorPanel.add(separator);
 		editorPanel.add(tools);
 		add(editorPanel,BorderLayout.CENTER);
+		add(attributeBar,BorderLayout.SOUTH);*/
+		add(level,BorderLayout.WEST);
+		add(separator,BorderLayout.CENTER);
+		add(tools,BorderLayout.EAST);
 		add(attributeBar,BorderLayout.SOUTH);
 		attributeBar.add(attribute1);
 		attributeBar.add(attribute2);
@@ -191,11 +195,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 		save.setActionCommand(SAVE);
 		save.addActionListener(this);
 		tools.add(save);		
-		/*JButton delete = new JButton("Del");
+		JButton delete = new JButton("Del");
 		delete.setPreferredSize(new Dimension(66,42));
 		delete.setActionCommand(DELETE);
 		delete.addActionListener(this);
-		tools.add(delete);*/
+		tools.add(delete);
 				
 	}
 
