@@ -15,23 +15,25 @@ public class Hero extends CombatObject{
 	private Weapon weapon;
 	private Armor armor;
 	
+	private InventoryPanel inventory;
+	
 	private int lastdx = 0;
 	private int lastdy = 1;
 
 	private int money = 100;
 	
-	public Hero(int xPos, int yPos, Game game, Weapon weapon, Armor armor){
+	public Hero(int xPos, int yPos, Game game,InventoryPanel inventory){
 		super(xPos,yPos,"images/held.png",game);
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
 		maxHealth = 10;
 		health = maxHealth;
-		maxMana = 100;
+		maxMana = 1000;
 		mana = maxMana;
-		this.weapon = weapon;
+		this.inventory = inventory;
+		weapon = inventory.getWeaponSlot().getWeapon();
+		armor = inventory.getArmorSlot().getArmor();
 		this.weapon.setOwner(this);
-		this.armor = armor;
-		//this.armor.setOwner(this);
 		doInitalizations();
 	} 
 	protected void initCollisionEvent() {
@@ -90,10 +92,10 @@ public class Hero extends CombatObject{
 		}
 		
 		if(keyboardInput.isAttack()){
-			weapon.attack(true);
+			inventory.getWeaponSlot().getWeapon().attack(true);
 		}
 		else{
-			weapon.attack(false);
+			inventory.getWeaponSlot().getWeapon().attack(false);
 		}
 	}
 	
@@ -178,5 +180,9 @@ public class Hero extends CombatObject{
 	}
 	public void drainMana(int manaCost) {
 		mana -= manaCost;
+	}
+	public void recoverMana(){
+		if(mana < maxMana)
+		mana = mana+1;
 	}
 }

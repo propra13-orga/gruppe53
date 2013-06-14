@@ -28,10 +28,10 @@ public class PinkGlitterWand extends RangeWeapon{
 	
 	private void doInitalizations(){
 		price = 100;
-		manaCost = 5;
+		manaCost = 50;
 		xOffset = 26;
 		yOffset = 22;
-		recharge = (long) ((5L)*1e8);
+		recharge = (long) ((2L)*1e8);
 	}
 
 	@Override
