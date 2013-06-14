@@ -15,8 +15,8 @@ public class Hero extends CombatObject{
 	private Weapon weapon;
 	private Armor armor;
 	
-	private int lastdx;
-	private int lastdy;
+	private int lastdx = 0;
+	private int lastdy = 1;
 
 	private int money = 100;
 	

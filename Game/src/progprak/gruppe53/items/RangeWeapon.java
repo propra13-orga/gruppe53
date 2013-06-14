@@ -11,6 +11,8 @@ public class RangeWeapon extends Weapon {
 	 */
 	private static final long serialVersionUID = -6124980088772086796L;
 	protected Game game;
+	protected long last = 0;
+	protected long recharge = 0;
 	
 	public RangeWeapon(int x, int y, String imagePath, Game game) {
 		super(x, y, imagePath, game);
@@ -25,13 +27,18 @@ public class RangeWeapon extends Weapon {
 
 	@Override
 	public void attack(boolean attack) {
-		super.attack(attack);
-		if(attack)
-		{
-			game.getGameLogic().addSprite(new FireballTrap((int)game.getGameLogic().getHero().getX(),
-				(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx()*1.5,
-				game.getGameLogic().getHero().getLastDy()*1.5, game.getGameLogic().getHero().getFaction())
-			);
+		long now = System.nanoTime();
+		drawWeapon(attack);
+		if((now-last) >= (recharge)){
+			super.attack(attack);
+			if(attack)
+			{
+				game.getGameLogic().addSprite(new FireballTrap((int)game.getGameLogic().getHero().getX(),
+					(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx()*2.5,
+					game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction())
+				);
+				last = now;
+			}
 		}
 	}
 }
