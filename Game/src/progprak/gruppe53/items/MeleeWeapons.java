@@ -31,6 +31,7 @@ abstract public class MeleeWeapons extends Weapon {
 	public void attack(boolean attack) {
 		super.attack(attack);
 		if(attack){
+			//setAngle(Math.PI);
 			collisionEvent = attackCe;
 		}
 		else {

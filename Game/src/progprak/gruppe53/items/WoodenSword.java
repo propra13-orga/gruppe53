@@ -1,7 +1,6 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.Game;
 
 public class WoodenSword extends MeleeWeapons {
@@ -27,8 +26,8 @@ public class WoodenSword extends MeleeWeapons {
 		price = 50;
 		ww = 16;
 		wh = 7;
-		xOffset = 26;
-		yOffset = 22;
+		xOffset = 11;
+		yOffset = 7;
 		notAttackCe = collisionEvent;
 		damage = 1;
 	}

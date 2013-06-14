@@ -22,6 +22,7 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	protected double dx = 0;
 	protected double dy = 0;
 	protected boolean draw = true;
+	private double angle = 0;
 	
 
 	public Sprite(int x, int y, String imagePath) {
@@ -39,15 +40,19 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 
 	@Override
 	public void drawObjects(Graphics g) {
-		/*AffineTransform trans = AffineTransform.getRotateInstance( Math.toRadians(90),image.getWidth()/2,image.getHeight()/2);
-        BufferedImage dest = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
-        
-        Graphics2D gd = dest.createGraphics();
-        gd.drawImage(image, trans, null);
+		if(angle != 0){
+			AffineTransform trans = AffineTransform.getRotateInstance( angle,image.getWidth()/2,image.getHeight()/2);
+			BufferedImage dest = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
 
-		g.drawImage(dest, (int)x, (int)y, null);
-        gd.dispose();*/
-        g.drawImage(image, (int)x, (int)y, null);
+			Graphics2D gd = dest.createGraphics();
+			gd.drawImage(image, trans, null);
+
+			g.drawImage(dest, (int)x, (int)y, null);
+			gd.dispose();
+		}
+		else {
+			g.drawImage(image, (int)x, (int)y, null);
+		}
 	}
 	public void move(long delta){
 		x = x+dx;
@@ -62,6 +67,13 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 
 	public boolean isDraw() {
 		return draw;
+	}
+
+	/**
+	 * @param angle the angle to set
+	 */
+	public void setAngle(double angle) {
+		this.angle = angle;
 	}
 
 }

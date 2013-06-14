@@ -101,7 +101,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 				//game.restart();
 			}
 			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
-				game.switchLevel(ce.getNewLevel());
+				//game.switchLevel(ce.getNewLevel());
 			}
 		}
 		
