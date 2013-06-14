@@ -26,12 +26,11 @@ public class RangeWeapon extends Weapon {
 	@Override
 	public void attack(boolean attack) {
 		super.attack(attack);
-		if(attack)
+		if(attack && game.getGameLogic().getHero().getMana() >= manaCost)
 		{
-			game.getGameLogic().addSprite(new FireballTrap((int)game.getGameLogic().getHero().getX(),
-				(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx()*1.5,
-				game.getGameLogic().getHero().getLastDy()*1.5, game.getGameLogic().getHero().getFaction())
-			);
+			game.getGameLogic().addSprite(new FireballTrap(/*(int)game.getGameLogic().getHero().getX()*/ (int)this.x+16,
+				(int)/*game.getGameLogic().getHero().getY()*/this.y, game, game.getGameLogic().getHero().getLastDx()*1.5,
+				game.getGameLogic().getHero().getLastDy()*1.5, game.getGameLogic().getHero().getFaction()));
 		}
 	}
 }

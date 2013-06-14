@@ -178,6 +178,5 @@ public class Hero extends CombatObject{
 	}
 	public void drainMana(int manaCost) {
 		mana -= manaCost;
-		
 	}
 }
