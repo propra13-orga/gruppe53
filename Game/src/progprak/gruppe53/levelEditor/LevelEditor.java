@@ -16,10 +16,7 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import progprak.gruppe53.game.EnemyGhost;
 import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.GamePanel;
@@ -58,8 +55,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String SAVE = "save";
 	private static final String DELETE = "delete";
 	private static final String LOAD = "load";
-	private static final String SELECT = "select";
+	//private static final String SELECT = "select";
 	
+	/*
+	Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 	private String labelString1 = "X: ";
 	private String labelString2 = "Y: ";
 	private String labelString3 = "XSpeed: ";
@@ -68,10 +67,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private String labelString6 = "YSpawn: ";
 	private String labelString7 = "TeleportLocation: ";
 	private String labelString8 = "NextLevelPath: ";
-	
+	*/
+	private int xPosition;
+	private int yPosition;
 	private int multiWallStartX = 0;
 	private int multiWallStartY = 0;
 	private boolean multiWallStarted = false;
+	public static String saveData[][]=new String[801][641];
 	
 	public static void main(String[] args) {
 		new LevelEditor();
@@ -79,8 +81,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 	
 	private JPanel tools, level, separator, attributeBar;
+	/*
+	Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 	private JTextField attribute1, attribute2, attribute3, attribute4, attribute5, attribute6;
 	private JLabel attributeLabel1, attributeLabel2, attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
+	*/
 
 	private Vector<Sprite> sprites;
 	private String currentSprite = "";
@@ -90,9 +95,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 		super(WINDOW_NAME);
 		setupEditor();
 		setVisible(true);
+		loadLevel("levels/LevelTemplate.xml");
+		((GamePanel)level).render(1,sprites);
+		level.repaint();
 	}
 
 	private void setupEditor() {
+		// Setzt Größe und Position des Fensters und der nötigen Panels
 		sprites = new Vector<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
@@ -105,6 +114,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 		separator = new JPanel();
 		tools = new JPanel();
 		attributeBar = new JPanel();
+		/*
+		Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 		attribute1 = new JTextField(10);
 		attribute2 = new JTextField(10);
 		attribute3 = new JTextField(10);
@@ -115,6 +126,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attributeLabel2 = new JLabel(labelString2);
 		JButton saveAttributes = new JButton("Save");
 		saveAttributes.setPreferredSize(new Dimension(66,20));
+		*/
 				
 		
 		separator.setPreferredSize(new Dimension(SEPARATOR_WIDTH,GAMEPANEL_HEIGHT));
@@ -129,17 +141,22 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 		level.addMouseListener(this);
 
-		/*JPanel editorPanel = new JPanel();
+		/*
+		Rest vom alten Layout - vorerst nicht mehr nötig
+		JPanel editorPanel = new JPanel();
 		editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.X_AXIS));
 		editorPanel.add(level);
 		editorPanel.add(separator);
 		editorPanel.add(tools);
 		add(editorPanel,BorderLayout.CENTER);
-		add(attributeBar,BorderLayout.SOUTH);*/
+		add(attributeBar,BorderLayout.SOUTH);
+		*/
 		add(level,BorderLayout.WEST);
 		add(separator,BorderLayout.CENTER);
 		add(tools,BorderLayout.EAST);
 		add(attributeBar,BorderLayout.SOUTH);
+		/*
+		Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 		attributeBar.add(attributeLabel1);
 		attributeBar.add(attribute1);
 		attributeBar.add(attributeLabel2);
@@ -149,10 +166,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attributeBar.add(attribute5);
 		attributeBar.add(attribute6);
 		attributeBar.add(saveAttributes);
+		*/
 		
 	}
 
 	private void setupTools() {
+		//Alle Buttons in der Toolbar
 		JButton wall = new JButton(new ImageIcon(ImageLoader.loadImage("images/wall.png")));
 		wall.setActionCommand(OBJECT_WALL);
 		wall.addActionListener(this);
@@ -213,15 +232,18 @@ public class LevelEditor extends JFrame implements ActionListener,
 		load.setActionCommand(LOAD);
 		load.addActionListener(this);
 		tools.add(load);
+		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 		JButton select = new JButton("Sel");
 		select.setPreferredSize(new Dimension(66,42));
 		select.setActionCommand(SELECT);
 		select.addActionListener(this);
 		tools.add(select);
+		*/
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Sagt dem Editor welcher Button geklickt wurde und setzt den jeweiligen Custom Cursor
 		String actionCommand = e.getActionCommand();
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image image;
@@ -314,16 +336,18 @@ public class LevelEditor extends JFrame implements ActionListener,
 			new LoadDialog(this);
 			currentSprite = actionCommand;
 		}
+		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (actionCommand == SELECT) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		*/
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		//Führt je nachdem welcher Button zuvor geklickt wurde die passende Aktion aus
 		if (currentSprite == OBJECT_WALL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new Wall(e.getX(),e.getY()));
@@ -382,17 +406,23 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (currentSprite == TRAP_FIREBALL) {
 			if(checkCollision(e.getX(),e.getY(),16,16)==false){
-				sprites.add(new FireballTrap(e.getX(),e.getY(),null,1,0,100,100));
+				xPosition = e.getX();
+				yPosition = e.getY();
+				new AttributeDialog(this,TRAP_FIREBALL);
 			}
 		}
 		else if (currentSprite == OBJECT_PORTAL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-				sprites.add(new PortalEntrance(e.getX(),e.getY(),300,300));
+				xPosition = e.getX();
+				yPosition = e.getY();
+				new AttributeDialog(this,OBJECT_PORTAL);
 			}
 		} 
 		else if (currentSprite == OBJECT_LEVELSWITCH) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-				sprites.add(new LevelSwitch(e.getX(),e.getY(),"levels/TestLevel.xml"));
+				xPosition = e.getX();
+				yPosition = e.getY();
+				new AttributeDialog(this,OBJECT_LEVELSWITCH);
 			}
 		} 
 		else if (currentSprite == OBJECT_GOAL) {
@@ -453,6 +483,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				}
 			}
 		}
+		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (currentSprite == SELECT){
 			int x = e.getX();
 			int y = e.getY();
@@ -494,6 +525,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				}
 			}
 		}
+		*/
 		((GamePanel)level).render(1,sprites);
 		level.repaint();
 	}
@@ -518,6 +550,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		
 	}
 	private boolean checkCollision(int x, int y, int width, int heigth){
+		//Prüft beim setzen von Sprites aufs Feld ob dort nicht bereits etwas ist, falls ja wird kein neuer Sprite gesetzt
 		for(int i=0;i<sprites.size();i++){
 			Sprite sprite = sprites.get(i);
 			int size = 32;
@@ -565,5 +598,27 @@ public class LevelEditor extends JFrame implements ActionListener,
 		Vector<Sprite> sp = new Vector<Sprite>();
 		EditorLevelLoader.generateLevel(newLevel,sp);
 		sprites = sp;
+		((GamePanel)level).render(1,sprites);
+		level.repaint();
+	}
+	public void addSprite(String spriteType){
+		if (spriteType == "trapFireball"){
+			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute1,AttributeDialog.attribute2,AttributeDialog.attribute3,AttributeDialog.attribute4));
+			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + ";" + AttributeDialog.attribute3 + ":" + AttributeDialog.attribute4 + "</fireballtrap>" + "\n";
+			((GamePanel)level).render(1,sprites);
+			level.repaint();
+		}
+		else if (spriteType == "portal"){
+			sprites.add(new PortalEntrance(xPosition,yPosition,AttributeDialog.attribute1,AttributeDialog.attribute2));
+			saveData[xPosition][yPosition]="		<portal>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + "</portal>" + "\n";
+			((GamePanel)level).render(1,sprites);
+			level.repaint();
+		}
+		else if (spriteType == "levelSwitch"){
+			sprites.add(new LevelSwitch(xPosition,yPosition,AttributeDialog.attribute5));
+			saveData[xPosition][yPosition]="	<levelswitch>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute5 + "</levelswitch>" + "\n";
+			((GamePanel)level).render(1,sprites);
+			level.repaint();
+		}
 	}
 }

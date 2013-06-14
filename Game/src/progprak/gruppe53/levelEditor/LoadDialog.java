@@ -27,7 +27,7 @@ public class LoadDialog extends JDialog implements ActionListener {
 		super();
 		le = parent;
 
-		setTitle("Savedialog");
+		setTitle("LoadDialog");
 		 setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 	     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	     setLocationRelativeTo(null);

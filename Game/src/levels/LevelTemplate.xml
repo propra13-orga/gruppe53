@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<level>
+	<walls>
+		<wall>0:0-608</wall>
+		<wall>768:0-608</wall>
+		<wall>32-736:0</wall>
+		<wall>32-736:608</wall>
+	</walls>
+</level>

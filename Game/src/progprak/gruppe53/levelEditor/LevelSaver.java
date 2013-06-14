@@ -93,7 +93,11 @@ public class LevelSaver {
 		return trapXml;
 	}
 	private String createWallXml() {
-		String wallXml = "	<walls>" + "\n" + "		<wall>0:0-608</wall>" + "\n" + "		<wall>768:0-608</wall>" + "\n" + "		<wall>32-736:0</wall>" + "\n" + "		<wall>32-736:608</wall>" + "\n";
+		String wallXml = "	<walls>" + "\n";
+		/*
+		Aussenwände -  hier nicht mehr nötig
+		String wallXml += "		<wall>0:0-608</wall>" + "\n" + "		<wall>768:0-608</wall>" + "\n" + "		<wall>32-736:0</wall>" + "\n" + "		<wall>32-736:608</wall>" + "\n"
+		*/
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof Wall) {
@@ -110,7 +114,9 @@ public class LevelSaver {
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof FireballTrap) {
-				fireballTrapXml += "		<fireballtrap>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</fireballtrap>" + "\n";
+				int x = (int)sprite.getX();
+				int y = (int)sprite.getY();
+				fireballTrapXml += LevelEditor.saveData[x][y];
 			}
 		}
 		fireballTrapXml += "	</fireballtraps>";
@@ -118,7 +124,8 @@ public class LevelSaver {
 		return fireballTrapXml;
 	}
 	
-	/* Für später um mehrere Goals möglich zu machen
+	/* 
+	Für später um mehrere Goals möglich zu machen
 	private String createGoalXml() {
 		String goalXml = "	<goals>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -147,15 +154,15 @@ public class LevelSaver {
 	}
 	
 	private String createLevelSwitchXml() {
-		String levelSwitchXml = "	<levelswitch>";
-		for (int i = 0; i < sprites.size(); i++) {
+		String levelSwitchXml = "";
+		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof LevelSwitch) {
-				levelSwitchXml += ((int)sprite.getX()) + ":" + ((int)sprite.getY());
+				int x = (int)sprite.getX();
+				int y = (int)sprite.getY();
+				levelSwitchXml += LevelEditor.saveData[x][y];
 			}
 		}
-		levelSwitchXml += "</levelswitch>";
-		levelSwitchXml += "\n";
 		return levelSwitchXml;
 	}
 	private String createPortalXml() {
@@ -163,7 +170,9 @@ public class LevelSaver {
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof PortalEntrance) {
-				portalXml += "		<portal>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</portal>" +"\n";
+				int x = (int)sprite.getX();
+				int y = (int)sprite.getY();
+				portalXml += LevelEditor.saveData[x][y];
 			}
 		}
 		portalXml += "	</portals>";
