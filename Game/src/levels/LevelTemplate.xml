@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-	<spawn>180:180</spawn>
 	<walls>
 		<wall>0:0-608</wall>
 		<wall>768:0-608</wall>

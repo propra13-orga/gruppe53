@@ -95,7 +95,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		super(WINDOW_NAME);
 		setupEditor();
 		setVisible(true);
-		loadLevel("LevelTemplate");
+		loadLevel("levels/LevelTemplate.xml");
 		((GamePanel)level).render(1,sprites);
 		level.repaint();
 	}
