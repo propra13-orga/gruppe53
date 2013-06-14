@@ -1,0 +1,6 @@
+Jeder Level kann im Moment nur ein Goal, einen Spawn und einen LevelSwitch enthalten. Achtet darauf nicht mehrere zu platzieren, sonst funktionieren weder der Editor noch der Level!
+Zum Laden und für LevelSwitches muss die entsprechende Datei im Ordner Game/src/levels liegen.
+Save speichert die neue Datei in diesen Ordner.
+Beim Laden, Speichern und LevelSwitch muss nur der Name der Datei selbst eingegeben werden, Groß/Kleinschreibung wird beachtet.
+Will man also die Datei Game/src/levels/Level1.xml laden gibt man lediglich Level1 ein, ohne Pfad und ohne Endung.
+Beim Start fügt der Editor automatisch die Aussenmauern hinzu - Die Datei "LevelTemplate" wird dazu benötigt und muss so bleiben wie sie ist! Nicht anfassen!
