@@ -1,5 +1,7 @@
 package progprak.gruppe53.items;
 
+import progprak.gruppe53.game.Game;
+
 
 abstract public class Armor extends Item {
 
@@ -10,8 +12,8 @@ abstract public class Armor extends Item {
 	
 	protected int armorLVL;
 
-	public Armor(int x, int y, String imagePath) {
-		super(x, y, imagePath);
+	public Armor(int x, int y, String imagePath,Game game) {
+		super(x, y, imagePath, game);
 		// TODO Auto-generated constructor stub
 	}
 	

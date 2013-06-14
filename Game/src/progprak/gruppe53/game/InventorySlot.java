@@ -30,7 +30,7 @@ public class InventorySlot extends JPanel{
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(slotAction != null){
+				if(slotAction != null && used){
 					slotAction.slotClicked((InventorySlot) e.getSource());
 				}
 			}

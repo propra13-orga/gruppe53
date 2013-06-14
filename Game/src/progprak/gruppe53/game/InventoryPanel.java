@@ -50,15 +50,22 @@ private static final long serialVersionUID = 1L;
 					weaponSlot.newItem(inventorySlot.getItem());
 					game.getGameLogic().removeSprite(tmp);
 					game.getGameLogic().addSprite(inventorySlot.getItem());
-					inventorySlot.newItem(tmp);
+					inventorySlot.removeItem();
+					if(tmp!=null){
+						inventorySlot.newItem(tmp);
+					}
 					//inventorySlot.newItem(saveSlot.getItem());
 				}
-				if(inventorySlot.getItem() instanceof Armor){
+				else if(inventorySlot.getItem() instanceof Armor){
 					//saveSlot.newItem(armorSlot.getArmor());
 					//armorSlot.removeItem();
 					armorSlot.newItem(inventorySlot.getItem());
 					inventorySlot.removeItem();
 					//inventorySlot.newItem(saveSlot.getItem());
+				}
+				else {
+					inventorySlot.getItem().use();
+					inventorySlot.removeItem();
 				}
 			}
 		};

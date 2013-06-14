@@ -1,5 +1,7 @@
 package progprak.gruppe53.items;
 
+import progprak.gruppe53.game.Game;
+
 
 public class LeatherArmor extends Armor {
 
@@ -8,15 +10,15 @@ public class LeatherArmor extends Armor {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public LeatherArmor(int x, int y) {
-		super(x, y, "");
+	public LeatherArmor(int x, int y,Game game) {
+		super(x, y, "",game);
 		armorLVL = 2;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public LeatherArmor()
+	public LeatherArmor(Game game)
 	{
-		super(0,0,"");
+		super(0,0,"",game);
 		armorLVL = 2;
 	}
 

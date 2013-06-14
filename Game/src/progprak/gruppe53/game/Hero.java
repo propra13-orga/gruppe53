@@ -195,4 +195,10 @@ public class Hero extends CombatObject{
 		super.doneKill(combatObject);
 		money += 50;
 	}
+	public void addHealth(int aHp) {
+		health += aHp;
+		if(health>maxHealth){
+			health = maxHealth;
+		}
+	}
 }

@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.Game;
 import progprak.gruppe53.game.Hero;
 import progprak.gruppe53.game.PickupCollisionEvent;
 import progprak.gruppe53.game.Sprite;
@@ -14,9 +15,11 @@ abstract public class Item extends Sprite implements Collidable {
 	protected CollisionEvent collisionEvent;
 	protected Hero owner;
 	protected int price = 0;
+	protected Game game;
 	
-	public Item(int x, int y, String imagePath) {
+	public Item(int x, int y, String imagePath,Game game) {
 		super(x, y, imagePath);
+		this.game = game;
 		collisionEvent = new PickupCollisionEvent(this);
 	}
 	public CollisionEvent getCollisionEvent(){
@@ -33,6 +36,9 @@ abstract public class Item extends Sprite implements Collidable {
 	 */
 	public int getPrice() {
 		return price;
+	}
+	public void use(){
+		
 	}
 
 }

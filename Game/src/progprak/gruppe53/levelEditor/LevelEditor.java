@@ -59,7 +59,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	//private static final String SELECT = "select";
 	
 	/*
-	Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+	Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 	private String labelString1 = "X: ";
 	private String labelString2 = "Y: ";
 	private String labelString3 = "XSpeed: ";
@@ -85,7 +85,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	
 	private JPanel tools, level, separator, attributeBar;
 	/*
-	Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+	Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 	private JTextField attribute1, attribute2, attribute3, attribute4, attribute5, attribute6;
 	private JLabel attributeLabel1, attributeLabel2, attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
 	*/
@@ -104,7 +104,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 
 	private void setupEditor() {
-		// Setzt Größe und Position des Fensters und der nötigen Panels
+		// Setzt Grï¿½ï¿½e und Position des Fensters und der nï¿½tigen Panels
 		sprites = new Vector<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
@@ -118,7 +118,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		tools = new JPanel();
 		attributeBar = new JPanel();
 		/*
-		Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+		Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		attribute1 = new JTextField(10);
 		attribute2 = new JTextField(10);
 		attribute3 = new JTextField(10);
@@ -145,7 +145,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		level.addMouseListener(this);
 
 		/*
-		Rest vom alten Layout - vorerst nicht mehr nötig
+		Rest vom alten Layout - vorerst nicht mehr nï¿½tig
 		JPanel editorPanel = new JPanel();
 		editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.X_AXIS));
 		editorPanel.add(level);
@@ -159,7 +159,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		add(tools,BorderLayout.EAST);
 		add(attributeBar,BorderLayout.SOUTH);
 		/*
-		Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+		Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		attributeBar.add(attributeLabel1);
 		attributeBar.add(attribute1);
 		attributeBar.add(attributeLabel2);
@@ -240,7 +240,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		edit.setActionCommand(EDIT);
 		edit.addActionListener(this);
 		tools.add(edit);
-		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+		/* Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		JButton select = new JButton("Sel");
 		select.setPreferredSize(new Dimension(66,42));
 		select.setActionCommand(SELECT);
@@ -349,7 +349,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
-		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+		/* Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (actionCommand == SELECT) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
@@ -360,7 +360,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//Führt je nachdem welcher Button zuvor geklickt wurde die passende Aktion aus
+		//Fï¿½hrt je nachdem welcher Button zuvor geklickt wurde die passende Aktion aus
 		if (currentSprite == OBJECT_WALL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new Wall(e.getX(),e.getY()));
@@ -455,7 +455,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (currentSprite == OBJECT_JACKET) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
-				sprites.add(new ClothArmor(e.getX(),e.getY()));
+				sprites.add(new ClothArmor(e.getX(),e.getY(), null));
 			}
 		}
 		else if (currentSprite == DELETE) {
@@ -581,7 +581,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				}
 			}
 		}
-		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
+		/* Zum Auswï¿½hlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (currentSprite == SELECT){
 			int x = e.getX();
 			int y = e.getY();
@@ -648,7 +648,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		
 	}
 	private boolean checkCollision(int x, int y, int width, int heigth){
-		//Prüft beim setzen von Sprites aufs Feld ob dort nicht bereits etwas ist, falls ja wird kein neuer Sprite gesetzt
+		//Prï¿½ft beim setzen von Sprites aufs Feld ob dort nicht bereits etwas ist, falls ja wird kein neuer Sprite gesetzt
 		for(int i=0;i<sprites.size();i++){
 			Sprite sprite = sprites.get(i);
 			int size = 32;

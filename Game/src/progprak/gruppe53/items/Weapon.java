@@ -2,7 +2,6 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.Game;
-import progprak.gruppe53.game.Hero;
 
 abstract public class Weapon extends Item implements Collidable {
 
@@ -24,11 +23,10 @@ abstract public class Weapon extends Item implements Collidable {
 	protected int ww = 0;
 	protected int wh = 0;
 
-	private Game game;
+
 	
 	public Weapon(int x, int y, String imagePath,Game game) {
-		super(x, y, imagePath);
-		this.game = game;
+		super(x, y, imagePath, game);
 	}
 
 
