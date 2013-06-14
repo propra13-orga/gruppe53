@@ -4,7 +4,7 @@ public class FireballTrap extends CombatObject implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
-	public FireballTrap(int x, int y, Game game, int dx, int dy, int reSpX, int reSpY){
+	public FireballTrap(int x, int y, Game game, double dx, double dy, int reSpX, int reSpY){
 		super(x,y,"images/FireballRed.png", game);
 			this.width = 16;
 			this.height = 16;

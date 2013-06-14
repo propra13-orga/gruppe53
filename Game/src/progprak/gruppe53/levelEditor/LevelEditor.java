@@ -701,8 +701,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 	public void addSprite(String spriteType){
 		if (spriteType == "trapFireball"){
-			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute1,AttributeDialog.attribute2,AttributeDialog.attribute3,AttributeDialog.attribute4));
-			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + ";" + AttributeDialog.attribute3 + ":" + AttributeDialog.attribute4 + "</fireballtrap>" + "\n";
+			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,AttributeDialog.attribute1,AttributeDialog.attribute2));
+			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute6 + ":" + AttributeDialog.attribute7 + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + "</fireballtrap>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}

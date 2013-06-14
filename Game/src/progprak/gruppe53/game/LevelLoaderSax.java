@@ -146,8 +146,8 @@ public class LevelLoaderSax extends DefaultHandler {
 		String fireballTrapRespawn[] = fireballTrapData[2].split(":");
 		int xLocation = Integer.parseInt(fireballTrapLocation[0]);
 		int yLocation = Integer.parseInt(fireballTrapLocation[1]);
-		int xMovement = Integer.parseInt(fireballTrapMovement[0]);
-		int yMovement = Integer.parseInt(fireballTrapMovement[1]);
+		double xMovement = Double.parseDouble(fireballTrapMovement[0]);
+		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
 		sprites.add(new FireballTrap(xLocation, yLocation, game, xMovement, yMovement, xRespawn, yRespawn));		
