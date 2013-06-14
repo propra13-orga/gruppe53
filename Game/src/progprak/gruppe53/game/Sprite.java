@@ -39,14 +39,15 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 
 	@Override
 	public void drawObjects(Graphics g) {
-		AffineTransform trans = AffineTransform.getRotateInstance( Math.toRadians(90),image.getWidth()/2,image.getHeight()/2);
+		/*AffineTransform trans = AffineTransform.getRotateInstance( Math.toRadians(90),image.getWidth()/2,image.getHeight()/2);
         BufferedImage dest = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
         
         Graphics2D gd = dest.createGraphics();
         gd.drawImage(image, trans, null);
 
 		g.drawImage(dest, (int)x, (int)y, null);
-        gd.dispose();
+        gd.dispose();*/
+        g.drawImage(image, (int)x, (int)y, null);
 	}
 	public void move(long delta){
 		x = x+dx;
