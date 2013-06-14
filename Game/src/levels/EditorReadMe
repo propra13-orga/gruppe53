@@ -1,5 +1,10 @@
 Jeder Level kann im Moment nur ein Goal, einen Spawn und einen LevelSwitch enthalten.
 Achtet darauf nicht mehrere zu platzieren, sonst funktionieren weder der Editor noch der Level!
+für alle Funktionen im Editor gilt: Klicks werden nur registriert wenn die Maus gedrückt und wieder losgelassen wird ohne dass sie sich
+dazwischen bewegt! Bitte darauf achten!
+Der Rechte Wand-Button ist zum platzieren mehrerer Wände in einer Reihe. Um ihn zu benutzen wird erst die erste Wand platziert und dann mit
+einem zweiten Klick der Punkt bestimmt bis wohin die Wand reichen soll. Der Editor platziert dann automatisch weitere Wände in diese Richtung bis zum
+gewählten Punkt!
 Zum Laden und für LevelSwitches muss die entsprechende Datei im Ordner Game/src/levels liegen.
 Save speichert die neue Datei in diesen Ordner.
 Beim Laden, Speichern und LevelSwitch muss nur der Name der Datei selbst eingegeben werden, Groß/Kleinschreibung wird beachtet.
