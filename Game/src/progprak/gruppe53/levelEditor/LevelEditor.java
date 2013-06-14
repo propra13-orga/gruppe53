@@ -26,7 +26,6 @@ import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.ImageLoader;
-import progprak.gruppe53.game.LevelLoaderSax;
 import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
@@ -39,8 +38,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final long serialVersionUID = 1;
 
 	private static final String WINDOW_NAME = "LevelEditor";
-	private static final int DEFAULT_WINDOW_WIDTH = 900;
-	private static final int DEFAULT_WINDOW_HEIGHT = 830;
+	private static final int DEFAULT_WINDOW_WIDTH = 980;
+	private static final int DEFAULT_WINDOW_HEIGHT = 698;
 	private static final int GAMEPANEL_WIDTH = 800;
 	private static final int GAMEPANEL_HEIGHT = 640;
 	private static final int SEPARATOR_WIDTH = 20;
@@ -86,8 +85,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private Vector<Sprite> sprites;
 	private String currentSprite = "";
 	private String saveFileName = "";
-	private String loadFileName = "";
-
+	
 	public LevelEditor() {
 		super(WINDOW_NAME);
 		setupEditor();
@@ -113,7 +111,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attribute4 = new JTextField(10);
 		attribute5 = new JTextField(10);
 		attribute6 = new JTextField(10);
-		
+		attributeLabel1 = new JLabel(labelString1);
+		attributeLabel2 = new JLabel(labelString2);
+		JButton saveAttributes = new JButton("Save");
+		saveAttributes.setPreferredSize(new Dimension(66,20));
+				
 		
 		separator.setPreferredSize(new Dimension(SEPARATOR_WIDTH,GAMEPANEL_HEIGHT));
 		tools.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH - GAMEPANEL_WIDTH - SEPARATOR_WIDTH, GAMEPANEL_HEIGHT));
@@ -138,12 +140,15 @@ public class LevelEditor extends JFrame implements ActionListener,
 		add(separator,BorderLayout.CENTER);
 		add(tools,BorderLayout.EAST);
 		add(attributeBar,BorderLayout.SOUTH);
+		attributeBar.add(attributeLabel1);
 		attributeBar.add(attribute1);
+		attributeBar.add(attributeLabel2);
 		attributeBar.add(attribute2);
 		attributeBar.add(attribute3);
 		attributeBar.add(attribute4);
 		attributeBar.add(attribute5);
 		attributeBar.add(attribute6);
+		attributeBar.add(saveAttributes);
 		
 	}
 
@@ -296,6 +301,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			new SaveDialog(this);
+			currentSprite = actionCommand;
 		}
 		else if (actionCommand == DELETE) {
 			c = Cursor.getDefaultCursor();
@@ -306,6 +312,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			new LoadDialog(this);
+			currentSprite = actionCommand;
 		}
 		else if (actionCommand == SELECT) {
 			c = Cursor.getDefaultCursor();
@@ -457,7 +464,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 					size = 16;
 					
 				}
-				if(sprite instanceof Wall){
+				if(sprite instanceof FireballTrap){
 				if(sprite.getX()<=x && sprite.getX()+size>x){
 					if(sprite.getY()<=y && sprite.getY()+size>y){
 						

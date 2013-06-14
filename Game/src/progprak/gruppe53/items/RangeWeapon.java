@@ -31,7 +31,7 @@ public class RangeWeapon extends Weapon {
 		drawWeapon(attack);
 		if((now-last) >= (recharge)){
 			super.attack(attack);
-			if(attack)
+			if(attack && game.getGameLogic().getHero().getMana() >= manaCost)
 			{
 				game.getGameLogic().addSprite(new FireballTrap((int)game.getGameLogic().getHero().getX(),
 					(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx()*2.5,
