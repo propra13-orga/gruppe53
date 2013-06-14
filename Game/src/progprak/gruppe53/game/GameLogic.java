@@ -3,9 +3,6 @@ package progprak.gruppe53.game;
 import java.util.Vector;
 import java.util.ListIterator;
 
-import progprak.gruppe53.items.ClothArmor;
-import progprak.gruppe53.items.FireStaff;
-import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
 
 public class GameLogic {
@@ -26,7 +23,7 @@ public class GameLogic {
 	
 	private void doInitalizations(){
 		//hero = new Hero(0, 0, game, new WoodenSword() , new ClothArmor());
-		hero = new Hero(0, 0, game, new PinkGlitterWand(game) , new ClothArmor());
+		hero = new Hero(0, 0, game,game.getInfoWindow().getInventoryPanel());
 		
 	}
 	

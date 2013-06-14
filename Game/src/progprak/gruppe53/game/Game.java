@@ -74,10 +74,10 @@ public class Game implements Runnable {
 	private void doInitalizations() {
 		keyboardInput = new KeyboardInput();
 		mainPane = new JLayeredPane();
-		gameLogic = new GameLogic(this);
 		gamePanel = new GamePanel();
 		menu = new Menu(this);
-		infoWindow = new InfoWindow(this);
+		infoWindow = new InfoWindow(this);		
+		gameLogic = new GameLogic(this);
 		mainPane.setPreferredSize(gamePanel.getPreferredSize());
 		gamePanel.setLocation(0, 0);
 		gamePanel.setSize(gamePanel.getPreferredSize());
@@ -111,7 +111,7 @@ public class Game implements Runnable {
 				
 				
 					gameLogic.move(delta);
-				
+					gameLogic.getHero().recoverMana();
 				}
 				gamePanel.render(delta,gameLogic.getActors());
 				menu.render();

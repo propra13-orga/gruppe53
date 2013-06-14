@@ -21,7 +21,7 @@ public class FireStaff extends RangeWeapon{
 	
 	public FireStaff(Game game){
 		super(0,0, "",game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}

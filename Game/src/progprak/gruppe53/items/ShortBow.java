@@ -23,7 +23,7 @@ public class ShortBow extends RangeWeapon{
 	
 	public ShortBow(Game game){
 		super(0,0, "", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}

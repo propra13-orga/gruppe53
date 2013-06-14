@@ -19,7 +19,7 @@ public class WoodenSword extends MeleeWeapons {
 	}
 	public WoodenSword(Game game){
 		super(0,0, "images/sword.png", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}
@@ -30,7 +30,7 @@ public class WoodenSword extends MeleeWeapons {
 		xOffset = 26;
 		yOffset = 22;
 		notAttackCe = collisionEvent;
-		attackCe = new DamageCollisionEvent(1, 1);
+		attackCe = new DamageCollisionEvent(1, 1,this);
 	}
 	@Override
 	public void doLogic(long delta){

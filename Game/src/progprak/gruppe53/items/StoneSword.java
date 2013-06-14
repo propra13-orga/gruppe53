@@ -18,7 +18,7 @@ public class StoneSword extends MeleeWeapons {
 	}
 	public StoneSword(Game game){
 		super(0,0, "images/sword.png", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}
@@ -27,7 +27,7 @@ public class StoneSword extends MeleeWeapons {
 		ww = 16;
 		wh = 7;
 		notAttackCe = collisionEvent;
-		attackCe = new DamageCollisionEvent(2, 1);
+		attackCe = new DamageCollisionEvent(2, 1,this);
 	}
 	@Override
 	public void doLogic(long delta){

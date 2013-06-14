@@ -21,16 +21,17 @@ public class PinkGlitterWand extends RangeWeapon{
 	
 	public PinkGlitterWand(Game game){
 		super(0,0, "images/pinkwand.png", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}
 	
 	private void doInitalizations(){
 		price = 100;
-		manaCost = 1;
+		manaCost = 50;
 		xOffset = 26;
 		yOffset = 22;
+		recharge = (long) ((2L)*1e8);
 	}
 
 	@Override

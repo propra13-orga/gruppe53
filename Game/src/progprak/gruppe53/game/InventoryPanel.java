@@ -5,7 +5,9 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.Item;
+import progprak.gruppe53.items.PinkGlitterWand;
 
 public class InventoryPanel extends JPanel {
 
@@ -14,6 +16,9 @@ public class InventoryPanel extends JPanel {
 */
 private static final long serialVersionUID = 1L;
 
+private InventorySlot	saveSlot;
+private InventorySlot	weaponSlot;
+private InventorySlot 	armorSlot;
 private InventorySlot[] inventorySlot;
 
 	private final int inventorySlots = 10;
@@ -29,6 +34,12 @@ private InventorySlot[] inventorySlot;
 	
 	private void doInitalizations(){
 		setLayout(new FlowLayout());
+		weaponSlot = new InventorySlot(new PinkGlitterWand(game));
+		this.add(weaponSlot);
+		armorSlot = new InventorySlot(new ClothArmor());
+		saveSlot = new InventorySlot(new ClothArmor());
+		this.add(armorSlot);
+		
 		inventorySlot = new InventorySlot[10];
 		useAction = new SlotAction() {
 			
@@ -86,7 +97,7 @@ private InventorySlot[] inventorySlot;
 		for(int i=0; i<inventorySlots;i++)
 		{
 			inventorySlot[i].removeItem();
-			inventorySlot[i].repaint();
+			//inventorySlot[i].repaint();
 		}
 	}
 	@Override
@@ -110,7 +121,26 @@ private InventorySlot[] inventorySlot;
 	}
 	public void slotsUse() {
 		for(int i=0;i<inventorySlots;i++){
-			inventorySlot[i].setSlotAction(useAction);
+			inventorySlot[i].setSlotAction(new SlotAction() {
+			
+				@Override
+				public void slotClicked(InventorySlot inventorySlot) {
+					if(inventorySlot.isWeapon()){
+						saveSlot.newItem(weaponSlot.getWeapon());
+						weaponSlot.removeItem();
+						weaponSlot.newItem(inventorySlot.getWeapon());
+						inventorySlot.removeItem();
+						inventorySlot.newItem(saveSlot.getItem());
+					}
+					if(inventorySlot.isArmor()){
+						saveSlot.newItem(armorSlot.getArmor());
+						armorSlot.removeItem();
+						armorSlot.newItem(inventorySlot.getArmor());
+						inventorySlot.removeItem();
+						inventorySlot.newItem(saveSlot.getItem());
+					}
+				}
+			});	 
 		}
 	}
 
@@ -119,5 +149,12 @@ private InventorySlot[] inventorySlot;
 		game.getGameLogic().getHero().setMoney(game.getGameLogic().getHero().getMoney() + slot.getItem().getPrice());
 		slot.removeItem();
 	}
-
+	
+	public InventorySlot getWeaponSlot(){
+		return weaponSlot;
+	}
+	
+	public InventorySlot getArmorSlot(){
+		return armorSlot;
+	}
 }

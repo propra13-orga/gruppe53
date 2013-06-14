@@ -34,6 +34,14 @@ public class FireballTrap extends CombatObject implements Collidable{
 		super.handleMassiveEvent(ce);
 		game.getGameLogic().removeSprite(this);
 	}
+	@Override
+	protected void handleDamageEvent(CollisionEvent ce) {
+	}
+	@Override
+	protected void doneDamage() {
+		super.doneDamage();
+		game.getGameLogic().removeSprite(this);
+	}
 
 	
 }
