@@ -55,6 +55,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String SAVE = "save";
 	private static final String DELETE = "delete";
 	private static final String LOAD = "load";
+	private static final String EDIT = "edit";
 	//private static final String SELECT = "select";
 	
 	/*
@@ -72,8 +73,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private int yPosition;
 	private int multiWallStartX = 0;
 	private int multiWallStartY = 0;
+	private int deleteNumber;
 	private boolean multiWallStarted = false;
 	public static String saveData[][]=new String[801][641];
+	public boolean isEdited = false;
 	
 	public static void main(String[] args) {
 		new LevelEditor();
@@ -232,6 +235,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 		load.setActionCommand(LOAD);
 		load.addActionListener(this);
 		tools.add(load);
+		JButton edit = new JButton("Edit");
+		edit.setPreferredSize(new Dimension(66,42));
+		edit.setActionCommand(EDIT);
+		edit.addActionListener(this);
+		tools.add(edit);
 		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
 		JButton select = new JButton("Sel");
 		select.setPreferredSize(new Dimension(66,42));
@@ -334,6 +342,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			new LoadDialog(this);
+			currentSprite = actionCommand;
+		}
+		else if (actionCommand == EDIT) {
+			c = Cursor.getDefaultCursor();
+			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
 		/* Zum Auswählen von Sprites am Feld - unfertig, vorerst deaktiviert
@@ -445,7 +458,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				sprites.add(new ClothArmor(e.getX(),e.getY()));
 			}
 		}
-		else if (currentSprite == DELETE){
+		else if (currentSprite == DELETE) {
 			int x = e.getX();
 			int y = e.getY();
 			for(int i=0;i<sprites.size();i++){
@@ -479,6 +492,91 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()==y && sprite.getY()==y+1){
 						
 						sprites.remove(i);
+					}
+				}
+			}
+		}
+		else if (currentSprite == EDIT) {
+			int x = e.getX();
+			int y = e.getY();
+			for(int i=0;i<sprites.size();i++){
+				Sprite sprite = sprites.get(i);
+				int size = 32;
+				
+				if(sprite instanceof FireballTrap){
+					size = 16;
+					
+				}
+				
+				if(sprite.getX()<=x && sprite.getX()+size>x){
+					if(sprite.getY()<=y && sprite.getY()+size>y){
+						deleteNumber = i;
+						isEdited = true;
+						if(sprite instanceof FireballTrap){							
+							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						else if(sprite instanceof PortalEntrance){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+						else if(sprite instanceof LevelSwitch){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+					}
+					if(sprite.getY()>=y && sprite.getY()<y+1){
+						deleteNumber = i;
+						isEdited = true;
+						if(sprite instanceof FireballTrap){							
+							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						else if(sprite instanceof PortalEntrance){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+						else if(sprite instanceof LevelSwitch){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+					}
+				}
+				if(sprite.getX()>=x && sprite.getX()<x+1){
+					if(sprite.getY()>=y && sprite.getY()<y+1){
+						deleteNumber = i;
+						isEdited = true;
+						if(sprite instanceof FireballTrap){							
+							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						else if(sprite instanceof PortalEntrance){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+						else if(sprite instanceof LevelSwitch){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+					}
+					if(sprite.getY()<=y && sprite.getY()+size>y){
+						deleteNumber = i;
+						isEdited = true;
+						if(sprite instanceof FireballTrap){							
+							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						else if(sprite instanceof PortalEntrance){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+						else if(sprite instanceof LevelSwitch){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+					}
+				}
+				if(sprite.getX()==x && sprite.getX()==x+1){
+					if(sprite.getY()==y && sprite.getY()==y+1){
+						deleteNumber = i;
+						isEdited = true;
+						if(sprite instanceof FireballTrap){							
+							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						else if(sprite instanceof PortalEntrance){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
+						else if(sprite instanceof LevelSwitch){							
+							new AttributeDialog(this,ENEMY_GHOST);
+						}
 					}
 				}
 			}
@@ -620,5 +718,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}
+	}
+	public void deleteEdited() {
+		sprites.remove(deleteNumber);
 	}
 }

@@ -10,6 +10,7 @@
 	<traps>
 		<trap>400:400</trap>-
 	</traps>
+	<levelswitch>500:500;levels/TestLevel.xml</levelswitch>
 	<enemies>
 		<enemy type="ghost">300:300</enemy>
 		<enemy type="ghost">400:300</enemy>
