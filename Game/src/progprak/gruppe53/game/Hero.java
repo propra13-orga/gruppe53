@@ -189,7 +189,10 @@ public class Hero extends CombatObject{
 		if(mana < maxMana)
 		mana = mana+1;
 	}
+
 	@Override
-	protected void handleDamageEvent(CollisionEvent ce) {
+	protected void doneKill(CombatObject combatObject) {
+		super.doneKill(combatObject);
+		money += 50;
 	}
 }
