@@ -59,7 +59,6 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		if(faction != de.getFaction()){
 			long current = System.nanoTime();
 			if((current - lastDamage)> 1e9){
-				System.out.println(de.getDamage()	);
 				lastDamage = current;
 				((CombatObject)de.getActor()).doneDamage();
 				if((health -= de.getDamage()) <= 0){
@@ -97,7 +96,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 				//game.restart();
 			}
 			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
-				//game.switchLevel(ce.getNewLevel());
+				game.switchLevel(ce.getNewLevel());
 			}
 		}
 		
