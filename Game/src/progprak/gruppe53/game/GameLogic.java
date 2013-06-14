@@ -3,6 +3,7 @@ package progprak.gruppe53.game;
 import java.util.Vector;
 import java.util.ListIterator;
 
+import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
 
 public class GameLogic {
@@ -56,8 +57,9 @@ public class GameLogic {
 		Vector<Sprite> sp = new Vector<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
-		sp.add(hero.getWeapon());
+		//sp.add(hero.getWeapon());
 		sp.add(new WoodenSword(60,60, game));
+		sp.add(new PinkGlitterWand(80,80, game));
 	}
 
 	public Hero getHero() {

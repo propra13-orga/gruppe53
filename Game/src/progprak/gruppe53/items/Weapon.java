@@ -10,7 +10,6 @@ abstract public class Weapon extends Item implements Collidable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected int damage;
 
 	protected int manaCost = 0;
 	
@@ -29,9 +28,7 @@ abstract public class Weapon extends Item implements Collidable {
 		this.game = game;
 	}
 
-	public int getdamage(){
-		return damage;
-	}
+
 	public void attack(boolean attack){
 		if(attack && game.getGameLogic().getHero().getMana() > manaCost){
 			game.getGameLogic().getHero().drainMana(manaCost);

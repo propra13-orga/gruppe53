@@ -31,9 +31,11 @@ public class Hero extends CombatObject{
 		maxMana = 1000;
 		mana = maxMana;
 		this.inventory = inventory;
-		weapon = inventory.getWeaponSlot().getWeapon();
-		armor = inventory.getArmorSlot().getArmor();
-		this.weapon.setOwner(this);
+		weapon = (Weapon) inventory.getWeaponSlot().getItem();
+		armor = (Armor) inventory.getArmorSlot().getItem();
+		if(weapon!= null){
+			this.weapon.setOwner(this);
+		}
 		doInitalizations();
 	} 
 	protected void initCollisionEvent() {
@@ -43,6 +45,12 @@ public class Hero extends CombatObject{
 	@Override
 	public void doLogic(long delta)
 	{
+		weapon = (Weapon) inventory.getWeaponSlot().getItem();
+		if(weapon!= null){
+			this.weapon.setOwner(this);
+		}
+		armor = (Armor) inventory.getArmorSlot().getItem();		
+
 		if(keyboardInput.isUp()){
 			dy = lastdy = -1;
 			lastdx = 0;
@@ -90,12 +98,8 @@ public class Hero extends CombatObject{
 		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
 			dx = 0;
 		}
-		
-		if(keyboardInput.isAttack()){
-			inventory.getWeaponSlot().getWeapon().attack(true);
-		}
-		else{
-			inventory.getWeaponSlot().getWeapon().attack(false);
+		if(weapon!=null){
+			weapon.attack(keyboardInput.isAttack());
 		}
 	}
 	
@@ -149,9 +153,9 @@ public class Hero extends CombatObject{
 	}
 	protected void handlePickupEvent(CollisionEvent ce){
 		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
-		System.out.println(pe.getItem());
 		InventorySlot slot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null){
+			pe.getItem().setOwner(this);
 			game.getGameLogic().removeSprite(pe.getItem());
 			game.getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
 			handleEvents = false;
@@ -184,5 +188,8 @@ public class Hero extends CombatObject{
 	public void recoverMana(){
 		if(mana < maxMana)
 		mana = mana+1;
+	}
+	@Override
+	protected void handleDamageEvent(CollisionEvent ce) {
 	}
 }

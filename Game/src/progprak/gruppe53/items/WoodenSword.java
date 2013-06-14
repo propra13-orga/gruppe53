@@ -30,7 +30,7 @@ public class WoodenSword extends MeleeWeapons {
 		xOffset = 26;
 		yOffset = 22;
 		notAttackCe = collisionEvent;
-		attackCe = new DamageCollisionEvent(1, 1,this);
+		damage = 1;
 	}
 	@Override
 	public void doLogic(long delta){

@@ -41,7 +41,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	
 	public void testForCollision(Game game){
-		Vector<Sprite> cs = game.testForCollision(getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
+		Vector<Sprite> cs = game.testForCollision(this,getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
 		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
 			Sprite s = it.next();
 			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
@@ -59,6 +59,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		if(faction != de.getFaction()){
 			long current = System.nanoTime();
 			if((current - lastDamage)> 1e9){
+				System.out.println(de.getDamage()	);
 				lastDamage = current;
 				((CombatObject)de.getActor()).doneDamage();
 				if((health -= de.getDamage()) <= 0){

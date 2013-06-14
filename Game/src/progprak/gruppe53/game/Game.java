@@ -127,17 +127,19 @@ public class Game implements Runnable {
 	}
 		
 
-    public Vector<Sprite> testForCollision(double maxX,double minX,double maxY,double minY, double dx, double dy) {
+    public Vector<Sprite> testForCollision(Sprite a, double maxX,double minX,double maxY,double minY, double dx, double dy) {
     	Vector<Sprite> cs = new Vector<Sprite>();
     	for(ListIterator<Sprite> it = gameLogic.getActors().listIterator();it.hasNext();){
 			Sprite s = it.next();
-			if(s instanceof Collidable && collisionContains(s, maxX+dx, minX+dx, maxY, minY)){
-				((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
-				cs.add(s);
-			}
-			if(s instanceof Collidable && collisionContains(s, maxX, minX, maxY+dy, minY+dy)){
-				((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
-				cs.add(s);
+			if(a!=s){
+				if(s instanceof Collidable && collisionContains(s, maxX+dx, minX+dx, maxY, minY)){
+					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
+					cs.add(s);
+				}
+				if(s instanceof Collidable && collisionContains(s, maxX, minX, maxY+dy, minY+dy)){
+					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
+					cs.add(s);
+				}
 			}
 		}
 		return cs;

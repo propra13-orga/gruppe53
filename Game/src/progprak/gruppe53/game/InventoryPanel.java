@@ -5,9 +5,9 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import progprak.gruppe53.items.ClothArmor;
+import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Item;
-import progprak.gruppe53.items.PinkGlitterWand;
+import progprak.gruppe53.items.Weapon;
 
 public class InventoryPanel extends JPanel {
 
@@ -16,10 +16,10 @@ public class InventoryPanel extends JPanel {
 */
 private static final long serialVersionUID = 1L;
 
-private InventorySlot	saveSlot;
-private InventorySlot	weaponSlot;
-private InventorySlot 	armorSlot;
-private InventorySlot[] inventorySlot;
+	//private InventorySlot	saveSlot;
+	private InventorySlot	weaponSlot;
+	private InventorySlot 	armorSlot;
+	private InventorySlot[] inventorySlot;
 
 	private final int inventorySlots = 10;
 	private Game game;
@@ -34,10 +34,10 @@ private InventorySlot[] inventorySlot;
 	
 	private void doInitalizations(){
 		setLayout(new FlowLayout());
-		weaponSlot = new InventorySlot(new PinkGlitterWand(game));
+		weaponSlot = new InventorySlot(null);
 		this.add(weaponSlot);
-		armorSlot = new InventorySlot(new ClothArmor());
-		saveSlot = new InventorySlot(new ClothArmor());
+		armorSlot = new InventorySlot(null);
+		//saveSlot = new InventorySlot(new ClothArmor());
 		this.add(armorSlot);
 		
 		inventorySlot = new InventorySlot[10];
@@ -45,7 +45,21 @@ private InventorySlot[] inventorySlot;
 			
 			@Override
 			public void slotClicked(InventorySlot inventorySlot) {
-				
+				if(inventorySlot.getItem() instanceof Weapon){
+					Item tmp = weaponSlot.getItem();
+					weaponSlot.newItem(inventorySlot.getItem());
+					game.getGameLogic().removeSprite(tmp);
+					game.getGameLogic().addSprite(inventorySlot.getItem());
+					inventorySlot.newItem(tmp);
+					//inventorySlot.newItem(saveSlot.getItem());
+				}
+				if(inventorySlot.getItem() instanceof Armor){
+					//saveSlot.newItem(armorSlot.getArmor());
+					//armorSlot.removeItem();
+					armorSlot.newItem(inventorySlot.getItem());
+					inventorySlot.removeItem();
+					//inventorySlot.newItem(saveSlot.getItem());
+				}
 			}
 		};
 
@@ -121,26 +135,7 @@ private InventorySlot[] inventorySlot;
 	}
 	public void slotsUse() {
 		for(int i=0;i<inventorySlots;i++){
-			inventorySlot[i].setSlotAction(new SlotAction() {
-			
-				@Override
-				public void slotClicked(InventorySlot inventorySlot) {
-					if(inventorySlot.isWeapon()){
-						saveSlot.newItem(weaponSlot.getWeapon());
-						weaponSlot.removeItem();
-						weaponSlot.newItem(inventorySlot.getWeapon());
-						inventorySlot.removeItem();
-						inventorySlot.newItem(saveSlot.getItem());
-					}
-					if(inventorySlot.isArmor()){
-						saveSlot.newItem(armorSlot.getArmor());
-						armorSlot.removeItem();
-						armorSlot.newItem(inventorySlot.getArmor());
-						inventorySlot.removeItem();
-						inventorySlot.newItem(saveSlot.getItem());
-					}
-				}
-			});	 
+			inventorySlot[i].setSlotAction(useAction);	 
 		}
 	}
 

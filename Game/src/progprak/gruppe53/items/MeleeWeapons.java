@@ -1,7 +1,9 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.Hero;
 
 abstract public class MeleeWeapons extends Weapon {
 
@@ -11,6 +13,7 @@ abstract public class MeleeWeapons extends Weapon {
 	private static final long serialVersionUID = -9179616171179500701L;
 	protected CollisionEvent notAttackCe;
 	protected CollisionEvent attackCe;
+	protected int damage;
 	
 	public MeleeWeapons(int x, int y, String imagePath,Game game) {
 		super(x, y, imagePath, game);
@@ -26,9 +29,8 @@ abstract public class MeleeWeapons extends Weapon {
 
 	@Override
 	public void attack(boolean attack) {
-
+		super.attack(attack);
 		if(attack){
-
 			collisionEvent = attackCe;
 		}
 		else {
@@ -36,7 +38,11 @@ abstract public class MeleeWeapons extends Weapon {
 			collisionEvent = notAttackCe;
 		}
 	}
-
+	@Override
+	public void setOwner(Hero owner) {
+		super.setOwner(owner);
+		attackCe = new DamageCollisionEvent(damage, owner.getFaction(), owner);
+	}
 
 
 }

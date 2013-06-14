@@ -7,9 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Item;
-import progprak.gruppe53.items.Weapon;
 
 public class InventorySlot extends JPanel{
 
@@ -18,8 +16,6 @@ public class InventorySlot extends JPanel{
 	private boolean used;
 	private Item item;
 	private SlotAction slotAction;
-	private Weapon weapon;
-	private Armor armor;
 
 	public InventorySlot(SlotAction sa){
 		slotAction = sa;
@@ -34,7 +30,9 @@ public class InventorySlot extends JPanel{
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				slotAction.slotClicked((InventorySlot) e.getSource());
+				if(slotAction != null){
+					slotAction.slotClicked((InventorySlot) e.getSource());
+				}
 			}
 			
 			@Override
@@ -57,13 +55,6 @@ public class InventorySlot extends JPanel{
 		});
 	}
 	
-	public InventorySlot(Weapon weapon){
-		this.weapon = weapon;
-	}
-	
-	public InventorySlot(Armor armor){
-		this.armor = armor;
-	}
 
 
 	/**
@@ -107,23 +98,4 @@ public class InventorySlot extends JPanel{
 		this.slotAction = slotAction;
 	}
 	
-	public Weapon getWeapon(){
-		return weapon;
-	}
-	
-	public Armor getArmor(){
-		return armor;
-	}
-	
-	public boolean isWeapon(){
-		if(weapon != null)
-			return true;
-		return false;
-	}
-	
-	public boolean isArmor(){
-		if(armor != null)
-			return true;
-		return false;
-	}
 }
