@@ -128,10 +128,17 @@ public class AttributeDialog extends JDialog implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == btnString2){
+			if (le.isEdited == true) {
+				le.isEdited = false;
+			}
 			dispose();
 			
 		}
 		else if(e.getActionCommand() == btnString1){
+			if (le.isEdited == true) {
+				le.deleteEdited();
+				le.isEdited = false;
+			}
 			if (spriteType == "trapFireball") {
 				attribute1 = Integer.parseInt(textField1.getText());
 				attribute2 = Integer.parseInt(textField2.getText());
