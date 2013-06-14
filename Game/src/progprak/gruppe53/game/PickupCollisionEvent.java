@@ -7,7 +7,7 @@ public class PickupCollisionEvent extends CollisionEvent {
 	private Item item;
 	
 	public PickupCollisionEvent(Item item) {
-		super(CollisionEvent.EVENT_PICKUP);
+		super(CollisionEvent.EVENT_PICKUP,item);
 		this.item = item;
 	}
 	

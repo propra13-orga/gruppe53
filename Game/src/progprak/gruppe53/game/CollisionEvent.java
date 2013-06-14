@@ -20,9 +20,11 @@ public class CollisionEvent {
 	
 	private int newX,newY;
 	private String newLevel;
+	protected Collidable actor;
 	
-	public CollisionEvent(int event){
+	public CollisionEvent(int event,Collidable actor){
 		this.event = event;
+		this.actor = actor;
 	}
 	public int getEvent(){
 		return event;
@@ -86,5 +88,11 @@ public class CollisionEvent {
 	 */
 	public int getDirection() {
 		return direction;
+	}
+	/**
+	 * @return the actor
+	 */
+	public Collidable getActor() {
+		return actor;
 	}
 }

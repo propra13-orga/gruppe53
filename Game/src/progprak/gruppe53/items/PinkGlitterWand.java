@@ -21,7 +21,7 @@ public class PinkGlitterWand extends RangeWeapon{
 	
 	public PinkGlitterWand(Game game){
 		super(0,0, "images/pinkwand.png", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}

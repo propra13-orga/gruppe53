@@ -18,7 +18,7 @@ public class IronSword extends Weapon {
 	}
 	public IronSword(Game game){
 		super(0,0, "images/sword.png", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();
 	}
@@ -27,7 +27,7 @@ public class IronSword extends Weapon {
 		ww = 16;
 		wh = 7;
 		notAttackCe = collisionEvent;
-		attackCe = new DamageCollisionEvent(3, 1);
+		attackCe = new DamageCollisionEvent(3, 1,this);
 	}
 	@Override
 	public void doLogic(long delta){

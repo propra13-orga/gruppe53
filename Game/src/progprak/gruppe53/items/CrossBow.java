@@ -23,7 +23,7 @@ public class CrossBow extends Weapon{
 	
 	public CrossBow(Game game){
 		super(0,0, "", game);
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING, this);
 		draw = false;
 		doInitalizations();
 	}

@@ -6,8 +6,8 @@ public class DamageCollisionEvent extends CollisionEvent {
 	private int damage;
 	private int faction;
 	
-	public DamageCollisionEvent(int damage, int faction) {
-		super(CollisionEvent.EVENT_DAMAGE);
+	public DamageCollisionEvent(int damage, int faction,Collidable actor) {
+		super(CollisionEvent.EVENT_DAMAGE,actor);
 		this.damage = damage;
 		this.faction = faction;
 	}

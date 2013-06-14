@@ -10,7 +10,7 @@ public class Wall extends Sprite implements Collidable{
 
 	public Wall(int x, int y) {
 		super(x, y,"images/wall.png");
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_MASSIVE);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_MASSIVE,this);
 	}
 
 	@Override

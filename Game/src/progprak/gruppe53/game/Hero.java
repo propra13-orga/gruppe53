@@ -35,7 +35,7 @@ public class Hero extends CombatObject{
 		doInitalizations();
 	} 
 	protected void initCollisionEvent() {
-		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 	}
 	
 	@Override
