@@ -41,7 +41,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	
 	public void testForCollision(Game game){
-		Vector<Sprite> cs = game.testForCollision(this,getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
+		//Vector<Sprite> cs = game.testForCollision(this,getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
+		Vector<Sprite> cs = game.testForCollision(this);
 		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
 			Sprite s = it.next();
 			CollisionEvent ce = ((Collidable)s).getCollisionEvent();

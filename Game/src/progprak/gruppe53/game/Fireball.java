@@ -4,17 +4,9 @@ public class Fireball extends Projectile implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
-//	public Fireball(int x, int y, Game game, double dx, double dy, int reSpX, int reSpY){
-//		super(x,y,"images/FireballRed.png", game);
-//			this.width = 16;
-//			this.height = 16;
-//			this.dx = dx;
-//			this.dy = dy;
-//			doInitalizations();
-//	}
+
 	
-	public Fireball(int x, int y, Game game, Shooter shooter, double dx, double dy, int faction)
-	{
+	public Fireball(int x, int y, Game game, Shooter shooter, double dx, double dy, int faction){
 		super(x,y,"images/FireballRed.png", game,shooter);
 		this.width = 16;
 		this.height = 16;

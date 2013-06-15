@@ -2,6 +2,8 @@ package progprak.gruppe53.game;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -35,7 +37,9 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	}
 
 	private void loadImage(){
-		image = ImageLoader.loadImage(imagePath);	
+		if(imagePath!=null){
+			image = ImageLoader.loadImage(imagePath);	
+		}
 	}
 
 	@Override
@@ -51,6 +55,7 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 			gd.dispose();
 		}
 		else {
+			//g.drawRect(getCollsionRect().x,getCollsionRect().y, getCollsionRect().width, getCollsionRect().height);
 			g.drawImage(image, (int)x, (int)y, null);
 		}
 	}
@@ -74,6 +79,12 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 	 */
 	public void setAngle(double angle) {
 		this.angle = angle;
+	}
+	public Rectangle getHorizontalCollsionRect(){
+		return new Rectangle((int)(x+dx), (int)(y), (int)width, (int)height);
+	}
+	public Rectangle getVerticalCollsionRect(){
+		return new Rectangle((int)(x), (int)(y+dy), (int)width, (int)height);
 	}
 
 }

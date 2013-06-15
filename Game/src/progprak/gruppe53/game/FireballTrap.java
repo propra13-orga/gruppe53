@@ -8,7 +8,7 @@ public class FireballTrap extends Sprite implements Shooter {
 	private double yMovement;
 
 	public FireballTrap(int x, int y,Game game, double xMovement, double yMovement) {
-		super(x, y, "images/grass.png");
+		super(x, y, null);
 		this.game = game;
 		this.xMovement = xMovement;
 		this.yMovement = yMovement;
