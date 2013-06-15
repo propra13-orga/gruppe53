@@ -7,6 +7,8 @@ einem zweiten Klick der Punkt bestimmt bis wohin die Wand reichen soll. Der Edit
 gewählten Punkt!
 Bewegungsgeschwindigkeiten (für Feuerbälle) sind doubles, können also auch als Dezimalbrüche angegeben werden. Trennzeichen ist hier ein Punkt,
 kein Komma!
+Der Button "GetXY" zeigt euch wenn ihr auf einen Punkt im Feld klickt in der Leiste unten die Koordinaten dieses Punktes an.
+So könnt ihr leicht die richtigen Positionen für z.b. Portalteleport finden.
 Zum Laden und für LevelSwitches muss die entsprechende Datei im Ordner Game/src/levels liegen.
 Save speichert die neue Datei in diesen Ordner.
 Beim Laden, Speichern und LevelSwitch muss nur der Name der Datei selbst eingegeben werden, Groß/Kleinschreibung wird beachtet.

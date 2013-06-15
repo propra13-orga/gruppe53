@@ -16,7 +16,10 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import progprak.gruppe53.game.EnemyGhost;
 import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.GamePanel;
@@ -56,12 +59,14 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String DELETE = "delete";
 	private static final String LOAD = "load";
 	private static final String EDIT = "edit";
+	private static final String GETXY = "getxy";
 	//private static final String SELECT = "select";
 	
-	/*
-	Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
+	
 	private String labelString1 = "X: ";
 	private String labelString2 = "Y: ";
+	/*
+	Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 	private String labelString3 = "XSpeed: ";
 	private String labelString4 = "YSpeed: ";
 	private String labelString5 = "XSpawn: ";
@@ -84,10 +89,14 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 	
 	private JPanel tools, level, separator, attributeBar;
+	
+	
+	private JTextField attribute1, attribute2;
+	private JLabel attributeLabel1, attributeLabel2;
 	/*
-	Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
-	private JTextField attribute1, attribute2, attribute3, attribute4, attribute5, attribute6;
-	private JLabel attributeLabel1, attributeLabel2, attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
+	Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
+	attribute3, attribute4, attribute5, attribute6;
+	attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
 	*/
 
 	private Vector<Sprite> sprites;
@@ -104,7 +113,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 
 	private void setupEditor() {
-		// Setzt Gr��e und Position des Fensters und der n�tigen Panels
+		// Setzt Groesse und Position des Fensters und der noetigen Panels
 		sprites = new Vector<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
@@ -117,16 +126,18 @@ public class LevelEditor extends JFrame implements ActionListener,
 		separator = new JPanel();
 		tools = new JPanel();
 		attributeBar = new JPanel();
-		/*
-		Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
+		
 		attribute1 = new JTextField(10);
 		attribute2 = new JTextField(10);
+		attributeLabel1 = new JLabel(labelString1);
+		attributeLabel2 = new JLabel(labelString2);
+		/*
+		Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		attribute3 = new JTextField(10);
 		attribute4 = new JTextField(10);
 		attribute5 = new JTextField(10);
 		attribute6 = new JTextField(10);
-		attributeLabel1 = new JLabel(labelString1);
-		attributeLabel2 = new JLabel(labelString2);
+		
 		JButton saveAttributes = new JButton("Save");
 		saveAttributes.setPreferredSize(new Dimension(66,20));
 		*/
@@ -158,12 +169,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 		add(separator,BorderLayout.CENTER);
 		add(tools,BorderLayout.EAST);
 		add(attributeBar,BorderLayout.SOUTH);
-		/*
-		Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
+		
 		attributeBar.add(attributeLabel1);
 		attributeBar.add(attribute1);
 		attributeBar.add(attributeLabel2);
 		attributeBar.add(attribute2);
+		/*
+		Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		attributeBar.add(attribute3);
 		attributeBar.add(attribute4);
 		attributeBar.add(attribute5);
@@ -240,7 +252,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		edit.setActionCommand(EDIT);
 		edit.addActionListener(this);
 		tools.add(edit);
-		/* Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
+		JButton getxy = new JButton("GetXY");
+		getxy.setPreferredSize(new Dimension(66,42));
+		getxy.setActionCommand(GETXY);
+		getxy.addActionListener(this);
+		tools.add(getxy);
+		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		JButton select = new JButton("Sel");
 		select.setPreferredSize(new Dimension(66,42));
 		select.setActionCommand(SELECT);
@@ -349,7 +366,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
-		/* Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
+		else if (actionCommand == GETXY) {
+			c = Cursor.getDefaultCursor();
+			level.setCursor(c);
+			currentSprite = actionCommand;
+		}
+		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (actionCommand == SELECT) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
@@ -360,7 +382,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//F�hrt je nachdem welcher Button zuvor geklickt wurde die passende Aktion aus
+		//Fuehrt je nachdem welcher Button zuvor geklickt wurde die passende Aktion aus
 		if (currentSprite == OBJECT_WALL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new Wall(e.getX(),e.getY()));
@@ -581,7 +603,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 				}
 			}
 		}
-		/* Zum Ausw�hlen von Sprites am Feld - unfertig, vorerst deaktiviert
+		else if (currentSprite == GETXY) {
+			attribute1.setText("" + e.getX());
+			attribute2.setText("" + e.getY());
+		}
+		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (currentSprite == SELECT){
 			int x = e.getX();
 			int y = e.getY();
@@ -648,7 +674,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		
 	}
 	private boolean checkCollision(int x, int y, int width, int heigth){
-		//Pr�ft beim setzen von Sprites aufs Feld ob dort nicht bereits etwas ist, falls ja wird kein neuer Sprite gesetzt
+		//Prueft beim setzen von Sprites aufs Feld ob dort nicht bereits etwas ist, falls ja wird kein neuer Sprite gesetzt
 		for(int i=0;i<sprites.size();i++){
 			Sprite sprite = sprites.get(i);
 			int size = 32;

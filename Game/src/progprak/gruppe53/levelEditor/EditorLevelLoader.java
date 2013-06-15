@@ -127,7 +127,8 @@ public class EditorLevelLoader extends DefaultHandler {
 		int startLocationY = Integer.parseInt(portalEntry[1]);
 		int endLocationX = Integer.parseInt(portalExit[0]);
 		int endLocationY = Integer.parseInt(portalExit[1]);
-		sprites.add(new PortalEntrance(startLocationX, startLocationY, endLocationX, endLocationY));		
+		sprites.add(new PortalEntrance(startLocationX, startLocationY, endLocationX, endLocationY));	
+		LevelEditor.saveData[startLocationX][startLocationY]="		<portal>" + startLocationX + ":" + startLocationY + ";" + endLocationX + ":" + endLocationY + "</portal>" + "\n";
 	}
 
 	private void setHeroSpawnPoint(String content) {
@@ -144,6 +145,7 @@ public class EditorLevelLoader extends DefaultHandler {
 		int xLocation = Integer.parseInt(levelSwitchLocation[0]);
 		int yLocation = Integer.parseInt(levelSwitchLocation[1]);
 		sprites.add(new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
+		LevelEditor.saveData[xLocation][yLocation]="	<levelswitch>" + xLocation + ":" + yLocation + ";" + levelSwitchNewLevelPath + "</levelswitch>" + "\n";
 	}
 
 	private void spawnFireballTrap(String content) {
@@ -157,7 +159,8 @@ public class EditorLevelLoader extends DefaultHandler {
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new FireballTrap(xLocation, yLocation, null, xMovement, yMovement, xRespawn, yRespawn));		
+		sprites.add(new FireballTrap(xLocation, yLocation, null, xMovement, yMovement, xRespawn, yRespawn));	
+		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + ";" + xRespawn + ":" + yRespawn + "</fireballtrap>" + "\n";
 	}
 
 	private void spawnTrap(String content) {
