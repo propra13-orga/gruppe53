@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.Item;
 import progprak.gruppe53.items.WoodenSword;
 
@@ -57,7 +58,7 @@ public class ShopPanel extends JPanel {
 				}
 			});
 			slot.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-			slot.newItem(new WoodenSword(game));
+			slot.newItem(new HealthPotion(game));
 			itemPanel.add(slot);
 		}
 	}

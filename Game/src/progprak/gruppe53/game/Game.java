@@ -2,8 +2,6 @@ package progprak.gruppe53.game;
 
 import java.awt.BorderLayout;
 import java.awt.KeyboardFocusManager;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
 import java.util.ListIterator;
 import java.util.Vector;
 
@@ -129,23 +127,6 @@ public class Game implements Runnable {
 	}
 		
 
-//    public Vector<Sprite> testForCollision(Sprite a, double maxX,double minX,double maxY,double minY, double dx, double dy) {
-//    	Vector<Sprite> cs = new Vector<Sprite>();
-//    	for(ListIterator<Sprite> it = gameLogic.getActors().listIterator();it.hasNext();){
-//			Sprite s = it.next();
-//			if(a!=s){
-//				if(s instanceof Collidable && collisionContains(s, maxX+dx, minX+dx, maxY, minY)){
-//					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
-//					cs.add(s);
-//				}
-//				if(s instanceof Collidable && collisionContains(s, maxX, minX, maxY+dy, minY+dy)){
-//					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
-//					cs.add(s);
-//				}
-//			}
-//		}
-//		return cs;
-//	}
 	public Vector<Sprite> testForCollision(Sprite a){
 		Vector<Sprite> cs = new Vector<Sprite>();
 		for(ListIterator<Sprite> it = gameLogic.getActors().listIterator();it.hasNext();){

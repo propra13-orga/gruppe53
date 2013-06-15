@@ -191,7 +191,7 @@ public class Hero extends CombatObject{
 	}
 
 	@Override
-	protected void doneKill(CombatObject combatObject) {
+	public void doneKill(CombatObject combatObject) {
 		super.doneKill(combatObject);
 		money += 50;
 	}
@@ -200,5 +200,10 @@ public class Hero extends CombatObject{
 		if(health>maxHealth){
 			health = maxHealth;
 		}
+	}
+	@Override
+	protected void handleSwitchLevelEvent(CollisionEvent ce) {
+		super.handleSwitchLevelEvent(ce);
+		game.switchLevel(ce.getNewLevel());
 	}
 }

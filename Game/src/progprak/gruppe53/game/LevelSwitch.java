@@ -12,6 +12,12 @@ public class LevelSwitch extends Sprite implements Collidable{
 		collisionEvent.setNewLevel(newLevel);
 	}
 
+	public LevelSwitch(int x, int y, String imagePath, String newLevel) {
+		super(x,y,imagePath);
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_SWITCH_LEVEL,this);
+		collisionEvent.setNewLevel(newLevel);
+	}
+
 	@Override
 	public void doLogic(long delta) {
 		// TODO Auto-generated method stub

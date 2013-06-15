@@ -27,4 +27,9 @@ public class FireballTrap extends Sprite implements Shooter {
 		shootAlive = false;
 	}
 
+	@Override
+	public void doneKill(CombatObject combatObject) {
+		
+	}
+
 }

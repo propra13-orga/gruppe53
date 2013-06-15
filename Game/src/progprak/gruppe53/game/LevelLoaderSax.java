@@ -18,6 +18,7 @@ public class LevelLoaderSax extends DefaultHandler {
 	private Vector<Sprite> sprites;
 	private Game game;
 	private StringBuilder elementName;
+	private Attributes attributes;
 
 	public LevelLoaderSax(Vector<Sprite> sp, Game game) {
 		this.sprites = sp;
@@ -64,6 +65,7 @@ public class LevelLoaderSax extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, qName, attributes);
+		this.attributes = attributes;
 		if(elementName.length() == 0){
 			elementName.append(qName.toString());	
 		}
@@ -142,7 +144,12 @@ public class LevelLoaderSax extends DefaultHandler {
 		String levelSwitchNewLevelPath = levelSwitchData[1];
 		int xLocation = Integer.parseInt(levelSwitchLocation[0]);
 		int yLocation = Integer.parseInt(levelSwitchLocation[1]);
-		sprites.add(new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
+		if(attributes.getValue("type").equals("wall")){
+			sprites.add(new WallLevelSwitch(xLocation, yLocation, Integer.parseInt(attributes.getValue("direction")),levelSwitchNewLevelPath));
+		}
+		else {
+			sprites.add(new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
+		}
 	}
 
 	private void spawnFireballTrap(String content) {

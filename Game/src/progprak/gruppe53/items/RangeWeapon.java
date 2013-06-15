@@ -1,5 +1,6 @@
 package progprak.gruppe53.items;
 
+import progprak.gruppe53.game.CombatObject;
 import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Game;
 import progprak.gruppe53.game.Shooter;
@@ -49,6 +50,12 @@ public class RangeWeapon extends Weapon implements Shooter {
 	@Override
 	public void shootRemoved() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doneKill(CombatObject combatObject) {
+		owner.doneKill(combatObject);
 		
 	}
 }

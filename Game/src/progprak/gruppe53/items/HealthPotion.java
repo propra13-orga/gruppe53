@@ -12,6 +12,10 @@ public class HealthPotion extends Potion implements Collidable  {
 		super( x, y, "images/healthpot1.png",game);
 	}
 	
+	public HealthPotion(Game game) {
+		super(0,0,"images/healthpot1.png",game);
+	}
+
 	@Override
 	public void doLogic(long delta){
 		

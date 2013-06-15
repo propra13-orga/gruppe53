@@ -1,7 +1,6 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Game;
 
 public class CrossBow extends Weapon{

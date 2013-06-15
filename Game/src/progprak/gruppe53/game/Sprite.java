@@ -2,7 +2,6 @@ package progprak.gruppe53.game;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -35,7 +34,10 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 		this.width = 32;
 		this.height = 32;
 	}
-
+	public void setImage(String imagePath) {
+		this.imagePath = imagePath;
+		loadImage();
+	}
 	private void loadImage(){
 		if(imagePath!=null){
 			image = ImageLoader.loadImage(imagePath);	

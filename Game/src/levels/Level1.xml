@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-	<!--<spawn>47:44</spawn>-->
-	<spawn>500:470</spawn>
+	<spawn>47:44</spawn>
 	<enemies>
 		<enemy type="ghost">78:196</enemy>
 		<enemy type="ghost">157:230</enemy>
@@ -39,7 +38,7 @@
 		<portal>222:53;60:60</portal>
 	</portals>
 	<goal></goal>
-	<levelswitch>768:576;levels/Level1.xml</levelswitch>
+	<levelswitch type="wall" direction="1">768:576;levels/Level1.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>

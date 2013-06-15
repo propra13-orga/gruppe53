@@ -36,6 +36,9 @@ public class Fireball extends Projectile implements Collidable{
 		game.getGameLogic().removeSprite(this);
 		shooter.shootRemoved();
 	}
-
+	@Override
+	protected void doneKill(CombatObject combatObject) {
+		shooter.doneKill(combatObject);
+	}
 	
 }
