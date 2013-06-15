@@ -285,6 +285,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "multiwall");
 			level.setCursor(c);
 			currentSprite = actionCommand;
+			multiWallStarted = false;
 			
 		}
 		else if (actionCommand == ENEMY_GHOST) {
