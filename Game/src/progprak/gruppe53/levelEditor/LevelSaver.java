@@ -14,6 +14,7 @@ import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
+import progprak.gruppe53.items.HealthPotion;
 
 public class LevelSaver {
 	private String fileName = "";
@@ -32,6 +33,7 @@ public class LevelSaver {
 		input += createTrapXml();
 		input += createFireballTrapXml();
 		input += createPortalXml();
+		input += createHealthPotionXml();
 		input += createGoalXml();
 		input += createLevelSwitchXml();
 		input += createWallXml();
@@ -178,5 +180,17 @@ public class LevelSaver {
 		portalXml += "	</portals>";
 		portalXml += "\n";
 		return portalXml;
+	}
+	private String createHealthPotionXml() {
+		String healthPotionXml = "	<healthpotions>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof HealthPotion) {
+				healthPotionXml += "		<healthpotion>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</healthpotion>" +"\n";
+			}
+		}
+		healthPotionXml += "	</healthpotions>";
+		healthPotionXml += "\n";
+		return healthPotionXml;
 	}
 }

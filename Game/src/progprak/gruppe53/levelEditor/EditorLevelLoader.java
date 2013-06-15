@@ -19,6 +19,7 @@ import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
+import progprak.gruppe53.items.HealthPotion;
 
 public class EditorLevelLoader extends DefaultHandler {
 	
@@ -106,6 +107,9 @@ public class EditorLevelLoader extends DefaultHandler {
 			break;
 		case "level.spawn":
 			setHeroSpawnPoint(content);
+			break;
+		case "level.healthpotions.healthpotion":
+			spawnHealthPotions(content);
 			break;
 		default:
 			break;
@@ -202,5 +206,11 @@ public class EditorLevelLoader extends DefaultHandler {
 				sprites.add(new Wall(j, k));
 			}
 		}
+	}
+	private void spawnHealthPotions(String content) {
+		String healthPotionData[] = content.split(":");
+		int healthPotionX = Integer.parseInt(healthPotionData[0]);
+		int healthPotionY = Integer.parseInt(healthPotionData[1]);
+		sprites.add(new HealthPotion(healthPotionX, healthPotionY,null));	
 	}
 }
