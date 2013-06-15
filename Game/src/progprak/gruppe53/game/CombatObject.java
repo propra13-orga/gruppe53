@@ -57,7 +57,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	protected void handleDamageEvent(CollisionEvent ce){
 		DamageCollisionEvent de = (DamageCollisionEvent) ce ;
-		if(faction != de.getFaction()){
+		if(faction != de.getFaction() && faction != 0){
 			long current = System.nanoTime();
 			if((current - lastDamage)> 1e9){
 				lastDamage = current;
