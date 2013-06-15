@@ -1,47 +1,26 @@
 package progprak.gruppe53.game;
 
-public class FireballTrap extends CombatObject implements Collidable{
-	
-	private static final long serialVersionUID = 1L;
+public class FireballTrap extends Sprite implements Shooter {
 
-	public FireballTrap(int x, int y, Game game, double dx, double dy, int reSpX, int reSpY){
-		super(x,y,"images/FireballRed.png", game);
-			this.width = 16;
-			this.height = 16;
-			this.dx = dx;
-			this.dy = dy;
-			doInitalizations();
-	}
-	
-	public FireballTrap(int x, int y, Game game, double d, double e, int faction)
-	{
-		super(x,y,"images/FireballRed.png", game);
-		this.width = 16;
-		this.height = 16;
-		this.dx = d;
-		this.dy = e;
-		this.faction = faction;
-		doInitalizations();
-	}
-	
-	@Override
-	public void doLogic(long delta){
-		
+	private Game game;
+	private boolean shootAlive = false;
 
-	}
-	@Override
-	protected void handleMassiveEvent(CollisionEvent ce) {
-		super.handleMassiveEvent(ce);
-		game.getGameLogic().removeSprite(this);
-	}
-	@Override
-	protected void handleDamageEvent(CollisionEvent ce) {
-	}
-	@Override
-	protected void doneDamage() {
-		super.doneDamage();
-		game.getGameLogic().removeSprite(this);
+	public FireballTrap(int x, int y,Game game) {
+		super(x, y, "images/grass.png");
+		this.game = game;
 	}
 
-	
+	@Override
+	public void doLogic(long delta) {
+		if(!shootAlive){
+			game.getGameLogic().addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), game,this, 1, 0, 2));
+			shootAlive = true;
+		}
+	}
+
+	@Override
+	public void shootRemoved() {
+		shootAlive = false;
+	}
+
 }

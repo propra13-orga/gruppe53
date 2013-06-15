@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import progprak.gruppe53.game.EnemyGhost;
-import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
@@ -506,7 +506,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				Sprite sprite = sprites.get(i);
 				int size = 32;
 				
-				if(sprite instanceof FireballTrap){
+				if(sprite instanceof Fireball){
 					size = 16;
 					
 				}
@@ -544,7 +544,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				Sprite sprite = sprites.get(i);
 				int size = 32;
 				
-				if(sprite instanceof FireballTrap){
+				if(sprite instanceof Fireball){
 					size = 16;
 					
 				}
@@ -553,7 +553,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()<=y && sprite.getY()+size>y){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof FireballTrap){							
+						if(sprite instanceof Fireball){							
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
@@ -566,7 +566,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()>=y && sprite.getY()<y+1){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof FireballTrap){							
+						if(sprite instanceof Fireball){							
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
@@ -581,7 +581,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()>=y && sprite.getY()<y+1){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof FireballTrap){							
+						if(sprite instanceof Fireball){							
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
@@ -594,7 +594,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()<=y && sprite.getY()+size>y){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof FireballTrap){							
+						if(sprite instanceof Fireball){							
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
@@ -609,7 +609,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()==y && sprite.getY()==y+1){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof FireballTrap){							
+						if(sprite instanceof Fireball){							
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
@@ -698,7 +698,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 			Sprite sprite = sprites.get(i);
 			int size = 32;
 			
-			if(sprite instanceof FireballTrap){
+			if(sprite instanceof Fireball){
 				size = 16;
 				
 			}
@@ -746,7 +746,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 	public void addSprite(String spriteType){
 		if (spriteType == "trapFireball"){
-			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,AttributeDialog.attribute1,AttributeDialog.attribute2));
+			//sprites.add(new Fireball(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,AttributeDialog.attribute1,AttributeDialog.attribute2));
 			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute6 + ":" + AttributeDialog.attribute7 + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + "</fireballtrap>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();

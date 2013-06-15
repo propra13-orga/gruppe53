@@ -12,7 +12,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.game.EnemyGhost;
-import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.LevelSwitch;
@@ -163,7 +163,7 @@ public class EditorLevelLoader extends DefaultHandler {
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new FireballTrap(xLocation, yLocation, null, xMovement, yMovement, xRespawn, yRespawn));	
+		sprites.add(new Fireball(xLocation, yLocation, null,null, 0, 0, 0));	
 		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + ";" + xRespawn + ":" + yRespawn + "</fireballtrap>" + "\n";
 	}
 

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import progprak.gruppe53.game.EnemyGhost;
-import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.LevelSwitch;
@@ -97,7 +97,7 @@ public class LevelSaver {
 	private String createWallXml() {
 		String wallXml = "	<walls>" + "\n";
 		/*
-		Aussenwände -  hier nicht mehr nötig
+		Aussenwï¿½nde -  hier nicht mehr nï¿½tig
 		String wallXml += "		<wall>0:0-608</wall>" + "\n" + "		<wall>768:0-608</wall>" + "\n" + "		<wall>32-736:0</wall>" + "\n" + "		<wall>32-736:608</wall>" + "\n"
 		*/
 		for (int i=0; i < sprites.size(); i++) {
@@ -115,7 +115,7 @@ public class LevelSaver {
 		String fireballTrapXml = "	<fireballtraps>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
-			if (sprite instanceof FireballTrap) {
+			if (sprite instanceof Fireball) {
 				int x = (int)sprite.getX();
 				int y = (int)sprite.getY();
 				fireballTrapXml += LevelEditor.saveData[x][y];
@@ -127,7 +127,7 @@ public class LevelSaver {
 	}
 	
 	/* 
-	Für später um mehrere Goals möglich zu machen
+	Fï¿½r spï¿½ter um mehrere Goals mï¿½glich zu machen
 	private String createGoalXml() {
 		String goalXml = "	<goals>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {

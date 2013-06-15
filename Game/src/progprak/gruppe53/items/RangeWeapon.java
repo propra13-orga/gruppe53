@@ -1,9 +1,10 @@
 package progprak.gruppe53.items;
 
-import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.Shooter;
 
-public class RangeWeapon extends Weapon {
+public class RangeWeapon extends Weapon implements Shooter {
 
 	
 	/**
@@ -33,15 +34,21 @@ public class RangeWeapon extends Weapon {
 			super.attack(attack);
 			if(attack && game.getGameLogic().getHero().getMana() >= manaCost){
 					if(game.getGameLogic().getHero().getLastDx() < 0)
-							game.getGameLogic().addSprite(new FireballTrap((int)this.x-12,
-							(int)this.y, game, game.getGameLogic().getHero().getLastDx()*2.5,
+							game.getGameLogic().addSprite(new Fireball((int)this.x-12,
+							(int)this.y, game,this, game.getGameLogic().getHero().getLastDx()*2.5,
 							game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction()));
 					else
-							game.getGameLogic().addSprite(new FireballTrap((int)this.x+12,
-							(int)this.y, game, game.getGameLogic().getHero().getLastDx()*2.5,
+							game.getGameLogic().addSprite(new Fireball((int)this.x+12,
+							(int)this.y, game,this, game.getGameLogic().getHero().getLastDx()*2.5,
 							game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction()));
 				last = now;
 			}
 		}
+	}
+
+	@Override
+	public void shootRemoved() {
+		// TODO Auto-generated method stub
+		
 	}
 }

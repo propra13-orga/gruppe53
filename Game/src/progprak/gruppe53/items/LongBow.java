@@ -1,7 +1,7 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Game;
 
 public class LongBow extends RangeWeapon{
@@ -36,16 +36,6 @@ public class LongBow extends RangeWeapon{
 	public void doLogic(long delta) {
 
 		
-	}
-
-	@Override
-	public void attack(boolean attack) {
-		if(attack)
-		{
-			game.getGameLogic().getActors().add(new FireballTrap((int)game.getGameLogic().getHero().getX(),
-					(int)game.getGameLogic().getHero().getY(), game, game.getGameLogic().getHero().getLastDx(),
-					game.getGameLogic().getHero().getLastDy(), game.getGameLogic().getHero().getFaction()));
-		}
 	}
 
 }
