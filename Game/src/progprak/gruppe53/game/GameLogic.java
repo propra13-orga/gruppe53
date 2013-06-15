@@ -62,7 +62,6 @@ public class GameLogic {
 		sp.add(new WoodenSword(60,60, game));
 		sp.add(new PinkGlitterWand(80,80, game));
 		sp.add(new HealthPotion(100, 80,game));
-		sp.add(new FireballTrap(400, 470, game));
 	}
 
 	public Hero getHero() {

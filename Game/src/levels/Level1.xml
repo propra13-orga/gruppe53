@@ -32,6 +32,7 @@
 		<trap>341:73</trap>
 	</traps>
 	<fireballtraps>
+		<fireballtrap>400:470;1:0</fireballtrap>
 	</fireballtraps>
 	<portals>
 		<portal>222:53;60:60</portal>
