@@ -2,6 +2,7 @@ package progprak.gruppe53.game;
 
 import java.io.IOException;
 import java.util.Vector;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -9,6 +10,8 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import progprak.gruppe53.items.HealthPotion;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
@@ -98,6 +101,9 @@ public class LevelLoaderSax extends DefaultHandler {
 			break;
 		case "level.spawn":
 			setHeroSpawnPoint(content);
+			break;
+		case "level.healthpotions.healthpotion":
+			spawnHealthPotions(content);
 			break;
 		default:
 			break;
@@ -192,5 +198,11 @@ public class LevelLoaderSax extends DefaultHandler {
 				sprites.add(new Wall(j, k));
 			}
 		}
+	}
+	private void spawnHealthPotions(String content) {
+		String healthPotionData[] = content.split(":");
+		int healthPotionX = Integer.parseInt(healthPotionData[0]);
+		int healthPotionY = Integer.parseInt(healthPotionData[1]);
+		sprites.add(new HealthPotion(healthPotionX, healthPotionY,game));	
 	}
 }

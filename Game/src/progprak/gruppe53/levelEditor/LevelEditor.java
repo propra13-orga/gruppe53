@@ -31,6 +31,7 @@ import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
 import progprak.gruppe53.items.ClothArmor;
+import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.WoodenSword;
 
 public class LevelEditor extends JFrame implements ActionListener,
@@ -55,6 +56,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_SPAWN = "spawn";
 	private static final String OBJECT_SWORD = "woodenSword";
 	private static final String OBJECT_JACKET = "clothArmor";
+	private static final String OBJECT_HEALTHPOTION = "healthPotion";
 	private static final String SAVE = "save";
 	private static final String DELETE = "delete";
 	private static final String LOAD = "load";
@@ -228,10 +230,15 @@ public class LevelEditor extends JFrame implements ActionListener,
 		woodenSword.setActionCommand(OBJECT_SWORD);
 		woodenSword.addActionListener(this);
 		tools.add(woodenSword);
-		JButton clothArmor = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
+		JButton healthPotion = new JButton(new ImageIcon(ImageLoader.loadImage("images/healthpot1.png")));
+		healthPotion.setPreferredSize(new Dimension(66,42));
+		healthPotion.setActionCommand(OBJECT_HEALTHPOTION);
+		healthPotion.addActionListener(this);
+		tools.add(healthPotion);
+		/*JButton clothArmor = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
 		clothArmor.setActionCommand(OBJECT_JACKET);
 		clothArmor.addActionListener(this);
-		tools.add(clothArmor);
+		tools.add(clothArmor);*/
 		JButton save = new JButton("Save");
 		save.setPreferredSize(new Dimension(66,42));
 		save.setActionCommand(SAVE);
@@ -342,6 +349,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (actionCommand == OBJECT_JACKET) {
 			image = ImageLoader.loadImage("images/hero.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "clothArmor");
+			level.setCursor(c);
+			currentSprite = actionCommand;
+		}
+		else if (actionCommand == OBJECT_HEALTHPOTION) {
+			image = ImageLoader.loadImage("images/healthpot1.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "healthPotion");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
@@ -479,6 +492,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (currentSprite == OBJECT_JACKET) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new ClothArmor(e.getX(),e.getY(), null));
+			}
+		}
+		else if (currentSprite == OBJECT_HEALTHPOTION) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+				sprites.add(new HealthPotion(e.getX(),e.getY(), null));
 			}
 		}
 		else if (currentSprite == DELETE) {
