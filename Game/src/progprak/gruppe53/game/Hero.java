@@ -53,12 +53,12 @@ public class Hero extends CombatObject{
 
 		if(keyboardInput.isUp()){
 			dy = lastdy = -1;
-			lastdx = 0;
+			//lastdx = 0;
 		}
 		
 		if(keyboardInput.isDown()){
 			dy = lastdy = 1;
-			lastdx = 0;
+			//lastdx = 0;
 		}	
 		
 		if(!keyboardInput.isUp() && !keyboardInput.isDown()){
