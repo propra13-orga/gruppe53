@@ -30,6 +30,7 @@ import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
+import progprak.gruppe53.game.WallLevelSwitch;
 import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.WoodenSword;
@@ -57,6 +58,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_SWORD = "woodenSword";
 	private static final String OBJECT_JACKET = "clothArmor";
 	private static final String OBJECT_HEALTHPOTION = "healthPotion";
+	private static final String OBJECT_WALLLEVELSWITCH = "wallLevelSwitch";
 	private static final String SAVE = "save";
 	private static final String DELETE = "delete";
 	private static final String LOAD = "load";
@@ -235,6 +237,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		healthPotion.setActionCommand(OBJECT_HEALTHPOTION);
 		healthPotion.addActionListener(this);
 		tools.add(healthPotion);
+		JButton wallLevelSwitch = new JButton(new ImageIcon(ImageLoader.loadImage("images/tor1.png")));
+		wallLevelSwitch.setActionCommand(OBJECT_WALLLEVELSWITCH);
+		wallLevelSwitch.addActionListener(this);
+		tools.add(wallLevelSwitch);
 		/*JButton clothArmor = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
 		clothArmor.setActionCommand(OBJECT_JACKET);
 		clothArmor.addActionListener(this);
@@ -358,6 +364,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		else if (actionCommand == OBJECT_WALLLEVELSWITCH) {
+			image = ImageLoader.loadImage("images/tor1.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "wallLevelSwitch");
+			level.setCursor(c);
+			currentSprite = actionCommand;
+		}
 		else if (actionCommand == SAVE) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
@@ -474,6 +486,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 				new AttributeDialog(this,OBJECT_LEVELSWITCH);
 			}
 		} 
+		else if (currentSprite == OBJECT_WALLLEVELSWITCH) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+				xPosition = e.getX();
+				yPosition = e.getY();
+				new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
+			}
+		} 
 		else if (currentSprite == OBJECT_GOAL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new Goal(e.getX(),e.getY()));
@@ -557,10 +576,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_PORTAL);
 						}
 						else if(sprite instanceof LevelSwitch){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_LEVELSWITCH);
+						}
+						else if(sprite instanceof WallLevelSwitch){							
+							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
 					}
 					if(sprite.getY()>=y && sprite.getY()<y+1){
@@ -570,10 +592,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_PORTAL);
 						}
 						else if(sprite instanceof LevelSwitch){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_LEVELSWITCH);
+						}
+						else if(sprite instanceof WallLevelSwitch){							
+							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
 					}
 				}
@@ -585,10 +610,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_PORTAL);
 						}
 						else if(sprite instanceof LevelSwitch){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_LEVELSWITCH);
+						}
+						else if(sprite instanceof WallLevelSwitch){							
+							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
 					}
 					if(sprite.getY()<=y && sprite.getY()+size>y){
@@ -598,10 +626,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_PORTAL);
 						}
 						else if(sprite instanceof LevelSwitch){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_LEVELSWITCH);
+						}
+						else if(sprite instanceof WallLevelSwitch){							
+							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
 					}
 				}
@@ -613,10 +644,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 							new AttributeDialog(this,TRAP_FIREBALL);
 						}
 						else if(sprite instanceof PortalEntrance){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_PORTAL);
 						}
 						else if(sprite instanceof LevelSwitch){							
-							new AttributeDialog(this,ENEMY_GHOST);
+							new AttributeDialog(this,OBJECT_LEVELSWITCH);
+						}
+						else if(sprite instanceof WallLevelSwitch){							
+							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
 					}
 				}
@@ -760,6 +794,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (spriteType == "levelSwitch"){
 			sprites.add(new LevelSwitch(xPosition,yPosition,AttributeDialog.attribute5));
 			saveData[xPosition][yPosition]="	<levelswitch>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute5 + "</levelswitch>" + "\n";
+			((GamePanel)level).render(1,sprites);
+			level.repaint();
+		}
+		else if (spriteType == "wallLevelSwitch"){
+			sprites.add(new WallLevelSwitch(xPosition,yPosition,AttributeDialog.attribute1,AttributeDialog.attribute5));
+			saveData[xPosition][yPosition]="	<wallLevelswitch>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute5 + "</wallLevelswitch>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}

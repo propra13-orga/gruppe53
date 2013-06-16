@@ -69,10 +69,12 @@ public class AttributeDialog extends JDialog implements ActionListener {
 		JLabel label6 = new JLabel(attributeLabel6);
 		String attributeLabel7 = "LevelPath:";
 		JLabel label7 = new JLabel(attributeLabel7);
-		String attributeLabel8 = "Not Required";
+		String attributeLabel8 = "Not required";
 		JLabel label8 = new JLabel(attributeLabel8);
 		JLabel label9 = new JLabel(attributeLabel8);
 		JLabel label10 = new JLabel(attributeLabel8);
+		String attributeLabel9 = "Direction:";
+		JLabel label11 = new JLabel(attributeLabel9);
 		String msgString1 = "Please enter Attributes:";
 		JLabel titelLabel = new JLabel(msgString1);
 		JButton saveButton = new JButton(btnString1);
@@ -126,7 +128,17 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(textField4);
 			setVisible(true);
 		}
-		
+		else if (spriteType =="wallLevelSwitch") {
+			text.add(label11);
+			text.add(textField1);
+			text.add(label7);
+			text.add(textField5);
+			text.add(label9);
+			text.add(textField3);
+			text.add(label10);
+			text.add(textField4);
+			setVisible(true);
+		}
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == btnString2){
@@ -152,6 +164,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 				attribute2 = Integer.parseInt(textField2.getText());
 			}
 			else if (spriteType == "levelSwitch") {
+				attribute5 += textField5.getText() + ".xml";
+			}
+			else if (spriteType == "wallLevelSwitch") {
+				attribute1 = Integer.parseInt(textField1.getText());
 				attribute5 += textField5.getText() + ".xml";
 			}
 			le.addSprite(spriteType);

@@ -19,6 +19,7 @@ import progprak.gruppe53.game.LevelSwitch;
 import progprak.gruppe53.game.PortalEntrance;
 import progprak.gruppe53.game.Sprite;
 import progprak.gruppe53.game.Wall;
+import progprak.gruppe53.game.WallLevelSwitch;
 import progprak.gruppe53.items.HealthPotion;
 
 public class EditorLevelLoader extends DefaultHandler {
@@ -110,6 +111,9 @@ public class EditorLevelLoader extends DefaultHandler {
 			break;
 		case "level.healthpotions.healthpotion":
 			spawnHealthPotions(content);
+			break;
+		case "level.walllevelswitches.walllevelswitch":
+			spawnWallLevelSwitch(content);
 			break;
 		default:
 			break;
@@ -212,5 +216,16 @@ public class EditorLevelLoader extends DefaultHandler {
 		int healthPotionX = Integer.parseInt(healthPotionData[0]);
 		int healthPotionY = Integer.parseInt(healthPotionData[1]);
 		sprites.add(new HealthPotion(healthPotionX, healthPotionY,null));	
+	}
+	private void spawnWallLevelSwitch(String content) {
+		String wallLevelSwitchData[] = content.split(";");
+		String wallLevelSwitchPosition[] = wallLevelSwitchData[0].split(":");
+		String wallLevelSwitchAttributes[] = wallLevelSwitchData[1].split(":");
+		int positionX = Integer.parseInt(wallLevelSwitchPosition[0]);
+		int positionY = Integer.parseInt(wallLevelSwitchPosition[1]);
+		int direction = Integer.parseInt(wallLevelSwitchAttributes[0]);
+		String newLevel = wallLevelSwitchAttributes[1];
+		sprites.add(new WallLevelSwitch(positionX, positionY, direction, newLevel));	
+		LevelEditor.saveData[positionX][positionY]="	<wallLevelswitch>" + positionX + ":" + positionY + ";" + direction + ":" + newLevel + "</wallLevelswitch>" + "\n";
 	}
 }
