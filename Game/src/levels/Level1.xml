@@ -2,7 +2,7 @@
 <level>
 	<spawn>47:44</spawn>
 	<enemies>
-		<enemy type="ghost">78:196</enemy>
+		<!--<enemy type="ghost">78:196</enemy>
 		<enemy type="ghost">157:230</enemy>
 		<enemy type="ghost">81:320</enemy>
 		<enemy type="ghost">603:85</enemy>
@@ -10,7 +10,7 @@
 		<enemy type="ghost">561:335</enemy>
 		<enemy type="ghost">574:189</enemy>
 		<enemy type="ghost">685:128</enemy>
-		<enemy type="ghost">678:309</enemy>
+		<enemy type="ghost">678:309</enemy>-->
 	</enemies>
 	<traps>
 		<trap>98:57</trap>

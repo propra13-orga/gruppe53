@@ -15,11 +15,11 @@ public class ChargingBoss extends Enemy {
 	private void chargeAttack(double xPosition, double yPosition) {
 		double x = xPosition - getX();
 		double y = yPosition - getY();
-		double length = Math.pow((Math.pow(x,2) + Math.pow(y,2)),1/2);
+		double length = Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
 		x = x/length;
-		y = y/length;
-		dx = x/60;		
-		dy = y/60;		
+		y = y/length;;
+		dx = x;		
+		dy = y;		
 	}
 	
 	protected void handleMassiveEvent(CollisionEvent ce){
@@ -38,6 +38,5 @@ public class ChargingBoss extends Enemy {
 		if (dx == 0 && dy == 0) {
 			if (System.nanoTime() >= pause)	chargeAttack(game.getGameLogic().getHero().getX(),game.getGameLogic().getHero().getY());
 		}
-		super.doLogic();
 	}
 }
