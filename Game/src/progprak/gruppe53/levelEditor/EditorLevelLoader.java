@@ -12,7 +12,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.game.EnemyGhost;
-import progprak.gruppe53.game.Fireball;
+import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.LevelSwitch;
@@ -160,15 +160,15 @@ public class EditorLevelLoader extends DefaultHandler {
 		String fireballTrapData[] = content.split(";");
 		String fireballTrapLocation[] = fireballTrapData[0].split(":");
 		String fireballTrapMovement[] = fireballTrapData[1].split(":");
-		String fireballTrapRespawn[] = fireballTrapData[2].split(":");
+		//String fireballTrapRespawn[] = fireballTrapData[2].split(":");
 		int xLocation = Integer.parseInt(fireballTrapLocation[0]);
 		int yLocation = Integer.parseInt(fireballTrapLocation[1]);
 		double xMovement = Double.parseDouble(fireballTrapMovement[0]);
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
-		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
-		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new Fireball(xLocation, yLocation, null,null, 0, 0, 0));	
-		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + ";" + xRespawn + ":" + yRespawn + "</fireballtrap>" + "\n";
+		//int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
+		//int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
+		sprites.add(new FireballTrap(xLocation, yLocation, null,xMovement, yMovement));	
+		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + "</fireballtrap>" + "\n";
 	}
 
 	private void spawnTrap(String content) {
