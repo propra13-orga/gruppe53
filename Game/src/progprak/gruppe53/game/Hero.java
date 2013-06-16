@@ -19,7 +19,7 @@ public class Hero extends CombatObject{
 	
 	private int lastdx = 0;
 	private int lastdy = 1;
-
+	
 	private int money = 100;
 	
 	public Hero(int xPos, int yPos, Game game,InventoryPanel inventory){
@@ -178,7 +178,6 @@ public class Hero extends CombatObject{
 	public int getLastDy(){
 		return lastdy;
 	}
-	
 	public int getFaction(){
 		return faction;
 	}

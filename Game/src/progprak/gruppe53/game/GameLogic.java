@@ -62,6 +62,7 @@ public class GameLogic {
 		sp.add(new WoodenSword(60,60, game));
 		sp.add(new PinkGlitterWand(80,80, game));
 		sp.add(new HealthPotion(100, 80,game));
+		//sp.add(new ChargingBoss(400,320,game));
 		//sp.add(new WallLevelSwitch(768, 576, WallLevelSwitch.DIRECTION_VERTICAL, "levels/Level1.xml"));
 	}
 
