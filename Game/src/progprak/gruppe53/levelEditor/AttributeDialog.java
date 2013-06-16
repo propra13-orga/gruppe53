@@ -24,7 +24,7 @@ public class AttributeDialog extends JDialog implements ActionListener {
 	public static int attribute2;
 	public static int attribute3;
 	public static int attribute4;
-	public static String attribute5 = "levels/";
+	public static String attribute5;
 	public static double attribute6;
 	public static double attribute7;
 	private LevelEditor le;
@@ -162,11 +162,11 @@ public class AttributeDialog extends JDialog implements ActionListener {
 				attribute2 = Integer.parseInt(textField2.getText());
 			}
 			else if (spriteType == "levelSwitch") {
-				attribute5 += textField5.getText() + ".xml";
+				attribute5 = "levels/" + textField5.getText() + ".xml";
 			}
 			else if (spriteType == "wallLevelSwitch") {
 				attribute1 = Integer.parseInt(textField1.getText());
-				attribute5 += textField5.getText() + ".xml";
+				attribute5 = "levels/" + textField5.getText() + ".xml";
 			}
 			le.addSprite(spriteType);
 			dispose();

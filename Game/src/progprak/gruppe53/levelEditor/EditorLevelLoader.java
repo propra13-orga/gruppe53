@@ -114,9 +114,6 @@ public class EditorLevelLoader extends DefaultHandler {
 		case "level.healthpotions.healthpotion":
 			spawnHealthPotions(content);
 			break;
-		case "level.walllevelswitches.walllevelswitch":
-			spawnWallLevelSwitch(content);
-			break;
 		default:
 			break;
 		}
@@ -156,7 +153,7 @@ public class EditorLevelLoader extends DefaultHandler {
 		int yLocation = Integer.parseInt(levelSwitchLocation[1]);
 		if(attributes.getValue("type").equals("wall")){
 			sprites.add(new WallLevelSwitch(xLocation, yLocation, Integer.parseInt(attributes.getValue("direction")),levelSwitchNewLevelPath));
-			LevelEditor.saveData[xLocation][yLocation]="	<Levelswitch type=\"wall\" direction=\"" + Integer.parseInt(attributes.getValue("direction")) + "\">" + xLocation + ":" + yLocation + ";" + levelSwitchNewLevelPath + "</Levelswitch>" + "\n";
+			LevelEditor.saveData[xLocation][yLocation]="	<levelswitch type=\"wall\" direction=\"" + Integer.parseInt(attributes.getValue("direction")) + "\">" + xLocation + ":" + yLocation + ";" + levelSwitchNewLevelPath + "</levelswitch>" + "\n";
 		}
 		else {
 			sprites.add(new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
@@ -177,7 +174,7 @@ public class EditorLevelLoader extends DefaultHandler {
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		//int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		//int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new FireballTrap(xLocation, yLocation, null,xMovement, yMovement,"images/FireballRed"));	
+		sprites.add(new FireballTrap(xLocation, yLocation, null,xMovement, yMovement,"images/FireballRed.png"));	
 		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + "</fireballtrap>" + "\n";
 	}
 
@@ -226,16 +223,5 @@ public class EditorLevelLoader extends DefaultHandler {
 		int healthPotionX = Integer.parseInt(healthPotionData[0]);
 		int healthPotionY = Integer.parseInt(healthPotionData[1]);
 		sprites.add(new HealthPotion(healthPotionX, healthPotionY,null));	
-	}
-	private void spawnWallLevelSwitch(String content) {
-		String wallLevelSwitchData[] = content.split(";");
-		String wallLevelSwitchPosition[] = wallLevelSwitchData[0].split(":");
-		String wallLevelSwitchAttributes[] = wallLevelSwitchData[1].split(":");
-		int positionX = Integer.parseInt(wallLevelSwitchPosition[0]);
-		int positionY = Integer.parseInt(wallLevelSwitchPosition[1]);
-		int direction = Integer.parseInt(wallLevelSwitchAttributes[0]);
-		String newLevel = wallLevelSwitchAttributes[1];
-		sprites.add(new WallLevelSwitch(positionX, positionY, direction, newLevel));	
-		
 	}
 }

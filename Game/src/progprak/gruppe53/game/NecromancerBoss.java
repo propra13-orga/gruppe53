@@ -37,12 +37,12 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 	
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL) {
-			if(dx >= 0) dx = Math.random()*-3;
-			else dx = Math.random()*3;
+			if(dx >= 0) dx = -0.5 + Math.random()*-2;
+			else dx = 0.5 + Math.random()*2;
 		}
 		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL) {
-			if(dy >= 0) dy = Math.random()*-3;
-			else dy = Math.random()*3;
+			if(dy >= 0) dy = -0.5 + Math.random()*-2;
+			else dy = 0.5 + Math.random()*2;
 		}
 		handleEvents = false;
 	}
