@@ -18,7 +18,7 @@ public class ChargingBoss extends BossEnemy {
 		double y = yPosition - getY();
 		double length = Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
 		x = x/length;
-		y = y/length;;
+		y = y/length;
 		dx = x*5;		
 		dy = y*5;		
 	}
