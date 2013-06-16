@@ -7,6 +7,8 @@ import java.util.Vector;
 import java.util.ListIterator;
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.PinkGlitterWand;
+
 public class GamePanel extends JPanel{
 
 	private static final long serialVersionUID = -2238063440895511947L;
@@ -45,7 +47,9 @@ public class GamePanel extends JPanel{
 		
 		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
 			Sprite s = it.next();
-			if(s.isDraw())s.drawObjects(g);
+			if(s.isDraw()){
+				s.drawObjects(g);
+			}
 		}
 		g.setColor(Color.red);
 		g.drawString("fps:" + Long.toString(fps), 10, 10);
