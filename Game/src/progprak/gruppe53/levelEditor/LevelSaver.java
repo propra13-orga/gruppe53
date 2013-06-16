@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import progprak.gruppe53.game.EnemyGhost;
-import progprak.gruppe53.game.Fireball;
+import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.LevelSwitch;
@@ -37,7 +37,6 @@ public class LevelSaver {
 		input += createHealthPotionXml();
 		input += createGoalXml();
 		input += createLevelSwitchXml();
-		input += createWallLevelSwitchXml();
 		input += createWallXml();
 		input += "</level>";
 		createFile(input);
@@ -117,7 +116,7 @@ public class LevelSaver {
 		String fireballTrapXml = "	<fireballtraps>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
-			if (sprite instanceof Fireball) {
+			if (sprite instanceof FireballTrap) {
 				int x = (int)sprite.getX();
 				int y = (int)sprite.getY();
 				fireballTrapXml += LevelEditor.saveData[x][y];
@@ -157,18 +156,6 @@ public class LevelSaver {
 		return goalXml;
 	}
 	
-	private String createLevelSwitchXml() {
-		String levelSwitchXml = "";
-		for (int i=0; i < sprites.size(); i++) {
-			Sprite sprite = sprites.get(i);
-			if (sprite instanceof LevelSwitch) {
-				int x = (int)sprite.getX();
-				int y = (int)sprite.getY();
-				levelSwitchXml += LevelEditor.saveData[x][y];
-			}
-		}
-		return levelSwitchXml;
-	}
 	private String createPortalXml() {
 		String portalXml = "	<portals>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -195,18 +182,23 @@ public class LevelSaver {
 		healthPotionXml += "\n";
 		return healthPotionXml;
 	}
-	private String createWallLevelSwitchXml() {
-		String wallLevelSwitchXml = "	<walllevelswitches>" + "\n";
+	private String createLevelSwitchXml() {
+		String levelSwitchXml = "";//	<levelswitches>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof WallLevelSwitch) {
 				int x = (int)sprite.getX();
 				int y = (int)sprite.getY();
-				wallLevelSwitchXml += LevelEditor.saveData[x][y];
+				levelSwitchXml += LevelEditor.saveData[x][y];
+			}
+			else if (sprite instanceof LevelSwitch) {
+				int x = (int)sprite.getX();
+				int y = (int)sprite.getY();
+				levelSwitchXml += LevelEditor.saveData[x][y];
 			}
 		}
-		wallLevelSwitchXml += "	</walllevelswitches>";
-		wallLevelSwitchXml += "\n";
-		return wallLevelSwitchXml;
+		//levelSwitchXml += "	</levelswitches>";
+		//levelSwitchXml += "\n";
+		return levelSwitchXml;
 	}
 }

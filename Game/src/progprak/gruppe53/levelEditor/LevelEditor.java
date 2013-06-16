@@ -800,7 +800,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (spriteType == "wallLevelSwitch"){
 			sprites.add(new WallLevelSwitch(xPosition,yPosition,AttributeDialog.attribute1,AttributeDialog.attribute5));
-			LevelEditor.saveData[xPosition][yPosition]="	<Levelswitch type=\"wall\" direction=\"" + AttributeDialog.attribute1 + "\">" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute5 + "</Levelswitch>" + "\n";
+			LevelEditor.saveData[xPosition][yPosition]="	<levelswitch type=\"wall\" direction=\"" + AttributeDialog.attribute1 + "\">" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute5 + "</levelswitch>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}
