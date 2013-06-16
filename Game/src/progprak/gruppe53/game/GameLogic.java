@@ -12,6 +12,7 @@ public class GameLogic {
 	private Vector<Sprite> actors;
 	private Vector<Sprite> sprites;
 	private Game game;
+	private String level;
 	
 	
 	public Hero hero;
@@ -55,6 +56,7 @@ public class GameLogic {
 	}
 
 	public void switchLevel(String newLevel) {
+		level = newLevel;
 		Vector<Sprite> sp = new Vector<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
@@ -76,5 +78,12 @@ public class GameLogic {
 	}
 	public void addSprite(Sprite s){
 		sprites.add(s);
+	}
+
+	/**
+	 * @return the level
+	 */
+	public String getLevel() {
+		return level;
 	}
 }

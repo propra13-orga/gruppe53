@@ -21,9 +21,14 @@ public class Hero extends CombatObject{
 	private int lastdy = 1;
 	
 	private int money = 100;
+	private int spawnX,spawnY;
+	
+	private int lifes = 3;
 	
 	public Hero(int xPos, int yPos, Game game,InventoryPanel inventory){
 		super(xPos,yPos,"images/held.png",game);
+		spawnX = xPos;
+		spawnY = yPos;
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
 		maxHealth = 10;
@@ -111,11 +116,13 @@ public class Hero extends CombatObject{
 		return health;
 	}
 
-	public void setX(int newX) {
-		x = newX;		
+	public void setXSpawn(int newX) {
+		x = newX;
+		spawnX = newX;
 	}
-	public void setY(int newY) {
-		y = newY;		
+	public void setYSpawn(int newY) {
+		y = newY;
+		spawnY = newY;
 	}
 
 	/**
@@ -162,7 +169,15 @@ public class Hero extends CombatObject{
 		}
 	}
 	protected void handleDie(){
-		game.loose();
+		if((--lifes)>=0){
+			x = spawnX;
+			y = spawnY;
+			money = money/2;
+			health = maxHealth;
+		}
+		else {
+			game.loose();
+		}
 	}
 	public int getMoney() {
 		return money;
@@ -207,5 +222,11 @@ public class Hero extends CombatObject{
 	protected void handleSwitchLevelEvent(CollisionEvent ce) {
 		super.handleSwitchLevelEvent(ce);
 		game.switchLevel(ce.getNewLevel());
+	}
+	/**
+	 * @return the lifes
+	 */
+	public int getLifes() {
+		return lifes;
 	}
 }

@@ -28,9 +28,6 @@ public class Fireball extends Projectile implements Collidable{
 		shooter.shootRemoved();
 	}
 	@Override
-	protected void handleDamageEvent(CollisionEvent ce) {
-	}
-	@Override
 	protected void doneDamage() {
 		super.doneDamage();
 		game.getGameLogic().removeSprite(this);
