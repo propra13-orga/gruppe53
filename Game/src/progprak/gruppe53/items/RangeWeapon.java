@@ -34,14 +34,16 @@ public class RangeWeapon extends Weapon implements Shooter {
 		if((now-last) >= (recharge)){
 			super.attack(attack);
 			if(attack && game.getGameLogic().getHero().getMana() >= manaCost){
-					if(game.getGameLogic().getHero().getLastDx() < 0)
-							game.getGameLogic().addSprite(new Fireball((int)this.x-12,
+				if(game.getGameLogic().getHero().getLastDx() < 0){
+					game.getGameLogic().addSprite(new Fireball((int)this.x-12,
 							(int)this.y, game,this, game.getGameLogic().getHero().getLastDx()*2.5,
 							game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction()));
-					else
-							game.getGameLogic().addSprite(new Fireball((int)this.x+12,
+				}
+				else {
+					game.getGameLogic().addSprite(new Fireball((int)this.x+12,
 							(int)this.y, game,this, game.getGameLogic().getHero().getLastDx()*2.5,
 							game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction()));
+				}
 				last = now;
 			}
 		}
@@ -56,6 +58,5 @@ public class RangeWeapon extends Weapon implements Shooter {
 	@Override
 	public void doneKill(CombatObject combatObject) {
 		owner.doneKill(combatObject);
-		
 	}
 }

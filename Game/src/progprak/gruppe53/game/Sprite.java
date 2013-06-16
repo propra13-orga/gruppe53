@@ -57,19 +57,12 @@ abstract public class Sprite extends Rectangle2D.Double implements Drawable,Mova
 			gd.dispose();
 		}
 		else {
-			//g.drawRect(getCollsionRect().x,getCollsionRect().y, getCollsionRect().width, getCollsionRect().height);
 			g.drawImage(image, (int)x, (int)y, null);
 		}
 	}
 	public void move(long delta){
 		x = x+dx;
 		y = y+dy;
-	}
-	
-	//declared in subclasses
-	public void doLogic()
-	{
-		
 	}
 
 	public boolean isDraw() {

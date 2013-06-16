@@ -27,6 +27,7 @@ abstract public class Item extends Sprite implements Collidable {
 	}
 	public void setOwner(Hero owner){
 		this.owner = owner;
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING, null);
 	}
 	public BufferedImage getImage(){
 		return image;
