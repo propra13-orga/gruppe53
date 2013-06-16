@@ -1,6 +1,6 @@
 package progprak.gruppe53.game;
 
-public class ChargingBoss extends Enemy {
+public class ChargingBoss extends BossEnemy {
 	private static final long serialVersionUID = 2838843254158087591L;
 	
 	private long pause;
@@ -8,6 +8,7 @@ public class ChargingBoss extends Enemy {
 	public ChargingBoss(int x, int y, Game game) {
 		super(x, y, "images/Monster1.png",game);
 		health = 5;
+		nextLevel = "levels/Level1.xml";
 		chargeAttack(game.getGameLogic().getHero().getX(), game.getGameLogic().getHero().getY());
 		
 	}
