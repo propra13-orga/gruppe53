@@ -136,8 +136,8 @@ public class LevelLoaderSax extends DefaultHandler {
 	private void setHeroSpawnPoint(String content) {
 		String spawnArray[] = content.split(":");
 		Hero hero = game.getGameLogic().getHero();
-		hero.setX(Integer.parseInt(spawnArray[0]));
-		hero.setY(Integer.parseInt(spawnArray[1]));
+		hero.setXSpawn(Integer.parseInt(spawnArray[0]));
+		hero.setYSpawn(Integer.parseInt(spawnArray[1]));
 		sprites.add(hero);		
 	}
 

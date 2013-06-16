@@ -64,7 +64,8 @@ public class InfoWindow extends JPanel {
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Money:" + game.getGameLogic().getHero().getMoney(), 2, 10);
+				g.drawString("Money:" + game.getGameLogic().getHero().getMoney() 
+						+ "   Lifes:" + game.getGameLogic().getHero().getLifes(), 2, 10);
 			}
 		};
 		infoPanel.setPreferredSize(new Dimension(800,12));
