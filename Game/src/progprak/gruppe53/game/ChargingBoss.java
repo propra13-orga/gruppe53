@@ -19,8 +19,8 @@ public class ChargingBoss extends BossEnemy {
 		double length = Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
 		x = x/length;
 		y = y/length;;
-		dx = x;		
-		dy = y;		
+		dx = x*5;		
+		dy = y*5;		
 	}
 	
 	protected void handleMassiveEvent(CollisionEvent ce){
@@ -32,7 +32,7 @@ public class ChargingBoss extends BossEnemy {
 			dy = 0;
 			dx = 0;
 		}
-		pause = System.nanoTime() + (long)((0L)*1e9);	
+		pause = System.nanoTime() + (long)((5L)*1e8);	
 	}
 	
 	public void doLogic(long delta) {

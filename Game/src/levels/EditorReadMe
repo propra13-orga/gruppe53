@@ -18,3 +18,5 @@ Beim Start fügt der Editor automatisch die Aussenmauern hinzu - Die Datei "Level
 Der Editbutton ist dazu gedacht Attribute eines bereits platzierten Sprites zu ändern und funktioniert
 daher auch nur bei Sprites mit zusätzlichen Attributen!
 Zum ändern anderer Sprites diese löschen und neu platzieren!
+FireballTraps haben im Editor den Sprite eines Feuerballs damit ihr sie sehen könnt! Im richtigen Spiel sind sie unsichtbar
+und nur die verschossenen Feuerbälle spawnen an dieser Stelle!

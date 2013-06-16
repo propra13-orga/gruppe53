@@ -100,9 +100,9 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(textField1);
 			text.add(label2);
 			text.add(textField2);
-			text.add(label3);
+			text.add(label8);
 			text.add(textField3);
-			text.add(label4);
+			text.add(label9);
 			text.add(textField4);
 			setVisible(true);
 		}
@@ -156,8 +156,6 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			if (spriteType == "trapFireball") {
 				attribute6 = Double.parseDouble(textField1.getText());
 				attribute7 = Double.parseDouble(textField2.getText());
-				attribute1 = Integer.parseInt(textField3.getText());
-				attribute2 = Integer.parseInt(textField4.getText());				
 			}
 			else if (spriteType == "portal") {
 				attribute1 = Integer.parseInt(textField1.getText());
