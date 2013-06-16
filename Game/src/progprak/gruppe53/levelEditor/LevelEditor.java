@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 
 import progprak.gruppe53.game.EnemyGhost;
 import progprak.gruppe53.game.Fireball;
+import progprak.gruppe53.game.FireballTrap;
 import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
@@ -780,8 +781,8 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 	public void addSprite(String spriteType){
 		if (spriteType == "trapFireball"){
-			//sprites.add(new Fireball(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,AttributeDialog.attribute1,AttributeDialog.attribute2));
-			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute6 + ":" + AttributeDialog.attribute7 + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + "</fireballtrap>" + "\n";
+			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,"images/FireballRed.png"));
+			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute6 + ":" + AttributeDialog.attribute7 + "</fireballtrap>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}

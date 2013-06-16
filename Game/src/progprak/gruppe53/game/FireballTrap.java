@@ -13,6 +13,12 @@ public class FireballTrap extends Sprite implements Shooter {
 		this.xMovement = xMovement;
 		this.yMovement = yMovement;
 	}
+	public FireballTrap(int x, int y,Game game, double xMovement, double yMovement, String imagePath) {
+		super(x, y, imagePath);
+		this.game = game;
+		this.xMovement = xMovement;
+		this.yMovement = yMovement;
+	}
 
 	@Override
 	public void doLogic(long delta) {
