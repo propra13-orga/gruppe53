@@ -38,6 +38,6 @@ public class ChargingBoss extends Enemy {
 		if (dx == 0 && dy == 0) {
 			if (System.nanoTime() >= pause)	chargeAttack(game.getGameLogic().getHero().getX(),game.getGameLogic().getHero().getY());
 		}
-		super.doLogic();
+		super.doLogic(delta);
 	}
 }
