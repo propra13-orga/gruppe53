@@ -99,7 +99,7 @@ public class LevelSaver {
 	private String createWallXml() {
 		String wallXml = "	<walls>" + "\n";
 		/*
-		Aussenw�nde -  hier nicht mehr n�tig
+		Aussenwaende -  hier nicht mehr noetig
 		String wallXml += "		<wall>0:0-608</wall>" + "\n" + "		<wall>768:0-608</wall>" + "\n" + "		<wall>32-736:0</wall>" + "\n" + "		<wall>32-736:608</wall>" + "\n"
 		*/
 		for (int i=0; i < sprites.size(); i++) {
@@ -129,7 +129,7 @@ public class LevelSaver {
 	}
 	
 	/* 
-	F�r sp�ter um mehrere Goals m�glich zu machen
+	Fuer spaeter um mehrere Goals moeglich zu machen
 	private String createGoalXml() {
 		String goalXml = "	<goals>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {

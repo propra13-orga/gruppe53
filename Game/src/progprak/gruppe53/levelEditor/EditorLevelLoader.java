@@ -26,6 +26,7 @@ public class EditorLevelLoader extends DefaultHandler {
 	
 	private Vector<Sprite> sprites;
 	private StringBuilder elementName;
+	private Attributes attributes;
 
 	public EditorLevelLoader(Vector<Sprite> sp) {
 		this.sprites = sp;
@@ -71,6 +72,7 @@ public class EditorLevelLoader extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, qName, attributes);
+		this.attributes = attributes;
 		if(elementName.length() == 0){
 			elementName.append(qName.toString());	
 		}
@@ -152,9 +154,17 @@ public class EditorLevelLoader extends DefaultHandler {
 		String levelSwitchNewLevelPath = levelSwitchData[1];
 		int xLocation = Integer.parseInt(levelSwitchLocation[0]);
 		int yLocation = Integer.parseInt(levelSwitchLocation[1]);
-		sprites.add(new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
-		LevelEditor.saveData[xLocation][yLocation]="	<levelswitch>" + xLocation + ":" + yLocation + ";" + levelSwitchNewLevelPath + "</levelswitch>" + "\n";
+		if(attributes.getValue("type").equals("wall")){
+			sprites.add(new WallLevelSwitch(xLocation, yLocation, Integer.parseInt(attributes.getValue("direction")),levelSwitchNewLevelPath));
+			LevelEditor.saveData[xLocation][yLocation]="	<Levelswitch type=\"wall\" direction=\"" + Integer.parseInt(attributes.getValue("direction")) + "\">" + xLocation + ":" + yLocation + ";" + levelSwitchNewLevelPath + "</Levelswitch>" + "\n";
+		}
+		else {
+			sprites.add(new LevelSwitch(xLocation, yLocation, levelSwitchNewLevelPath));
+			LevelEditor.saveData[xLocation][yLocation]="	<levelswitch>" + xLocation + ":" + yLocation + ";" + levelSwitchNewLevelPath + "</levelswitch>" + "\n";
+		}
 	}
+		
+	
 
 	private void spawnFireballTrap(String content) {
 		String fireballTrapData[] = content.split(";");
@@ -226,6 +236,6 @@ public class EditorLevelLoader extends DefaultHandler {
 		int direction = Integer.parseInt(wallLevelSwitchAttributes[0]);
 		String newLevel = wallLevelSwitchAttributes[1];
 		sprites.add(new WallLevelSwitch(positionX, positionY, direction, newLevel));	
-		LevelEditor.saveData[positionX][positionY]="	<wallLevelswitch>" + positionX + ":" + positionY + ";" + direction + ":" + newLevel + "</wallLevelswitch>" + "\n";
+		
 	}
 }
