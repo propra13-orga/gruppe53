@@ -177,7 +177,7 @@ public class EditorLevelLoader extends DefaultHandler {
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		//int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		//int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new FireballTrap(xLocation, yLocation, null,xMovement, yMovement));	
+		sprites.add(new FireballTrap(xLocation, yLocation, null,xMovement, yMovement,"images/FireballRed"));	
 		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + "</fireballtrap>" + "\n";
 	}
 
