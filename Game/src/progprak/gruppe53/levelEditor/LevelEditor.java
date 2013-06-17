@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import progprak.gruppe53.game.EnemyGhost;
 import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.FireballWaveTrap;
 import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
@@ -52,6 +53,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String ENEMY_GHOST = "enemyGhost";
 	private static final String TRAP_SPEARS = "trapSpears";
 	private static final String TRAP_FIREBALL = "trapFireball";
+	private static final String TRAP_FIREBALLWAVE = "fireballWaveTrap";
 	private static final String OBJECT_PORTAL = "portal";
 	private static final String OBJECT_LEVELSWITCH = "levelSwitch";
 	private static final String OBJECT_GOAL = "goal";
@@ -212,6 +214,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		trapFireball.setActionCommand(TRAP_FIREBALL);
 		trapFireball.addActionListener(this);
 		tools.add(trapFireball);
+		JButton fireballWaveTrap = new JButton(new ImageIcon(ImageLoader.loadImage("images/FireballGreen.png")));
+		fireballWaveTrap.setActionCommand(TRAP_FIREBALLWAVE);
+		fireballWaveTrap.addActionListener(this);
+		tools.add(fireballWaveTrap);
 		JButton portal = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
 		portal.setActionCommand(OBJECT_PORTAL);
 		portal.addActionListener(this);
@@ -291,113 +297,133 @@ public class LevelEditor extends JFrame implements ActionListener,
 			image = ImageLoader.loadImage("images/wall.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "wall");
 			level.setCursor(c);
-			currentSprite = actionCommand;
-			
+			currentSprite = actionCommand;			
 		}
+		
 		else if (actionCommand == OBJECT_MULTIWALL) {
 			image = ImageLoader.loadImage("images/wall.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "multiwall");
 			level.setCursor(c);
 			currentSprite = actionCommand;
-			multiWallStarted = false;
-			
+			multiWallStarted = false;			
 		}
+		
 		else if (actionCommand == ENEMY_GHOST) {
 			image = ImageLoader.loadImage("images/ghost1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "enemyGhost");
 			level.setCursor(c);
-			currentSprite = actionCommand;
-			
+			currentSprite = actionCommand;			
 		}
+		
 		else if (actionCommand == TRAP_SPEARS) {
 			image = ImageLoader.loadImage("images/groundTrap1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "trapSpears");
 			level.setCursor(c);
-			currentSprite = actionCommand;
-			
+			currentSprite = actionCommand;			
 		}
+		
 		else if (actionCommand == TRAP_FIREBALL) {
 			image = ImageLoader.loadImage("images/FireballRedEditor2.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0),"trapFireball");
 			level.setCursor(c);
-			currentSprite = actionCommand;
-			
+			currentSprite = actionCommand;			
 		}
+		
+		else if (actionCommand == TRAP_FIREBALLWAVE) {
+			image = ImageLoader.loadImage("images/FireballGreen.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0),"fireballWaveTrap");
+			level.setCursor(c);
+			currentSprite = actionCommand;			
+		}
+		
 		else if (actionCommand == OBJECT_PORTAL) {
 			image = ImageLoader.loadImage("images/entrance.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "portal");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_LEVELSWITCH) {
 			image = ImageLoader.loadImage("images/entrance2.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0),"levelSwitch");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_GOAL) {
 			image = ImageLoader.loadImage("images/exit.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "goal");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_SPAWN) {
 			image = ImageLoader.loadImage("images/held.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "spawn");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_SWORD) {
 			image = ImageLoader.loadImage("images/sword.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "woodenSword");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_JACKET) {
 			image = ImageLoader.loadImage("images/hero.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "clothArmor");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_HEALTHPOTION) {
 			image = ImageLoader.loadImage("images/healthpot1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "healthPotion");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == OBJECT_WALLLEVELSWITCH) {
 			image = ImageLoader.loadImage("images/tor1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "wallLevelSwitch");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == SAVE) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			new SaveDialog(this);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == DELETE) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			currentSprite = actionCommand;
-			}
+		}
+		
 		else if (actionCommand == LOAD) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			new LoadDialog(this);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == EDIT) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		else if (actionCommand == GETXY) {
 			c = Cursor.getDefaultCursor();
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
+		
 		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
 		else if (actionCommand == SELECT) {
 			c = Cursor.getDefaultCursor();
@@ -471,6 +497,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 				xPosition = e.getX();
 				yPosition = e.getY();
 				new AttributeDialog(this,TRAP_FIREBALL);
+			}
+		}
+		else if (currentSprite == TRAP_FIREBALLWAVE) {
+			if(checkCollision(e.getX(),e.getY(),16,16)==false){
+				xPosition = e.getX();
+				yPosition = e.getY();
+				new AttributeDialog(this,TRAP_FIREBALLWAVE);
 			}
 		}
 		else if (currentSprite == OBJECT_PORTAL) {
@@ -564,7 +597,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 				Sprite sprite = sprites.get(i);
 				int size = 32;
 				
-				if(sprite instanceof Fireball){
+				if(sprite instanceof FireballTrap){
 					size = 16;
 					
 				}
@@ -573,8 +606,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()<=y && sprite.getY()+size>y){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof Fireball){							
+						if(sprite instanceof FireballTrap){							
 							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						if(sprite instanceof FireballWaveTrap){							
+							new AttributeDialog(this,TRAP_FIREBALLWAVE);
 						}
 						else if(sprite instanceof PortalEntrance){							
 							new AttributeDialog(this,OBJECT_PORTAL);
@@ -589,8 +625,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()>=y && sprite.getY()<y+1){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof Fireball){							
+						if(sprite instanceof FireballTrap){							
 							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						if(sprite instanceof FireballWaveTrap){							
+							new AttributeDialog(this,TRAP_FIREBALLWAVE);
 						}
 						else if(sprite instanceof PortalEntrance){							
 							new AttributeDialog(this,OBJECT_PORTAL);
@@ -607,8 +646,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()>=y && sprite.getY()<y+1){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof Fireball){							
+						if(sprite instanceof FireballTrap){							
 							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						if(sprite instanceof FireballWaveTrap){							
+							new AttributeDialog(this,TRAP_FIREBALLWAVE);
 						}
 						else if(sprite instanceof PortalEntrance){							
 							new AttributeDialog(this,OBJECT_PORTAL);
@@ -623,8 +665,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()<=y && sprite.getY()+size>y){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof Fireball){							
+						if(sprite instanceof FireballTrap){							
 							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						if(sprite instanceof FireballWaveTrap){							
+							new AttributeDialog(this,TRAP_FIREBALLWAVE);
 						}
 						else if(sprite instanceof PortalEntrance){							
 							new AttributeDialog(this,OBJECT_PORTAL);
@@ -641,8 +686,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 					if(sprite.getY()==y && sprite.getY()==y+1){
 						deleteNumber = i;
 						isEdited = true;
-						if(sprite instanceof Fireball){							
+						if(sprite instanceof FireballTrap){							
 							new AttributeDialog(this,TRAP_FIREBALL);
+						}
+						if(sprite instanceof FireballWaveTrap){							
+							new AttributeDialog(this,TRAP_FIREBALLWAVE);
 						}
 						else if(sprite instanceof PortalEntrance){							
 							new AttributeDialog(this,OBJECT_PORTAL);
@@ -783,6 +831,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		if (spriteType == "trapFireball"){
 			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,"images/FireballRed.png"));
 			saveData[xPosition][yPosition]="		<fireballtrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute6 + ":" + AttributeDialog.attribute7 + "</fireballtrap>" + "\n";
+			((GamePanel)level).render(1,sprites);
+			level.repaint();
+		}
+		if (spriteType == "fireballWaveTrap"){
+			sprites.add(new FireballWaveTrap(xPosition,yPosition,null,AttributeDialog.attribute1,AttributeDialog.attribute2,"images/FireballGreen.png"));
+			saveData[xPosition][yPosition]="		<fireballwavetrap>" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute1 + ":" + AttributeDialog.attribute2 + "</fireballwavetrap>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}

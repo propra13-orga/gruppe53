@@ -10,10 +10,8 @@
 	<portals>
 	</portals>
 	<healthpotions>
-		<healthpotion>40:566</healthpotion>
-		<healthpotion>49:533</healthpotion>
-		<healthpotion>47:87</healthpotion>
-		<healthpotion>79:45</healthpotion>
+		<healthpotion>35:35</healthpotion>
+		<healthpotion>34:573</healthpotion>
 	</healthpotions>
 	<goal></goal>
 	<walls>
@@ -80,7 +78,6 @@
 		<wall>672:0</wall>
 		<wall>704:0</wall>
 		<wall>736:0</wall>
-		<wall>32:608</wall>
 		<wall>64:608</wall>
 		<wall>96:608</wall>
 		<wall>128:608</wall>
@@ -103,5 +100,6 @@
 		<wall>672:608</wall>
 		<wall>704:608</wall>
 		<wall>736:608</wall>
+		<wall>32:608</wall>
 	</walls>
 </level>

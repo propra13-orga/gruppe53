@@ -59,9 +59,9 @@ public class AttributeDialog extends JDialog implements ActionListener {
 		JLabel label1 = new JLabel(attributeLabel1);
 		String attributeLabel2 = "YSpeed:";
 		JLabel label2 = new JLabel(attributeLabel2);
-		String attributeLabel3 = "XRespawn:";
+		String attributeLabel3 = "Amount:";
 		JLabel label3 = new JLabel(attributeLabel3);
-		String attributeLabel4 = "YRespawn:";
+		String attributeLabel4 = "Direction:";
 		JLabel label4 = new JLabel(attributeLabel4);
 		String attributeLabel5 = "TeleportXLocation:";
 		JLabel label5 = new JLabel(attributeLabel5);
@@ -117,7 +117,7 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(textField4);
 			setVisible(true);
 		}
-		else if (spriteType =="levelSwitch") {
+		else if (spriteType == "levelSwitch") {
 			text.add(label7);
 			text.add(textField5);
 			text.add(label8);
@@ -128,7 +128,7 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(textField4);
 			setVisible(true);
 		}
-		else if (spriteType =="wallLevelSwitch") {
+		else if (spriteType == "wallLevelSwitch") {
 			text.add(label11);
 			text.add(textField1);
 			text.add(label7);
@@ -136,6 +136,17 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(label9);
 			text.add(textField3);
 			text.add(label10);
+			text.add(textField4);
+			setVisible(true);
+		}
+		else if (spriteType == "fireballWaveTrap") {
+			text.add(label3);
+			text.add(textField1);
+			text.add(label4);
+			text.add(textField2);
+			text.add(label8);
+			text.add(textField3);
+			text.add(label9);
 			text.add(textField4);
 			setVisible(true);
 		}
@@ -167,6 +178,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			else if (spriteType == "wallLevelSwitch") {
 				attribute1 = Integer.parseInt(textField1.getText());
 				attribute5 = "levels/" + textField5.getText() + ".xml";
+			}
+			else if (spriteType == "fireballWaveTrap") {
+				attribute1 = Integer.parseInt(textField1.getText());
+				attribute2 = Integer.parseInt(textField2.getText());
 			}
 			le.addSprite(spriteType);
 			dispose();

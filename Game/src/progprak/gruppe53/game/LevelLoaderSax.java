@@ -105,7 +105,10 @@ public class LevelLoaderSax extends DefaultHandler {
 			setHeroSpawnPoint(content);
 			break;
 		case "level.healthpotions.healthpotion":
-			spawnHealthPotions(content);
+			spawnHealthPotion(content);
+			break;
+		case "level.fireballwavetraps.fireballwavetrap":
+			spawnFireballWaveTrap(content);
 			break;
 		default:
 			break;
@@ -206,10 +209,20 @@ public class LevelLoaderSax extends DefaultHandler {
 			}
 		}
 	}
-	private void spawnHealthPotions(String content) {
+	private void spawnHealthPotion(String content) {
 		String healthPotionData[] = content.split(":");
 		int healthPotionX = Integer.parseInt(healthPotionData[0]);
 		int healthPotionY = Integer.parseInt(healthPotionData[1]);
 		sprites.add(new HealthPotion(healthPotionX, healthPotionY,game));	
+	}
+	private void spawnFireballWaveTrap(String content) {
+		String fireballWaveTrapData[] = content.split(";");
+		String fireballWaveTrapEntry[] = fireballWaveTrapData[0].split(":");
+		String fireballWaveTrapExit[] = fireballWaveTrapData[1].split(":");
+		int locationX = Integer.parseInt(fireballWaveTrapEntry[0]);
+		int locationY = Integer.parseInt(fireballWaveTrapEntry[1]);
+		int amount = Integer.parseInt(fireballWaveTrapExit[0]);
+		int direction = Integer.parseInt(fireballWaveTrapExit[1]);
+		sprites.add(new FireballWaveTrap(locationX, locationY, game, amount, direction));		
 	}
 }

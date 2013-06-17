@@ -68,7 +68,7 @@ public class FireballWaveTrap extends Sprite implements Shooter {
 			}
 			else if (direction == 4) {
 				if (castOrder == amount) {
-					game.getGameLogic().addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), game,this, 0, -1, 2));
+					game.getGameLogic().addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), game,this, 0, 1, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}

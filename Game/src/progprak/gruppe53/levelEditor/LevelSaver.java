@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import progprak.gruppe53.game.EnemyGhost;
 import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.FireballWaveTrap;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.LevelSwitch;
@@ -33,6 +34,7 @@ public class LevelSaver {
 		input += createEnemyGhostXml();
 		input += createTrapXml();
 		input += createFireballTrapXml();
+		input += createFireballWaveTrapXml();
 		input += createPortalXml();
 		input += createHealthPotionXml();
 		input += createGoalXml();
@@ -200,5 +202,19 @@ public class LevelSaver {
 		//levelSwitchXml += "	</levelswitches>";
 		//levelSwitchXml += "\n";
 		return levelSwitchXml;
+	}
+	private String createFireballWaveTrapXml() {
+		String fireballWaveTrapXml = "	<fireballwavetraps>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof FireballWaveTrap) {
+				int x = (int)sprite.getX();
+				int y = (int)sprite.getY();
+				fireballWaveTrapXml += LevelEditor.saveData[x][y];
+			}
+		}
+		fireballWaveTrapXml += "	</fireballwavetraps>";
+		fireballWaveTrapXml += "\n";
+		return fireballWaveTrapXml;
 	}
 }
