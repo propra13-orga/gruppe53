@@ -18,7 +18,7 @@ public class EnemyGhost extends Enemy {
 	}
 	@Override
 	protected void handleCollisionEvent(CollisionEvent ce) {
-		if(ce.getEvent() != CollisionEvent.EVENT_SWITCH_LEVEL){
+		if(ce.getEvent() != CollisionEvent.EVENT_TELEPORT){
 			super.handleCollisionEvent (ce);
 		}
 	}
