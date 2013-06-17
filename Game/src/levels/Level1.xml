@@ -2,43 +2,39 @@
 <level>
 	<spawn>47:44</spawn>
 	<enemies>
-		<!--<enemy type="ghost">78:196</enemy>
-		<enemy type="ghost">157:230</enemy>
-		<enemy type="ghost">81:320</enemy>
-		<enemy type="ghost">603:85</enemy>
-		<enemy type="ghost">640:219</enemy>
-		<enemy type="ghost">561:335</enemy>
-		<enemy type="ghost">574:189</enemy>
-		<enemy type="ghost">685:128</enemy>
-		<enemy type="ghost">678:309</enemy>-->
+		<enemy type="ghost">598:339</enemy>
+		<enemy type="ghost">689:144</enemy>
+		<enemy type="ghost">128:294</enemy>
 	</enemies>
 	<traps>
-		<trap>98:57</trap>
 		<trap>297:338</trap>
 		<trap>336:339</trap>
 		<trap>386:340</trap>
 		<trap>432:345</trap>
-		<trap>472:260</trap>
-		<trap>433:258</trap>
-		<trap>390:251</trap>
 		<trap>347:247</trap>
-		<trap>314:154</trap>
-		<trap>359:152</trap>
-		<trap>409:152</trap>
-		<trap>447:140</trap>
-		<trap>470:65</trap>
-		<trap>422:59</trap>
-		<trap>380:63</trap>
-		<trap>341:73</trap>
+		<trap>389:249</trap>
+		<trap>431:249</trap>
+		<trap>473:249</trap>
+		<trap>295:151</trap>
+		<trap>331:151</trap>
+		<trap>367:151</trap>
+		<trap>407:155</trap>
+		<trap>478:80</trap>
+		<trap>446:77</trap>
+		<trap>410:79</trap>
+		<trap>376:75</trap>
+		<trap>611:135</trap>
+		<trap>688:302</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>400:470;1:0</fireballtrap>
+		<fireballtrap>563:327;1.0:-1.0</fireballtrap>
 	</fireballtraps>
 	<portals>
-		<portal>222:53;60:60</portal>
 	</portals>
+	<healthpotions>
+	</healthpotions>
 	<goal></goal>
-	<levelswitch type="wall" direction="1">768:576;levels/Level1.xml</levelswitch>
+	<levelswitch type="wall" direction="1">768:576;levels/Level2.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>

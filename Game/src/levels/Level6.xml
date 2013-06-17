@@ -4,65 +4,47 @@
 	<enemies>
 		<enemy type="ghost">460:62</enemy>
 		<enemy type="ghost">253:42</enemy>
-		<enemy type="ghost">205:117</enemy>
-		<enemy type="ghost">100:185</enemy>
 		<enemy type="ghost">40:263</enemy>
-		<enemy type="ghost">180:278</enemy>
-		<enemy type="ghost">247:379</enemy>
-		<enemy type="ghost">348:180</enemy>
 		<enemy type="ghost">444:177</enemy>
-		<enemy type="ghost">544:176</enemy>
-		<enemy type="ghost">345:377</enemy>
-		<enemy type="ghost">450:380</enemy>
-		<enemy type="ghost">555:380</enemy>
 		<enemy type="ghost">333:237</enemy>
-		<enemy type="ghost">333:312</enemy>
-		<enemy type="ghost">571:239</enemy>
-		<enemy type="ghost">568:320</enemy>
 		<enemy type="ghost">718:284</enemy>
 		<enemy type="ghost">681:467</enemy>
 		<enemy type="ghost">472:528</enemy>
+		<enemy type="ghost">540:319</enemy>
+		<enemy type="ghost">355:361</enemy>
 	</enemies>
 	<traps>
-		<trap>623:71</trap>
-		<trap>502:38</trap>
-		<trap>413:73</trap>
-		<trap>331:33</trap>
-		<trap>184:39</trap>
-		<trap>158:115</trap>
-		<trap>207:171</trap>
-		<trap>43:186</trap>
-		<trap>85:257</trap>
-		<trap>217:287</trap>
-		<trap>165:352</trap>
 		<trap>331:507</trap>
 		<trap>252:566</trap>
-		<trap>445:569</trap>
-		<trap>480:465</trap>
-		<trap>618:535</trap>
-		<trap>721:474</trap>
-		<trap>675:536</trap>
-		<trap>681:342</trap>
 		<trap>637:450</trap>
-		<trap>730:177</trap>
-		<trap>688:246</trap>
-		<trap>69:507</trap>
-		<trap>43:376</trap>
-		<trap>115:50</trap>
 		<trap>399:344</trap>
 		<trap>504:241</trap>
 		<trap>390:228</trap>
-		<trap>623:175</trap>
+		<trap>69:493</trap>
+		<trap>52:172</trap>
+		<trap>61:207</trap>
+		<trap>75:245</trap>
+		<trap>151:97</trap>
+		<trap>219:177</trap>
+		<trap>229:335</trap>
+		<trap>729:174</trap>
+		<trap>672:261</trap>
+		<trap>735:381</trap>
+		<trap>604:531</trap>
+		<trap>604:566</trap>
+		<trap>651:566</trap>
+		<trap>692:565</trap>
+		<trap>421:500</trap>
+		<trap>443:467</trap>
+		<trap>521:542</trap>
+		<trap>489:567</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>40:84;0.0:2.0</fireballtrap>
-		<fireballtrap>382:42;0.0:2.0</fireballtrap>
-		<fireballtrap>36:228;0.0:1.0</fireballtrap>
-		<fireballtrap>84:395;0.0:1.0</fireballtrap>
-		<fireballtrap>502:182;2.0:0.0</fireballtrap>
-		<fireballtrap>404:188;2.0:0.0</fireballtrap>
-		<fireballtrap>334:281;0.0:2.0</fireballtrap>
-		<fireballtrap>424:474;0.0:2.0</fireballtrap>
+		<fireballtrap>50:76;1.0:0.0</fireballtrap>
+		<fireballtrap>342:213;2.0:0.0</fireballtrap>
+		<fireballtrap>340:39;1.0:0.0</fireballtrap>
+		<fireballtrap>681:346;0.0:1.0</fireballtrap>
+		<fireballtrap>580:390;-2.0:0.0</fireballtrap>
 	</fireballtraps>
 	<portals>
 		<portal>225:483;138:498</portal>
