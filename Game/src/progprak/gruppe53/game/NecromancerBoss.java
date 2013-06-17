@@ -34,7 +34,7 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 		castOrder = 0;
 		cooldown = System.nanoTime() + (long)((7L)*1e8);
 	}
-	
+	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL) {
 			if(dx >= 0) dx = -0.5 + Math.random()*-2;

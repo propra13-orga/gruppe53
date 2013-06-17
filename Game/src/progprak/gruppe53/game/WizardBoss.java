@@ -30,7 +30,7 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		cooldown = System.nanoTime() + (long)((1L)*1e9);
 	}
 	
-	
+	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx *= -1;
 		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy *= -1;
