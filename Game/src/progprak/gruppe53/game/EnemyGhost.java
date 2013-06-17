@@ -10,10 +10,17 @@ public class EnemyGhost extends Enemy {
 		dx = Math.random()*3-1.5;
 		dy = Math.random()*3-1.5;
 	}
+	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx *= -1;
 		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy *= -1;
 		handleEvents = false;
+	}
+	@Override
+	protected void handleCollisionEvent(CollisionEvent ce) {
+		if(ce.getEvent() != CollisionEvent.EVENT_TELEPORT){
+			super.handleCollisionEvent (ce);
+		}
 	}
 
 }
