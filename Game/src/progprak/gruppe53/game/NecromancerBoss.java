@@ -1,7 +1,7 @@
 package progprak.gruppe53.game;
 
 public class NecromancerBoss extends BossEnemy implements Shooter {
-	private static final long serialVersionUID = 2838843254158087591L;
+	private static final long serialVersionUID = 1L;
 	
 	private long cooldown = 0;
 	private int castOrder = 3;

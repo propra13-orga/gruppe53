@@ -1,7 +1,8 @@
 package progprak.gruppe53.game;
 
 public class FireballTrap extends Sprite implements Shooter {
-
+	private static final long serialVersionUID = 1L;
+	
 	private Game game;
 	private boolean shootAlive = false;
 	private double xMovement;
