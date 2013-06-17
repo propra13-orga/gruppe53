@@ -21,7 +21,7 @@ public abstract class Trap extends CombatObject implements Collidable{
 		return collisionEvent;
 	}
 	@Override
-	protected void handleColliosionEvent(CollisionEvent ce) {
+	protected void handleCollisionEvent(CollisionEvent ce) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -46,7 +46,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
 			Sprite s = it.next();
 			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
-			handleColliosionEvent(ce);
+			handleCollisionEvent(ce);
 		}
 		
 	}
@@ -81,7 +81,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		game.getGameLogic().removeSprite(this);
 	}
 
-	protected void handleColliosionEvent(CollisionEvent ce) {
+	protected void handleCollisionEvent(CollisionEvent ce) {
 		if(handleEvents){
 			if(ce.getEvent() == CollisionEvent.EVENT_DAMAGE){
 				handleDamageEvent(ce);
