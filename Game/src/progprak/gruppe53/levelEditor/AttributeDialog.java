@@ -75,6 +75,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 		JLabel label10 = new JLabel(attributeLabel8);
 		String attributeLabel9 = "Direction:";
 		JLabel label11 = new JLabel(attributeLabel9);
+		String attributeLabel10 = "XRespawn:";
+		JLabel label12 = new JLabel(attributeLabel10);
+		String attributeLabel11 = "YRespawn:";
+		JLabel label13 = new JLabel(attributeLabel11);
 		String msgString1 = "Please enter Attributes:";
 		JLabel titelLabel = new JLabel(msgString1);
 		JButton saveButton = new JButton(btnString1);
@@ -103,6 +107,17 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(label8);
 			text.add(textField3);
 			text.add(label9);
+			text.add(textField4);
+			setVisible(true);
+		}
+		else if (spriteType == "trapFireball2") {
+			text.add(label1);
+			text.add(textField1);
+			text.add(label2);
+			text.add(textField2);
+			text.add(label12);
+			text.add(textField3);
+			text.add(label13);
 			text.add(textField4);
 			setVisible(true);
 		}
@@ -167,6 +182,12 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			if (spriteType == "trapFireball") {
 				attribute6 = Double.parseDouble(textField1.getText());
 				attribute7 = Double.parseDouble(textField2.getText());
+			}
+			else if (spriteType == "trapFireball2") {
+				attribute6 = Double.parseDouble(textField1.getText());
+				attribute7 = Double.parseDouble(textField2.getText());
+				attribute1 = Integer.parseInt(textField1.getText());
+				attribute2 = Integer.parseInt(textField2.getText());
 			}
 			else if (spriteType == "portal") {
 				attribute1 = Integer.parseInt(textField1.getText());

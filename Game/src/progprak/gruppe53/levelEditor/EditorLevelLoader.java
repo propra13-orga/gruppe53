@@ -13,6 +13,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.game.EnemyGhost;
 import progprak.gruppe53.game.FireballTrap;
+import progprak.gruppe53.game.FireballTrap2;
 import progprak.gruppe53.game.FireballWaveTrap;
 import progprak.gruppe53.game.Goal;
 import progprak.gruppe53.game.GroundTrap;
@@ -100,6 +101,9 @@ public class EditorLevelLoader extends DefaultHandler {
 		case "level.fireballtraps.fireballtrap":
 			spawnFireballTrap(content);
 			break;
+		case "level.fireballtraps2.fireballtrap2":
+			spawnFireballTrap2(content);
+			break;
 		case "level.portals.portal":
 			spawnPortal(content);
 			break;
@@ -180,6 +184,20 @@ public class EditorLevelLoader extends DefaultHandler {
 		//int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
 		sprites.add(new FireballTrap(xLocation, yLocation, null,xMovement, yMovement,"images/FireballRed.png"));	
 		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + "</fireballtrap>" + "\n";
+	}
+	private void spawnFireballTrap2(String content) {
+		String fireballTrapData[] = content.split(";");
+		String fireballTrapLocation[] = fireballTrapData[0].split(":");
+		String fireballTrapMovement[] = fireballTrapData[1].split(":");
+		String fireballTrapRespawn[] = fireballTrapData[2].split(":");
+		int xLocation = Integer.parseInt(fireballTrapLocation[0]);
+		int yLocation = Integer.parseInt(fireballTrapLocation[1]);
+		double xMovement = Double.parseDouble(fireballTrapMovement[0]);
+		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
+		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
+		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
+		sprites.add(new FireballTrap2(xLocation, yLocation, null, xMovement, yMovement,xRespawn,yRespawn));		
+		LevelEditor.saveData[xLocation][yLocation]="		<fireballtrap2>" + xLocation + ":" + yLocation + ";" + xMovement + ":" + yMovement + xRespawn + yRespawn + "</fireballtrap2>" + "\n";
 	}
 
 	private void spawnTrap(String content) {

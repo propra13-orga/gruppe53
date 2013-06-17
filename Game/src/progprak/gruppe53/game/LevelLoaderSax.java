@@ -92,6 +92,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		case "level.fireballtraps.fireballtrap":
 			spawnFireballTrap(content);
 			break;
+		case "level.fireballtraps2.fireballtrap2":
+			spawnFireballTrap2(content);
+			break;
 		case "level.portals.portal":
 			spawnPortal(content);
 			break;
@@ -167,6 +170,19 @@ public class LevelLoaderSax extends DefaultHandler {
 		//int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		//int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
 		sprites.add(new FireballTrap(xLocation, yLocation, game, xMovement, yMovement));		
+	}
+	private void spawnFireballTrap2(String content) {
+		String fireballTrapData[] = content.split(";");
+		String fireballTrapLocation[] = fireballTrapData[0].split(":");
+		String fireballTrapMovement[] = fireballTrapData[1].split(":");
+		String fireballTrapRespawn[] = fireballTrapData[2].split(":");
+		int xLocation = Integer.parseInt(fireballTrapLocation[0]);
+		int yLocation = Integer.parseInt(fireballTrapLocation[1]);
+		double xMovement = Double.parseDouble(fireballTrapMovement[0]);
+		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
+		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
+		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
+		sprites.add(new FireballTrap2(xLocation, yLocation, game, xMovement, yMovement,xRespawn,yRespawn));		
 	}
 
 	private void spawnTrap(String content) {
