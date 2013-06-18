@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.Item;
+import progprak.gruppe53.items.ManaPotion;
 import progprak.gruppe53.items.WoodenSword;
 
 public class ShopPanel extends JPanel {
@@ -58,7 +59,8 @@ public class ShopPanel extends JPanel {
 				}
 			});
 			slot.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-			slot.newItem(new HealthPotion(game));
+			if(i%2==0)slot.newItem(new HealthPotion(game));
+			else slot.newItem(new ManaPotion(game));
 			itemPanel.add(slot);
 		}
 	}

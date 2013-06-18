@@ -123,7 +123,7 @@ public class Game implements Runnable {
 				
 				
 					gameLogic.move(delta);
-					gameLogic.getHero().recoverMana();
+					//gameLogic.getHero().recoverMana();
 				}
 				gamePanel.render(delta,gameLogic.getActors());
 				menu.render();
