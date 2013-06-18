@@ -77,8 +77,8 @@ public class InfoWindow extends JPanel {
 	}
 
 	public void render() {
-		healthBar.setMaximum(game.getGameLogic().getHero().getMaxHealth());
-		healthBar.setValue(game.getGameLogic().getHero().getHealth());
+		healthBar.setMaximum((int)game.getGameLogic().getHero().getMaxHealth());
+		healthBar.setValue((int)game.getGameLogic().getHero().getHealth());
 		manaBar.setMaximum(game.getGameLogic().getHero().getMaxMana());
 		manaBar.setValue(game.getGameLogic().getHero().getMana());
 		infoPanel.repaint();

@@ -1,5 +1,7 @@
 package progprak.gruppe53.game;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 
@@ -39,6 +41,10 @@ private static final long serialVersionUID = 1L;
 		armorSlot = new InventorySlot(null);
 		//saveSlot = new InventorySlot(new ClothArmor());
 		this.add(armorSlot);
+		JPanel space = new JPanel();
+		space.setBackground(Color.black);
+		space.setPreferredSize(new Dimension(2,40));
+		this.add(space);
 		
 		inventorySlot = new InventorySlot[10];
 		useAction = new SlotAction() {

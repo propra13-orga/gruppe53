@@ -112,7 +112,7 @@ public class Hero extends CombatObject{
 	/**
 	 * @return the health
 	 */
-	public int getHealth() {
+	public double getHealth() {
 		return health;
 	}
 
@@ -128,7 +128,7 @@ public class Hero extends CombatObject{
 	/**
 	 * @return the maxHealth
 	 */
-	public int getMaxHealth() {
+	public double getMaxHealth() {
 		return maxHealth;
 	}
 	
@@ -228,5 +228,12 @@ public class Hero extends CombatObject{
 	 */
 	public int getLifes() {
 		return lifes;
+	}
+	@Override
+	protected double damageReduce() {
+		if(armor != null){
+			return 1/(armor.getarmorLVL()*1.3);
+		}
+		else return 1;
 	}
 }

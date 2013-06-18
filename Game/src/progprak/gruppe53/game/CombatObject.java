@@ -11,8 +11,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	
 	protected int faction = 0;
 
-	protected int health = 1;
-	protected int maxHealth = 1;
+	protected double health = 1;
+	protected double maxHealth = 1;
 	protected long lastDamage = 0L;
 	
 	protected Item item;
@@ -62,7 +62,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 			if((current - lastDamage)> 1e9){
 				lastDamage = current;
 				((CombatObject)de.getActor()).doneDamage();
-				if((health -= de.getDamage()) <= 0){
+				System.out.println(de.getDamage()*damageReduce());
+				if((health -= (de.getDamage()*damageReduce())) <= 0){
 					((CombatObject)de.getActor()).doneKill(this);
 					handleDie();
 				}
@@ -70,6 +71,10 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		}
 	}
 	
+	protected double damageReduce() {
+		return 1;
+	}
+
 	protected void doneKill(CombatObject combatObject) {
 		
 	}
