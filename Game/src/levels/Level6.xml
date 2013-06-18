@@ -5,6 +5,7 @@
 		<enemy type="chargeboss">597:339</enemy>
 	</enemies>
 	<items>
+		<item type="pinkglitterwand">73:305</item>
 	</items>
 	<traps>
 	</traps>
