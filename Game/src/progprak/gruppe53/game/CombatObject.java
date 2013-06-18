@@ -62,7 +62,6 @@ abstract public class CombatObject extends Sprite implements Collidable{
 			if((current - lastDamage)> 1e9){
 				lastDamage = current;
 				((CombatObject)de.getActor()).doneDamage();
-				System.out.println(de.getDamage()*damageReduce());
 				if((health -= (de.getDamage()*damageReduce())) <= 0){
 					((CombatObject)de.getActor()).doneKill(this);
 					handleDie();

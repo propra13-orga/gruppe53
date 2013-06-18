@@ -49,7 +49,7 @@ public class Game implements Runnable {
 
 	private KeyboardInput keyboardInput;
 	
-	private String startLevel = "levels/BossArea.xml";
+	private String startLevel = "levels/Level1.xml";
 
 
 	private Menu menu;
