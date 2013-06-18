@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.Item;
 import progprak.gruppe53.items.ManaPotion;
-import progprak.gruppe53.items.WoodenSword;
 
 public class ShopPanel extends JPanel {
 
