@@ -32,7 +32,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		initCollisionEvent();
 	}
 	protected void initCollisionEvent() {
-		collisionEvent = new DamageCollisionEvent(1,faction,this);
+		collisionEvent = new DamageCollisionEvent(10,faction,this);
 	}
 
 	@Override
@@ -57,14 +57,16 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	protected void handleDamageEvent(CollisionEvent ce){
 		DamageCollisionEvent de = (DamageCollisionEvent) ce ;
-		if(faction != de.getFaction() && faction != 0 && de.getFaction() != 0){
-			long current = System.nanoTime();
-			if((current - lastDamage)> 1e9){
-				lastDamage = current;
-				((CombatObject)de.getActor()).doneDamage();
-				if((health -= (de.getDamage()*damageReduce())) <= 0){
-					((CombatObject)de.getActor()).doneKill(this);
-					handleDie();
+		if(!(faction == 0 || de.getFaction() ==0)){
+			if(faction != de.getFaction() && faction != 0 && de.getFaction() != 0){
+				long current = System.nanoTime();
+				if((current - lastDamage)> 1e9){
+					lastDamage = current;
+					((CombatObject)de.getActor()).doneDamage();
+					if((health -= (de.getDamage()*damageReduce())) <= 0){
+						((CombatObject)de.getActor()).doneKill(this);
+						handleDie();
+					}
 				}
 			}
 		}

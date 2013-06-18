@@ -11,6 +11,7 @@ public class OldManNPC extends FriendlyNPC {
 		this.speech = speech;
 		this.answer = answer;
 		faction = 0;
+		doInitalizations();
 	}
 	@Override
 	public void doLogic(long delta) {

@@ -5,6 +5,7 @@
 		<enemy type="ghost">598:339</enemy>
 		<enemy type="ghost">689:144</enemy>
 		<enemy type="ghost">128:294</enemy>
+		<enemy type="ghost">88:88</enemy>
 	</enemies>
 	<items>
 		<item type="pinkglitterwand">112:88</item>

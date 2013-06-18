@@ -31,7 +31,7 @@ public class Hero extends CombatObject{
 		spawnY = yPos;
 		faction = 1;
 		this.keyboardInput = game.getKeyboardInput();
-		maxHealth = 10;
+		maxHealth = 100;
 		health = maxHealth;
 		maxMana = 1000;
 		mana = maxMana;
