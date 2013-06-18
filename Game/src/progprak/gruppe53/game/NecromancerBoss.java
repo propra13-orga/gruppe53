@@ -6,8 +6,8 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 	private long cooldown = 0;
 	private int castOrder = 3;
 	
-	public NecromancerBoss(int x, int y, Game game) {
-		super(x, y, "images/tentacel1.png",game);
+	public NecromancerBoss(int x, int y, GameLogic gameLogic) {
+		super(x, y, "images/tentacel1.png",gameLogic);
 		health = 80;
 		nextLevel = "levels/GoalLevel.xml";
 		dx = Math.random()*5-2.5;
@@ -20,7 +20,7 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 		double length = Math.pow((Math.pow(x,2) + Math.pow(y,2)),0.5);
 		x = x/length;
 		y = y/length;
-		game.getGameLogic().addSprite(new Fireball((int)getX(),(int)getY(),game,this,x*3,y*3,2));
+		gameLogic.addSprite(new Fireball((int)getX(),(int)getY(),gameLogic,this,x*3,y*3,2));
 		castOrder = castOrder + 1;
 		cooldown = System.nanoTime() + (long)((5L)*1e8);
 	}
@@ -30,7 +30,7 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 		double y = yPosition - getY();
 		double xSpawn = xPosition - 0.9*x;
 		double ySpawn = yPosition - 0.9*y;
-		game.getGameLogic().addSprite(new EnemyGhost((int)xSpawn,(int)ySpawn,game));
+		gameLogic.addSprite(new EnemyGhost((int)xSpawn,(int)ySpawn,gameLogic));
 		castOrder = 0;
 		cooldown = System.nanoTime() + (long)((7L)*1e8);
 	}
@@ -58,10 +58,10 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 	public void doLogic(long delta) {
 		if (System.nanoTime() >= cooldown) {
 			if (castOrder == 3) {
-				spawnGhost(game.getGameLogic().getHero().getX(),game.getGameLogic().getHero().getY());
+				spawnGhost(gameLogic.getHero().getX(),gameLogic.getHero().getY());
 			}
 			else {
-				shootFireball(game.getGameLogic().getHero().getX(),game.getGameLogic().getHero().getY());
+				shootFireball(gameLogic.getHero().getX(),gameLogic.getHero().getY());
 			}
 		}
 			

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Hero;
 import progprak.gruppe53.game.PickupCollisionEvent;
 
@@ -15,8 +16,8 @@ public abstract class Potion extends Item implements Collidable{
 		protected Hero owner;
 		protected int price = 0;
 		
-		public Potion(int x, int y, String imagePath,Game game) {
-			super(x, y, imagePath,game);
+		public Potion(int x, int y, String imagePath,GameLogic gameLogic) {
+			super(x, y, imagePath,gameLogic);
 			collisionEvent = new PickupCollisionEvent(this);
 		}
 		public CollisionEvent getCollisionEvent(){

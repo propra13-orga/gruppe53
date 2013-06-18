@@ -5,20 +5,20 @@ public class OldManNPC extends FriendlyNPC {
 
 	private String speech;
 
-	public OldManNPC(int x, int y,Game game, String speech){
-		super(x,y,"images/OldManNPC.png",game);
+	public OldManNPC(int x, int y,GameLogic gameLogic, String speech){
+		super(x,y,"images/OldManNPC.png",gameLogic);
 		this.speech = speech;
 		faction = 0;
 		doInitalizations();
 	}
 	@Override
 	public void doLogic(long delta) {
-		game.hideSpeechPane();
+		//game.hideSpeechPane();
 	}
 
 	protected void handleCollisionEvent(CollisionEvent ce) {
 		if(ce.actor instanceof Hero){
-			game.showSpeechPane(speech);
+			//game.showSpeechPane(speech);
 		}
 	}
 }

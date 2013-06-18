@@ -26,9 +26,12 @@ public class Hero extends CombatObject{
 	private int lifes = 3;
 	
 	private long lastMana = 0;
+
+	private Game game;
 	
 	public Hero(int xPos, int yPos, Game game,InventoryPanel inventory){
-		super(xPos,yPos,"images/held.png",game);
+		super(xPos,yPos,"images/held.png",game.getGameLogic());
+		this.game = game;
 		spawnX = xPos;
 		spawnY = yPos;
 		faction = 1;
@@ -166,7 +169,7 @@ public class Hero extends CombatObject{
 		InventorySlot slot = game.getGameFrame().getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null){
 			pe.getItem().setOwner(this);
-			game.getGameLogic().removeSprite(pe.getItem());
+			gameLogic.removeSprite(pe.getItem());
 			game.getGameFrame().getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
 			handleEvents = false;
 		}

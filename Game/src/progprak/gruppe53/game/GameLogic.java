@@ -19,9 +19,11 @@ public class GameLogic {
 		this.game = game;
 		doInitalizations();
 	}
+	public void addHero(Hero hero){
+		this.hero = hero;
+	}
 	
 	private void doInitalizations(){
-		hero = new Hero(0, 0, game,game.getGameFrame().getInfoWindow().getInventoryPanel());
 		
 	}
 	
@@ -53,7 +55,7 @@ public class GameLogic {
 	public void switchLevel(String newLevel) {
 		level = newLevel;
 		Vector<Sprite> sp = new Vector<Sprite>();
-		LevelLoaderSax.generateLevel(newLevel,sp, game);
+		LevelLoaderSax.generateLevel(newLevel,sp, this);
 		sprites = sp;
 		if(hero.getWeapon() != null){
 			sprites.add(hero.getWeapon());

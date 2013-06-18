@@ -5,11 +5,12 @@ public abstract class Enemy extends CombatObject implements Collidable{
 	private static final long serialVersionUID = 1L;
 
 	
-	public Enemy(int x, int y,String imagePath,Game game){
-		super(x,y,imagePath,game);
+	public Enemy(int x, int y,String imagePath,GameLogic gameLogic){
+		super(x,y,imagePath,gameLogic);
 		faction = 2;
 		doInitalizations();
 	}
+
 
 	@Override
 	public void doLogic(long delta){

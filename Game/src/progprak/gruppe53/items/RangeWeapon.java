@@ -3,6 +3,7 @@ package progprak.gruppe53.items;
 import progprak.gruppe53.game.CombatObject;
 import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
 public class RangeWeapon extends Weapon implements Shooter {
@@ -12,13 +13,11 @@ public class RangeWeapon extends Weapon implements Shooter {
 	 * 
 	 */
 	private static final long serialVersionUID = -6124980088772086796L;
-	protected Game game;
 	protected long last = 0;
 	protected long recharge = 0;
 	
-	public RangeWeapon(int x, int y, String imagePath, Game game) {
-		super(x, y, imagePath, game);
-		this.game = game;
+	public RangeWeapon(int x, int y, String imagePath, GameLogic gameLogic) {
+		super(x, y, imagePath, gameLogic);
 	}
 
 	@Override
@@ -33,16 +32,16 @@ public class RangeWeapon extends Weapon implements Shooter {
 		drawWeapon(attack);
 		if((now-last) >= (recharge)){
 			super.attack(attack);
-			if(attack && game.getGameLogic().getHero().getMana() >= manaCost){
-				if(game.getGameLogic().getHero().getLastDx() < 0){
-					game.getGameLogic().addSprite(new Fireball((int)this.x-12,
-							(int)this.y, game,this, game.getGameLogic().getHero().getLastDx()*2.5,
-							game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction()));
+			if(attack && gameLogic.getHero().getMana() >= manaCost){
+				if(gameLogic.getHero().getLastDx() < 0){
+					gameLogic.addSprite(new Fireball((int)this.x-12,
+							(int)this.y, gameLogic,this, gameLogic.getHero().getLastDx()*2.5,
+							gameLogic.getHero().getLastDy()*2.5, gameLogic.getHero().getFaction()));
 				}
 				else {
-					game.getGameLogic().addSprite(new Fireball((int)this.x+12,
-							(int)this.y, game,this, game.getGameLogic().getHero().getLastDx()*2.5,
-							game.getGameLogic().getHero().getLastDy()*2.5, game.getGameLogic().getHero().getFaction()));
+					gameLogic.addSprite(new Fireball((int)this.x+12,
+							(int)this.y, gameLogic,this, gameLogic.getHero().getLastDx()*2.5,
+							gameLogic.getHero().getLastDy()*2.5, gameLogic.getHero().getFaction()));
 				}
 				last = now;
 			}

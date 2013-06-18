@@ -2,6 +2,7 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 public class WoodenSword extends MeleeWeapons {
 
@@ -11,13 +12,13 @@ public class WoodenSword extends MeleeWeapons {
 
 
 
-	public WoodenSword(int x, int y,Game game){
-		super( x, y, "images/sword.png", game);
+	public WoodenSword(int x, int y,GameLogic gameLogic){
+		super( x, y, "images/sword.png", gameLogic);
 		
 		doInitalizations();
 	}
-	public WoodenSword(Game game){
-		super(0,0, "images/sword.png", game);
+	public WoodenSword(GameLogic gameLogic){
+		super(0,0, "images/sword.png", gameLogic);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();

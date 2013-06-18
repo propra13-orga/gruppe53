@@ -21,11 +21,13 @@ abstract public class CombatObject extends Sprite implements Collidable{
 
 	protected boolean handleEvents = true;
 	
-	protected Game game;
 	
-	public CombatObject(int x, int y, String imagePath,Game game) {
+	protected GameLogic gameLogic;
+	
+	public CombatObject(int x, int y, String imagePath,GameLogic gameLogic) {
 		super(x, y, imagePath);
-		this.game = game;
+		this.gameLogic = gameLogic;
+		doInitalizations();
 	}
 
 	protected void doInitalizations() {
@@ -84,7 +86,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	
 	protected void handleDie() {
-		game.getGameLogic().removeSprite(this);
+		gameLogic.removeSprite(this);
 	}
 
 	protected void handleCollisionEvent(CollisionEvent ce) {

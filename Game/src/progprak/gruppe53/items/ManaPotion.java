@@ -2,18 +2,19 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 public class ManaPotion extends Potion implements Collidable  {
 	
 	private static final long serialVersionUID = 1L;
 	
 	
-	public ManaPotion(int x, int y,Game game){
-		super( x, y, "images/manapot1.png", game);
+	public ManaPotion(int x, int y,GameLogic gameLogic){
+		super( x, y, "images/manapot1.png", gameLogic);
 		price = 25;
 	}
-	public ManaPotion(Game game){
-		super(0,0,"images/manapot1.png",game);
+	public ManaPotion(GameLogic gameLogic){
+		super(0,0,"images/manapot1.png",gameLogic);
 		price = 25;
 	}
 	
@@ -24,7 +25,7 @@ public class ManaPotion extends Potion implements Collidable  {
 	@Override
 	public void use() {
 		super.use();
-		game.getGameLogic().getHero().drainMana(-250);
+		gameLogic.getHero().drainMana(-250);
 	}
 
 }

@@ -7,8 +7,8 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	private int castOrder = 0;
 	private double lastdy;
 	
-	public WizardBoss(int x, int y, Game game) {
-		super(x, y, "images/bug1.png",game);
+	public WizardBoss(int x, int y, GameLogic gameLogic) {
+		super(x, y, "images/bug1.png",gameLogic);
 		health = 30;
 		nextLevel = "levels/Level4.xml";
 		dx = 0;
@@ -18,16 +18,16 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	private void shootGreenFireball(){
 		lastdy = dy;
 		dy = 0;
-		game.getGameLogic().addSprite(new GreenFireball((int)getX()-20,(int)getY()+8,game,this,-2,0,3));
+		gameLogic.addSprite(new GreenFireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2,0,3));
 		castOrder = 0;
 		cooldown = System.nanoTime() + (long)((6L)*1e9);
 	}
 	private void shootFireballs(){
-		game.getGameLogic().addSprite(new Fireball((int)getX()-20,(int)getY()+8,game,this,-2,-0.5,3));
-		game.getGameLogic().addSprite(new Fireball((int)getX()-20,(int)getY()+8,game,this,-2.5,-0.25,3));
-		game.getGameLogic().addSprite(new Fireball((int)getX()-20,(int)getY()+8,game,this,-3,0,3));
-		game.getGameLogic().addSprite(new Fireball((int)getX()-20,(int)getY()+8,game,this,-2.5,0.25,3));
-		game.getGameLogic().addSprite(new Fireball((int)getX()-20,(int)getY()+8,game,this,-2,0.5,3));
+		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2,-0.5,3));
+		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2.5,-0.25,3));
+		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-3,0,3));
+		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2.5,0.25,3));
+		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2,0.5,3));
 		castOrder = castOrder +1;
 		cooldown = System.nanoTime() + (long)((1L)*1e9);
 	}

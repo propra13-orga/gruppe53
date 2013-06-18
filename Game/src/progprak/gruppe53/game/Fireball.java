@@ -6,8 +6,8 @@ public class Fireball extends Projectile implements Collidable{
 
 
 	
-	public Fireball(int x, int y, Game game, Shooter shooter, double dx, double dy, int faction){
-		super(x,y,"images/FireballRed.png", game,shooter);
+	public Fireball(int x, int y, GameLogic gameLogic, Shooter shooter, double dx, double dy, int faction){
+		super(x,y,"images/FireballRed.png", gameLogic,shooter);
 		this.width = 16;
 		this.height = 16;
 		this.dx = dx;
@@ -24,13 +24,13 @@ public class Fireball extends Projectile implements Collidable{
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce) {
 		super.handleMassiveEvent(ce);
-		game.getGameLogic().removeSprite(this);
+		gameLogic.removeSprite(this);
 		shooter.shootRemoved();
 	}
 	@Override
 	protected void doneDamage() {
 		super.doneDamage();
-		game.getGameLogic().removeSprite(this);
+		gameLogic.removeSprite(this);
 		shooter.shootRemoved();
 	}
 	@Override

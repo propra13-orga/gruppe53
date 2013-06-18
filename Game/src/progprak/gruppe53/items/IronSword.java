@@ -3,6 +3,7 @@ package progprak.gruppe53.items;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 public class IronSword extends Weapon {
 
@@ -11,13 +12,13 @@ public class IronSword extends Weapon {
 	private CollisionEvent notAttackCe;
 	private CollisionEvent attackCe;
 	
-	public IronSword(int x, int y,Game game){
-		super( x, y, "images/sword.png", game);
+	public IronSword(int x, int y,GameLogic gameLogic){
+		super( x, y, "images/sword.png", gameLogic);
 		
 		doInitalizations();
 	}
-	public IronSword(Game game){
-		super(0,0, "images/sword.png", game);
+	public IronSword(GameLogic gameLogic){
+		super(0,0, "images/sword.png", gameLogic);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();

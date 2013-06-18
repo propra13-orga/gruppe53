@@ -5,11 +5,11 @@ public class ChargingBoss extends BossEnemy {
 	
 	private long pause;
 		
-	public ChargingBoss(int x, int y, Game game) {
-		super(x, y, "images/Monster1.png",game);
+	public ChargingBoss(int x, int y, GameLogic gameLogic) {
+		super(x, y, "images/Monster1.png",gameLogic);
 		health = 50;
 		nextLevel = "levels/Level7.xml";
-		chargeAttack(game.getGameLogic().getHero().getX(), game.getGameLogic().getHero().getY());
+		chargeAttack(gameLogic.getHero().getX(), gameLogic.getHero().getY());
 		
 	}
 	
@@ -37,7 +37,7 @@ public class ChargingBoss extends BossEnemy {
 	
 	public void doLogic(long delta) {
 		if (dx == 0 && dy == 0) {
-			if (System.nanoTime() >= pause)	chargeAttack(game.getGameLogic().getHero().getX(),game.getGameLogic().getHero().getY());
+			if (System.nanoTime() >= pause)	chargeAttack(gameLogic.getHero().getX(),gameLogic.getHero().getY());
 		}
 	}
 }

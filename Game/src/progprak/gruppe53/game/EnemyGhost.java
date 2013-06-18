@@ -5,8 +5,8 @@ public class EnemyGhost extends Enemy {
 
 	private static final long serialVersionUID = 2838843254158087591L;
 
-	public EnemyGhost(int x, int y, Game game) {
-		super(x, y, "images/ghost1.png",game);
+	public EnemyGhost(int x, int y, GameLogic gameLogic) {
+		super(x, y, "images/ghost1.png",gameLogic);
 		dx = Math.random()*3-1.5;
 		dy = Math.random()*3-1.5;
 	}

@@ -2,7 +2,7 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
-import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Hero;
 
 abstract public class MeleeWeapons extends Weapon {
@@ -15,8 +15,8 @@ abstract public class MeleeWeapons extends Weapon {
 	protected CollisionEvent attackCe;
 	protected int damage;
 	
-	public MeleeWeapons(int x, int y, String imagePath,Game game) {
-		super(x, y, imagePath, game);
+	public MeleeWeapons(int x, int y, String imagePath,GameLogic gameLogic) {
+		super(x, y, imagePath, gameLogic);
 		// TODO Auto-generated constructor stub
 	}
 

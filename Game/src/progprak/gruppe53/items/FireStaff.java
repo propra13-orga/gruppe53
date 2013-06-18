@@ -2,6 +2,7 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 public class FireStaff extends RangeWeapon{
 
@@ -12,15 +13,15 @@ public class FireStaff extends RangeWeapon{
 	
 
 
-	public FireStaff(int x, int y,Game game) {
-		super(x, y, "",game);
+	public FireStaff(int x, int y,GameLogic gameLogic) {
+		super(x, y, "",gameLogic);
 		
 		doInitalizations();
 
 	}
 	
-	public FireStaff(Game game){
-		super(0,0, "",game);
+	public FireStaff(GameLogic gameLogic){
+		super(0,0, "",gameLogic);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();

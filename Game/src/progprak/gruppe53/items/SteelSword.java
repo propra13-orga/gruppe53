@@ -3,6 +3,7 @@ package progprak.gruppe53.items;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 public class SteelSword extends MeleeWeapons {
 
@@ -11,13 +12,13 @@ public class SteelSword extends MeleeWeapons {
 	private CollisionEvent notAttackCe;
 	private CollisionEvent attackCe;
 	
-	public SteelSword(int x, int y,Game game){
-		super( x, y, "images/sword.png", game);
+	public SteelSword(int x, int y,GameLogic gameLogic){
+		super( x, y, "images/sword.png", gameLogic);
 		
 		doInitalizations();
 	}
-	public SteelSword(Game game){
-		super(0,0, "images/sword.png", game);
+	public SteelSword(GameLogic gameLogic){
+		super(0,0, "images/sword.png", gameLogic);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,this);
 		draw = false;
 		doInitalizations();

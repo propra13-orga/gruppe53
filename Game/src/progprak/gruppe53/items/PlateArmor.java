@@ -1,6 +1,7 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 
 public class PlateArmor extends Armor {
@@ -10,15 +11,15 @@ public class PlateArmor extends Armor {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public PlateArmor(int x, int y,Game game) {
-		super(x, y, "",game);
+	public PlateArmor(int x, int y,GameLogic gameLogic) {
+		super(x, y, "",gameLogic);
 		armorLVL = 4;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public PlateArmor(Game game)
+	public PlateArmor(GameLogic gameLogic)
 	{
-		super(0,0,"",game);
+		super(0,0,"",gameLogic);
 		armorLVL = 4;
 	}
 

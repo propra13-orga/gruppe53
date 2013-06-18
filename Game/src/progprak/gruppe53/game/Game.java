@@ -60,8 +60,9 @@ public class Game implements Runnable {
 
 	private void doInitalizations() {
 		keyboardInput = new KeyboardInput();
-		gameFrame = new GameFrame("Game", this);
 		gameLogic = new GameLogic(this);
+		gameFrame = new GameFrame("Game", this);
+		gameLogic.addHero(new Hero(0, 0, this,this.getGameFrame().getInfoWindow().getInventoryPanel()));
 		gameFrame.setVisible(true);
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyboardInput);
 		last = System.nanoTime();
@@ -111,6 +112,7 @@ public class Game implements Runnable {
 
 	public void restart() {
 		gameLogic = new GameLogic(this);
+		gameLogic.addHero(new Hero(0, 0, this,this.getGameFrame().getInfoWindow().getInventoryPanel()));
 		gameLogic.switchLevel(startLevel);
 		gameFrame.getInfoWindow().getInventoryPanel().resetInventory();
 		alive = true;

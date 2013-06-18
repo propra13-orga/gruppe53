@@ -19,20 +19,20 @@ import progprak.gruppe53.items.WoodenSword;
 public class LevelLoaderSax extends DefaultHandler {
 	
 	private Vector<Sprite> sprites;
-	private Game game;
+	private GameLogic gameLogic;
 	private StringBuilder elementName;
 	private Attributes attributes;
 
-	public LevelLoaderSax(Vector<Sprite> sp, Game game) {
+	public LevelLoaderSax(Vector<Sprite> sp, GameLogic gameLogic) {
 		this.sprites = sp;
-		this.game = game;
+		this.gameLogic = gameLogic;
 	}
 
-	public static void generateLevel(String level, Vector<Sprite> sp, Game game){
+	public static void generateLevel(String level, Vector<Sprite> sp, GameLogic gameLogic){
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();
-			DefaultHandler handler = new LevelLoaderSax(sp,game);
+			DefaultHandler handler = new LevelLoaderSax(sp,gameLogic);
 		
 			saxParser.parse( LevelLoaderSax.class.getClassLoader().getResource(level).getFile(), handler );
 			
@@ -132,13 +132,13 @@ public class LevelLoaderSax extends DefaultHandler {
 		int xLocation = Integer.parseInt(itemEntry[0]);
 		int yLocation = Integer.parseInt(itemEntry[1]);
 		if(attributes.getValue("type").equals("pinkglitterwand")){
-			sprites.add(new PinkGlitterWand(xLocation,yLocation, game));
+			sprites.add(new PinkGlitterWand(xLocation,yLocation, gameLogic));
 		}
 		else if(attributes.getValue("type").equals("woodensword")){
-			sprites.add(new WoodenSword(xLocation,yLocation, game));
+			sprites.add(new WoodenSword(xLocation,yLocation, gameLogic));
 		}
 		else if(attributes.getValue("type").equals("clotharmor")){
-			sprites.add(new ClothArmor(xLocation,yLocation, game));
+			sprites.add(new ClothArmor(xLocation,yLocation, gameLogic));
 		}
 	}
 
@@ -147,7 +147,7 @@ public class LevelLoaderSax extends DefaultHandler {
 		String npcEntry[] = npcData[0].split(":");
 		int xLocation = Integer.parseInt(npcEntry[0]);
 		int yLocation = Integer.parseInt(npcEntry[1]);
-		sprites.add(new OldManNPC(xLocation,yLocation,game, npcData[1]));		
+		sprites.add(new OldManNPC(xLocation,yLocation,gameLogic, npcData[1]));		
 	}
 
 	private void setGoal(String content) {
@@ -170,7 +170,7 @@ public class LevelLoaderSax extends DefaultHandler {
 
 	private void setHeroSpawnPoint(String content) {
 		String spawnArray[] = content.split(":");
-		Hero hero = game.getGameLogic().getHero();
+		Hero hero = gameLogic.getHero();
 		hero.setXSpawn(Integer.parseInt(spawnArray[0]));
 		hero.setYSpawn(Integer.parseInt(spawnArray[1]));
 		sprites.add(hero);		
@@ -201,7 +201,7 @@ public class LevelLoaderSax extends DefaultHandler {
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		//int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		//int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new FireballTrap(xLocation, yLocation, game, xMovement, yMovement));		
+		sprites.add(new FireballTrap(xLocation, yLocation, gameLogic, xMovement, yMovement));		
 	}
 	private void spawnFireballTrap2(String content) {
 		String fireballTrapData[] = content.split(";");
@@ -214,14 +214,14 @@ public class LevelLoaderSax extends DefaultHandler {
 		double yMovement = Double.parseDouble(fireballTrapMovement[1]);
 		int xRespawn  = Integer.parseInt(fireballTrapRespawn[0]);
 		int yRespawn  = Integer.parseInt(fireballTrapRespawn[1]);
-		sprites.add(new FireballTrap2(xLocation, yLocation, game, xMovement, yMovement,xRespawn,yRespawn));		
+		sprites.add(new FireballTrap2(xLocation, yLocation, gameLogic, xMovement, yMovement,xRespawn,yRespawn));		
 	}
 
 	private void spawnTrap(String content) {
 		String trapData[] = content.split(":");
 		int trapX = Integer.parseInt(trapData[0]);
 		int trapY = Integer.parseInt(trapData[1]);
-		sprites.add(new GroundTrap(trapX, trapY,game));		
+		sprites.add(new GroundTrap(trapX, trapY,gameLogic));		
 	}
 
 	private void spawnEnemy(String content) {
@@ -229,16 +229,16 @@ public class LevelLoaderSax extends DefaultHandler {
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
 		if(attributes.getValue("type").equals("ghost")){
-			sprites.add(new EnemyGhost(enemyX, enemyY,game));
+			sprites.add(new EnemyGhost(enemyX, enemyY,gameLogic));
 		}
 		else if(attributes.getValue("type").equals("wizboss")){
-			sprites.add(new WizardBoss(enemyX, enemyY,game));
+			sprites.add(new WizardBoss(enemyX, enemyY,gameLogic));
 		}
 		else if(attributes.getValue("type").equals("chargeboss")){
-			sprites.add(new ChargingBoss(enemyX, enemyY,game));
+			sprites.add(new ChargingBoss(enemyX, enemyY,gameLogic));
 		}
 		else if(attributes.getValue("type").equals("necboss")){
-			sprites.add(new NecromancerBoss(enemyX, enemyY,game));
+			sprites.add(new NecromancerBoss(enemyX, enemyY,gameLogic));
 		}
 	}
 
@@ -272,7 +272,7 @@ public class LevelLoaderSax extends DefaultHandler {
 		String healthPotionData[] = content.split(":");
 		int healthPotionX = Integer.parseInt(healthPotionData[0]);
 		int healthPotionY = Integer.parseInt(healthPotionData[1]);
-		sprites.add(new HealthPotion(healthPotionX, healthPotionY,game));	
+		sprites.add(new HealthPotion(healthPotionX, healthPotionY,gameLogic));	
 	}
 	private void spawnFireballWaveTrap(String content) {
 		String fireballWaveTrapData[] = content.split(";");
@@ -282,6 +282,6 @@ public class LevelLoaderSax extends DefaultHandler {
 		int locationY = Integer.parseInt(fireballWaveTrapEntry[1]);
 		int amount = Integer.parseInt(fireballWaveTrapExit[0]);
 		int direction = Integer.parseInt(fireballWaveTrapExit[1]);
-		sprites.add(new FireballWaveTrap(locationX, locationY, game, amount, direction));		
+		sprites.add(new FireballWaveTrap(locationX, locationY, gameLogic, amount, direction));		
 	}
 }

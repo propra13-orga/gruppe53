@@ -2,6 +2,7 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 
 abstract public class Weapon extends Item implements Collidable {
 
@@ -25,16 +26,16 @@ abstract public class Weapon extends Item implements Collidable {
 
 
 	
-	public Weapon(int x, int y, String imagePath,Game game) {
-		super(x, y, imagePath, game);
+	public Weapon(int x, int y, String imagePath,GameLogic gameLogic) {
+		super(x, y, imagePath, gameLogic);
 	}
 
 
 	public void attack(boolean attack){
-		if(attack && game.getGameLogic().getHero().getMana() >= manaCost){
-			game.getGameLogic().getHero().drainMana(manaCost);
+		if(attack && gameLogic.getHero().getMana() >= manaCost){
+			gameLogic.getHero().drainMana(manaCost);
 		}
-		if(game.getGameLogic().getHero().getLastDx()<0){
+		if(gameLogic.getHero().getLastDx()<0){
 			setAngle(Math.PI);
 			xDrawOffset = (int) ((xOffset*-1)-width);
 			yDrawOffset = yOffset;
