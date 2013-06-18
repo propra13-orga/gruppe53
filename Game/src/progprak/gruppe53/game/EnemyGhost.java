@@ -13,7 +13,7 @@ public class EnemyGhost extends Enemy {
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx *= -1;
-		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy *= -1;
+		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy *= -1;
 		handleEvents = false;
 	}
 

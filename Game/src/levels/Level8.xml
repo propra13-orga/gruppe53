@@ -1,52 +1,72 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-	<spawn>39:72</spawn>
+	<spawn>52:91</spawn>
 	<enemies>
-		<enemy type="ghost">327:78</enemy>
-		<enemy type="ghost">431:79</enemy>
-		<enemy type="ghost">63:445</enemy>
-		<enemy type="ghost">364:390</enemy>
-		<enemy type="ghost">344:294</enemy>
-		<enemy type="ghost">201:292</enemy>
-		<enemy type="ghost">69:181</enemy>
-		<enemy type="ghost">286:205</enemy>
-		<enemy type="ghost">426:159</enemy>
-		<enemy type="ghost">567:207</enemy>
-		<enemy type="ghost">413:524</enemy>
+		<enemy type="ghost">262:322</enemy>
+		<enemy type="ghost">296:323</enemy>
+		<enemy type="ghost">333:323</enemy>
+		<enemy type="ghost">372:325</enemy>
+		<enemy type="ghost">277:359</enemy>
+		<enemy type="ghost">322:357</enemy>
+		<enemy type="ghost">360:357</enemy>
+		<enemy type="ghost">413:324</enemy>
+		<enemy type="ghost">399:372</enemy>
+		<enemy type="ghost">510:454</enemy>
+		<enemy type="ghost">389:570</enemy>
+		<enemy type="ghost">481:568</enemy>
+		<enemy type="ghost">381:456</enemy>
+		<enemy type="ghost">395:522</enemy>
+		<enemy type="ghost">467:502</enemy>
 	</enemies>
 	<traps>
-		<trap>178:196</trap>
-		<trap>326:161</trap>
-		<trap>427:205</trap>
-		<trap>567:164</trap>
-		<trap>175:490</trap>
-		<trap>259:570</trap>
-		<trap>348:484</trap>
-		<trap>419:570</trap>
-		<trap>497:481</trap>
-		<trap>539:573</trap>
-		<trap>614:483</trap>
-		<trap>662:572</trap>
-		<trap>715:480</trap>
+		<trap>531:247</trap>
+		<trap>530:170</trap>
+		<trap>613:205</trap>
+		<trap>286:249</trap>
+		<trap>307:205</trap>
+		<trap>411:170</trap>
+		<trap>434:209</trap>
+		<trap>428:491</trap>
+		<trap>356:558</trap>
+		<trap>434:567</trap>
+		<trap>531:522</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>36:539;2.0:0.0</fireballtrap>
-		<fireballtrap>715:539;-1.0:0.0</fireballtrap>
+		<fireballtrap>49:50;2.0:0.0</fireballtrap>
+		<fireballtrap>213:50;1.5:0.0</fireballtrap>
+		<fireballtrap>375:50;1.0:0.0</fireballtrap>
+		<fireballtrap>538:50;0.5:0.0</fireballtrap>
 	</fireballtraps>
 	<fireballwavetraps>
+		<fireballwavetrap>37:490;8:1</fireballwavetrap>
+		<fireballwavetrap>203:212;5:1</fireballwavetrap>
 	</fireballwavetraps>
 	<portals>
-		<portal>720:78;56:204</portal>
-		<portal>734:272;710:404</portal>
-		<portal>734:156;70:300</portal>
+		<portal>736:32;34:162</portal>
+		<portal>74:575;34:162</portal>
+		<portal>127:160;86:355</portal>
+		<portal>32:287;198:253</portal>
+		<portal>736:161;34:162</portal>
+		<portal>194:350;34:162</portal>
+		<portal>126:203;490:332</portal>
+		<portal>220:563;34:162</portal>
+		<portal>78:287;222:470</portal>
+		<portal>126:248;663:348</portal>
+		<portal>650:447;78:357</portal>
+		<portal>607:575;678:519</portal>
+		<portal>729:447;325:453</portal>
+		<portal>730:380;34:162</portal>
+		<portal>730:320;52:91</portal>
+		<portal>580:447;206:247</portal>
 	</portals>
 	<healthpotions>
-		<healthpotion>190:160</healthpotion>
-		<healthpotion>287:295</healthpotion>
-		<healthpotion>573:393</healthpotion>
+		<healthpotion>44:236</healthpotion>
+		<healthpotion>200:490</healthpotion>
+		<healthpotion>232:490</healthpotion>
+		<healthpotion>582:327</healthpotion>
 	</healthpotions>
 	<goal></goal>
-	<levelswitch type="wall" direction="1">768:512;levels/Level9.xml</levelswitch>
+	<levelswitch type="wall" direction="1">768:576;levels/Level8.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>
@@ -62,16 +82,165 @@
 		<wall>0:352</wall>
 		<wall>0:384</wall>
 		<wall>0:416</wall>
+		<wall>0:448</wall>
+		<wall>0:480</wall>
 		<wall>0:512</wall>
 		<wall>0:544</wall>
 		<wall>0:576</wall>
 		<wall>0:608</wall>
+		<wall>32:0</wall>
+		<wall>32:128</wall>
+		<wall>32:320</wall>
+		<wall>32:608</wall>
+		<wall>64:0</wall>
+		<wall>64:128</wall>
+		<wall>64:320</wall>
+		<wall>64:608</wall>
+		<wall>96:0</wall>
+		<wall>96:96</wall>
+		<wall>96:128</wall>
+		<wall>96:320</wall>
+		<wall>96:608</wall>
+		<wall>128:0</wall>
+		<wall>128:96</wall>
+		<wall>128:128</wall>
+		<wall>128:320</wall>
+		<wall>128:608</wall>
+		<wall>160:0</wall>
+		<wall>160:96</wall>
+		<wall>160:128</wall>
+		<wall>160:160</wall>
+		<wall>160:192</wall>
+		<wall>160:224</wall>
+		<wall>160:256</wall>
+		<wall>160:288</wall>
+		<wall>160:320</wall>
+		<wall>160:352</wall>
+		<wall>160:384</wall>
+		<wall>160:416</wall>
+		<wall>160:448</wall>
+		<wall>160:480</wall>
+		<wall>160:512</wall>
+		<wall>160:544</wall>
+		<wall>160:576</wall>
+		<wall>160:608</wall>
+		<wall>192:0</wall>
+		<wall>192:128</wall>
+		<wall>192:288</wall>
+		<wall>192:416</wall>
+		<wall>192:608</wall>
+		<wall>224:0</wall>
+		<wall>224:128</wall>
+		<wall>224:288</wall>
+		<wall>224:608</wall>
+		<wall>256:0</wall>
+		<wall>256:96</wall>
+		<wall>256:128</wall>
+		<wall>256:288</wall>
+		<wall>256:416</wall>
+		<wall>256:608</wall>
+		<wall>288:0</wall>
+		<wall>288:96</wall>
+		<wall>288:128</wall>
+		<wall>288:288</wall>
+		<wall>288:416</wall>
+		<wall>288:448</wall>
+		<wall>288:480</wall>
+		<wall>288:512</wall>
+		<wall>288:544</wall>
+		<wall>288:576</wall>
+		<wall>288:608</wall>
+		<wall>320:0</wall>
+		<wall>320:96</wall>
+		<wall>320:128</wall>
+		<wall>320:288</wall>
+		<wall>320:416</wall>
+		<wall>320:608</wall>
+		<wall>352:0</wall>
+		<wall>352:128</wall>
+		<wall>352:288</wall>
+		<wall>352:416</wall>
+		<wall>352:608</wall>
+		<wall>384:0</wall>
+		<wall>384:128</wall>
+		<wall>384:288</wall>
+		<wall>384:416</wall>
+		<wall>384:608</wall>
+		<wall>416:0</wall>
+		<wall>416:96</wall>
+		<wall>416:128</wall>
+		<wall>416:288</wall>
+		<wall>416:416</wall>
+		<wall>416:608</wall>
+		<wall>448:0</wall>
+		<wall>448:96</wall>
+		<wall>448:128</wall>
+		<wall>448:288</wall>
+		<wall>448:320</wall>
+		<wall>448:352</wall>
+		<wall>448:416</wall>
+		<wall>480:0</wall>
+		<wall>480:96</wall>
+		<wall>480:128</wall>
+		<wall>480:288</wall>
+		<wall>480:416</wall>
+		<wall>480:608</wall>
+		<wall>512:0</wall>
+		<wall>512:128</wall>
+		<wall>512:288</wall>
+		<wall>512:416</wall>
+		<wall>512:608</wall>
+		<wall>544:0</wall>
+		<wall>544:128</wall>
+		<wall>544:288</wall>
+		<wall>544:320</wall>
+		<wall>544:352</wall>
+		<wall>544:384</wall>
+		<wall>544:416</wall>
+		<wall>544:448</wall>
+		<wall>544:480</wall>
+		<wall>544:608</wall>
+		<wall>576:0</wall>
+		<wall>576:96</wall>
+		<wall>576:128</wall>
+		<wall>576:288</wall>
+		<wall>576:480</wall>
+		<wall>576:608</wall>
+		<wall>608:0</wall>
+		<wall>608:96</wall>
+		<wall>608:128</wall>
+		<wall>608:288</wall>
+		<wall>608:480</wall>
+		<wall>608:608</wall>
+		<wall>640:0</wall>
+		<wall>640:96</wall>
+		<wall>640:128</wall>
+		<wall>640:288</wall>
+		<wall>640:480</wall>
+		<wall>640:512</wall>
+		<wall>640:544</wall>
+		<wall>640:576</wall>
+		<wall>640:608</wall>
+		<wall>672:0</wall>
+		<wall>672:128</wall>
+		<wall>672:288</wall>
+		<wall>672:480</wall>
+		<wall>672:608</wall>
+		<wall>704:0</wall>
+		<wall>704:128</wall>
+		<wall>704:288</wall>
+		<wall>704:480</wall>
+		<wall>704:608</wall>
+		<wall>736:0</wall>
+		<wall>736:128</wall>
+		<wall>736:288</wall>
+		<wall>736:480</wall>
+		<wall>736:608</wall>
 		<wall>768:0</wall>
 		<wall>768:32</wall>
 		<wall>768:64</wall>
 		<wall>768:96</wall>
 		<wall>768:128</wall>
-		<wall>768:160</wall>
 		<wall>768:192</wall>
 		<wall>768:224</wall>
 		<wall>768:256</wall>
@@ -80,170 +249,17 @@
 		<wall>768:352</wall>
 		<wall>768:384</wall>
 		<wall>768:416</wall>
-		<wall>768:480</wall>
-		<wall>768:544</wall>
-		<wall>768:576</wall>
-		<wall>768:608</wall>
-		<wall>32:0</wall>
-		<wall>64:0</wall>
-		<wall>96:0</wall>
-		<wall>128:0</wall>
-		<wall>160:0</wall>
-		<wall>192:0</wall>
-		<wall>224:0</wall>
-		<wall>256:0</wall>
-		<wall>288:0</wall>
-		<wall>320:0</wall>
-		<wall>352:0</wall>
-		<wall>384:0</wall>
-		<wall>416:0</wall>
-		<wall>448:0</wall>
-		<wall>480:0</wall>
-		<wall>512:0</wall>
-		<wall>544:0</wall>
-		<wall>576:0</wall>
-		<wall>608:0</wall>
-		<wall>640:0</wall>
-		<wall>672:0</wall>
-		<wall>704:0</wall>
-		<wall>736:0</wall>
-		<wall>32:608</wall>
-		<wall>64:608</wall>
-		<wall>96:608</wall>
-		<wall>128:608</wall>
-		<wall>160:608</wall>
-		<wall>192:608</wall>
-		<wall>224:608</wall>
-		<wall>256:608</wall>
-		<wall>288:608</wall>
-		<wall>320:608</wall>
-		<wall>352:608</wall>
-		<wall>384:608</wall>
-		<wall>416:608</wall>
-		<wall>448:608</wall>
-		<wall>480:608</wall>
-		<wall>512:608</wall>
-		<wall>544:608</wall>
-		<wall>576:608</wall>
-		<wall>608:608</wall>
-		<wall>640:608</wall>
-		<wall>672:608</wall>
-		<wall>704:608</wall>
-		<wall>736:608</wall>
-		<wall>32:32</wall>
-		<wall>64:32</wall>
-		<wall>96:32</wall>
-		<wall>128:32</wall>
-		<wall>160:32</wall>
-		<wall>192:32</wall>
-		<wall>224:32</wall>
-		<wall>256:32</wall>
-		<wall>288:32</wall>
-		<wall>320:32</wall>
-		<wall>352:32</wall>
-		<wall>384:32</wall>
-		<wall>416:32</wall>
-		<wall>448:32</wall>
-		<wall>480:32</wall>
-		<wall>512:32</wall>
-		<wall>544:32</wall>
-		<wall>576:32</wall>
-		<wall>608:32</wall>
-		<wall>640:32</wall>
-		<wall>672:32</wall>
-		<wall>704:32</wall>
-		<wall>736:32</wall>
-		<wall>32:124</wall>
-		<wall>64:124</wall>
-		<wall>96:124</wall>
-		<wall>128:124</wall>
-		<wall>160:124</wall>
-		<wall>192:124</wall>
-		<wall>224:124</wall>
-		<wall>256:124</wall>
-		<wall>288:124</wall>
-		<wall>320:124</wall>
-		<wall>352:124</wall>
-		<wall>384:124</wall>
-		<wall>416:124</wall>
-		<wall>448:124</wall>
-		<wall>480:124</wall>
-		<wall>512:124</wall>
-		<wall>544:124</wall>
-		<wall>576:124</wall>
-		<wall>608:124</wall>
-		<wall>640:124</wall>
-		<wall>672:124</wall>
-		<wall>704:124</wall>
-		<wall>736:124</wall>
-		<wall>32:240</wall>
-		<wall>64:240</wall>
-		<wall>96:240</wall>
-		<wall>128:240</wall>
-		<wall>160:240</wall>
-		<wall>192:240</wall>
-		<wall>224:240</wall>
-		<wall>256:240</wall>
-		<wall>288:240</wall>
-		<wall>320:240</wall>
-		<wall>352:240</wall>
-		<wall>384:240</wall>
-		<wall>416:240</wall>
-		<wall>448:240</wall>
-		<wall>480:240</wall>
-		<wall>512:240</wall>
-		<wall>544:240</wall>
-		<wall>576:240</wall>
-		<wall>608:240</wall>
-		<wall>640:240</wall>
-		<wall>672:240</wall>
-		<wall>704:240</wall>
-		<wall>736:240</wall>
-		<wall>32:340</wall>
-		<wall>64:340</wall>
-		<wall>96:340</wall>
-		<wall>128:340</wall>
-		<wall>160:340</wall>
-		<wall>192:340</wall>
-		<wall>224:340</wall>
-		<wall>256:340</wall>
-		<wall>288:340</wall>
-		<wall>320:340</wall>
-		<wall>352:340</wall>
-		<wall>384:340</wall>
-		<wall>416:340</wall>
-		<wall>448:340</wall>
-		<wall>480:340</wall>
-		<wall>512:340</wall>
-		<wall>544:340</wall>
-		<wall>576:340</wall>
-		<wall>608:340</wall>
-		<wall>640:340</wall>
-		<wall>672:340</wall>
-		<wall>704:340</wall>
-		<wall>736:340</wall>
 		<wall>768:448</wall>
-		<wall>736:444</wall>
-		<wall>704:444</wall>
-		<wall>672:444</wall>
-		<wall>640:444</wall>
-		<wall>608:444</wall>
-		<wall>576:444</wall>
-		<wall>544:444</wall>
-		<wall>512:444</wall>
-		<wall>480:444</wall>
-		<wall>448:444</wall>
-		<wall>416:444</wall>
-		<wall>384:444</wall>
-		<wall>352:444</wall>
-		<wall>320:444</wall>
-		<wall>288:444</wall>
-		<wall>256:444</wall>
-		<wall>224:444</wall>
-		<wall>192:444</wall>
-		<wall>160:444</wall>
-		<wall>128:444</wall>
-		<wall>0:448</wall>
-		<wall>0:480</wall>
+		<wall>768:480</wall>
+		<wall>768:512</wall>
+		<wall>768:544</wall>
+		<wall>768:608</wall>
+		<wall>768:160</wall>
+		<wall>684:160</wall>
+		<wall>684:192</wall>
+		<wall>224:416</wall>
+		<wall>227:320</wall>
+		<wall>227:352</wall>
+		<wall>448:608</wall>
 	</walls>
 </level>
