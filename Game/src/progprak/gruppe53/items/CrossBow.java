@@ -10,7 +10,6 @@ public class CrossBow extends Weapon{
 	 */
 	private static final long serialVersionUID = 4274376584235570942L;
 	
-	private Game game;
 
 	public CrossBow(int x, int y,Game game) {
 		super(x, y, "", game);

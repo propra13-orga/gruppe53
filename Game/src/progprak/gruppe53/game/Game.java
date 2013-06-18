@@ -1,14 +1,8 @@
 package progprak.gruppe53.game;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.util.ListIterator;
 import java.util.Vector;
-
-import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 
 public class Game implements Runnable {
 	
@@ -32,15 +26,11 @@ public class Game implements Runnable {
 	 */
 	private long delta;
 	
-	/*
-	 * The Gamepanel
-	 */
-	private GamePanel gamePanel;
 	
 	/*
 	 * The main Frame
 	 */
-	private JFrame frame;
+	private GameFrame gameFrame;
 	
 	private GameLogic gameLogic;
 	
@@ -51,17 +41,10 @@ public class Game implements Runnable {
 	private String startLevel = "levels/Level1.xml";
 
 
-	private Menu menu;
 
 	private boolean alive = true;
 
-	private InfoWindow infoWindow;
-	
-	private ShopPanel shop;
 
-	private JLayeredPane mainPane;
-
-	private SpeechPane speechPane;
 	
 	public Game() {
 		doInitalizations();
@@ -77,34 +60,9 @@ public class Game implements Runnable {
 
 	private void doInitalizations() {
 		keyboardInput = new KeyboardInput();
-		mainPane = new JLayeredPane();
-		gamePanel = new GamePanel();
-		menu = new Menu(this);
-		infoWindow = new InfoWindow(this);		
+		gameFrame = new GameFrame("Game", this);
 		gameLogic = new GameLogic(this);
-		mainPane.setPreferredSize(gamePanel.getPreferredSize());
-		gamePanel.setLocation(0, 0);
-		gamePanel.setSize(gamePanel.getPreferredSize());
-		mainPane.add(gamePanel,new Integer(1));
-		shop = new ShopPanel(this);
-		shop.setLocation(mainPane.getPreferredSize().width/2 - shop.getPreferredSize().width/2,mainPane.getPreferredSize().height/2 - shop.getPreferredSize().height/2);
-		shop.setSize(shop.getPreferredSize());
-		mainPane.add(shop,new Integer(0));
-		speechPane = new SpeechPane();
-		speechPane.setPreferredSize(new Dimension(400,100));
-		speechPane.setLocation(mainPane.getPreferredSize().width/2-speechPane.getPreferredSize().width/2,100);
-		speechPane.setSize(speechPane.getPreferredSize());
-		speechPane.setBackground(Color.BLACK);
-		speechPane.setVisible(false);
-		mainPane.add(speechPane,new Integer(9));
-		frame = new JFrame("Game");
-		frame.setLayout(new BorderLayout());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(mainPane);
-		frame.add(menu,BorderLayout.NORTH);
-		frame.add(infoWindow,BorderLayout.SOUTH);
-		frame.pack();
-		frame.setVisible(true);
+		gameFrame.setVisible(true);
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyboardInput);
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
@@ -118,17 +76,10 @@ public class Game implements Runnable {
 				computeDelta();
 				
 				if(alive){
-					gameLogic.doLogic(delta);
-				
-				
+					gameLogic.doLogic(delta);				
 					gameLogic.move(delta);
-					gameLogic.getHero().recoverMana();
 				}
-				gamePanel.render(delta,gameLogic.getActors());
-				menu.render();
-				infoWindow.render();
-				gamePanel.repaint();
-				speechPane.render();
+				gameFrame.render(delta,gameLogic.getActors());
 				Thread.sleep(10);
 			}
 			catch(InterruptedException e){
@@ -161,7 +112,7 @@ public class Game implements Runnable {
 	public void restart() {
 		gameLogic = new GameLogic(this);
 		gameLogic.switchLevel(startLevel);
-		infoWindow.getInventoryPanel().resetInventory();
+		gameFrame.getInfoWindow().getInventoryPanel().resetInventory();
 		alive = true;
 	}
 
@@ -203,43 +154,39 @@ public class Game implements Runnable {
 		alive = false;
 	}
 	
-	public InfoWindow getInfoWindow(){
-		return infoWindow;
-	}
-
-
-	/**
-	 * @return the shop
-	 */
-	public ShopPanel getShop() {
-		return shop;
-	}
-
 
 	public void showShop() {
-		infoWindow.getInventoryPanel().slotsSell();
-		mainPane.setLayer(shop, 2);
+		gameFrame.getInfoWindow().getInventoryPanel().slotsSell();
+		gameFrame.getMainPane().setLayer(gameFrame.getShop(), 2);
 	}
 
 
 	public void hideShop() {
-		infoWindow.getInventoryPanel().slotsUse();
-		mainPane.setLayer(shop, 0);
+		gameFrame.getInfoWindow().getInventoryPanel().slotsUse();
+		gameFrame.getMainPane().setLayer(gameFrame.getShop(), 0);
 	}
 	public void showSpeechPane(String text){
-		speechPane.setText(text);
-		speechPane.setShow(true);
+		gameFrame.getSpeechPane().setText(text);
+		gameFrame.getSpeechPane().setShow(true);
 	}
 
 
 	public void hideSpeechPane() {
-		speechPane.setShow(false);
+		gameFrame.getSpeechPane().setShow(false);
 	}
 
 
 	public void win() {
 		showSpeechPane("Du hast gewonnen!");
 		alive = false;
+	}
+
+
+	/**
+	 * @return the gameFrame
+	 */
+	public GameFrame getGameFrame() {
+		return gameFrame;
 	}
 
 }

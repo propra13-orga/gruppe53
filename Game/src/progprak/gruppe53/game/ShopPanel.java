@@ -66,12 +66,12 @@ public class ShopPanel extends JPanel {
 
 
 	protected void buyItem(InventorySlot slot) {
-		InventorySlot iSlot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
+		InventorySlot iSlot = game.getGameFrame().getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(iSlot != null){
 			Item item = slot.getItem();
 			if (game.getGameLogic().getHero().getMoney() >= item.getPrice()) {
 				game.getGameLogic().getHero().setMoney(game.getGameLogic().getHero().getMoney() - item.getPrice());
-				game.getInfoWindow().getInventoryPanel().newItem(iSlot, item);
+				game.getGameFrame().getInfoWindow().getInventoryPanel().newItem(iSlot, item);
 				slot.removeItem();
 			}
 		}

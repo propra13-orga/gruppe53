@@ -10,7 +10,6 @@ public class LongBow extends RangeWeapon{
 	 */
 	private static final long serialVersionUID = 4274376584235570942L;
 	
-	private Game game;
 
 	public LongBow(int x, int y,Game game) {
 		super(x, y, "",game);
