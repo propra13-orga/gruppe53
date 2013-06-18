@@ -5,16 +5,18 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	
 	private long cooldown = 0;
 	private int castOrder = 0;
+	private double lastdy;
 	
 	public WizardBoss(int x, int y, Game game) {
 		super(x, y, "images/Monster1.png",game);
 		health = 3;
-		nextLevel = "levels/Level1.xml";
+		nextLevel = "levels/Level4.xml";
 		dx = 0;
 		dy = 2;
 	}
 	
 	private void shootGreenFireball(){
+		lastdy = dy;
 		dy = 0;
 		game.getGameLogic().addSprite(new GreenFireball((int)getX()-20,(int)getY()+8,game,this,-2,0,3));
 		castOrder = 0;
@@ -55,7 +57,7 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	
 	public void doLogic(long delta) {
 		if (System.nanoTime() >= cooldown) {
-			if (dy == 0) dy = 2;
+			if (dy == 0) dy = lastdy;
 			if (castOrder == 3) {
 				shootGreenFireball();
 			}
