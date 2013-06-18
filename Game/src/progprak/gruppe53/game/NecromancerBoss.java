@@ -8,7 +8,7 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 	
 	public NecromancerBoss(int x, int y, Game game) {
 		super(x, y, "images/Monster1.png",game);
-		health = 8;
+		health = 80;
 		nextLevel = "levels/Level1.xml";
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
