@@ -6,6 +6,9 @@
 		<enemy type="ghost">689:144</enemy>
 		<enemy type="ghost">128:294</enemy>
 	</enemies>
+	<items>
+		<item type="pinkglitterwand">112:88</item>
+	</items>
 	<npc>112:44;Du hättest nicht herkommen sollen!</npc>
 	<traps>
 		<trap>297:338</trap>

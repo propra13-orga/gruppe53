@@ -31,7 +31,7 @@ abstract public class Weapon extends Item implements Collidable {
 
 
 	public void attack(boolean attack){
-		if(attack && game.getGameLogic().getHero().getMana() > manaCost){
+		if(attack && game.getGameLogic().getHero().getMana() >= manaCost){
 			game.getGameLogic().getHero().drainMana(manaCost);
 		}
 		if(game.getGameLogic().getHero().getLastDx()<0){

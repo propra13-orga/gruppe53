@@ -12,6 +12,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.items.HealthPotion;
+import progprak.gruppe53.items.PinkGlitterWand;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
@@ -116,8 +117,20 @@ public class LevelLoaderSax extends DefaultHandler {
 		case "level.fireballwavetraps.fireballwavetrap":
 			spawnFireballWaveTrap(content);
 			break;
+		case "level.items.item":
+			spawnItem(content);
+			break;
 		default:
 			break;
+		}
+	}
+
+	private void spawnItem(String content) {
+		String itemEntry[] = content.split(":");
+		int xLocation = Integer.parseInt(itemEntry[0]);
+		int yLocation = Integer.parseInt(itemEntry[1]);
+		if(attributes.getValue("type").equals("pinkglitterwand")){
+			sprites.add(new PinkGlitterWand(xLocation,yLocation, game));
 		}
 	}
 
