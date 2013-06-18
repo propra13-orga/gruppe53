@@ -3,6 +3,10 @@ package progprak.gruppe53.game;
 public class WallLevelSwitch extends LevelSwitch {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -346084802825273912L;
 	public static final int DIRECTION_HORIZONTAL = 0;
 	public static final int DIRECTION_VERTICAL = 1;
 	

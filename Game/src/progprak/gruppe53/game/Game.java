@@ -9,7 +9,6 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
 public class Game implements Runnable {
 	
