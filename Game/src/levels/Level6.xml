@@ -20,7 +20,6 @@
 		<trap>399:344</trap>
 		<trap>504:241</trap>
 		<trap>390:228</trap>
-		<trap>69:493</trap>
 		<trap>52:172</trap>
 		<trap>61:207</trap>
 		<trap>75:245</trap>
@@ -38,6 +37,7 @@
 		<trap>443:467</trap>
 		<trap>521:542</trap>
 		<trap>489:567</trap>
+		<trap>119:492</trap>
 	</traps>
 	<fireballtraps>
 		<fireballtrap>50:76;1.0:0.0</fireballtrap>
@@ -49,7 +49,7 @@
 	<fireballwavetraps>
 	</fireballwavetraps>
 	<portals>
-		<portal>225:483;138:498</portal>
+		<portal>231:489;83:550</portal>
 	</portals>
 	<healthpotions>
 		<healthpotion>36:335</healthpotion>
@@ -57,7 +57,8 @@
 		<healthpotion>729:558</healthpotion>
 		<healthpotion>33:41</healthpotion>
 	</healthpotions>
-	<goal>68:542</goal>
+	<goal></goal>
+	<levelswitch type="wall" direction="0">64:448;levels/Level7.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>
@@ -159,7 +160,6 @@
 		<wall>192:512</wall>
 		<wall>192:480</wall>
 		<wall>192:448</wall>
-		<wall>64:448</wall>
 		<wall>96:448</wall>
 		<wall>128:448</wall>
 		<wall>160:448</wall>
