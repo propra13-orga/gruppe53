@@ -2,7 +2,7 @@
 <level>
 	<items>
 		<item type="clotharmor">73:569</item>
-	<items>
+	</items>
 	<spawn>40:569</spawn>
 	<enemies>
 		<enemy type="ghost">326:553</enemy>
