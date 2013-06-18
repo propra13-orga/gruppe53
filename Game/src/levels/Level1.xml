@@ -7,12 +7,6 @@
 		<enemy type="ghost">128:294</enemy>
 		<enemy type="ghost">88:88</enemy>
 	</enemies>
-	<items>
-		<item type="pinkglitterwand">112:88</item>
-		<item type="woodensword">112:112</item>
-		<item type="clotharmor">300:300</item>
-	</items>
-	<npc>112:44;Du hättest nicht herkommen sollen!</npc>
 	<traps>
 		<trap>297:338</trap>
 		<trap>336:339</trap>
@@ -32,10 +26,18 @@
 		<trap>376:75</trap>
 		<trap>611:135</trap>
 		<trap>688:302</trap>
+		<trap>95:201</trap>
+		<trap>204:276</trap>
+		<trap>69:378</trap>
+		<trap>129:93</trap>
 	</traps>
 	<fireballtraps>
 		<fireballtrap>563:327;1.0:-1.0</fireballtrap>
+		<fireballtrap>44:245;1.0:0.0</fireballtrap>
+		<fireballtrap>220:327;-1.0:0.0</fireballtrap>
 	</fireballtraps>
+	<fireballwavetraps>
+	</fireballwavetraps>
 	<portals>
 	</portals>
 	<healthpotions>
