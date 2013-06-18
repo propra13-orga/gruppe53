@@ -2,7 +2,7 @@
 <level>
 	<spawn>40:305</spawn>
 	<enemies>
-		<enemy type="wizboss">598:339</enemy>
+		<enemy type="wizboss" nextlevel="levels/Level4.xml">598:339</enemy>
 	</enemies>
 	<traps>
 	</traps>
