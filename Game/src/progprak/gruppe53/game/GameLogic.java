@@ -26,8 +26,7 @@ public class GameLogic {
 	}
 	
 	private void doInitalizations(){
-		//hero = new Hero(0, 0, game, new WoodenSword() , new ClothArmor());
-		hero = new Hero(0, 0, game,game.getInfoWindow().getInventoryPanel());
+		hero = new Hero(0, 0, game,game.getGameFrame().getInfoWindow().getInventoryPanel());
 		
 	}
 	

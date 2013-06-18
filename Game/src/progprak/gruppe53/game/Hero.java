@@ -52,6 +52,7 @@ public class Hero extends CombatObject{
 	@Override
 	public void doLogic(long delta)
 	{
+		recoverMana();
 		weapon = (Weapon) inventory.getWeaponSlot().getItem();
 		if(weapon!= null){
 			this.weapon.setOwner(this);
@@ -162,11 +163,11 @@ public class Hero extends CombatObject{
 	}
 	protected void handlePickupEvent(CollisionEvent ce){
 		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
-		InventorySlot slot = game.getInfoWindow().getInventoryPanel().getFreeSlot();
+		InventorySlot slot = game.getGameFrame().getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null){
 			pe.getItem().setOwner(this);
 			game.getGameLogic().removeSprite(pe.getItem());
-			game.getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
+			game.getGameFrame().getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
 			handleEvents = false;
 		}
 	}
