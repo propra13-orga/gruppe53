@@ -11,6 +11,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
@@ -135,6 +136,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 		else if(attributes.getValue("type").equals("woodensword")){
 			sprites.add(new WoodenSword(xLocation,yLocation, game));
+		}
+		else if(attributes.getValue("type").equals("clotharmor")){
+			sprites.add(new ClothArmor(xLocation,yLocation, game));
 		}
 	}
 

@@ -9,6 +9,7 @@
 	<items>
 		<item type="pinkglitterwand">112:88</item>
 		<item type="woodensword">112:112</item>
+		<item type="clotharmor">300:300</item>
 	</items>
 	<npc>112:44;Du hättest nicht herkommen sollen!</npc>
 	<traps>

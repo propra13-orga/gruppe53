@@ -61,6 +61,7 @@ public class GameLogic {
 		Vector<Sprite> sp = new Vector<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
+		sprites.add(hero.getWeapon());
 
 	}
 
