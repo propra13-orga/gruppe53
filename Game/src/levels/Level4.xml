@@ -3,16 +3,15 @@
 	<spawn>40:569</spawn>
 	<enemies>
 		<enemy type="ghost">326:553</enemy>
-		<enemy type="ghost">234:298</enemy>
 		<enemy type="ghost">645:201</enemy>
 		<enemy type="ghost">168:77</enemy>
 		<enemy type="ghost">544:113</enemy>
+		<enemy type="ghost">204:293</enemy>
 	</enemies>
 	<traps>
 		<trap>261:568</trap>
 		<trap>322:494</trap>
 		<trap>279:424</trap>
-		<trap>279:299</trap>
 		<trap>459:374</trap>
 		<trap>530:395</trap>
 		<trap>503:526</trap>
@@ -35,15 +34,18 @@
 		<trap>36:320</trap>
 		<trap>454:179</trap>
 		<trap>256:221</trap>
-		<trap>37:35</trap>
 		<trap>736:285</trap>
 		<trap>201:364</trap>
+		<trap>240:294</trap>
 	</traps>
 	<fireballtraps>
 		<fireballtrap>367:40;1.0:0.0</fireballtrap>
 		<fireballtrap>696:375;0.0:1.0</fireballtrap>
-		<fireballtrap>388:192;-1.0:0.0</fireballtrap>
+		<fireballtrap>292:302;0.0:1.0</fireballtrap>
+		<fireballtrap>386:186;-1.0:0.0</fireballtrap>
 	</fireballtraps>
+	<fireballwavetraps>
+	</fireballwavetraps>
 	<portals>
 		<portal>582:394;549:558</portal>
 	</portals>
