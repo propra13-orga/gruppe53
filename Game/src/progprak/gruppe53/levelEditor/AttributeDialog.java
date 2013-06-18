@@ -186,8 +186,9 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			else if (spriteType == "trapFireball2") {
 				attribute6 = Double.parseDouble(textField1.getText());
 				attribute7 = Double.parseDouble(textField2.getText());
-				attribute1 = Integer.parseInt(textField1.getText());
-				attribute2 = Integer.parseInt(textField2.getText());
+				attribute1 = Integer.parseInt(textField3.getText());
+				attribute2 = Integer.parseInt(textField4.getText());
+				
 			}
 			else if (spriteType == "portal") {
 				attribute1 = Integer.parseInt(textField1.getText());
