@@ -69,7 +69,7 @@ public class GameLogic {
 		//sp.add(new WizardBoss(736,40, game));
 		//sp.add(new WallLevelSwitch(768, 576, WallLevelSwitch.DIRECTION_VERTICAL, "levels/Level1.xml"));
 		//sp.add(new FireballWaveTrap(200,200,game,8,8));
-		//sp.add(new OldManNPC(300,300,game,"Möchtest du dass ich dir beibringe wie man Pokemon fängt?","NEIN!"));
+		sp.add(new OldManNPC(300,300,game,"MÃ¶chtest du dass ich dir beibringe\nwie man Pokemon fÃ¤ngt?"));
 	}
 
 	public Hero getHero() {

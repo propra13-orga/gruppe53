@@ -1,12 +1,15 @@
 package progprak.gruppe53.game;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.util.ListIterator;
 import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
 public class Game implements Runnable {
 	
@@ -58,6 +61,8 @@ public class Game implements Runnable {
 	private ShopPanel shop;
 
 	private JLayeredPane mainPane;
+
+	private SpeechPane speechPane;
 	
 	public Game() {
 		doInitalizations();
@@ -86,6 +91,13 @@ public class Game implements Runnable {
 		shop.setLocation(mainPane.getPreferredSize().width/2 - shop.getPreferredSize().width/2,mainPane.getPreferredSize().height/2 - shop.getPreferredSize().height/2);
 		shop.setSize(shop.getPreferredSize());
 		mainPane.add(shop,new Integer(0));
+		speechPane = new SpeechPane();
+		speechPane.setPreferredSize(new Dimension(400,100));
+		speechPane.setLocation(mainPane.getPreferredSize().width/2-speechPane.getPreferredSize().width/2,100);
+		speechPane.setSize(speechPane.getPreferredSize());
+		speechPane.setBackground(Color.BLACK);
+		speechPane.setVisible(false);
+		mainPane.add(speechPane,new Integer(9));
 		frame = new JFrame("Game");
 		frame.setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,6 +129,7 @@ public class Game implements Runnable {
 				menu.render();
 				infoWindow.render();
 				gamePanel.repaint();
+				speechPane.render();
 				Thread.sleep(10);
 			}
 			catch(InterruptedException e){
@@ -213,6 +226,15 @@ public class Game implements Runnable {
 	public void hideShop() {
 		infoWindow.getInventoryPanel().slotsUse();
 		mainPane.setLayer(shop, 0);
+	}
+	public void showSpeechPane(String text){
+		speechPane.setText(text);
+		speechPane.setShow(true);
+	}
+
+
+	public void hideSpeechPane() {
+		speechPane.setShow(false);
 	}
 
 }
