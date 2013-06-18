@@ -7,6 +7,7 @@
 		<enemy type="ghost">128:294</enemy>
 		<enemy type="ghost">88:88</enemy>
 	</enemies>
+	<npc>120:40;Du hättest nicht herkommen sollen!!!</npc>
 	<traps>
 		<trap>297:338</trap>
 		<trap>336:339</trap>
