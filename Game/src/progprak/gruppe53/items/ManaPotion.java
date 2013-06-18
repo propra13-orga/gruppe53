@@ -10,9 +10,11 @@ public class ManaPotion extends Potion implements Collidable  {
 	
 	public ManaPotion(int x, int y,Game game){
 		super( x, y, "images/manapot1.png", game);
+		price = 25;
 	}
 	public ManaPotion(Game game){
 		super(0,0,"images/manapot1.png",game);
+		price = 25;
 	}
 	
 	@Override

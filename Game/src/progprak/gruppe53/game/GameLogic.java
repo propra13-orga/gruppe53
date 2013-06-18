@@ -75,7 +75,9 @@ public class GameLogic {
 		sprites.remove(s);
 	}
 	public void addSprite(Sprite s){
-		sprites.add(s);
+		if(s!=null){
+			sprites.add(s);
+		}
 	}
 
 	/**

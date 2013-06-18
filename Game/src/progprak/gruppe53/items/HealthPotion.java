@@ -10,10 +10,12 @@ public class HealthPotion extends Potion implements Collidable  {
 	
 	public HealthPotion(int x, int y,Game game){
 		super( x, y, "images/healthpot1.png",game);
+		price = 25;
 	}
 	
 	public HealthPotion(Game game) {
 		super(0,0,"images/healthpot1.png",game);
+		price = 25;
 	}
 
 	@Override
