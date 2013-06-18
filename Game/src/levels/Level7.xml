@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-
+	<items> <item type = "pinkglitterwand">725:48</item> </items>
 	<spawn>725:48</spawn>
 	<enemies>
 		<enemy type="ghost">460:62</enemy>
@@ -59,7 +59,7 @@
 		<healthpotion>33:41</healthpotion>
 	</healthpotions>
 	<goal></goal>
-	<levelswitch type="wall" direction="0">64:448;levels/Level7.xml</levelswitch>
+	<levelswitch type="wall" direction="0">64:448;levels/Level8.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>
