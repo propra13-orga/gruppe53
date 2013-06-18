@@ -55,31 +55,31 @@ public class KeyboardInput implements KeyEventDispatcher {
 	public boolean dispatchKeyEvent(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		if(e.getID() == KeyEvent.KEY_PRESSED){
-			if(keyCode==KeyEvent.VK_UP)
+			if(keyCode==KeyEvent.VK_W)
 				up=true;
-			if(keyCode==KeyEvent.VK_DOWN)
+			if(keyCode==KeyEvent.VK_S)
 				down=true;
-			if(keyCode==KeyEvent.VK_LEFT)
+			if(keyCode==KeyEvent.VK_A)
 				left=true;
-			if(keyCode==KeyEvent.VK_RIGHT)
+			if(keyCode==KeyEvent.VK_D)
 				right=true;
-			if(keyCode==KeyEvent.VK_Y)
+			if(keyCode==KeyEvent.VK_F)
 				attack=true;
-			if(keyCode==KeyEvent.VK_B)
+			if(keyCode==KeyEvent.VK_E)
 				shop=true;
 		}
 		else if(e.getID() == KeyEvent.KEY_RELEASED){
-			if(keyCode==KeyEvent.VK_UP)
+			if(keyCode==KeyEvent.VK_W)
 				up=false;
-			if(keyCode==KeyEvent.VK_DOWN)
+			if(keyCode==KeyEvent.VK_S)
 				down=false;
-			if(keyCode==KeyEvent.VK_LEFT)
+			if(keyCode==KeyEvent.VK_A)
 				left=false;
-			if(keyCode==KeyEvent.VK_RIGHT)
+			if(keyCode==KeyEvent.VK_D)
 				right=false;
-			if(keyCode==KeyEvent.VK_Y)
+			if(keyCode==KeyEvent.VK_F)
 				attack=false;
-			if(keyCode==KeyEvent.VK_B)
+			if(keyCode==KeyEvent.VK_E)
 				shop=false;
 			
 		}
