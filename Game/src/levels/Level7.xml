@@ -52,12 +52,12 @@
 		<portal>220:563;34:162</portal>
 		<portal>78:287;222:470</portal>
 		<portal>126:248;663:348</portal>
-		<portal>660:447;78:357</portal>
+		<portal>650:447;78:357</portal>
 		<portal>607:575;678:519</portal>
 		<portal>729:447;325:453</portal>
-		<portal>730:389;34:162</portal>
-		<portal>730:325;52:91</portal>
-		<portal>586:447;206:247</portal>
+		<portal>730:380;34:162</portal>
+		<portal>730:320;52:91</portal>
+		<portal>580:447;206:247</portal>
 	</portals>
 	<healthpotions>
 		<healthpotion>44:236</healthpotion>
@@ -65,7 +65,8 @@
 		<healthpotion>232:490</healthpotion>
 		<healthpotion>582:327</healthpotion>
 	</healthpotions>
-	<goal>736:576</goal>
+	<goal></goal>
+	<levelswitch type="wall" direction="1">768:576;levels/Level8.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>
@@ -260,6 +261,5 @@
 		<wall>227:320</wall>
 		<wall>227:352</wall>
 		<wall>448:608</wall>
-		<wall>768:576</wall>
 	</walls>
 </level>
