@@ -25,6 +25,8 @@ public class Hero extends CombatObject{
 	
 	private int lifes = 3;
 	
+	private long lastMana = 0;
+	
 	public Hero(int xPos, int yPos, Game game,InventoryPanel inventory){
 		super(xPos,yPos,"images/held.png",game);
 		spawnX = xPos;
@@ -174,6 +176,7 @@ public class Hero extends CombatObject{
 			y = spawnY;
 			money = money/2;
 			health = maxHealth;
+			mana = maxMana;
 		}
 		else {
 			game.loose();
@@ -200,8 +203,13 @@ public class Hero extends CombatObject{
 		mana -= manaCost;
 	}
 	public void recoverMana(){
-		if(mana < maxMana)
-		mana = mana+1;
+		if(mana < maxMana){
+			long current = System.nanoTime();
+			if(current-lastMana >=1e9){
+				mana = mana+8;
+				lastMana = current;
+			}
+		}
 	}
 
 	@Override

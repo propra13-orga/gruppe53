@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
+	<items>
+		<item type="pinkglitterwand">47:44</item>
+	</items>
 	<spawn>47:44</spawn>
 	<enemies>
 		<enemy type="ghost">598:339</enemy>
