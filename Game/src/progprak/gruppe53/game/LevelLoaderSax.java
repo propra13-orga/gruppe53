@@ -13,6 +13,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.PinkGlitterWand;
+import progprak.gruppe53.items.WoodenSword;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
@@ -131,6 +132,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		int yLocation = Integer.parseInt(itemEntry[1]);
 		if(attributes.getValue("type").equals("pinkglitterwand")){
 			sprites.add(new PinkGlitterWand(xLocation,yLocation, game));
+		}
+		else if(attributes.getValue("type").equals("woodensword")){
+			sprites.add(new WoodenSword(xLocation,yLocation, game));
 		}
 	}
 
