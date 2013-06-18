@@ -3,13 +3,11 @@ package progprak.gruppe53.game;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class SpeechPane extends JTextArea {
 
+	private static final long serialVersionUID = 4123698504099811823L;
 	String text = "";
 	boolean show;
 	

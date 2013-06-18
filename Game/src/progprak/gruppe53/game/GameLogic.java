@@ -3,11 +3,6 @@ package progprak.gruppe53.game;
 import java.util.Vector;
 import java.util.ListIterator;
 
-import progprak.gruppe53.items.ClothArmor;
-import progprak.gruppe53.items.HealthPotion;
-import progprak.gruppe53.items.PinkGlitterWand;
-import progprak.gruppe53.items.WoodenSword;
-
 public class GameLogic {
 	
 	private Vector<Sprite> actors;

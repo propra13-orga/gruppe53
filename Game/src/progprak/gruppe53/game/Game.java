@@ -1,14 +1,8 @@
 package progprak.gruppe53.game;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.util.ListIterator;
 import java.util.Vector;
-
-import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 
 public class Game implements Runnable {
 	
