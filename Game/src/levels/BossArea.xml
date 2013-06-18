@@ -7,4 +7,7 @@
 		<wall>32-736:0</wall>
 		<wall>32-736:608</wall>
 	</walls>
+	<enemies>
+		<enemy type="wizboss">598:339</enemy>
+	</enemies>
 </level>

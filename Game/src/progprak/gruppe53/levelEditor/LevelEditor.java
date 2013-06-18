@@ -217,7 +217,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		trapFireball.addActionListener(this);
 		tools.add(trapFireball);
 		JButton trapFireball2 = new JButton("FBT");
-		trapFireball.setActionCommand(TRAP_FIREBALL);
+		trapFireball.setActionCommand(TRAP_FIREBALL2);
 		trapFireball.addActionListener(this);
 		tools.add(trapFireball2);
 		JButton fireballWaveTrap = new JButton(new ImageIcon(ImageLoader.loadImage("images/FireballGreen.png")));

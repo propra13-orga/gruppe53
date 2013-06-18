@@ -21,5 +21,9 @@ abstract public class Projectile extends CombatObject {
 	@Override
 	protected void handleDamageEvent(CollisionEvent ce) {
 	}
-
+	@Override
+	protected void handleTeleportEvent(int newX, int newY) {
+		// TODO Auto-generated method stub
+		super.handleTeleportEvent(newX, newY);
+	}
 }
