@@ -57,7 +57,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 	protected void handleDamageEvent(CollisionEvent ce){
 		DamageCollisionEvent de = (DamageCollisionEvent) ce ;
-		if(faction != de.getFaction() && faction != 0){
+		if(faction != de.getFaction() && faction != 0 && de.getFaction() != 0){
 			long current = System.nanoTime();
 			if((current - lastDamage)> 1e9){
 				lastDamage = current;
@@ -99,8 +99,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 				handlePickupEvent(ce);
 			}
 			else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
-				x = ce.getNewX();
-				y = ce.getNewY();
+				handleTeleportEvent(ce.getNewX(),ce.getNewY());
+
 			}
 			else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
 				//game.restart();
@@ -111,6 +111,11 @@ abstract public class CombatObject extends Sprite implements Collidable{
 			}
 		}
 		
+	}
+
+	protected void handleTeleportEvent(int newX, int newY) {
+		x = newX;
+		y = newY;
 	}
 
 	protected void handleSwitchLevelEvent(CollisionEvent ce) {		

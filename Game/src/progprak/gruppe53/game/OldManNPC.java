@@ -10,7 +10,7 @@ public class OldManNPC extends FriendlyNPC {
 		super(x,y,"images/OldManNPC.png",game);
 		this.speech = speech;
 		this.answer = answer;
-
+		faction = 0;
 	}
 	@Override
 	public void doLogic(long delta) {
@@ -18,10 +18,8 @@ public class OldManNPC extends FriendlyNPC {
 	}
 
 	protected void handleCollisionEvent(CollisionEvent ce) {
-		game.showSpeechPane(speech);
-		/*if (SpeechDialog.speechDialogOpened == false) {
-			SpeechDialog.speechDialogOpened = true;
-			new SpeechDialog (speech, answer);		
-		}*/
+		if(ce.actor instanceof Hero){
+			game.showSpeechPane(speech);
+		}
 	}
 }

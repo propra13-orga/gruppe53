@@ -15,5 +15,9 @@ public abstract class Enemy extends CombatObject implements Collidable{
 	public void doLogic(long delta){
 		
 	}
+	@Override
+	protected void handleTeleportEvent(int newX, int newY) {
+		super.handleTeleportEvent(newX, newY);
+	}
 
 }
