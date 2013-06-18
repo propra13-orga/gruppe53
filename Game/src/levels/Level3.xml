@@ -4,6 +4,8 @@
 	<enemies>
 		<enemy type="wizboss" nextlevel="levels/Level4.xml">598:339</enemy>
 	</enemies>
+	<items>
+	</items>
 	<traps>
 	</traps>
 	<fireballtraps>

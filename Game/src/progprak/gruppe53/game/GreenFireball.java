@@ -30,7 +30,10 @@ public class GreenFireball extends Projectile implements Collidable{
 	@Override
 	protected void handleDamageEvent(CollisionEvent ce) {
 		DamageCollisionEvent de = (DamageCollisionEvent) ce ;
-		if (de.getFaction() == 1) dx *= -1;
+		if (de.getFaction() == 1){
+			collisionEvent.setActor(de.getActor());
+			dx *= -1;
+		}
 		super.handleDamageEvent(ce);
 	}
 	@Override

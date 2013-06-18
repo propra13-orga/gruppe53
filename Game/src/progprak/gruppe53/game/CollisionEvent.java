@@ -95,4 +95,7 @@ public class CollisionEvent {
 	public Collidable getActor() {
 		return actor;
 	}
+	public void setActor(Collidable actor) {
+		this.actor = actor;
+	}
 }
