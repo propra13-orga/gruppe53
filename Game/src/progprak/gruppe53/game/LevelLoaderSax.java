@@ -237,6 +237,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		else if(attributes.getValue("type").equals("chargeboss")){
 			sprites.add(new ChargingBoss(enemyX, enemyY,game));
 		}
+		else if(attributes.getValue("type").equals("necboss")){
+			sprites.add(new NecromancerBoss(enemyX, enemyY,game));
+		}
 	}
 
 	private void spawnWall(String content) {

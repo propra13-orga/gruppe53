@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
+
 	<spawn>725:48</spawn>
 	<enemies>
 		<enemy type="ghost">460:62</enemy>

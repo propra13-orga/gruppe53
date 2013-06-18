@@ -105,13 +105,18 @@ abstract public class CombatObject extends Sprite implements Collidable{
 
 			}
 			else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
-				//game.restart();
+				handleGoalEvent(ce);
 			}
 			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
 				handleSwitchLevelEvent(ce);
 				
 			}
 		}
+		
+	}
+
+	protected void handleGoalEvent(CollisionEvent ce) {
+		// TODO Auto-generated method stub
 		
 	}
 

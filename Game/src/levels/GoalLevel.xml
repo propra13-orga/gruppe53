@@ -2,7 +2,6 @@
 <level>
 	<spawn>40:305</spawn>
 	<enemies>
-		<enemy type="chargeboss">597:339</enemy>
 	</enemies>
 	<items>
 	</items>
@@ -13,10 +12,8 @@
 	<portals>
 	</portals>
 	<healthpotions>
-		<healthpotion>35:35</healthpotion>
-		<healthpotion>34:573</healthpotion>
 	</healthpotions>
-	<goal></goal>
+	<goal>400:400</goal>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>

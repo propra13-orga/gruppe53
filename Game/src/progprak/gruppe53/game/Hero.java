@@ -236,4 +236,9 @@ public class Hero extends CombatObject{
 		}
 		else return 1;
 	}
+	@Override
+	protected void handleGoalEvent(CollisionEvent ce) {
+		super.handleGoalEvent(ce);
+		game.win();
+	}
 }

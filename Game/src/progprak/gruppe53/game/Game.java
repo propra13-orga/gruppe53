@@ -236,4 +236,10 @@ public class Game implements Runnable {
 		speechPane.setShow(false);
 	}
 
+
+	public void win() {
+		showSpeechPane("Du hast gewonnen!");
+		alive = false;
+	}
+
 }
