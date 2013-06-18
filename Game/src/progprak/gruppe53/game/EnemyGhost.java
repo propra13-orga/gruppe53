@@ -16,11 +16,5 @@ public class EnemyGhost extends Enemy {
 		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy *= -1;
 		handleEvents = false;
 	}
-	@Override
-	protected void handleCollisionEvent(CollisionEvent ce) {
-		if(ce.getEvent() != CollisionEvent.EVENT_TELEPORT){
-			super.handleCollisionEvent (ce);
-		}
-	}
 
 }

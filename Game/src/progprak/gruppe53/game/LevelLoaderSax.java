@@ -107,6 +107,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		case "level.spawn":
 			setHeroSpawnPoint(content);
 			break;
+		case "level.npc":
+			setNpc(content);
+			break;
 		case "level.healthpotions.healthpotion":
 			spawnHealthPotion(content);
 			break;
@@ -116,6 +119,14 @@ public class LevelLoaderSax extends DefaultHandler {
 		default:
 			break;
 		}
+	}
+
+	private void setNpc(String content) {
+		String npcData[] = content.split(";");
+		String npcEntry[] = npcData[0].split(":");
+		int xLocation = Integer.parseInt(npcEntry[0]);
+		int yLocation = Integer.parseInt(npcEntry[1]);
+		sprites.add(new OldManNPC(xLocation,yLocation,game, npcData[1]));		
 	}
 
 	private void setGoal(String content) {
@@ -196,7 +207,12 @@ public class LevelLoaderSax extends DefaultHandler {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
-		sprites.add(new EnemyGhost(enemyX, enemyY,game));		
+		if(attributes.getValue("type").equals("ghost")){
+			sprites.add(new EnemyGhost(enemyX, enemyY,game));
+		}
+		else if(attributes.getValue("type").equals("wizboss")){
+			sprites.add(new WizardBoss(enemyX, enemyY,game));
+		}
 	}
 
 	private void spawnWall(String content) {

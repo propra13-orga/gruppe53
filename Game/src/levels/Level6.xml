@@ -44,8 +44,10 @@
 		<fireballtrap>342:213;2.0:0.0</fireballtrap>
 		<fireballtrap>340:39;1.0:0.0</fireballtrap>
 		<fireballtrap>681:346;0.0:1.0</fireballtrap>
-		<fireballtrap>580:390;-2.0:0.0</fireballtrap>
+		<fireballtrap>571:383;-1.0:0.0</fireballtrap>
 	</fireballtraps>
+	<fireballwavetraps>
+	</fireballwavetraps>
 	<portals>
 		<portal>225:483;138:498</portal>
 	</portals>

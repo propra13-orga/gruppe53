@@ -61,17 +61,7 @@ public class GameLogic {
 		Vector<Sprite> sp = new Vector<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, game);
 		sprites = sp;
-		//sp.add(hero.getWeapon());
-		sp.add(new WoodenSword(60,60, game));
-		sp.add(new PinkGlitterWand(80,80, game));
-		sp.add(new HealthPotion(100, 80,game));
-		sp.add(new ClothArmor(60, 40, game));
-		//sp.add(new ChargingBoss(400,320,game));
-		//sp.add(new NecromancerBoss(400,320,game));
-		//sp.add(new WizardBoss(736,40, game));
-		//sp.add(new WallLevelSwitch(768, 576, WallLevelSwitch.DIRECTION_VERTICAL, "levels/Level1.xml"));
-		//sp.add(new FireballWaveTrap(200,200,game,8,8));
-		//sp.add(new OldManNPC(300,300,game,"Möchtest du dass ich dir beibringe\nwie man Pokemon fängt?"));
+
 	}
 
 	public Hero getHero() {
