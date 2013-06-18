@@ -26,7 +26,7 @@ public class FireballTrap2 extends Sprite implements Shooter {
 		this.yMovement = yMovement;
 		this.xRespawn = xRespawn;
 		this.yRespawn = yRespawn;
-		game.getGameLogic().addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), game,this, xMovement, yMovement, 2));
+		//game.getGameLogic().addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), game,this, xMovement, yMovement, 2));
 	}
 
 	@Override

@@ -9,7 +9,7 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	
 	public WizardBoss(int x, int y, Game game) {
 		super(x, y, "images/Monster1.png",game);
-		health = 3;
+		health = 30;
 		nextLevel = "levels/Level4.xml";
 		dx = 0;
 		dy = 2;
