@@ -15,7 +15,7 @@ public class Hero extends CombatObject{
 	private Weapon weapon;
 	private Armor armor;
 	
-	private InventoryPanel inventory;
+	private Inventory inventory;
 	
 	private int lastdx = 0;
 	private int lastdy = 1;
@@ -28,8 +28,10 @@ public class Hero extends CombatObject{
 	private long lastMana = 0;
 
 	private Game game;
+
+	private boolean shop = false;
 	
-	public Hero(int xPos, int yPos, Game game,InventoryPanel inventory){
+	public Hero(int xPos, int yPos, Game game){
 		super(xPos,yPos,"images/held.png",game.getGameLogic());
 		this.game = game;
 		spawnX = xPos;
@@ -40,9 +42,9 @@ public class Hero extends CombatObject{
 		health = maxHealth;
 		maxMana = 1000;
 		mana = maxMana;
-		this.inventory = inventory;
-		weapon = (Weapon) inventory.getWeaponSlot().getItem();
-		armor = (Armor) inventory.getArmorSlot().getItem();
+		this.inventory = new Inventory(this);
+		weapon = (Weapon) inventory.getWeapon();
+		armor = (Armor) inventory.getArmor();
 		if(weapon!= null){
 			this.weapon.setOwner(this);
 		}
@@ -56,12 +58,15 @@ public class Hero extends CombatObject{
 	public void doLogic(long delta)
 	{
 		recoverMana();
-		weapon = (Weapon) inventory.getWeaponSlot().getItem();
+		weapon = inventory.getWeapon();
 		if(weapon!= null){
 			this.weapon.setOwner(this);
 		}
-		armor = (Armor) inventory.getArmorSlot().getItem();		
+		armor = inventory.getArmor();		
 
+		shop = keyboardInput.isShop();
+		game.showShop(shop);
+		
 		if(keyboardInput.isUp()){
 			dy = lastdy = -1;
 			//lastdx = 0;
@@ -153,7 +158,6 @@ public class Hero extends CombatObject{
 	}
 
 	/**
-	 * @return the weapon
 	 */
 	public Weapon getWeapon() {
 		return weapon;
@@ -166,13 +170,18 @@ public class Hero extends CombatObject{
 	}
 	protected void handlePickupEvent(CollisionEvent ce){
 		PickupCollisionEvent pe = (PickupCollisionEvent) ce;
-		InventorySlot slot = game.getGameFrame().getInfoWindow().getInventoryPanel().getFreeSlot();
+		if(inventory.hasFreeSlot()){
+			pe.getItem().setOwner(this);
+			gameLogic.removeSprite(pe.getItem());
+			inventory.addItem(pe.getItem());
+		}
+		/*InventorySlot slot = game.getGameFrame().getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(slot != null){
 			pe.getItem().setOwner(this);
 			gameLogic.removeSprite(pe.getItem());
 			game.getGameFrame().getInfoWindow().getInventoryPanel().newItem(slot,pe.getItem());
 			handleEvents = false;
-		}
+		}*/
 	}
 	protected void handleDie(){
 		if((--lifes)>=0){
@@ -252,5 +261,14 @@ public class Hero extends CombatObject{
 	protected void handleGoalEvent(CollisionEvent ce) {
 		super.handleGoalEvent(ce);
 		game.win();
+	}
+	/**
+	 * @return the inventory
+	 */
+	public Inventory getInventory() {
+		return inventory;
+	}
+	public boolean isShop() {
+		return shop;
 	}
 }

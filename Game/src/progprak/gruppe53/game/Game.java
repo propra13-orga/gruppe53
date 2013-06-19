@@ -62,7 +62,7 @@ public class Game implements Runnable {
 		keyboardInput = new KeyboardInput();
 		gameLogic = new GameLogic(this);
 		gameFrame = new GameFrame("Game", this);
-		gameLogic.addHero(new Hero(0, 0, this,this.getGameFrame().getInfoWindow().getInventoryPanel()));
+		gameLogic.addHero(new Hero(0, 0, this));
 		gameFrame.setVisible(true);
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyboardInput);
 		last = System.nanoTime();
@@ -75,12 +75,11 @@ public class Game implements Runnable {
 		while(started){
 			try {
 				computeDelta();
-				
 				if(alive){
 					gameLogic.doLogic(delta);				
 					gameLogic.move(delta);
 				}
-				gameFrame.render(delta,gameLogic.getActors());
+				gameFrame.render(delta,gameLogic.getActors(),gameLogic);
 				Thread.sleep(10);
 			}
 			catch(InterruptedException e){
@@ -112,9 +111,9 @@ public class Game implements Runnable {
 
 	public void restart() {
 		gameLogic = new GameLogic(this);
-		gameLogic.addHero(new Hero(0, 0, this,this.getGameFrame().getInfoWindow().getInventoryPanel()));
+		gameLogic.addHero(new Hero(0, 0, this));
 		gameLogic.switchLevel(startLevel);
-		gameFrame.getInfoWindow().getInventoryPanel().resetInventory();
+		//gameFrame.getInfoWindow().getInventoryPanel().resetInventory();
 		alive = true;
 	}
 
@@ -157,16 +156,15 @@ public class Game implements Runnable {
 	}
 	
 
-	public void showShop() {
-		gameFrame.getInfoWindow().getInventoryPanel().slotsSell();
-		gameFrame.getMainPane().setLayer(gameFrame.getShop(), 2);
+	public void showShop(boolean shop) {
+		if(shop){
+			gameFrame.getMainPane().setLayer(gameFrame.getShop(), 2);
+		}
+		else {
+			gameFrame.getMainPane().setLayer(gameFrame.getShop(), 0);
+		}
 	}
 
-
-	public void hideShop() {
-		gameFrame.getInfoWindow().getInventoryPanel().slotsUse();
-		gameFrame.getMainPane().setLayer(gameFrame.getShop(), 0);
-	}
 	public void showSpeechPane(String text){
 		gameFrame.getSpeechPane().setText(text);
 		gameFrame.getSpeechPane().setShow(true);

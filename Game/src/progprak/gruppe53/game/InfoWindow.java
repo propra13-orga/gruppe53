@@ -25,6 +25,10 @@ public class InfoWindow extends JPanel {
 	private InventoryPanel inventoryPanel;
 	
 	private JPanel infoPanel;
+
+	private int money;
+
+	private int lifes;
 	
 	public InfoWindow(Game game) {
 		this.game = game;
@@ -64,8 +68,8 @@ public class InfoWindow extends JPanel {
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Money:" + game.getGameLogic().getHero().getMoney() 
-						+ "   Lifes:" + game.getGameLogic().getHero().getLifes(), 2, 10);
+				g.drawString("Money:" + money
+						+ "   Lifes:" + lifes, 2, 10);
 			}
 		};
 		infoPanel.setPreferredSize(new Dimension(800,12));
@@ -76,11 +80,14 @@ public class InfoWindow extends JPanel {
 		setPreferredSize(getPreferredSize());
 	}
 
-	public void render() {
-		healthBar.setMaximum((int)game.getGameLogic().getHero().getMaxHealth());
-		healthBar.setValue((int)game.getGameLogic().getHero().getHealth());
-		manaBar.setMaximum(game.getGameLogic().getHero().getMaxMana());
-		manaBar.setValue(game.getGameLogic().getHero().getMana());
+	public void render(GameLogic gameLogic) {
+		healthBar.setMaximum((int)gameLogic.getHero().getMaxHealth());
+		healthBar.setValue((int)gameLogic.getHero().getHealth());
+		manaBar.setMaximum(gameLogic.getHero().getMaxMana());
+		manaBar.setValue(gameLogic.getHero().getMana());
+		this.money = gameLogic.getHero().getMoney();
+		this.lifes = gameLogic.getHero().getLifes();
+		inventoryPanel.render(gameLogic.getHero().getInventory().getItems(),gameLogic.getHero().getInventory().getWeapon());
 		infoPanel.repaint();
 	}
 

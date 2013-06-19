@@ -34,15 +34,6 @@ public class ShopPanel extends JPanel {
 		setLayout(new BorderLayout());
 		
 		itemPanel = new JPanel();
-		JButton close = new JButton("Close");
-		close.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				game.hideShop();
-			}
-		});
-		add(close,BorderLayout.NORTH);
 		add(itemPanel,BorderLayout.CENTER);
 		
 		itemPanel.setLayout(new GridLayout(0, 2,5,5));
@@ -51,21 +42,21 @@ public class ShopPanel extends JPanel {
 				
 				@Override
 				public void slotClicked(InventorySlot inventorySlot) {
-					if(inventorySlot.isUsed()){
+					/*if(inventorySlot.isUsed()){
 						buyItem(inventorySlot);
-					}
+					}*/
 					
 				}
-			});
+			}, i);
 			slot.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-			if(i%2==0)slot.newItem(new HealthPotion(game.getGameLogic()));
-			else slot.newItem(new ManaPotion(game.getGameLogic()));
+			//if(i%2==0)slot.newItem(new HealthPotion(game.getGameLogic()));
+			//else slot.newItem(new ManaPotion(game.getGameLogic()));
 			itemPanel.add(slot);
 		}
 	}
 
 
-	protected void buyItem(InventorySlot slot) {
+	/*protected void buyItem(InventorySlot slot) {
 		InventorySlot iSlot = game.getGameFrame().getInfoWindow().getInventoryPanel().getFreeSlot();
 		if(iSlot != null){
 			Item item = slot.getItem();
@@ -75,6 +66,6 @@ public class ShopPanel extends JPanel {
 				slot.removeItem();
 			}
 		}
-	}
+	}*/
 	
 }

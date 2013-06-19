@@ -4,21 +4,25 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.renderable.RenderableImage;
 
 import javax.swing.JPanel;
 
 import progprak.gruppe53.items.Item;
+import progprak.gruppe53.items.Weapon;
 
 public class InventorySlot extends JPanel{
 
 	private static final long serialVersionUID = 2129304223986847233L;
 
-	private boolean used;
 	private Item item;
 	private SlotAction slotAction;
 
-	public InventorySlot(SlotAction sa){
+	private int slotNumber;
+
+	public InventorySlot(SlotAction sa,int slotNumber){
 		slotAction = sa;
+		this.slotNumber = slotNumber;
 		setPreferredSize(new Dimension(40,40));
 		addMouseListener(new MouseListener() {
 			
@@ -30,7 +34,7 @@ public class InventorySlot extends JPanel{
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(slotAction != null && used){
+				if(slotAction != null){
 					slotAction.slotClicked((InventorySlot) e.getSource());
 				}
 			}
@@ -55,36 +59,6 @@ public class InventorySlot extends JPanel{
 		});
 	}
 	
-
-
-	/**
-	 * @return is Used
-	 */
-	public boolean isUsed(){
-		return used;
-	}
-
-	/**
-	 * @param newItem
-	 */
-	public void newItem(Item newItem){
-		item = newItem;
-		this.used = true;
-		repaint();
-	}
-
-	public void removeItem(){
-		item = null;
-		this.used = false;
-		repaint();
-	}
-	
-	/**
-	 * @return Item
-	 */
-	public Item getItem(){
-		return item;
-	}
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -97,5 +71,13 @@ public class InventorySlot extends JPanel{
 	public void setSlotAction(SlotAction slotAction) {
 		this.slotAction = slotAction;
 	}
-	
+	public void render(Item item){
+		if(this.item != item){
+			this.item = item;
+			repaint();
+		}
+	}
+	public int getSlotNumber() {
+		return slotNumber;
+	}
 }

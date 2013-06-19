@@ -70,10 +70,10 @@ public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = -3116185873584567253L;
 
-	public void render(long delta, Vector<Sprite> actors) {
+	public void render(long delta, Vector<Sprite> actors, GameLogic gameLogic) {
 		gamePanel.render(delta,actors);
 		menu.render();
-		infoWindow.render();
+		infoWindow.render(gameLogic);
 		gamePanel.repaint();
 		speechPane.render();
 	}

@@ -13,7 +13,7 @@ public class KeyboardInput implements KeyEventDispatcher {
 	
 	
 	private boolean attack	= false;
-	private boolean shop	= false;
+	private boolean shop = false;
 
 
 	/**
@@ -65,8 +65,6 @@ public class KeyboardInput implements KeyEventDispatcher {
 				right=true;
 			if(keyCode==KeyEvent.VK_F)
 				attack=true;
-			if(keyCode==KeyEvent.VK_E)
-				shop=true;
 		}
 		else if(e.getID() == KeyEvent.KEY_RELEASED){
 			if(keyCode==KeyEvent.VK_W)
@@ -80,7 +78,7 @@ public class KeyboardInput implements KeyEventDispatcher {
 			if(keyCode==KeyEvent.VK_F)
 				attack=false;
 			if(keyCode==KeyEvent.VK_E)
-				shop=false;
+				shop=!shop;
 			
 		}
 		return false;
