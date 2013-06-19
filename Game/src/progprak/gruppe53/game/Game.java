@@ -36,13 +36,14 @@ public class Game implements Runnable {
 	
 	
 
-	private KeyboardInput keyboardInput;
 	
 	private String startLevel = "levels/Level1.xml";
 
 
 
 	private boolean alive = true;
+
+	private Player player;
 
 
 	
@@ -59,12 +60,12 @@ public class Game implements Runnable {
 
 
 	private void doInitalizations() {
-		keyboardInput = new KeyboardInput();
+		player = new Player();
 		gameLogic = new GameLogic(this);
 		gameFrame = new GameFrame("Game", this);
-		gameLogic.addHero(new Hero(0, 0, this));
+		gameLogic.addHero(new Hero(0, 0, gameLogic));
 		gameFrame.setVisible(true);
-		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyboardInput);
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(player.getKeyboardInput());
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
 	}
@@ -76,7 +77,7 @@ public class Game implements Runnable {
 			try {
 				computeDelta();
 				if(alive){
-					gameLogic.doLogic(delta);				
+					gameLogic.doLogic(delta,player);				
 					gameLogic.move(delta);
 				}
 				gameFrame.render(delta,gameLogic.getActors(),gameLogic);
@@ -111,28 +112,15 @@ public class Game implements Runnable {
 
 	public void restart() {
 		gameLogic = new GameLogic(this);
-		gameLogic.addHero(new Hero(0, 0, this));
+		gameLogic.addHero(new Hero(0, 0, gameLogic));
 		gameLogic.switchLevel(startLevel);
 		//gameFrame.getInfoWindow().getInventoryPanel().resetInventory();
 		alive = true;
 	}
 
-
-
-	public KeyboardInput getKeyboardInput() {
-		return keyboardInput;
-	}
-
-
 	public void switchLevel(String newLevel) {
 		gameLogic.switchLevel(newLevel);
 	}
-
-
-	public GameLogic getGameLogic() {
-		return gameLogic;
-	}
-
 
 	public void startGame() {
 		if(!started){
@@ -156,28 +144,11 @@ public class Game implements Runnable {
 	}
 	
 
-	public void showShop(boolean shop) {
-		if(shop){
-			gameFrame.getMainPane().setLayer(gameFrame.getShop(), 2);
-		}
-		else {
-			gameFrame.getMainPane().setLayer(gameFrame.getShop(), 0);
-		}
-	}
 
-	public void showSpeechPane(String text){
-		gameFrame.getSpeechPane().setText(text);
-		gameFrame.getSpeechPane().setShow(true);
-	}
-
-
-	public void hideSpeechPane() {
-		gameFrame.getSpeechPane().setShow(false);
-	}
 
 
 	public void win() {
-		showSpeechPane("Du hast gewonnen!");
+		//showSpeechPane("Du hast gewonnen!");
 		alive = false;
 	}
 
@@ -187,6 +158,14 @@ public class Game implements Runnable {
 	 */
 	public GameFrame getGameFrame() {
 		return gameFrame;
+	}
+
+
+	/**
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return player;
 	}
 
 }

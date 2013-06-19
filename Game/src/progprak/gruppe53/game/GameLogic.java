@@ -11,7 +11,10 @@ public class GameLogic {
 	private String level;
 	
 	
-	public Hero hero;
+	private Hero hero;
+	private Player player;
+	
+	
 	
 
 	public GameLogic(Game game) {
@@ -28,7 +31,8 @@ public class GameLogic {
 	}
 	
 	//Do Logics for every Sprite-Object
-	public void doLogic(long delta){
+	public void doLogic(long delta, Player player){
+		this.player = player;
 		actors = (Vector<Sprite>) sprites.clone();
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
@@ -78,5 +82,19 @@ public class GameLogic {
 	 */
 	public String getLevel() {
 		return level;
+	}
+	/**
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return player;
+	}
+	public void loose() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void win() {
+		// TODO Auto-generated method stub
+		
 	}
 }

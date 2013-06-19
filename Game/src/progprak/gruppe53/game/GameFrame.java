@@ -76,48 +76,27 @@ public class GameFrame extends JFrame {
 		infoWindow.render(gameLogic);
 		gamePanel.repaint();
 		speechPane.render();
+		showShop(gameLogic.getHero().isShop());
 	}
 
-	/**
-	 * @return the infoWindow
-	 */
-	public InfoWindow getInfoWindow() {
-		return infoWindow;
+	
+	private void showShop(boolean shop) {
+		if(shop){
+			mainPane.setLayer(this.shop, 2);
+		}
+		else {
+			mainPane.setLayer(this.shop, 0);
+		}
 	}
 
-	/**
-	 * @return the shop
-	 */
-	public ShopPanel getShop() {
-		return shop;
+	private void showSpeechPane(String text){
+		speechPane.setText(text);
+		speechPane.setShow(true);
 	}
 
-	/**
-	 * @return the mainPane
-	 */
-	public JLayeredPane getMainPane() {
-		return mainPane;
-	}
 
-	/**
-	 * @return the speechPane
-	 */
-	public SpeechPane getSpeechPane() {
-		return speechPane;
-	}
-
-	/**
-	 * @return the gamePanel
-	 */
-	public GamePanel getGamePanel() {
-		return gamePanel;
-	}
-
-	/**
-	 * @return the menu
-	 */
-	public Menu getMenu() {
-		return menu;
+	private void hideSpeechPane() {
+		speechPane.setShow(false);
 	}
 
 

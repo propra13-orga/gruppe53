@@ -7,7 +7,6 @@ public class Hero extends CombatObject{
 
 	private static final long serialVersionUID = -8077486599395198634L;
 
-	private KeyboardInput keyboardInput;
 	
 	private int mana;
 	private int maxMana;
@@ -27,7 +26,7 @@ public class Hero extends CombatObject{
 	
 	private long lastMana = 0;
 
-	private Game game;
+	private GameLogic gameLogic;
 	
 	private int exp;
 	private int heroLevel;
@@ -36,18 +35,17 @@ public class Hero extends CombatObject{
 	
 	private boolean shop = false;
 
-	public Hero(int xPos, int yPos, Game game){
-		super(xPos,yPos,"images/held.png",game.getGameLogic());
-		this.game = game;
+	public Hero(int xPos, int yPos, GameLogic gameLogic){
+		super(xPos,yPos,"images/held.png",gameLogic);
+		this.gameLogic = gameLogic;
 		spawnX = xPos;
 		spawnY = yPos;
 		faction = 1;
-		this.keyboardInput = game.getKeyboardInput();
 		maxHealth = 100;
 		health = maxHealth;
 		maxMana = 1000;
 		mana = maxMana;
-		this.inventory = new Inventory(this);
+		this.inventory = new Inventory(this, gameLogic);
 		weapon = (Weapon) inventory.getWeapon();
 		armor = (Armor) inventory.getArmor();
 		if(weapon!= null){
@@ -68,59 +66,61 @@ public class Hero extends CombatObject{
 			this.weapon.setOwner(this);
 		}
 		armor = inventory.getArmor();		
-
-		shop = keyboardInput.isShop();
-		game.showShop(shop);
 		
-		if(keyboardInput.isUp()){
+		shop = gameLogic.getPlayer().getKeyboardInput().isShop();
+		if(gameLogic.getPlayer().getInventorySlotClicked() != -1){
+			inventory.slotClicked(gameLogic.getPlayer().getInventorySlotClicked());
+		}
+		
+		if(gameLogic.getPlayer().getKeyboardInput().isUp()){
 			dy = lastdy = -1;
 			//lastdx = 0;
 		}
 		
-		if(keyboardInput.isDown()){
+		if(gameLogic.getPlayer().getKeyboardInput().isDown()){
 			dy = lastdy = 1;
 			//lastdx = 0;
 		}	
 		
-		if(!keyboardInput.isUp() && !keyboardInput.isDown()){
+		if(!gameLogic.getPlayer().getKeyboardInput().isUp() && !gameLogic.getPlayer().getKeyboardInput().isDown()){
 			dy = 0;
 		}
 		
-		if(keyboardInput.isLeft()){
+		if(gameLogic.getPlayer().getKeyboardInput().isLeft()){
 			dx = lastdx = -1;
 			lastdy = 0;
 		}
 		
-		if(keyboardInput.isRight()){
+		if(gameLogic.getPlayer().getKeyboardInput().isRight()){
 			dx = lastdx = 1;
 			lastdy = 0;
 		}
 		
-		if(keyboardInput.isRight() && keyboardInput.isUp()){
+		if(gameLogic.getPlayer().getKeyboardInput().isRight() && gameLogic.getPlayer().getKeyboardInput().isUp()){
 			lastdx = 1;
 			lastdy = -1;
 		}
 		
-		if(keyboardInput.isRight() && keyboardInput.isDown()){
+		if(gameLogic.getPlayer().getKeyboardInput().isRight() && gameLogic.getPlayer().getKeyboardInput().isDown()){
 			lastdx = 1;
 			lastdy = 1;
 		}
 		
-		if(keyboardInput.isLeft() && keyboardInput.isUp()){
+		if(gameLogic.getPlayer().getKeyboardInput().isLeft() && gameLogic.getPlayer().getKeyboardInput().isUp()){
 			lastdx = -1;
 			lastdy = -1;
 		}
 		
-		if(keyboardInput.isLeft() && keyboardInput.isDown()){
+		if(gameLogic.getPlayer().getKeyboardInput().isLeft() && gameLogic.getPlayer().getKeyboardInput().isDown()){
 			lastdx = -1;
 			lastdy = 1;
 		}
 		
-		if(!keyboardInput.isLeft() && !keyboardInput.isRight()){
+		if(!gameLogic.getPlayer().getKeyboardInput().isLeft() && !gameLogic.getPlayer().getKeyboardInput().isRight()){
 			dx = 0;
 		}
 		if(weapon!=null){
-			weapon.attack(keyboardInput.isAttack());
+			weapon.attack(gameLogic.getPlayer().getKeyboardInput().isAttack());
 		}
 		if(exp >= reqExp){
 			heroLevel += 1;
@@ -203,7 +203,7 @@ public class Hero extends CombatObject{
 			mana = maxMana;
 		}
 		else {
-			game.loose();
+			gameLogic.loose();
 		}
 	}
 	public int getMoney() {
@@ -241,7 +241,7 @@ public class Hero extends CombatObject{
 		super.doneKill(combatObject);
 		money += 50;
 		if (combatObject instanceof BossEnemy) {
-			game.switchLevel(((BossEnemy)combatObject).getNextLevel());
+			gameLogic.switchLevel(((BossEnemy)combatObject).getNextLevel());
 		}
 	}
 	public void addHealth(int aHp) {
@@ -253,7 +253,7 @@ public class Hero extends CombatObject{
 	@Override
 	protected void handleSwitchLevelEvent(CollisionEvent ce) {
 		super.handleSwitchLevelEvent(ce);
-		game.switchLevel(ce.getNewLevel());
+		gameLogic.switchLevel(ce.getNewLevel());
 	}
 	/**
 	 * @return the lifes
@@ -271,7 +271,7 @@ public class Hero extends CombatObject{
 	@Override
 	protected void handleGoalEvent(CollisionEvent ce) {
 		super.handleGoalEvent(ce);
-		game.win();
+		gameLogic.win();
 	}
 	/**
 	 * @return the inventory

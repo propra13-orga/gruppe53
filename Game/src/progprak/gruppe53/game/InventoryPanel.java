@@ -50,7 +50,7 @@ private static final long serialVersionUID = 1L;
 			
 			@Override
 			public void slotClicked(InventorySlot inventorySlot) {
-				game.getGameLogic().getHero().getInventory().slotClicked(inventorySlot.getSlotNumber());
+				game.getPlayer().inventorySlotClicked(inventorySlot.getSlotNumber());
 			}
 		};
 
