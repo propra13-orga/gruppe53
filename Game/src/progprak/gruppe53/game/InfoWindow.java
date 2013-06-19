@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -19,6 +21,8 @@ public class InfoWindow extends JPanel {
 	private JProgressBar healthBar;
 	
 	private JProgressBar manaBar;
+	
+	private JProgressBar expBar;
 	
 	private JPanel barPanel;
 	
@@ -43,19 +47,45 @@ public class InfoWindow extends JPanel {
 		add(inventoryPanel,BorderLayout.CENTER);
 		
 		barPanel = new JPanel();
-		barPanel.setLayout(new BoxLayout(barPanel, BoxLayout.PAGE_AXIS));
+
+		
 		healthBar = new JProgressBar();
-		manaBar = new JProgressBar();
 		healthBar.setForeground(Color.RED);
-		manaBar.setForeground(Color.BLUE);
-		barPanel.add(healthBar);
-		barPanel.add(manaBar);
 		Dimension hpb = healthBar.getPreferredSize();
-		Dimension mpb = manaBar.getPreferredSize();
-		hpb.width = 800;
-		mpb.width = 800;
+		hpb.width = 400;
 		healthBar.setPreferredSize(hpb);
+		
+		manaBar = new JProgressBar();
+		manaBar.setForeground(Color.BLUE);
+		Dimension mpb = manaBar.getPreferredSize();
+		mpb.width = 400;
 		manaBar.setPreferredSize(mpb);
+
+		expBar = new JProgressBar();
+		expBar.setForeground(Color.CYAN);
+		Dimension exb = expBar.getPreferredSize();
+		exb.width = 800;
+		expBar.setPreferredSize(exb);
+		
+		
+		barPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		barPanel.add(healthBar, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 0;
+		barPanel.add(manaBar, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 1;
+		barPanel.add(expBar, c);
+		
 		add(barPanel,BorderLayout.NORTH);
 		
 		infoPanel = new JPanel(){
