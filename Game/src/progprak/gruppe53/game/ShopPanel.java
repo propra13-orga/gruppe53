@@ -3,15 +3,8 @@ package progprak.gruppe53.game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import progprak.gruppe53.items.HealthPotion;
-import progprak.gruppe53.items.Item;
-import progprak.gruppe53.items.ManaPotion;
 
 public class ShopPanel extends JPanel {
 

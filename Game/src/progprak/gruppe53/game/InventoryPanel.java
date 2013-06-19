@@ -7,7 +7,6 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Item;
 import progprak.gruppe53.items.Weapon;
 

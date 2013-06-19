@@ -2,7 +2,6 @@ package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CombatObject;
 import progprak.gruppe53.game.Fireball;
-import progprak.gruppe53.game.Game;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 

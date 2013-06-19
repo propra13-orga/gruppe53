@@ -1,7 +1,6 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.Collidable;
-import progprak.gruppe53.game.Game;
 import progprak.gruppe53.game.GameLogic;
 
 public class HealthPotion extends Potion implements Collidable  {

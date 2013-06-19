@@ -4,12 +4,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.renderable.RenderableImage;
-
 import javax.swing.JPanel;
 
 import progprak.gruppe53.items.Item;
-import progprak.gruppe53.items.Weapon;
 
 public class InventorySlot extends JPanel{
 
