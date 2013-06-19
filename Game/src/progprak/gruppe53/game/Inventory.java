@@ -11,10 +11,12 @@ public class Inventory {
 	private Item[] items;
 	private int inventorySlots = 10;
 	private Hero hero;
+	private GameLogic gameLogic;
 	
-	public Inventory(Hero hero) {
+	public Inventory(Hero hero,GameLogic gameLogic) {
 		items = new Item[inventorySlots];
 		this.hero = hero;
+		this.gameLogic = gameLogic;
 	}
 
 	public Weapon getWeapon() {
@@ -58,6 +60,7 @@ public class Inventory {
 			if(items[slotNumber] instanceof Weapon){
 				weapon = (Weapon) items[slotNumber];
 				items[slotNumber] = null;
+				gameLogic.addSprite(weapon);
 			}
 		}
 	}

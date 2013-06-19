@@ -51,7 +51,7 @@ abstract public class Weapon extends Item implements Collidable {
 		this.draw = draw;
 		if(draw){
 			x = owner.getX()+owner.getWidth()/2+xDrawOffset;
-			y = owner.getY()+owner.getHeight()/2+yDrawOffset; 
+			y = owner.getY()+owner.getHeight()/2+yDrawOffset;
 			width = ww;
 			height = wh;
 		}
