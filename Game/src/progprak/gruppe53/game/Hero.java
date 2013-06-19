@@ -124,7 +124,7 @@ public class Hero extends CombatObject{
 		}
 		if(exp >= reqExp){
 			heroLevel += 1;
-			talentPoint = 1;
+			talentPoint += 1;
 			exp = exp - reqExp;
 			reqExp = heroLevel*100;
 		}
