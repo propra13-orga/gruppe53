@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
@@ -31,8 +30,9 @@ public class InfoWindow extends JPanel {
 	private JPanel infoPanel;
 
 	private int money;
-
+	private int heroLevel;
 	private int lifes;
+	private int talentPoint;
 	
 	public InfoWindow(Game game) {
 		this.game = game;
@@ -99,7 +99,9 @@ public class InfoWindow extends JPanel {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
 				g.drawString("Money:" + money
-						+ "   Lifes:" + lifes, 2, 10);
+						+ "   Lifes:" + lifes
+						+ "   Level:" + heroLevel
+						+ "   Talentpoints:" + talentPoint, 2, 10);
 			}
 		};
 		infoPanel.setPreferredSize(new Dimension(800,12));
@@ -115,8 +117,12 @@ public class InfoWindow extends JPanel {
 		healthBar.setValue((int)gameLogic.getHero().getHealth());
 		manaBar.setMaximum(gameLogic.getHero().getMaxMana());
 		manaBar.setValue(gameLogic.getHero().getMana());
+		expBar.setMaximum((int)gameLogic.getHero().getReqExperience());
+		expBar.setValue((int)gameLogic.getHero().getExperience());
 		this.money = gameLogic.getHero().getMoney();
 		this.lifes = gameLogic.getHero().getLifes();
+		this.heroLevel = gameLogic.getHero().getLevel();
+		this.talentPoint = gameLogic.getHero().getTalentPoint();
 		inventoryPanel.render(gameLogic.getHero().getInventory().getItems(),gameLogic.getHero().getInventory().getWeapon());
 		infoPanel.repaint();
 	}

@@ -28,9 +28,14 @@ public class Hero extends CombatObject{
 	private long lastMana = 0;
 
 	private Game game;
-
-	private boolean shop = false;
 	
+	private int exp;
+	private int heroLevel;
+	private int reqExp;
+	private int talentPoint;
+	
+	private boolean shop = false;
+
 	public Hero(int xPos, int yPos, Game game){
 		super(xPos,yPos,"images/held.png",game.getGameLogic());
 		this.game = game;
@@ -116,6 +121,12 @@ public class Hero extends CombatObject{
 		}
 		if(weapon!=null){
 			weapon.attack(keyboardInput.isAttack());
+		}
+		if(exp >= reqExp){
+			heroLevel += 1;
+			talentPoint = 1;
+			exp = exp - reqExp;
+			reqExp = heroLevel*100;
 		}
 	}
 	
@@ -270,5 +281,21 @@ public class Hero extends CombatObject{
 	}
 	public boolean isShop() {
 		return shop;
+	}
+	
+	public int getLevel(){
+		return heroLevel;
+	}
+	
+	public int getExperience(){
+		return exp;
+	}
+	
+	public int getReqExperience(){
+		return reqExp;
+	}
+	
+	public int getTalentPoint(){
+		return talentPoint;
 	}
 }
