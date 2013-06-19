@@ -240,6 +240,7 @@ public class Hero extends CombatObject{
 	public void doneKill(CombatObject combatObject) {
 		super.doneKill(combatObject);
 		money += 50;
+		exp += 25;
 		if (combatObject instanceof BossEnemy) {
 			game.switchLevel(((BossEnemy)combatObject).getNextLevel());
 		}

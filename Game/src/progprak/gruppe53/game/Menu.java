@@ -18,8 +18,9 @@ public class Menu extends JPanel {
 
 	private JButton startBtn;
 
-
 	private JButton restartBtn;
+	
+	private JButton talentBtn;
 	
 	public Menu(Game game) {
 		super();
@@ -52,11 +53,22 @@ public class Menu extends JPanel {
 		restartBtn.setEnabled(false);
 		add(restartBtn);
 		
+		talentBtn = new JButton("Talents");
+		talentBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e){
+				;
+			}
+		});
+		talentBtn.setEnabled(false);
+		add(talentBtn);
 		
 		setPreferredSize(getPreferredSize());
 	}
 	
 	public void render(){
 		restartBtn.setEnabled(!game.isAlive());
+		talentBtn.setEnabled(game.isAlive());
 	}
 }
