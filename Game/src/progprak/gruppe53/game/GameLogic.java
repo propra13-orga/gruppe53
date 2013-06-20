@@ -11,7 +11,6 @@ public class GameLogic {
 	
 	private Vector<Sprite> actors;
 	private Vector<Sprite> sprites;
-	private Game game;
 	private String level;
 	
 	
@@ -21,9 +20,8 @@ public class GameLogic {
 	
 	
 
-	public GameLogic(Game game) {
+	public GameLogic() {
 		sprites =  new Vector<Sprite>();
-		this.game = game;
 		doInitalizations();
 	}
 	public void addHero(Hero hero){
@@ -35,14 +33,13 @@ public class GameLogic {
 	}
 	
 	//Do Logics for every Sprite-Object
-	public void doLogic(long delta, Player player){
-		this.player = player;
+	public void doLogic(long delta){
 		actors = (Vector<Sprite>) sprites.clone();
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.doLogic(delta);
 			if (s instanceof CombatObject) {
-				((CombatObject) s).testForCollision(game);
+				((CombatObject) s).testForCollision();
 				((CombatObject) s).resetHandleEvents();
 			}
 		} 
@@ -66,6 +63,25 @@ public class GameLogic {
 			sprites.add(hero.getWeapon());
 		}
 
+	}
+	
+
+	public Vector<Sprite> testForCollision(Sprite a){
+		Vector<Sprite> cs = new Vector<Sprite>();
+		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
+			Sprite s = it.next();
+			if(a!=s){
+				if(s instanceof Collidable && s.intersects(a.getHorizontalCollsionRect())){
+					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
+					cs.add(s);
+				}
+				if(s instanceof Collidable && s.intersects(a.getVerticalCollsionRect())){
+					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
+					cs.add(s);
+				}
+			}
+		}
+		return cs;
 	}
 
 	public Hero getHero() {
@@ -101,7 +117,9 @@ public class GameLogic {
 		// TODO Auto-generated method stub
 		
 	}
-	public Game getGame(){
-		return game;
+	public void tick(long delta, Player player) {
+		this.player = player;
+		doLogic(delta);				
+		move(delta);
 	}
 }

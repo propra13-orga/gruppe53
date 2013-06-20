@@ -4,7 +4,6 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
-import progprak.gruppe53.game.TalentPanel;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
 

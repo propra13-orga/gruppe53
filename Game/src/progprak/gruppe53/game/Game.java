@@ -1,11 +1,7 @@
 package progprak.gruppe53.game;
 
 import java.awt.KeyboardFocusManager;
-import java.util.ListIterator;
-import java.util.Vector;
-
 import progprak.gruppe53.sprites.Hero;
-import progprak.gruppe53.sprites.Sprite;
 
 public class Game implements Runnable {
 	
@@ -64,7 +60,7 @@ public class Game implements Runnable {
 
 	private void doInitalizations() {
 		player = new Player();
-		gameLogic = new GameLogic(this);
+		gameLogic = new GameLogic();
 		gameFrame = new GameFrame("Game", this);
 		gameLogic.addHero(new Hero(0, 0, gameLogic));
 		gameFrame.setVisible(true);
@@ -80,8 +76,8 @@ public class Game implements Runnable {
 			try {
 				computeDelta();
 				if(alive){
-					gameLogic.doLogic(delta,player);				
-					gameLogic.move(delta);
+					gameLogic.tick(delta,player);
+
 				}
 				gameFrame.render(delta,gameLogic.getActors(),gameLogic);
 				Thread.sleep(10);
@@ -94,27 +90,8 @@ public class Game implements Runnable {
 	}
 		
 
-	public Vector<Sprite> testForCollision(Sprite a){
-		Vector<Sprite> cs = new Vector<Sprite>();
-		for(ListIterator<Sprite> it = gameLogic.getActors().listIterator();it.hasNext();){
-			Sprite s = it.next();
-			if(a!=s){
-				if(s instanceof Collidable && s.intersects(a.getHorizontalCollsionRect())){
-					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
-					cs.add(s);
-				}
-				if(s instanceof Collidable && s.intersects(a.getVerticalCollsionRect())){
-					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
-					cs.add(s);
-				}
-			}
-		}
-		return cs;
-	}
-
-
 	public void restart() {
-		gameLogic = new GameLogic(this);
+		gameLogic = new GameLogic();
 		gameLogic.addHero(new Hero(0, 0, gameLogic));
 		gameLogic.switchLevel(startLevel);
 		//gameFrame.getInfoWindow().getInventoryPanel().resetInventory();

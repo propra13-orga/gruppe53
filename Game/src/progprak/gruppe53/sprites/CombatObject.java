@@ -6,7 +6,6 @@ import java.util.Vector;
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
-import progprak.gruppe53.game.Game;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.items.Item;
 
@@ -47,9 +46,9 @@ abstract public class CombatObject extends Sprite implements Collidable{
 
 	}
 	
-	public void testForCollision(Game game){
+	public void testForCollision(){
 		//Vector<Sprite> cs = game.testForCollision(this,getMaxX(),getMinX(),getMaxY(),getMinY(),dx,dy);
-		Vector<Sprite> cs = game.testForCollision(this);
+		Vector<Sprite> cs = gameLogic.testForCollision(this);
 		for (ListIterator<Sprite> it = cs.listIterator(); it.hasNext();) {
 			Sprite s = it.next();
 			CollisionEvent ce = ((Collidable)s).getCollisionEvent();
