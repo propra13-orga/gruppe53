@@ -81,7 +81,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(maxHP < 5){
+				if(maxHP <= 4){
 					if(game.getGameLogic().getHero().getTalentPoint() >= 1){
 						maxHP += 1;
 						hero.setTalentPoint(-1);
