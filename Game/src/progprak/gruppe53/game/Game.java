@@ -79,7 +79,7 @@ public class Game implements Runnable {
 		player = new Player();
 		gameLogic = new GameLogic();
 		gameFrame = new GameFrame("Game", this);
-		gameLogic.addHero(new Hero(0, 0, gameLogic));
+		gameLogic.addHero(new Hero(0, 0, gameLogic, gameFrame.getTalentPanel()));
 		gameFrame.setVisible(true);
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(player.getKeyboardInput());
 		last = System.nanoTime();
@@ -125,7 +125,7 @@ public class Game implements Runnable {
 
 	public void restart() {
 		gameLogic = new GameLogic();
-		gameLogic.addHero(new Hero(0, 0, gameLogic));
+		gameLogic.addHero(new Hero(0, 0, gameLogic,gameFrame.getTalentPanel()));
 		gameLogic.switchLevel(startLevel);
 		//gameFrame.getInfoWindow().getInventoryPanel().resetInventory();
 		alive = true;
@@ -179,6 +179,10 @@ public class Game implements Runnable {
 	 */
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public GameLogic getGameLogic(){
+		return gameLogic;
 	}
 
 }

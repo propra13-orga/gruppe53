@@ -53,7 +53,7 @@ public class Menu extends JPanel {
 		restartBtn.setEnabled(false);
 		add(restartBtn);
 		
-		talentBtn = new JButton("Talents");
+		/*talentBtn = new JButton("Talents");
 		talentBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -62,13 +62,13 @@ public class Menu extends JPanel {
 			}
 		});
 		talentBtn.setEnabled(false);
-		add(talentBtn);
+		add(talentBtn);*/
 		
 		setPreferredSize(getPreferredSize());
 	}
 	
 	public void render(){
 		restartBtn.setEnabled(!game.isAlive());
-		talentBtn.setEnabled(game.isAlive());
+		//talentBtn.setEnabled(game.isAlive());
 	}
 }

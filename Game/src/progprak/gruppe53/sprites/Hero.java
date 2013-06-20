@@ -4,6 +4,7 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
+import progprak.gruppe53.game.TalentPanel;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
 
@@ -37,11 +38,12 @@ public class Hero extends CombatObject{
 	private int exp;
 	private int heroLevel;
 	private int reqExp;
-	private int talentPoint;
+	public int talentPoint;
 	
 	private boolean shop = false;
+	private TalentPanel talentPanel;
 
-	public Hero(int xPos, int yPos, GameLogic gameLogic){
+	public Hero(int xPos, int yPos, GameLogic gameLogic, TalentPanel talentPanel){
 		super(xPos,yPos,"images/held.png",gameLogic);
 		this.gameLogic = gameLogic;
 		spawnX = xPos;
@@ -51,6 +53,7 @@ public class Hero extends CombatObject{
 		health = maxHealth;
 		maxMana = 1000;
 		mana = maxMana;
+		this.talentPanel = talentPanel;
 		this.inventory = new Inventory(this, gameLogic);
 		weapon = (Weapon) inventory.getWeapon();
 		armor = (Armor) inventory.getArmor();
@@ -74,6 +77,7 @@ public class Hero extends CombatObject{
 		armor = inventory.getArmor();		
 		talentTree = gameLogic.getPlayer().getKeyboardInput().isTalentTree();
 		shop = gameLogic.getPlayer().getKeyboardInput().isShop();
+		maxHealth = 100+talentPanel.getMaxHP()*20;
 		if(gameLogic.getPlayer().getInventorySlotClicked() != -1){
 			inventory.slotClicked(gameLogic.getPlayer().getInventorySlotClicked());
 		}
@@ -271,7 +275,7 @@ public class Hero extends CombatObject{
 	@Override
 	protected double damageReduce() {
 		if(armor != null){
-			return 1/(armor.getarmorLVL()*1.3);
+			return 1/((armor.getarmorLVL())*1.3);
 		}
 		else return 1;
 	}
@@ -308,5 +312,9 @@ public class Hero extends CombatObject{
 	
 	public boolean isTalentTree(){
 		return talentTree;
+	}
+	
+	public void setTalentPoint(int dif){
+		talentPoint = talentPoint+dif;
 	}
 }
