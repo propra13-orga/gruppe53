@@ -92,6 +92,11 @@ public class TalentPanel extends JPanel {
 		});
 		
 		talent1 = new JPanel(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 6809444458569759690L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
