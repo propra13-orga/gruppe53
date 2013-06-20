@@ -38,7 +38,7 @@ public class Hero extends CombatObject{
 	private int exp;
 	private int heroLevel;
 	private int reqExp;
-	public int talentPoint;
+	private int talentPoint;
 	
 	private boolean shop = false;
 	private TalentPanel talentPanel;
