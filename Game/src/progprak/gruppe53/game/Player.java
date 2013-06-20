@@ -1,8 +1,14 @@
 package progprak.gruppe53.game;
 
+import java.io.Serializable;
 
-public class Player {
 
+public class Player implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4443478595881828337L;
 	KeyboardInput keyboardInput;
 	private int inventorySlotClicked = -1;
 	

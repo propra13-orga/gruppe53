@@ -1,7 +1,17 @@
 package progprak.gruppe53.game;
 
 import java.awt.KeyboardFocusManager;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.util.Vector;
+
 import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.sprites.Sprite;
 
 public class Game implements Runnable {
 	
@@ -44,6 +54,13 @@ public class Game implements Runnable {
 
 	private Player player;
 
+	private Socket server;
+
+
+	private ObjectOutputStream serverObjectOut;
+	
+	private boolean client = false;
+
 
 	
 	public Game() {
@@ -67,22 +84,38 @@ public class Game implements Runnable {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(player.getKeyboardInput());
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
+		if (client) {
+			try {
+				server = new Socket("localhost", 6116);
+				serverObjectOut = new ObjectOutputStream(
+						server.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public void run() {
 		started = true;
+		Vector<Sprite> actors = null;
 		while(started){
 			try {
 				computeDelta();
 				if(alive){
-					gameLogic.tick(delta,player);
-
+					if (client) {
+						serverObjectOut.writeObject(player);
+					}
+					else {
+						gameLogic.tick(delta,player);
+						actors = gameLogic.getActors();
+					}
 				}
-				gameFrame.render(delta,gameLogic.getActors(),gameLogic);
+				gameFrame.render(delta,actors,gameLogic);
 				Thread.sleep(10);
 			}
-			catch(InterruptedException e){
+			catch(InterruptedException | IOException e){
 				e.printStackTrace();
 			}
 		}

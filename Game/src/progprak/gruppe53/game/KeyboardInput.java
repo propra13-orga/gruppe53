@@ -2,9 +2,14 @@ package progprak.gruppe53.game;
 
 import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
+import java.io.Serializable;
 
-public class KeyboardInput implements KeyEventDispatcher {
+public class KeyboardInput implements KeyEventDispatcher,Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7895064104386555018L;
 	//Directions
 	private boolean up 		= false;
 	private boolean down 	= false;
