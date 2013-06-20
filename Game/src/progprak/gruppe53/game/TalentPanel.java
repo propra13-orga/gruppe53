@@ -1,6 +1,7 @@
 package progprak.gruppe53.game;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,6 @@ public class TalentPanel extends JPanel {
 	
 	private JPanel talentPanel;
 	private Game game;
-	private JButton[] button;
 	
 	
 	public TalentPanel(Game game) {
@@ -28,103 +28,124 @@ public class TalentPanel extends JPanel {
 
 	private void doInitalizations() {
 		setLayout(new BorderLayout());
+		setBackground(Color.WHITE);
 		
 		talentPanel = new JPanel();
 		add(talentPanel,BorderLayout.CENTER);
 		
 		talentPanel.setLayout(new GridLayout(0, 3,50,25));
-		for(int i=0;i<=11;i++){
-			button[i] = new JButton();
-			button[i].setIcon(null);
-		}
-		button[0].addActionListener(new ActionListener() {
+
+		JButton button1 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button2 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button3 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button4 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button5 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button6 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button7 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button8 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button9 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button10 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button11 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));
+		JButton button12 = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance.png")));		
+
+		button1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[1].addActionListener(new ActionListener() {
+		button2.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[2].addActionListener(new ActionListener() {
+		button3.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[3].addActionListener(new ActionListener() {
+		button4.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[4].addActionListener(new ActionListener() {
+		button5.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[5].addActionListener(new ActionListener() {
+		button6.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[6].addActionListener(new ActionListener() {
+		button7.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[7].addActionListener(new ActionListener() {
+		button8.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[8].addActionListener(new ActionListener() {
+		button9.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[9].addActionListener(new ActionListener() {
+		button10.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[10].addActionListener(new ActionListener() {
+		button11.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		button[11].addActionListener(new ActionListener() {
+		button12.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		for(int i=0 ;i<=11;i++)
-			talentPanel.add(button[i]);
-			
+		talentPanel.add(button1);
+		talentPanel.add(button2);
+		talentPanel.add(button3);
+		talentPanel.add(button4);
+		talentPanel.add(button5);
+		talentPanel.add(button6);
+		talentPanel.add(button7);
+		talentPanel.add(button8);
+		talentPanel.add(button9);
+		talentPanel.add(button10);
+		talentPanel.add(button11);
+		talentPanel.add(button12);
 		
+		setPreferredSize(getPreferredSize());
 	}
 
 }

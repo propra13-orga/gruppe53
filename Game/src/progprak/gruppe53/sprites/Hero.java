@@ -306,4 +306,8 @@ public class Hero extends CombatObject{
 	public int getTalentPoint(){
 		return talentPoint;
 	}
+	
+	public boolean isTalentTree(){
+		return talentTree;
+	}
 }
