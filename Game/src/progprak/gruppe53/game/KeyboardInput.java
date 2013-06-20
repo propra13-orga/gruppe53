@@ -14,6 +14,7 @@ public class KeyboardInput implements KeyEventDispatcher {
 	
 	private boolean attack	= false;
 	private boolean shop = false;
+	private boolean talentTree = false;
 
 
 	/**
@@ -79,6 +80,8 @@ public class KeyboardInput implements KeyEventDispatcher {
 				attack=false;
 			if(keyCode==KeyEvent.VK_E)
 				shop=!shop;
+			if(keyCode==KeyEvent.VK_R)
+				talentTree=!talentTree;
 			
 		}
 		return false;
@@ -86,6 +89,10 @@ public class KeyboardInput implements KeyEventDispatcher {
 
 	public boolean isShop() {
 		return shop;
+	}
+	
+	public boolean isTalentTree() {
+		return talentTree;
 	}
 
 }

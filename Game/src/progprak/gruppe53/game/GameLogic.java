@@ -101,4 +101,7 @@ public class GameLogic {
 		// TODO Auto-generated method stub
 		
 	}
+	public Game getGame(){
+		return game;
+	}
 }

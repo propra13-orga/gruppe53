@@ -4,6 +4,7 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
+import progprak.gruppe53.game.TalentPanel;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
 
@@ -19,6 +20,8 @@ public class Hero extends CombatObject{
 	private Armor armor;
 	
 	private Inventory inventory;
+	
+	private boolean talentTree = false;
 	
 	private int lastdx = 0;
 	private int lastdy = 1;
@@ -70,7 +73,7 @@ public class Hero extends CombatObject{
 			this.weapon.setOwner(this);
 		}
 		armor = inventory.getArmor();		
-		
+		talentTree = gameLogic.getPlayer().getKeyboardInput().isTalentTree();
 		shop = gameLogic.getPlayer().getKeyboardInput().isShop();
 		if(gameLogic.getPlayer().getInventorySlotClicked() != -1){
 			inventory.slotClicked(gameLogic.getPlayer().getInventorySlotClicked());
