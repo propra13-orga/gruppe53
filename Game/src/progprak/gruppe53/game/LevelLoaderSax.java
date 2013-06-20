@@ -15,6 +15,22 @@ import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
+import progprak.gruppe53.sprites.ChargingBoss;
+import progprak.gruppe53.sprites.EnemyGhost;
+import progprak.gruppe53.sprites.FireballTrap;
+import progprak.gruppe53.sprites.FireballTrap2;
+import progprak.gruppe53.sprites.FireballWaveTrap;
+import progprak.gruppe53.sprites.Goal;
+import progprak.gruppe53.sprites.GroundTrap;
+import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.sprites.LevelSwitch;
+import progprak.gruppe53.sprites.NecromancerBoss;
+import progprak.gruppe53.sprites.OldManNPC;
+import progprak.gruppe53.sprites.PortalEntrance;
+import progprak.gruppe53.sprites.Sprite;
+import progprak.gruppe53.sprites.Wall;
+import progprak.gruppe53.sprites.WallLevelSwitch;
+import progprak.gruppe53.sprites.WizardBoss;
 
 public class LevelLoaderSax extends DefaultHandler {
 	

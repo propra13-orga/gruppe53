@@ -1,4 +1,4 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -6,6 +6,10 @@ import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+
+import progprak.gruppe53.game.Drawable;
+import progprak.gruppe53.game.ImageLoader;
+import progprak.gruppe53.game.Movable;
 
 abstract public class Sprite extends Rectangle2D.Double implements Drawable,Movable  {
 

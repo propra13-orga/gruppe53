@@ -1,4 +1,7 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
+
+import progprak.gruppe53.game.GameLogic;
+import progprak.gruppe53.game.Shooter;
 
 public class FireballTrap extends PassiveCombatObject implements Shooter {
 	private static final long serialVersionUID = 1L;

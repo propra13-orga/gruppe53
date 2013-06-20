@@ -1,4 +1,7 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
+
+import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.GameLogic;
 
 public class EnemyGhost extends Enemy {
 

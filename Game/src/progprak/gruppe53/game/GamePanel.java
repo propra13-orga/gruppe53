@@ -7,6 +7,8 @@ import java.util.Vector;
 import java.util.ListIterator;
 import javax.swing.JPanel;
 
+import progprak.gruppe53.sprites.Sprite;
+
 public class GamePanel extends JPanel{
 
 	private static final long serialVersionUID = -2238063440895511947L;

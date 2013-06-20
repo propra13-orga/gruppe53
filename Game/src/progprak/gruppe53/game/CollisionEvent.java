@@ -20,7 +20,7 @@ public class CollisionEvent {
 	
 	private int newX,newY;
 	private String newLevel;
-	protected Collidable actor;
+	public Collidable actor;
 	
 	public CollisionEvent(int event,Collidable actor){
 		this.event = event;

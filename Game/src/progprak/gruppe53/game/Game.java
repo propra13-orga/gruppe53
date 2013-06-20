@@ -4,6 +4,9 @@ import java.awt.KeyboardFocusManager;
 import java.util.ListIterator;
 import java.util.Vector;
 
+import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.sprites.Sprite;
+
 public class Game implements Runnable {
 	
 	

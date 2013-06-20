@@ -1,4 +1,8 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
+
+import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.GameLogic;
+import progprak.gruppe53.game.Shooter;
 
 abstract public class Projectile extends CombatObject {
 

@@ -1,4 +1,5 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
+
 
 public class Ground extends Sprite{
 

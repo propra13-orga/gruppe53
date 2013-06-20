@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
-import progprak.gruppe53.game.Hero;
 import progprak.gruppe53.game.PickupCollisionEvent;
+import progprak.gruppe53.sprites.Hero;
 
 public abstract class Potion extends Item implements Collidable{
 		

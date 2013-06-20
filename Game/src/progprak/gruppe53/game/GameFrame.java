@@ -9,6 +9,8 @@ import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import progprak.gruppe53.sprites.Sprite;
+
 public class GameFrame extends JFrame {
 
 	

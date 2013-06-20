@@ -3,6 +3,10 @@ package progprak.gruppe53.game;
 import java.util.Vector;
 import java.util.ListIterator;
 
+import progprak.gruppe53.sprites.CombatObject;
+import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.sprites.Sprite;
+
 public class GameLogic {
 	
 	private Vector<Sprite> actors;

@@ -20,23 +20,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import progprak.gruppe53.game.EnemyGhost;
-import progprak.gruppe53.game.Fireball;
-import progprak.gruppe53.game.FireballTrap;
-import progprak.gruppe53.game.FireballTrap2;
-import progprak.gruppe53.game.FireballWaveTrap;
 import progprak.gruppe53.game.GamePanel;
-import progprak.gruppe53.game.Goal;
-import progprak.gruppe53.game.GroundTrap;
 import progprak.gruppe53.game.ImageLoader;
-import progprak.gruppe53.game.LevelSwitch;
-import progprak.gruppe53.game.PortalEntrance;
-import progprak.gruppe53.game.Sprite;
-import progprak.gruppe53.game.Wall;
-import progprak.gruppe53.game.WallLevelSwitch;
 import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.WoodenSword;
+import progprak.gruppe53.sprites.EnemyGhost;
+import progprak.gruppe53.sprites.Fireball;
+import progprak.gruppe53.sprites.FireballTrap;
+import progprak.gruppe53.sprites.FireballTrap2;
+import progprak.gruppe53.sprites.FireballWaveTrap;
+import progprak.gruppe53.sprites.Goal;
+import progprak.gruppe53.sprites.GroundTrap;
+import progprak.gruppe53.sprites.LevelSwitch;
+import progprak.gruppe53.sprites.PortalEntrance;
+import progprak.gruppe53.sprites.Sprite;
+import progprak.gruppe53.sprites.Wall;
+import progprak.gruppe53.sprites.WallLevelSwitch;
 
 public class LevelEditor extends JFrame implements ActionListener,
 		MouseListener {

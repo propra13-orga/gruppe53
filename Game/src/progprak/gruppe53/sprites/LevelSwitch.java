@@ -1,4 +1,7 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
+
+import progprak.gruppe53.game.Collidable;
+import progprak.gruppe53.game.CollisionEvent;
 
 public class LevelSwitch extends Sprite implements Collidable{
 

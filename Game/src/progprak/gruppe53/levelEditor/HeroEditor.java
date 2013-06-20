@@ -1,6 +1,6 @@
 package progprak.gruppe53.levelEditor;
 
-import progprak.gruppe53.game.Sprite;
+import progprak.gruppe53.sprites.Sprite;
 
 public class HeroEditor extends Sprite{
 	private static final long serialVersionUID = 1;

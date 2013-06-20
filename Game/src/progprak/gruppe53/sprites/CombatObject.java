@@ -1,8 +1,13 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
 
 import java.util.ListIterator;
 import java.util.Vector;
 
+import progprak.gruppe53.game.Collidable;
+import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.DamageCollisionEvent;
+import progprak.gruppe53.game.Game;
+import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.items.Item;
 
 abstract public class CombatObject extends Sprite implements Collidable{

@@ -3,6 +3,7 @@ package progprak.gruppe53.game;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Item;
 import progprak.gruppe53.items.Weapon;
+import progprak.gruppe53.sprites.Hero;
 
 public class Inventory {
 

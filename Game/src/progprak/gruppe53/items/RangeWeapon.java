@@ -1,9 +1,9 @@
 package progprak.gruppe53.items;
 
-import progprak.gruppe53.game.CombatObject;
-import progprak.gruppe53.game.Fireball;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
+import progprak.gruppe53.sprites.CombatObject;
+import progprak.gruppe53.sprites.Fireball;
 
 public class RangeWeapon extends Weapon implements Shooter {
 

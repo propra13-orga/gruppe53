@@ -1,5 +1,9 @@
-package progprak.gruppe53.game;
+package progprak.gruppe53.sprites;
 
+import progprak.gruppe53.game.CollisionEvent;
+import progprak.gruppe53.game.GameLogic;
+import progprak.gruppe53.game.Inventory;
+import progprak.gruppe53.game.PickupCollisionEvent;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
 
