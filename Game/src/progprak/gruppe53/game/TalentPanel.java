@@ -42,11 +42,13 @@ public class TalentPanel extends JPanel {
 	private int goldReg;
 
 	private Hero hero;
+	private transient GameLogic gameLogic;
 
-	public TalentPanel(Game game) {
 
-		this.game = game;
+	public TalentPanel(Hero hero, GameLogic gameLogic) {
 
+		this.hero = hero;
+		this.gameLogic = gameLogic;
 		doInitalizations();
 
 	}
@@ -126,6 +128,11 @@ public class TalentPanel extends JPanel {
 			}
 		});
 		talent2 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -4152248316606299828L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -147,6 +154,11 @@ public class TalentPanel extends JPanel {
 			}
 		});
 		talent3 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -8408144610168840045L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -158,9 +170,9 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (hpReg <= 5) {
+				if (increasedHPPot <= 5) {
 					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
-						hpReg += 1;
+						increasedHPPot += 1;
 						hero.setTalentPoint(-1);
 
 					}
@@ -171,6 +183,11 @@ public class TalentPanel extends JPanel {
 		if(button4 != null)
 			System.out.println("nicht null!");
 		talent4 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 9089404986526239752L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -182,10 +199,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (increasedMPPot <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						increasedMPPot += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent5 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 8805351483514477851L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -197,10 +225,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (increasedExpRate <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						increasedExpRate += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent6 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 3668354450987356722L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -212,10 +251,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (hpReg <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						hpReg += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent7 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 276982124425888518L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -227,10 +277,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (manaReg <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						manaReg += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent8 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -121259327350214129L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -242,10 +303,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (expReg <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						expReg += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent9 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -5883970746108560897L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -257,10 +329,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (dmgIncrease <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						dmgIncrease += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent10 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 346982580841007019L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -272,10 +355,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (multiFireBalls == false) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 5) {
+						multiFireBalls = true;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent11 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -1779312139582535352L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -290,10 +384,21 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (goldReg <= 4) {
+					if (game.getGameLogic().getHero().getTalentPoint() >= 1) {
+						goldReg += 1;
+						hero.setTalentPoint(-1);
 
+					}
+				}
 			}
 		});
 		talent12 = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 5522572243012397709L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -342,7 +447,6 @@ public class TalentPanel extends JPanel {
 	}
 
 	public void render() {
-		this.hero = game.getGameLogic().getHero();
 		if (maxHP >= 3) {
 			if (button4 == null)
 				System.out.println("button4");
@@ -353,6 +457,24 @@ public class TalentPanel extends JPanel {
 		}
 		if (armorBonus >= 1) {
 			button6.setEnabled(true);
+		}
+		if(increasedHPPot >= 3){
+			button7.setEnabled(true);
+		}
+		if(increasedMPPot >= 3){
+			button8.setEnabled(true);
+		}
+		if(increasedExpRate >= 3){
+			button9.setEnabled(true);
+		}
+		if(hpReg >= 3){
+			button10.setEnabled(true);
+		}
+		if(manaReg >= 3){
+			button11.setEnabled(true);
+		}
+		if(expReg >= 3){
+			button12.setEnabled(true);
 		}
 	}
 

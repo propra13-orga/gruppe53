@@ -24,7 +24,6 @@ public class GameFrame extends JFrame {
 
 	private SpeechPane speechPane;
 	
-	private TalentPanel talentPanel;
 	
 	/*
 	 * The Gamepanel
@@ -57,11 +56,6 @@ public class GameFrame extends JFrame {
 		shop.setLocation(mainPane.getPreferredSize().width/2 - shop.getPreferredSize().width/2,mainPane.getPreferredSize().height/2 - shop.getPreferredSize().height/2);
 		shop.setSize(shop.getPreferredSize());
 		mainPane.add(shop,new Integer(0));
-		talentPanel = new TalentPanel(game);
-		talentPanel.setSize(800,640);
-		talentPanel.setLocation((int)(mainPane.getPreferredSize().width*0.1),(int)(mainPane.getPreferredSize().height*0.1));
-		talentPanel.setSize((int)(mainPane.getPreferredSize().width*0.8),(int)(mainPane.getPreferredSize().height*0.8));
-		mainPane.add(talentPanel,new Integer(0));
 		speechPane = new SpeechPane();
 		speechPane.setPreferredSize(new Dimension(400,100));
 		speechPane.setLocation(mainPane.getPreferredSize().width/2-speechPane.getPreferredSize().width/2,100);
@@ -87,7 +81,7 @@ public class GameFrame extends JFrame {
 		infoWindow.render(hero);
 		gamePanel.repaint();
 		speechPane.render();
-		talentPanel.render();
+		hero.getTalentTree().getTalentPanel().render();
 		showShop(hero.isShop());
 		showTalentTree(hero.isTalentTree());
 	}
@@ -104,10 +98,10 @@ public class GameFrame extends JFrame {
 	
 	private void showTalentTree(boolean talentTree) {
 		if(talentTree){
-			mainPane.setLayer(this.talentPanel, 2);
+			mainPane.setLayer(game.getGameLogic().getHero().getTalentTree().getTalentPanel(), 2);
 		}
 		else {
-			mainPane.setLayer(this.talentPanel, 0);
+			mainPane.setLayer(game.getGameLogic().getHero().getTalentTree().getTalentPanel(), 0);
 		}
 	}
 
@@ -119,10 +113,6 @@ public class GameFrame extends JFrame {
 
 	private void hideSpeechPane() {
 		speechPane.setShow(false);
-	}
-	
-	public TalentPanel getTalentPanel(){
-		return talentPanel;
 	}
 	
 	public Game getGame(){

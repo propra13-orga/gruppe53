@@ -5,6 +5,7 @@ import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
 import progprak.gruppe53.game.TalentPanel;
+import progprak.gruppe53.game.TalentTree;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
 
@@ -19,8 +20,8 @@ public class Hero extends CombatObject {
 	private Armor armor;
 
 	private Inventory inventory;
+	private TalentTree talentTree;
 
-	private boolean talentTree = false;
 
 	private int lastdx = 0;
 	private int lastdy = 1;
@@ -32,6 +33,7 @@ public class Hero extends CombatObject {
 
 	private long lastMana = 0;
 	private long lastHealth = 0;
+	private long lastGold = 0;
 
 	private GameLogic gameLogic;
 
@@ -41,9 +43,9 @@ public class Hero extends CombatObject {
 	private int talentPoint = 5;
 
 	private boolean shop = false;
-	private TalentPanel talentPanel;
+	private boolean talents = false;
 
-	public Hero(int xPos, int yPos, GameLogic gameLogic, TalentPanel talentPanel) {
+	public Hero(int xPos, int yPos, GameLogic gameLogic) {
 		super(xPos, yPos, "images/held.png", gameLogic);
 		this.gameLogic = gameLogic;
 		spawnX = xPos;
@@ -53,7 +55,7 @@ public class Hero extends CombatObject {
 		health = maxHealth;
 		maxMana = 1000;
 		mana = maxMana;
-		this.talentPanel = talentPanel;
+		this.talentTree = new TalentTree(this,gameLogic);
 		this.inventory = new Inventory(this, gameLogic);
 		weapon = (Weapon) inventory.getWeapon();
 		armor = (Armor) inventory.getArmor();
@@ -76,10 +78,9 @@ public class Hero extends CombatObject {
 			this.weapon.setOwner(this);
 		}
 		armor = inventory.getArmor();
-		talentTree = gameLogic.getPlayer().getKeyboardInput().isTalentTree();
 		shop = gameLogic.getPlayer().getKeyboardInput().isShop();
-		maxHealth = 100 + talentPanel.getMaxHP() * 20;
-		maxMana = 1000 + talentPanel.getMaxMana() * 200;
+		maxHealth = 100 + talentTree.getTalentPanel().getMaxHP() * 20;
+		maxMana = 1000 + talentTree.getTalentPanel().getMaxMana() * 200;
 		if (gameLogic.getPlayer().getInventorySlotClicked() != -1) {
 			inventory.slotClicked(gameLogic.getPlayer()
 					.getInventorySlotClicked());
@@ -140,6 +141,9 @@ public class Hero extends CombatObject {
 		}
 		if (weapon != null) {
 			weapon.attack(gameLogic.getPlayer().getKeyboardInput().isAttack());
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isTalentTree()){
+			talents = true;
 		}
 		if (exp >= reqExp) {
 			heroLevel += 1;
@@ -257,7 +261,7 @@ public class Hero extends CombatObject {
 		if (mana < maxMana) {
 			long current = System.nanoTime();
 			if (current - lastMana >= 1e9) {
-				mana = mana + 8 + talentPanel.getManaReg();
+				mana = mana + 8 + talentTree.getTalentPanel().getManaReg();
 				lastMana = current;
 			}
 		}
@@ -267,9 +271,16 @@ public class Hero extends CombatObject {
 		if (health < maxHealth) {
 			long current = System.nanoTime();
 			if (current - lastHealth >= 1e9) {
-				health = health + talentPanel.getHPReg();
+				health = health + talentTree.getTalentPanel().getHPReg();
 				lastHealth = current;
 			}
+		}
+	}
+	
+	public void recoverGold(){
+		long current = System.nanoTime();
+		if(current - lastGold >= 1e9) {
+			money = money+ talentTree.getTalentPanel().getGoldReg();
 		}
 	}
 
@@ -277,14 +288,14 @@ public class Hero extends CombatObject {
 	public void doneKill(CombatObject combatObject) {
 		super.doneKill(combatObject);
 		money += 50;
-		exp += 25;
+		exp += 25+5*talentTree.getTalentPanel().getIncreasedExpRate();
 		if (combatObject instanceof BossEnemy) {
 			gameLogic.switchLevel(((BossEnemy) combatObject).getNextLevel());
 		}
 	}
 
 	public void addHealth(int aHp) {
-		health += aHp;
+		health += aHp+(aHp/5*talentTree.getTalentPanel().getIncreasedHPPot());
 		if (health > maxHealth) {
 			health = maxHealth;
 		}
@@ -306,7 +317,7 @@ public class Hero extends CombatObject {
 	@Override
 	protected double damageReduce() {
 		if (armor != null) {
-			return 1 / ((armor.getarmorLVL() + talentPanel.getArmorBonus()) * 1.3);
+			return 1 / ((armor.getarmorLVL() + talentTree.getTalentPanel().getArmorBonus()) * 1.3);
 		} else
 			return 1;
 	}
@@ -344,11 +355,15 @@ public class Hero extends CombatObject {
 		return talentPoint;
 	}
 
-	public boolean isTalentTree() {
-		return talentTree;
-	}
-
 	public void setTalentPoint(int dif) {
 		talentPoint = talentPoint + dif;
+	}
+	
+	public TalentTree getTalentTree(){
+		return talentTree;
+	}
+	
+	public boolean isTalentTree(){
+		return talents;
 	}
 }
