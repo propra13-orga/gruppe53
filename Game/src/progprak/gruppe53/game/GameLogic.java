@@ -19,11 +19,11 @@ public class GameLogic {
 	private Player player;
 	
 	
-	
 
 	public GameLogic() {
 		sprites =  new ArrayList<Sprite>();
 		doInitalizations();
+
 	}
 	public void addHero(Hero hero){
 		this.hero = hero;
@@ -127,4 +127,5 @@ public class GameLogic {
 		doLogic(delta);				
 		move(delta);
 	}
+
 }
