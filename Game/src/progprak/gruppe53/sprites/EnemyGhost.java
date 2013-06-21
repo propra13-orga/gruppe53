@@ -19,5 +19,4 @@ public class EnemyGhost extends Enemy {
 		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL)dy *= -1;
 		handleEvents = false;
 	}
-
 }

@@ -1,5 +1,6 @@
 package progprak.gruppe53.game;
 
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.ListIterator;
 
@@ -9,8 +10,8 @@ import progprak.gruppe53.sprites.Sprite;
 
 public class GameLogic {
 	
-	private Vector<Sprite> actors;
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> actors;
+	private ArrayList<Sprite> sprites;
 	private String level;
 	
 	
@@ -21,7 +22,7 @@ public class GameLogic {
 	
 
 	public GameLogic() {
-		sprites =  new Vector<Sprite>();
+		sprites =  new ArrayList<Sprite>();
 		doInitalizations();
 	}
 	public void addHero(Hero hero){
@@ -33,8 +34,11 @@ public class GameLogic {
 	}
 	
 	//Do Logics for every Sprite-Object
-	public void doLogic(long delta){
-		actors = (Vector<Sprite>) sprites.clone();
+	protected void doLogic(long delta){
+		actors = (ArrayList<Sprite>) sprites.clone();
+		hero.doLogic(delta);
+		hero.testForCollision();
+		hero.resetHandleEvents();
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.doLogic(delta);
@@ -44,25 +48,26 @@ public class GameLogic {
 			}
 		} 
 	}
-	public void move(long delta){
+	protected void move(long delta){
+		hero.move(delta);
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.move(delta);
 		}
 	}
-	public Vector<Sprite> getActors() {
+	public ArrayList<Sprite> getActors() {
 		return actors;
 	}
 
 	public void switchLevel(String newLevel) {
 		level = newLevel;
-		Vector<Sprite> sp = new Vector<Sprite>();
+		ArrayList<Sprite> sp = new ArrayList<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, this);
 		sprites = sp;
 		if(hero.getWeapon() != null){
 			sprites.add(hero.getWeapon());
 		}
-
+		actors = (ArrayList<Sprite>) sprites.clone();
 	}
 	
 
@@ -71,11 +76,11 @@ public class GameLogic {
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(a!=s){
-				if(s instanceof Collidable && s.intersects(a.getHorizontalCollsionRect())){
+				if(s instanceof Collidable && s.getRectangle().intersects(a.getHorizontalCollsionRect())){
 					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_HORIZONTAL);
 					cs.add(s);
 				}
-				if(s instanceof Collidable && s.intersects(a.getVerticalCollsionRect())){
+				if(s instanceof Collidable && s.getRectangle().intersects(a.getVerticalCollsionRect())){
 					((Collidable)s).getCollisionEvent().setDirection(CollisionEvent.DIRECTION_VERTICAL);
 					cs.add(s);
 				}

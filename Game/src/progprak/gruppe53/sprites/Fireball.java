@@ -13,8 +13,8 @@ public class Fireball extends Projectile implements Collidable{
 	
 	public Fireball(int x, int y, GameLogic gameLogic, Shooter shooter, double dx, double dy, int faction){
 		super(x,y,"images/FireballRed.png", gameLogic,shooter);
-		this.width = 16;
-		this.height = 16;
+		this.setWidth(16);
+		this.setHeight(16);
 		this.dx = dx;
 		this.dy = dy;
 		this.faction = faction;

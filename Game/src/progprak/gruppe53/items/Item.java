@@ -1,7 +1,5 @@
 package progprak.gruppe53.items;
 
-import java.awt.image.BufferedImage;
-
 import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
@@ -12,10 +10,10 @@ import progprak.gruppe53.sprites.Sprite;
 abstract public class Item extends Sprite implements Collidable {
 
 	private static final long serialVersionUID = -7562614880016250784L;
-	protected CollisionEvent collisionEvent;
+	protected transient CollisionEvent collisionEvent;
 	protected Hero owner;
 	protected int price = 0;
-	protected GameLogic gameLogic;
+	protected transient GameLogic gameLogic;
 	
 	public Item(int x, int y, String imagePath,GameLogic gameLogic) {
 		super(x, y, imagePath);
@@ -28,9 +26,6 @@ abstract public class Item extends Sprite implements Collidable {
 	public void setOwner(Hero owner){
 		this.owner = owner;
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING, null);
-	}
-	public BufferedImage getImage(){
-		return image;
 	}
 	/**
 	 * @return the price

@@ -4,11 +4,13 @@ package progprak.gruppe53.game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
 
 public class GameFrame extends JFrame {
@@ -57,7 +59,7 @@ public class GameFrame extends JFrame {
 		mainPane.add(shop,new Integer(0));
 		talentPanel = new TalentPanel(game);
 		talentPanel.setSize(800,640);
-		mainPane.add(talentPanel,new Integer(8));
+		mainPane.add(talentPanel,new Integer(0));
 		speechPane = new SpeechPane();
 		speechPane.setPreferredSize(new Dimension(400,100));
 		speechPane.setLocation(mainPane.getPreferredSize().width/2-speechPane.getPreferredSize().width/2,100);
@@ -77,14 +79,14 @@ public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = -3116185873584567253L;
 
-	public void render(long delta, Vector<Sprite> actors, GameLogic gameLogic) {
-		gamePanel.render(delta,actors);
+	public void render(long delta, ArrayList<Sprite> actors, Hero hero) {
+		gamePanel.render(delta,actors,hero);
 		menu.render();
-		infoWindow.render(gameLogic);
+		infoWindow.render(hero);
 		gamePanel.repaint();
 		speechPane.render();
-		showShop(gameLogic.getHero().isShop());
-		showTalentTree(gameLogic.getHero().isTalentTree());
+		//showShop(gameLogic.getHero().isShop());
+		//showTalentTree(gameLogic.getHero().isTalentTree());
 	}
 
 	

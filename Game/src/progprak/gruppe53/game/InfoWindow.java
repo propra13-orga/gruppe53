@@ -10,6 +10,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
+import progprak.gruppe53.sprites.Hero;
+
 
 public class InfoWindow extends JPanel {
 
@@ -112,18 +114,18 @@ public class InfoWindow extends JPanel {
 		setPreferredSize(getPreferredSize());
 	}
 
-	public void render(GameLogic gameLogic) {
-		healthBar.setMaximum((int)gameLogic.getHero().getMaxHealth());
-		healthBar.setValue((int)gameLogic.getHero().getHealth());
-		manaBar.setMaximum(gameLogic.getHero().getMaxMana());
-		manaBar.setValue(gameLogic.getHero().getMana());
-		expBar.setMaximum((int)gameLogic.getHero().getReqExperience());
-		expBar.setValue((int)gameLogic.getHero().getExperience());
-		this.money = gameLogic.getHero().getMoney();
-		this.lifes = gameLogic.getHero().getLifes();
-		this.heroLevel = gameLogic.getHero().getLevel();
-		this.talentPoint = gameLogic.getHero().getTalentPoint();
-		inventoryPanel.render(gameLogic.getHero().getInventory().getItems(),gameLogic.getHero().getInventory().getWeapon());
+	public void render(Hero hero) {
+		healthBar.setMaximum((int)hero.getMaxHealth());
+		healthBar.setValue((int)hero.getHealth());
+		manaBar.setMaximum(hero.getMaxMana());
+		manaBar.setValue(hero.getMana());
+		expBar.setMaximum((int)hero.getReqExperience());
+		expBar.setValue((int)hero.getExperience());
+		this.money = hero.getMoney();
+		this.lifes = hero.getLifes();
+		this.heroLevel = hero.getLevel();
+		this.talentPoint = hero.getTalentPoint();
+		inventoryPanel.render(hero.getInventory().getItems(),hero.getInventory().getWeapon());
 		infoPanel.repaint();
 	}
 

@@ -7,7 +7,7 @@ public class Goal extends Sprite implements Collidable {
 
 	private static final long serialVersionUID = 7586740939024486489L;
 
-	private CollisionEvent collisionEvent;
+	private transient CollisionEvent collisionEvent;
 	
 	public Goal(int x, int y) {
 		super(x, y, "images/exit.png");

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -108,7 +109,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
 	*/
 
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 	private String currentSprite = "";
 	private String saveFileName = "";
 	
@@ -123,7 +124,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 	private void setupEditor() {
 		// Setzt Groesse und Position des Fensters und der noetigen Panels
-		sprites = new Vector<Sprite>();
+		sprites = new ArrayList<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -860,7 +861,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		new LevelSaver(saveFileName, sprites).saveLevel();
 	}
 	public void loadLevel(String newLevel){
-		Vector<Sprite> sp = new Vector<Sprite>();
+		ArrayList<Sprite> sp = new ArrayList<Sprite>();
 		EditorLevelLoader.generateLevel(newLevel,sp);
 		sprites = sp;
 		((GamePanel)level).render(1,sprites);

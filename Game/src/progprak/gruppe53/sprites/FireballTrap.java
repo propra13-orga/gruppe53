@@ -24,7 +24,7 @@ public class FireballTrap extends PassiveCombatObject implements Shooter {
 	@Override
 	public void doLogic(long delta) {
 		if(!shootAlive){
-			gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, xMovement, yMovement, 2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, xMovement, yMovement, 2));
 			shootAlive = true;
 		}
 	}

@@ -1,6 +1,7 @@
 package progprak.gruppe53.game;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,17 +35,17 @@ import progprak.gruppe53.sprites.WizardBoss;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 	private GameLogic gameLogic;
 	private StringBuilder elementName;
 	private Attributes attributes;
 
-	public LevelLoaderSax(Vector<Sprite> sp, GameLogic gameLogic) {
+	public LevelLoaderSax(ArrayList<Sprite> sp, GameLogic gameLogic) {
 		this.sprites = sp;
 		this.gameLogic = gameLogic;
 	}
 
-	public static void generateLevel(String level, Vector<Sprite> sp, GameLogic gameLogic){
+	public static void generateLevel(String level, ArrayList<Sprite> sp, GameLogic gameLogic){
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();
@@ -189,7 +190,7 @@ public class LevelLoaderSax extends DefaultHandler {
 		Hero hero = gameLogic.getHero();
 		hero.setXSpawn(Integer.parseInt(spawnArray[0]));
 		hero.setYSpawn(Integer.parseInt(spawnArray[1]));
-		sprites.add(hero);		
+		//sprites.add(hero);		
 	}
 
 	private void spawnLevelSwitch(String content) {

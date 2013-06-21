@@ -7,7 +7,6 @@ import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
-import progprak.gruppe53.items.Item;
 
 abstract public class CombatObject extends Sprite implements Collidable{
 
@@ -19,14 +18,13 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	protected double maxHealth = 1;
 	protected long lastDamage = 0L;
 	
-	protected Item item;
 	
-	protected CollisionEvent collisionEvent;
+	protected transient CollisionEvent collisionEvent;
 
 	protected boolean handleEvents = true;
 	
 	
-	protected GameLogic gameLogic;
+	protected transient GameLogic gameLogic;
 	
 	public CombatObject(int x, int y, String imagePath,GameLogic gameLogic) {
 		super(x, y, imagePath);
@@ -127,8 +125,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	}
 
 	protected void handleTeleportEvent(int newX, int newY) {
-		x = newX;
-		y = newY;
+		setX(newX);
+		setY(newY);
 	}
 
 	protected void handleSwitchLevelEvent(CollisionEvent ce) {		

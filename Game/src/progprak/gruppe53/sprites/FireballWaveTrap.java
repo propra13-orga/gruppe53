@@ -29,12 +29,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 		if(System.nanoTime() >= cooldown){
 			if (direction == 1) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, 1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, 1, 0, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2)-16*castOrder, gameLogic,this, 1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2)-16*castOrder, gameLogic,this, 1, 0, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -42,12 +42,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 2) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, 0, -1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, 0, -1, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2)+16*castOrder, (int)(this.y+height/2), gameLogic,this, 0, -1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2)+16*castOrder, (int)(this.getY()+getHeight()/2), gameLogic,this, 0, -1, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -55,12 +55,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 3) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, -1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, -1, 0, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2)-16*castOrder, gameLogic,this, -1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2)-16*castOrder, gameLogic,this, -1, 0, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -68,12 +68,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 4) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, 0, 1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, 0, 1, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2)+16*castOrder, (int)(this.y+height/2), gameLogic,this, 0, 1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2)+16*castOrder, (int)(this.getY()+getHeight()/2), gameLogic,this, 0, 1, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -81,12 +81,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 5) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, 1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, 1, 0, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2)+16*castOrder, gameLogic,this, 1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2)+16*castOrder, gameLogic,this, 1, 0, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -94,12 +94,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 6) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, 0, -1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, 0, -1, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2)-16*castOrder, (int)(this.y+height/2), gameLogic,this, 0, -1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2)-16*castOrder, (int)(this.getY()+getHeight()/2), gameLogic,this, 0, -1, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -107,12 +107,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 7) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, -1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, -1, 0, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2)+16*castOrder, gameLogic,this, -1, 0, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2)+16*castOrder, gameLogic,this, -1, 0, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);
@@ -120,12 +120,12 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 			}
 			else if (direction == 8) {
 				if (castOrder == amount) {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, 0, 1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, 0, 1, 2));
 					castOrder = 1;
 					cooldown = System.nanoTime() + (long)((2L)*1e8);
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)(this.x+width/2)-16*castOrder, (int)(this.y+height/2), gameLogic,this, 0, 1, 2));
+					gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2)-16*castOrder, (int)(this.getY()+getHeight()/2), gameLogic,this, 0, 1, 2));
 					castOrder = castOrder+1;
 					if (castOrder == 8) cooldown = System.nanoTime() + (long)((5L)*1e8);
 					else cooldown = System.nanoTime() + (long)((2L)*1e8);

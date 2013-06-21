@@ -4,12 +4,9 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
-public class IronSword extends Weapon {
+public class IronSword extends MeleeWeapons {
 
 	private static final long serialVersionUID = 123456789L;
-
-	private CollisionEvent notAttackCe;
-	private CollisionEvent attackCe;
 	
 	public IronSword(int x, int y,GameLogic gameLogic){
 		super( x, y, "images/sword.png", gameLogic);
@@ -36,15 +33,15 @@ public class IronSword extends Weapon {
 	@Override
 	public void attack(boolean attack) {
 		if(attack){
-			x = owner.getX()+26;
-			y = owner.getY()+22; 
-			width = ww;
-			height = wh;
+			setX(owner.getX()+26);
+			setY(owner.getY()+22); 
+			setWidth(ww);
+			setHeight(wh);
 			draw = true;
 			collisionEvent = attackCe;
 		}
 		else {
-			width = height = x = y = 0;
+			setWidth(setHeight(setX(setY(0))));
 			draw = false;
 			collisionEvent = notAttackCe;
 		}

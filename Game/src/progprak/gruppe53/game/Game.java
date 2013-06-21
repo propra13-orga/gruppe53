@@ -1,15 +1,14 @@
 package progprak.gruppe53.game;
 
 import java.awt.KeyboardFocusManager;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Vector;
 
+import progprak.gruppe53.server.ServerResponse;
 import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
 
@@ -61,6 +60,8 @@ public class Game implements Runnable {
 	
 	private boolean client = false;
 
+	private ObjectInputStream serverObjectIn;
+
 
 	
 	public Game() {
@@ -87,8 +88,8 @@ public class Game implements Runnable {
 		if (client) {
 			try {
 				server = new Socket("localhost", 6116);
-				serverObjectOut = new ObjectOutputStream(
-						server.getOutputStream());
+				serverObjectOut = new ObjectOutputStream(server.getOutputStream());
+				serverObjectIn = new ObjectInputStream(server.getInputStream());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -99,23 +100,33 @@ public class Game implements Runnable {
 	@Override
 	public void run() {
 		started = true;
-		Vector<Sprite> actors = null;
+		ArrayList<Sprite> actors = null;
+		Hero hero = null;
+		ServerResponse sr;
 		while(started){
 			try {
 				computeDelta();
 				if(alive){
 					if (client) {
 						serverObjectOut.writeObject(player);
+						serverObjectOut.reset();
+						sr = null;
+						sr = (ServerResponse) serverObjectIn.readObject();
+						actors = sr.getActors();
+						hero = sr.getHero();
 					}
 					else {
 						gameLogic.tick(delta,player);
 						actors = gameLogic.getActors();
+						hero = gameLogic.getHero();
 					}
 				}
-				gameFrame.render(delta,actors,gameLogic);
-				Thread.sleep(10);
+				gameFrame.render(delta,actors,hero);
+				if(!client) {
+					Thread.sleep(10);
+				}
 			}
-			catch(InterruptedException | IOException e){
+			catch(InterruptedException | IOException | ClassNotFoundException e){
 				e.printStackTrace();
 			}
 		}

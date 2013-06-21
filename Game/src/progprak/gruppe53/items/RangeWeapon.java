@@ -33,13 +33,13 @@ public class RangeWeapon extends Weapon implements Shooter {
 			super.attack(attack);
 			if(attack && gameLogic.getHero().getMana() >= manaCost){
 				if(gameLogic.getHero().getLastDx() < 0){
-					gameLogic.addSprite(new Fireball((int)this.x-12,
-							(int)this.y, gameLogic,this, gameLogic.getHero().getLastDx()*2.5,
+					gameLogic.addSprite(new Fireball((int)this.getX()-12,
+							(int)this.getY(), gameLogic,this, gameLogic.getHero().getLastDx()*2.5,
 							gameLogic.getHero().getLastDy()*2.5, gameLogic.getHero().getFaction()));
 				}
 				else {
-					gameLogic.addSprite(new Fireball((int)this.x+12,
-							(int)this.y, gameLogic,this, gameLogic.getHero().getLastDx()*2.5,
+					gameLogic.addSprite(new Fireball((int)this.getX()+12,
+							(int)this.getY(), gameLogic,this, gameLogic.getHero().getLastDx()*2.5,
 							gameLogic.getHero().getLastDy()*2.5, gameLogic.getHero().getFaction()));
 				}
 				last = now;

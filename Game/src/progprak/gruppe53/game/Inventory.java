@@ -1,18 +1,21 @@
 package progprak.gruppe53.game;
 
+import java.io.Serializable;
+
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Item;
 import progprak.gruppe53.items.Weapon;
 import progprak.gruppe53.sprites.Hero;
 
-public class Inventory {
+public class Inventory implements Serializable {
 
+	private static final long serialVersionUID = 2765576774412774911L;
 	private Weapon weapon;
 	private Armor armor;
 	private Item[] items;
 	private int inventorySlots = 10;
 	private Hero hero;
-	private GameLogic gameLogic;
+	private transient GameLogic gameLogic;
 	
 	public Inventory(Hero hero,GameLogic gameLogic) {
 		items = new Item[inventorySlots];

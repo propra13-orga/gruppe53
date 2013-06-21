@@ -24,6 +24,7 @@ abstract public class Weapon extends Item implements Collidable {
 	protected int wh = 0;
 
 
+
 	
 	public Weapon(int x, int y, String imagePath,GameLogic gameLogic) {
 		super(x, y, imagePath, gameLogic);
@@ -36,7 +37,7 @@ abstract public class Weapon extends Item implements Collidable {
 		}
 		if(gameLogic.getHero().getLastDx()<0){
 			setAngle(Math.PI);
-			xDrawOffset = (int) ((xOffset*-1)-width);
+			xDrawOffset = (int) ((xOffset*-1)-getWidth());
 			yDrawOffset = yOffset;
 		}
 		else {
@@ -50,13 +51,13 @@ abstract public class Weapon extends Item implements Collidable {
 	protected void drawWeapon(boolean draw) {
 		this.draw = draw;
 		if(draw){
-			x = owner.getX()+owner.getWidth()/2+xDrawOffset;
-			y = owner.getY()+owner.getHeight()/2+yDrawOffset;
-			width = ww;
-			height = wh;
+			setX(owner.getX()+owner.getWidth()/2+xDrawOffset);
+			setY(owner.getY()+owner.getHeight()/2+yDrawOffset);
+			setWidth(ww);
+			setHeight(wh);
 		}
 		else {
-			width = height = x = y = 0;
+			setWidth(setHeight(setX(setY(0))));
 		}
 	}
 	

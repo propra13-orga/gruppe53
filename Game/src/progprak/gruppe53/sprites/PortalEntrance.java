@@ -7,7 +7,7 @@ public class PortalEntrance extends Sprite implements Collidable{
 
 	private static final long serialVersionUID = 1L;
 
-	private CollisionEvent collisionEvent;
+	private transient CollisionEvent collisionEvent;
 	
 	public PortalEntrance(int x, int y,int newX, int newY)
 	{

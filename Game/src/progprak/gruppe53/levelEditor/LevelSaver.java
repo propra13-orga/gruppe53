@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import progprak.gruppe53.items.HealthPotion;
@@ -20,9 +21,9 @@ import progprak.gruppe53.sprites.WallLevelSwitch;
 
 public class LevelSaver {
 	private String fileName = "";
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 
-	public LevelSaver(String fileName, Vector<Sprite> sprites2) {
+	public LevelSaver(String fileName, ArrayList<Sprite> sprites2) {
 		this.fileName = fileName;
 		this.sprites = sprites2;
 	}

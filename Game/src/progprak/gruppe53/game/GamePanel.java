@@ -3,10 +3,12 @@ package progprak.gruppe53.game;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.ListIterator;
 import javax.swing.JPanel;
 
+import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
 
 public class GamePanel extends JPanel{
@@ -21,7 +23,7 @@ public class GamePanel extends JPanel{
 	/*
 	 * All Sprites to draw on the panel
 	 */
-	Vector<Sprite> sprites;
+	ArrayList<Sprite> sprites;
 	
 	
 	
@@ -35,7 +37,7 @@ public class GamePanel extends JPanel{
 
 	private void doInitializations() {
 		this.setPreferredSize(new Dimension(800,640));
-		sprites = new Vector<Sprite>();
+		sprites = new ArrayList<Sprite>();
 		
 		
 	}
@@ -55,9 +57,15 @@ public class GamePanel extends JPanel{
 		g.drawString("fps:" + Long.toString(fps), 10, 10);
 	}
 
-	public void render(long delta,Vector<Sprite> Vector) {
+	public void render(long delta,ArrayList<Sprite> actors, Hero hero) {
 		fps = ((long)1e9)/delta;
-		this.sprites = Vector;
+		this.sprites = actors;
+		this.sprites.add(hero);
+	}
+
+	public void render(long delta,ArrayList<Sprite> actors) {
+		fps = 0;
+		this.sprites = actors;
 	}
 	
 }

@@ -11,8 +11,8 @@ abstract public class MeleeWeapons extends Weapon {
 
 	
 	private static final long serialVersionUID = -9179616171179500701L;
-	protected CollisionEvent notAttackCe;
-	protected CollisionEvent attackCe;
+	protected transient CollisionEvent notAttackCe;
+	protected transient CollisionEvent attackCe;
 	protected int damage;
 	
 	public MeleeWeapons(int x, int y, String imagePath,GameLogic gameLogic) {
@@ -35,7 +35,7 @@ abstract public class MeleeWeapons extends Weapon {
 			collisionEvent = attackCe;
 		}
 		else {
-			width = height = x = y = 0;
+			setWidth(setHeight(setX(setY(0))));
 			collisionEvent = notAttackCe;
 		}
 	}

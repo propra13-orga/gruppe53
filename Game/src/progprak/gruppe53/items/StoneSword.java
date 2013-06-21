@@ -8,8 +8,6 @@ public class StoneSword extends MeleeWeapons {
 
 	private static final long serialVersionUID = 123456789L;
 
-	private CollisionEvent notAttackCe;
-	private CollisionEvent attackCe;
 	
 	public StoneSword(int x, int y,GameLogic gameLogic){
 		super( x, y, "images/sword.png", gameLogic);
@@ -36,15 +34,15 @@ public class StoneSword extends MeleeWeapons {
 	@Override
 	public void attack(boolean attack) {
 		if(attack){
-			x = owner.getX()+26;
-			y = owner.getY()+22; 
-			width = ww;
-			height = wh;
+			setX(owner.getX()+26);
+			setY(owner.getY()+22); 
+			setWidth(ww);
+			setHeight(wh);
 			draw = true;
 			collisionEvent = attackCe;
 		}
 		else {
-			width = height = x = y = 0;
+			setWidth(setHeight(setX(setY(0))));
 			draw = false;
 			collisionEvent = notAttackCe;
 		}

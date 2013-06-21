@@ -1,6 +1,7 @@
 package progprak.gruppe53.levelEditor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,15 +27,15 @@ import progprak.gruppe53.sprites.WallLevelSwitch;
 
 public class EditorLevelLoader extends DefaultHandler {
 	
-	private Vector<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 	private StringBuilder elementName;
 	private Attributes attributes;
 
-	public EditorLevelLoader(Vector<Sprite> sp) {
+	public EditorLevelLoader(ArrayList<Sprite> sp) {
 		this.sprites = sp;
 	}
 
-	public static void generateLevel(String level, Vector<Sprite> sp){
+	public static void generateLevel(String level, ArrayList<Sprite> sp){
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();

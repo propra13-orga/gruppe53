@@ -13,16 +13,20 @@ public class ImageLoader {
 	public static BufferedImage loadImage(String imagePath){
 		
 		BufferedImage image = null;
-		if((image = images.get(imagePath)) == null){
-			URL picUrl = ImageLoader.class.getClassLoader().getResource(imagePath);
-			System.out.println(picUrl);
-			try {
-				image = ImageIO.read(picUrl);
-				images.put(imagePath, image);
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		
+		if (imagePath != null) {
+			if ((image = images.get(imagePath)) == null) {
+				URL picUrl = ImageLoader.class.getClassLoader().getResource(
+						imagePath);
+				System.out.println(picUrl);
+				try {
+					image = ImageIO.read(picUrl);
+					images.put(imagePath, image);
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return image;

@@ -32,7 +32,6 @@ public class Hero extends CombatObject{
 	
 	private long lastMana = 0;
 
-	private GameLogic gameLogic;
 	
 	private int exp;
 	private int heroLevel;
@@ -43,7 +42,6 @@ public class Hero extends CombatObject{
 
 	public Hero(int xPos, int yPos, GameLogic gameLogic){
 		super(xPos,yPos,"images/held.png",gameLogic);
-		this.gameLogic = gameLogic;
 		spawnX = xPos;
 		spawnY = yPos;
 		faction = 1;
@@ -145,11 +143,11 @@ public class Hero extends CombatObject{
 	}
 
 	public void setXSpawn(int newX) {
-		x = newX;
+		setX(newX);
 		spawnX = newX;
 	}
 	public void setYSpawn(int newY) {
-		y = newY;
+		setY(newY);
 		spawnY = newY;
 	}
 
@@ -202,8 +200,8 @@ public class Hero extends CombatObject{
 	}
 	protected void handleDie(){
 		if((--lifes)>=0){
-			x = spawnX;
-			y = spawnY;
+			setX(spawnX);
+			setY(spawnY);
 			money = money/2;
 			health = maxHealth;
 			mana = maxMana;

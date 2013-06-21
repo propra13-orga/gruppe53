@@ -3,10 +3,9 @@ package progprak.gruppe53.sprites;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
-public class FireballTrap2 extends Sprite implements Shooter {
+public class FireballTrap2 extends CombatObject implements Shooter {
 	private static final long serialVersionUID = 1L;
 	
-	private GameLogic gameLogic;
 	private boolean shootAlive = false;
 	private double xMovement;
 	private double yMovement;
@@ -14,16 +13,16 @@ public class FireballTrap2 extends Sprite implements Shooter {
 	private int yRespawn;
 
 	public FireballTrap2(int x, int y,GameLogic gameLogic, double xMovement, double yMovement, int xRespawn, int yRespawn) {
-		super(x, y, null);
+		super(x, y, null, gameLogic);
 		this.gameLogic = gameLogic;
 		this.xMovement = xMovement;
 		this.yMovement = yMovement;
 		this.xRespawn = xRespawn;
 		this.yRespawn = yRespawn;
-		gameLogic.addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), gameLogic,this, xMovement, yMovement, 2));
+		gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, xMovement, yMovement, 2));
 	}
 	public FireballTrap2(int x, int y,GameLogic gameLogic, double xMovement, double yMovement, int xRespawn, int yRespawn, String imagePath) {
-		super(x, y, imagePath);
+		super(x, y, imagePath, gameLogic);
 		this.gameLogic = gameLogic;
 		this.xMovement = xMovement;
 		this.yMovement = yMovement;
