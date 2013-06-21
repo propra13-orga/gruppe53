@@ -44,10 +44,9 @@ public class TalentPanel extends JPanel {
 	
 	private Hero hero;
 	
-	public TalentPanel(Game game,Hero hero) {
+	public TalentPanel(Game game) {
 		
 		this.game = game;
-		this.hero = hero;
 		
 		doInitalizations();
 		
@@ -311,6 +310,10 @@ public class TalentPanel extends JPanel {
 		setPreferredSize(getPreferredSize());
 	}
 	
+	public void render(){
+		this.hero=game.getGameLogic().getHero();
+	}
+	
 	public int getMaxHP(){
 		return maxHP;
 	}
@@ -358,4 +361,6 @@ public class TalentPanel extends JPanel {
 	public int getIncreasedExpRate(){
 		return increasedExpRate;
 	}
+	
+
 }

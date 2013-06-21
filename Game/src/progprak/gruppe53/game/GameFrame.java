@@ -55,7 +55,7 @@ public class GameFrame extends JFrame {
 		shop.setLocation(mainPane.getPreferredSize().width/2 - shop.getPreferredSize().width/2,mainPane.getPreferredSize().height/2 - shop.getPreferredSize().height/2);
 		shop.setSize(shop.getPreferredSize());
 		mainPane.add(shop,new Integer(0));
-		talentPanel = new TalentPanel(game,game.getGameLogic().getHero());
+		talentPanel = new TalentPanel(game);
 		talentPanel.setLocation((int)(mainPane.getPreferredSize().width*0.1),(int)(mainPane.getPreferredSize().height*0.1));
 		talentPanel.setSize((int)(mainPane.getPreferredSize().width*0.8),(int)(mainPane.getPreferredSize().height*0.8));
 		mainPane.add(talentPanel,new Integer(0));
@@ -84,6 +84,7 @@ public class GameFrame extends JFrame {
 		infoWindow.render(gameLogic);
 		gamePanel.repaint();
 		speechPane.render();
+		talentPanel.render();
 		showShop(gameLogic.getHero().isShop());
 		showTalentTree(gameLogic.getHero().isTalentTree());
 	}
