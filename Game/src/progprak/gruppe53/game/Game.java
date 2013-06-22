@@ -6,8 +6,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Vector;
-
 import progprak.gruppe53.server.ServerResponse;
 import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;

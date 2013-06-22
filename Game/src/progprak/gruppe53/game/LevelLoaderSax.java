@@ -2,8 +2,6 @@ package progprak.gruppe53.game;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Vector;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;

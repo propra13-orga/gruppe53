@@ -4,7 +4,8 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
-import progprak.gruppe53.game.TalentPanel;
+import progprak.gruppe53.game.Shop;
+import progprak.gruppe53.game.ShopPanel;
 import progprak.gruppe53.game.TalentTree;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
@@ -20,6 +21,7 @@ public class Hero extends CombatObject {
 	private Armor armor;
 
 	private Inventory inventory;
+	private Shop shop;
 	private TalentTree talentTree;
 
 
@@ -42,7 +44,7 @@ public class Hero extends CombatObject {
 	private int reqExp;
 	private int talentPoint = 5;
 
-	private boolean shop = false;
+	private boolean shopOpen = false;
 	private boolean talents = false;
 
 	public Hero(int xPos, int yPos, GameLogic gameLogic) {
@@ -57,6 +59,7 @@ public class Hero extends CombatObject {
 		mana = maxMana;
 		this.talentTree = new TalentTree(this,gameLogic);
 		this.inventory = new Inventory(this, gameLogic);
+		this.shop = new Shop(this,gameLogic);
 		weapon = (Weapon) inventory.getWeapon();
 		armor = (Armor) inventory.getArmor();
 		if (weapon != null) {
@@ -78,12 +81,16 @@ public class Hero extends CombatObject {
 			this.weapon.setOwner(this);
 		}
 		armor = inventory.getArmor();
-		shop = gameLogic.getPlayer().getKeyboardInput().isShop();
+		shopOpen = gameLogic.getPlayer().getKeyboardInput().isShop();
 		maxHealth = 100 + talentTree.getTalentPanel().getMaxHP() * 20;
 		maxMana = 1000 + talentTree.getTalentPanel().getMaxMana() * 200;
 		if (gameLogic.getPlayer().getInventorySlotClicked() != -1) {
 			inventory.slotClicked(gameLogic.getPlayer()
 					.getInventorySlotClicked());
+		}
+		if (gameLogic.getPlayer().getShopSlotClicked() != -1) {
+			shop.slotClicked(gameLogic.getPlayer()
+					.getShopSlotClicked());
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isUp()) {
@@ -335,8 +342,8 @@ public class Hero extends CombatObject {
 		return inventory;
 	}
 
-	public boolean isShop() {
-		return shop;
+	public boolean isShopOpen() {
+		return shopOpen;
 	}
 
 	public int getLevel() {
@@ -365,5 +372,9 @@ public class Hero extends CombatObject {
 	
 	public boolean isTalentTree(){
 		return talents;
+	}
+
+	public Shop getShop() {
+		return shop;
 	}
 }

@@ -54,17 +54,21 @@ public class Inventory implements Serializable {
 	}
 
 	public void slotClicked(int slotNumber) {
-		if(hero.isShop()){
-			if(items[slotNumber] != null){
+		if(items[slotNumber] != null){
+			if(hero.isShopOpen()){
 				hero.setMoney(hero.getMoney() + items[slotNumber].getPrice());
 				items[slotNumber] = null;
 			}
-		}
-		else {
-			if(items[slotNumber] instanceof Weapon){
-				weapon = (Weapon) items[slotNumber];
-				items[slotNumber] = null;
-				gameLogic.addSprite(weapon);
+			else {
+				if(items[slotNumber] instanceof Weapon){
+					weapon = (Weapon) items[slotNumber];
+					items[slotNumber] = null;
+					gameLogic.addSprite(weapon);
+				}
+				else {
+					items[slotNumber] .use();
+					items[slotNumber] = null;
+				}
 			}
 		}
 	}

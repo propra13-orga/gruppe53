@@ -7,6 +7,7 @@ import progprak.gruppe53.sprites.Hero;
 public class TalentTree implements Serializable {
 
 
+	private static final long serialVersionUID = -1374283276042127462L;
 	private TalentPanel talentPanel;
 	private Hero hero;
 	private transient GameLogic gameLogic;

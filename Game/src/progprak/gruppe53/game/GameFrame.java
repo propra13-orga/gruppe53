@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Vector;
-
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
@@ -81,8 +79,9 @@ public class GameFrame extends JFrame {
 		infoWindow.render(hero);
 		gamePanel.repaint();
 		speechPane.render();
+		shop.render(hero.getShop().getItems());
 		hero.getTalentTree().getTalentPanel().render();
-		showShop(hero.isShop());
+		showShop(hero.isShopOpen());
 		showTalentTree(hero.isTalentTree());
 	}
 

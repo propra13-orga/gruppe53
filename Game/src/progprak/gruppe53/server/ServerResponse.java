@@ -1,14 +1,7 @@
 package progprak.gruppe53.server;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.ListIterator;
-import java.util.Vector;
-
-import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
 

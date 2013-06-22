@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Vector;
 import java.util.ListIterator;
 import javax.swing.JPanel;
 

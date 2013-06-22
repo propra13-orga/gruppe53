@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Vector;
-
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.FireballTrap;
