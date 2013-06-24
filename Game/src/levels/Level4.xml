@@ -50,13 +50,13 @@
 	</traps>
 	<fireballtraps>
 		<fireballtrap>78:195;2.0:0.0</fireballtrap>
-		<fireballtrap>489:577;1.0:0.0</fireballtrap>
 		<fireballtrap>724:41;0.0:2.0</fireballtrap>
+		<fireballtrap>485:570;1.0:0.0</fireballtrap>
 	</fireballtraps>
 	<fireballwavetraps>
 	</fireballwavetraps>
 	<portals>
-		<portal>582:400;48:586</portal>
+		<portal>586:400;40:569</portal>
 	</portals>
 	<healthpotions>
 		<healthpotion>35:111</healthpotion>

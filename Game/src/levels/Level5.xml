@@ -48,8 +48,8 @@
 		<trap>158:142</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>718:88;1.0:0.0</fireballtrap>
 		<fireballtrap>114:389;0.0:1.5</fireballtrap>
+		<fireballtrap>723:83;0.0:1.0</fireballtrap>
 	</fireballtraps>
 	<fireballwavetraps>
 	</fireballwavetraps>

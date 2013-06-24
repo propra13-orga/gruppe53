@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
+	<items>
+		<item type="woodensword">47:44</item>
+	</items>
 	<spawn>47:44</spawn>
 	<enemies>
 		<enemy type="ghost">598:339</enemy>
 		<enemy type="ghost">689:144</enemy>
 		<enemy type="ghost">128:294</enemy>
-		<enemy type="ghost">88:88</enemy>
+		<enemy type="ghost">115:347</enemy>
+		<enemy type="ghost">183:575</enemy>
+		<enemy type="ghost">408:481</enemy>
 	</enemies>
-	<npc>120:40;Du hättest nicht herkommen sollen!!!</npc>
 	<traps>
 		<trap>297:338</trap>
 		<trap>336:339</trap>
@@ -41,9 +45,6 @@
 	</fireballwavetraps>
 	<portals>
 	</portals>
-	<items>
-		<item type="woodensword">60:60</item>
-	</items>
 	<healthpotions>
 	</healthpotions>
 	<goal></goal>
