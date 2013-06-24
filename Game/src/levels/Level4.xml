@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-	<items>
-		<item type="clotharmor">73:569</item>
-	</items>
 	<spawn>40:569</spawn>
 	<enemies>
+		<enemy type="ghost">216:433</enemy>
 		<enemy type="ghost">326:553</enemy>
+		<enemy type="ghost">234:298</enemy>
+		<enemy type="ghost">496:326</enemy>
+		<enemy type="ghost">708:383</enemy>
 		<enemy type="ghost">645:201</enemy>
+		<enemy type="ghost">297:218</enemy>
+		<enemy type="ghost">33:319</enemy>
+		<enemy type="ghost">99:438</enemy>
 		<enemy type="ghost">168:77</enemy>
+		<enemy type="ghost">366:34</enemy>
 		<enemy type="ghost">544:113</enemy>
-		<enemy type="ghost">204:293</enemy>
 	</enemies>
 	<traps>
 		<trap>261:568</trap>
 		<trap>322:494</trap>
+		<trap>221:488</trap>
 		<trap>279:424</trap>
+		<trap>212:365</trap>
+		<trap>327:366</trap>
+		<trap>279:299</trap>
 		<trap>459:374</trap>
 		<trap>530:395</trap>
 		<trap>503:526</trap>
+		<trap>724:287</trap>
+		<trap>696:446</trap>
+		<trap>734:563</trap>
 		<trap>89:517</trap>
+		<trap>45:394</trap>
+		<trap>93:295</trap>
 		<trap>41:179</trap>
 		<trap>181:221</trap>
+		<trap>377:182</trap>
 		<trap>702:61</trap>
 		<trap>511:97</trap>
 		<trap>591:41</trap>
@@ -28,29 +42,21 @@
 		<trap>323:35</trap>
 		<trap>180:110</trap>
 		<trap>243:43</trap>
+		<trap>561:218</trap>
+		<trap>461:185</trap>
 		<trap>730:195</trap>
 		<trap>437:474</trap>
-		<trap>328:382</trap>
-		<trap>205:481</trap>
-		<trap>549:481</trap>
-		<trap>100:438</trap>
-		<trap>36:320</trap>
-		<trap>454:179</trap>
-		<trap>256:221</trap>
-		<trap>736:285</trap>
-		<trap>201:364</trap>
-		<trap>240:294</trap>
+		<trap>216:573</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>367:40;1.0:0.0</fireballtrap>
-		<fireballtrap>696:375;0.0:1.0</fireballtrap>
-		<fireballtrap>292:302;0.0:1.0</fireballtrap>
-		<fireballtrap>386:186;-1.0:0.0</fireballtrap>
+		<fireballtrap>78:195;2.0:0.0</fireballtrap>
+		<fireballtrap>489:577;1.0:0.0</fireballtrap>
+		<fireballtrap>724:41;0.0:2.0</fireballtrap>
 	</fireballtraps>
 	<fireballwavetraps>
 	</fireballwavetraps>
 	<portals>
-		<portal>582:394;549:558</portal>
+		<portal>582:400;48:586</portal>
 	</portals>
 	<healthpotions>
 		<healthpotion>35:111</healthpotion>
