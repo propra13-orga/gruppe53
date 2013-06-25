@@ -48,9 +48,9 @@ public class TalentPanel extends JPanel {
 		button3 = new JButton(new ImageIcon(
 				ImageLoader.loadImage("images/entrance.png")));
 		button4 = new JButton(new ImageIcon(
-				ImageLoader.loadImage("images/entrance.png")));
+				ImageLoader.loadImage("images/healPotReg.png")));
 		button5 = new JButton(new ImageIcon(
-				ImageLoader.loadImage("images/entrance.png")));
+				ImageLoader.loadImage("images/manaPotReg.png")));
 		button6 = new JButton(new ImageIcon(
 				ImageLoader.loadImage("images/entrance.png")));
 		button7 = new JButton(new ImageIcon(
@@ -70,7 +70,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(1);
+				game.getPlayer().talentButtonClicked(0);
 			}
 		});
 
@@ -93,7 +93,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(2);
+				game.getPlayer().talentButtonClicked(1);
 			}
 		});
 		talent2 = new JPanel() //{
@@ -115,7 +115,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(3);
+				game.getPlayer().talentButtonClicked(2);
 			}
 		});
 		talent3 = new JPanel() //{
@@ -137,7 +137,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(4);
+				game.getPlayer().talentButtonClicked(3);
 			}
 		});
 
@@ -160,7 +160,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(5);
+				game.getPlayer().talentButtonClicked(4);
 			}
 		});
 		talent5 = new JPanel() //{
@@ -182,7 +182,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(6);
+				game.getPlayer().talentButtonClicked(5);
 			}
 		});
 		talent6 = new JPanel() //{
@@ -204,7 +204,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(7);
+				game.getPlayer().talentButtonClicked(6);
 			}
 		});
 		talent7 = new JPanel() //{
@@ -226,7 +226,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(8);
+				game.getPlayer().talentButtonClicked(7);
 			}
 		});
 		talent8 = new JPanel() //{
@@ -248,7 +248,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(9);
+				game.getPlayer().talentButtonClicked(8);
 			}
 		});
 		talent9 = new JPanel() //{
@@ -270,7 +270,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(10);
+				game.getPlayer().talentButtonClicked(9);
 			}
 		});
 		talent10 = new JPanel() //{
@@ -292,7 +292,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(11);
+				game.getPlayer().talentButtonClicked(10);
 			}
 		});
 		talent11 = new JPanel() //{
@@ -314,7 +314,7 @@ public class TalentPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.getPlayer().talentButtonClicked(12);
+				game.getPlayer().talentButtonClicked(11);
 			}
 		});
 		talent12 = new JPanel()//{
@@ -369,31 +369,31 @@ public class TalentPanel extends JPanel {
 	}
 
 	public void render(Hero hero) {
-		if (hero.getTalentTree().getTalent(1) >= 3) {
+		if (hero.getTalentTree().getTalent(0) >= 3) {
 			button4.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(2) >= 3) {
+		if (hero.getTalentTree().getTalent(1) >= 3) {
 			button5.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(3) >= 1) {
+		if (hero.getTalentTree().getTalent(2) >= 1) {
 			button6.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(4) >= 3){
+		if (hero.getTalentTree().getTalent(3) >= 3){
 			button7.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(5) >= 3){
+		if (hero.getTalentTree().getTalent(4) >= 3){
 			button8.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(6) >= 3){
+		if (hero.getTalentTree().getTalent(5) >= 3){
 			button9.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(7) >= 3){
+		if (hero.getTalentTree().getTalent(6) >= 3){
 			button10.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(8) >= 3){
+		if (hero.getTalentTree().getTalent(7) >= 3){
 			button11.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(9) >= 3){
+		if (hero.getTalentTree().getTalent(8) >= 3){
 			button12.setEnabled(true);
 		}
 		

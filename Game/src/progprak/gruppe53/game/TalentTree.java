@@ -10,7 +10,7 @@ public class TalentTree implements Serializable {
 	private static final long serialVersionUID = -1374283276042127462L;
 	private Hero hero;
 	private transient GameLogic gameLogic;
-	private int[] talent;
+	private int[] talent = {0,0,0,0,0,0,0,0,0,0,0,0};
 	private int[] talentMax = {5,5,1,5,5,5,5,5,5,3,1,5};
 	public TalentTree(Hero hero,GameLogic gameLogic) {
 		this.hero = hero;
