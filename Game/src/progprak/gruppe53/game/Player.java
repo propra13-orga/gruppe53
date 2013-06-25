@@ -47,4 +47,11 @@ public class Player implements Serializable{
 		return shopSlotClicked;
 	}
 
+	public void resetInventorySlotClicked() {
+		inventorySlotClicked = -1;
+	}
+	public void resetShopSlotClicked() {
+		shopSlotClicked = -1;
+	}
+
 }

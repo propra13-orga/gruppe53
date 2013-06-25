@@ -87,6 +87,7 @@ public class Hero extends CombatObject {
 		if (gameLogic.getPlayer().getInventorySlotClicked() != -1) {
 			inventory.slotClicked(gameLogic.getPlayer()
 					.getInventorySlotClicked());
+			gameLogic.getPlayer().resetInventorySlotClicked();
 		}
 		if (gameLogic.getPlayer().getShopSlotClicked() != -1) {
 			shop.slotClicked(gameLogic.getPlayer()
