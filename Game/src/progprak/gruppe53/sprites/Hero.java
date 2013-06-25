@@ -41,7 +41,7 @@ public class Hero extends CombatObject {
 	private int exp;
 	private int heroLevel;
 	private int reqExp;
-	private int talentPoint = 10;
+	private int talentPoint = 0;
 
 	private boolean shopOpen = false;
 	private boolean talents = false;
@@ -80,6 +80,7 @@ public class Hero extends CombatObject {
 			this.weapon.setOwner(this);
 		}
 		armor = inventory.getArmor();
+		talents = gameLogic.getPlayer().getKeyboardInput().isTalentTree();
 		shopOpen = gameLogic.getPlayer().getKeyboardInput().isShop();
 		maxHealth = 100 + talentTree.getTalent(1) * 20;
 		maxMana = 1000 + talentTree.getTalent(2) * 200;
@@ -152,9 +153,6 @@ public class Hero extends CombatObject {
 		}
 		if (weapon != null) {
 			weapon.attack(gameLogic.getPlayer().getKeyboardInput().isAttack());
-		}
-		if (gameLogic.getPlayer().getKeyboardInput().isTalentTree()) {
-			talents = true;
 		}
 		if (exp >= reqExp) {
 			heroLevel += 1;
