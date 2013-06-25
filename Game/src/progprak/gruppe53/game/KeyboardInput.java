@@ -69,7 +69,7 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 				left=true;
 			if(keyCode==KeyEvent.VK_D)
 				right=true;
-			if(keyCode==KeyEvent.VK_F)
+			if(keyCode==KeyEvent.VK_SPACE)
 				attack=true;
 		}
 		else if(e.getID() == KeyEvent.KEY_RELEASED){
@@ -81,7 +81,7 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 				left=false;
 			if(keyCode==KeyEvent.VK_D)
 				right=false;
-			if(keyCode==KeyEvent.VK_F)
+			if(keyCode==KeyEvent.VK_SPACE)
 				attack=false;
 			if(keyCode==KeyEvent.VK_E)
 				shop=!shop;

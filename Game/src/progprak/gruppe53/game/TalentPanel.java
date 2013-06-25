@@ -397,6 +397,43 @@ public class TalentPanel extends JPanel {
 			button12.setEnabled(true);
 		}
 		
+		
+		if(hero.getTalentTree().getTalent(0) == 5){
+			button1.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(1) == 5){
+			button2.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(2) == 1){
+			button3.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(3) == 5){
+			button4.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(4) == 5){
+			button5.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(5) == 5){
+			button6.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(6) == 5){
+			button7.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(7) == 5){
+			button8.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(8) == 5){
+			button9.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(9) == 5){
+			button10.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(10) == 5){
+			button11.setEnabled(false);
+		}
+		if(hero.getTalentTree().getTalent(11) == 5){
+			button12.setEnabled(false);
+		}
 
 	}
 }
