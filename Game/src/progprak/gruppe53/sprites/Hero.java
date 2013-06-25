@@ -24,7 +24,6 @@ public class Hero extends CombatObject {
 	private Shop shop;
 	private TalentTree talentTree;
 
-
 	private int lastdx = 0;
 	private int lastdy = 1;
 
@@ -42,7 +41,7 @@ public class Hero extends CombatObject {
 	private int exp;
 	private int heroLevel;
 	private int reqExp;
-	private int talentPoint = 5;
+	private int talentPoint = 10;
 
 	private boolean shopOpen = false;
 	private boolean talents = false;
@@ -57,9 +56,9 @@ public class Hero extends CombatObject {
 		health = maxHealth;
 		maxMana = 1000;
 		mana = maxMana;
-		this.talentTree = new TalentTree(this,gameLogic);
+		this.talentTree = new TalentTree(this, gameLogic);
 		this.inventory = new Inventory(this, gameLogic);
-		this.shop = new Shop(this,gameLogic);
+		this.shop = new Shop(this, gameLogic);
 		weapon = (Weapon) inventory.getWeapon();
 		armor = (Armor) inventory.getArmor();
 		if (weapon != null) {
@@ -82,16 +81,20 @@ public class Hero extends CombatObject {
 		}
 		armor = inventory.getArmor();
 		shopOpen = gameLogic.getPlayer().getKeyboardInput().isShop();
-		maxHealth = 100 + talentTree.getTalentPanel().getMaxHP() * 20;
-		maxMana = 1000 + talentTree.getTalentPanel().getMaxMana() * 200;
+		maxHealth = 100 + talentTree.getTalent(1) * 20;
+		maxMana = 1000 + talentTree.getTalent(2) * 200;
 		if (gameLogic.getPlayer().getInventorySlotClicked() != -1) {
 			inventory.slotClicked(gameLogic.getPlayer()
 					.getInventorySlotClicked());
 			gameLogic.getPlayer().resetInventorySlotClicked();
 		}
 		if (gameLogic.getPlayer().getShopSlotClicked() != -1) {
-			shop.slotClicked(gameLogic.getPlayer()
-					.getShopSlotClicked());
+			shop.slotClicked(gameLogic.getPlayer().getShopSlotClicked());
+		}
+		if (gameLogic.getPlayer().getTalentButtonClicked() != -1) {
+			talentTree.talentButtonClicked(gameLogic.getPlayer()
+					.getTalentButtonClicked());
+			gameLogic.getPlayer().resetTalentButtonClicked();
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isUp()) {
@@ -150,7 +153,7 @@ public class Hero extends CombatObject {
 		if (weapon != null) {
 			weapon.attack(gameLogic.getPlayer().getKeyboardInput().isAttack());
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isTalentTree()){
+		if (gameLogic.getPlayer().getKeyboardInput().isTalentTree()) {
 			talents = true;
 		}
 		if (exp >= reqExp) {
@@ -229,11 +232,12 @@ public class Hero extends CombatObject {
 		 * false; }
 		 */
 	}
-	protected void handleDie(){
-		if((--lifes)>=0){
+
+	protected void handleDie() {
+		if ((--lifes) >= 0) {
 			setX(spawnX);
 			setY(spawnY);
-			money = money/2;
+			money = money / 2;
 			health = maxHealth;
 			mana = maxMana;
 		} else {
@@ -269,7 +273,7 @@ public class Hero extends CombatObject {
 		if (mana < maxMana) {
 			long current = System.nanoTime();
 			if (current - lastMana >= 1e9) {
-				mana = mana + 8 + talentTree.getTalentPanel().getManaReg();
+				mana = mana + 8 + talentTree.getTalent(8);
 				lastMana = current;
 			}
 		}
@@ -279,16 +283,16 @@ public class Hero extends CombatObject {
 		if (health < maxHealth) {
 			long current = System.nanoTime();
 			if (current - lastHealth >= 1e9) {
-				health = health + talentTree.getTalentPanel().getHPReg();
+				health = health + talentTree.getTalent(7);
 				lastHealth = current;
 			}
 		}
 	}
-	
-	public void recoverGold(){
+
+	public void recoverGold() {
 		long current = System.nanoTime();
-		if(current - lastGold >= 1e9) {
-			money = money+ talentTree.getTalentPanel().getGoldReg();
+		if (current - lastGold >= 1e9) {
+			money = money + talentTree.getTalent(12);
 		}
 	}
 
@@ -296,14 +300,15 @@ public class Hero extends CombatObject {
 	public void doneKill(CombatObject combatObject) {
 		super.doneKill(combatObject);
 		money += 50;
-		exp += 25+5*talentTree.getTalentPanel().getIncreasedExpRate();
+		exp += 25 + 5 * talentTree.getTalent(6);
 		if (combatObject instanceof BossEnemy) {
 			gameLogic.switchLevel(((BossEnemy) combatObject).getNextLevel());
 		}
 	}
 
 	public void addHealth(int aHp) {
-		health += aHp+(aHp/5*talentTree.getTalentPanel().getIncreasedHPPot());
+		health += aHp
+				+ (aHp / 5 * talentTree.getTalent(4));
 		if (health > maxHealth) {
 			health = maxHealth;
 		}
@@ -325,7 +330,7 @@ public class Hero extends CombatObject {
 	@Override
 	protected double damageReduce() {
 		if (armor != null) {
-			return 1 / ((armor.getarmorLVL() + talentTree.getTalentPanel().getArmorBonus()) * 1.3);
+			return 1 / ((armor.getarmorLVL() + talentTree.getTalent(3)) * 1.3);
 		} else
 			return 1;
 	}
@@ -366,12 +371,12 @@ public class Hero extends CombatObject {
 	public void setTalentPoint(int dif) {
 		talentPoint = talentPoint + dif;
 	}
-	
-	public TalentTree getTalentTree(){
+
+	public TalentTree getTalentTree() {
 		return talentTree;
 	}
-	
-	public boolean isTalentTree(){
+
+	public boolean isTalentTree() {
 		return talents;
 	}
 

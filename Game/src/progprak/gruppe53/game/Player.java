@@ -12,6 +12,7 @@ public class Player implements Serializable{
 	KeyboardInput keyboardInput;
 	private int inventorySlotClicked = -1;
 	private int shopSlotClicked = -1;
+	private int talentButtonClicked = -1;
 	
 	public Player() {
 		keyboardInput = new KeyboardInput();
@@ -53,5 +54,15 @@ public class Player implements Serializable{
 	public void resetShopSlotClicked() {
 		shopSlotClicked = -1;
 	}
+	public void resetTalentButtonClicked() {
+		talentButtonClicked = -1;
+	}
+	
+	public int getTalentButtonClicked() {
+		return talentButtonClicked;
+	}
 
+	public void talentButtonClicked(int buttonNumber){
+		talentButtonClicked = buttonNumber;
+	}
 }
