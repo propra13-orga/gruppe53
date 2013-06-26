@@ -80,16 +80,15 @@ public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = -3116185873584567253L;
 
-	public void render(long delta, ArrayList<Sprite> actors, Hero hero) {
+	public synchronized void render(long delta, ArrayList<Sprite> actors, Hero hero) {
+		showShop(hero.isShopOpen());
+		showTalentTree(hero.isTalentTree());
 		gamePanel.render(delta,actors,hero);
 		menu.render();
 		infoWindow.render(hero);
-		gamePanel.repaint();
 		speechPane.render();
 		shop.render(hero.getShop().getItems());
 		talentPanel.render(hero);
-		showShop(hero.isShopOpen());
-		showTalentTree(hero.isTalentTree());
 	}
 
 	

@@ -13,7 +13,7 @@ public class Shop implements Serializable{
 	private Item[] items;
 	private int shopSlots = 12;
 	private Hero hero;
-	private GameLogic gameLogic;
+	private transient GameLogic gameLogic;
 	
 	public Shop(Hero hero, GameLogic gameLogic) {
 		items = new Item[shopSlots];

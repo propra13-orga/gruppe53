@@ -14,9 +14,8 @@ public class Server implements Runnable {
 
 	GameLogic gameLogic;
 	ServerSocket serverSocket;
-	private Socket client;
-	private ObjectInputStream clientObjectIn;
-	private ObjectOutputStream clientObjectOut;
+	private ClientConnection client;
+	private Player player;
 	
 	public Server() {
 		gameLogic = new GameLogic();
@@ -24,32 +23,37 @@ public class Server implements Runnable {
 		gameLogic.switchLevel("levels/TestLevel.xml");
 		try {
 			serverSocket = new ServerSocket(6116);
-			client = serverSocket.accept();
-			clientObjectIn = new ObjectInputStream(client.getInputStream());
-			clientObjectOut = new ObjectOutputStream(client.getOutputStream());
+			Socket clientSocket = serverSocket.accept();
+			client = new ClientConnection(clientSocket);
+			Thread t = new Thread(client);
+			t.setDaemon(true);
+			t.start();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 
 	public static void main(String[] args) {
 		Thread t = new Thread(new Server());
 		t.start();
 	}
 
-
 	@Override
 	public void run() {
-		Player player;
+		long last =  System.nanoTime();
 		while(true){
 			try {
-				player = (Player) clientObjectIn.readObject();
-				gameLogic.tick(0, player);
-				clientObjectOut.writeObject(new ServerResponse(gameLogic.getActors(),gameLogic.getHero()));
-				clientObjectOut.reset();
-			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
+				System.out.println((long)1e9/(System.nanoTime() - last));
+				//last = System.nanoTime();
+				player = client.getPlayer();
+				if(player != null){
+					gameLogic.tick(0, player);
+				}
+				client.send(new ServerResponse(gameLogic.getActors(),gameLogic.getHero()));
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}

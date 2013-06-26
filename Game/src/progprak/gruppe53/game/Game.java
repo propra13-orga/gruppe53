@@ -120,9 +120,7 @@ public class Game implements Runnable {
 					}
 				}
 				gameFrame.render(delta,actors,hero);
-				if(!client) {
-					Thread.sleep(10);
-				}
+				Thread.sleep(10);
 			}
 			catch(InterruptedException | IOException | ClassNotFoundException e){
 				e.printStackTrace();

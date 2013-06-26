@@ -34,7 +34,7 @@ public class Hero extends CombatObject {
 
 	private long lastRecover = 0;
 
-	private GameLogic gameLogic;
+	private transient GameLogic gameLogic;
 
 	private int exp;
 	private int heroLevel;

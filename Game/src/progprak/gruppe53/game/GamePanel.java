@@ -28,6 +28,7 @@ public class GamePanel extends JPanel{
 	
 	int speed=10;
 
+
 	
 	public GamePanel() {
 		super();
@@ -60,11 +61,13 @@ public class GamePanel extends JPanel{
 		fps = ((long)1e9)/delta;
 		this.sprites = actors;
 		this.sprites.add(hero);
+		repaint();
 	}
 
 	public void render(long delta,ArrayList<Sprite> actors) {
 		fps = 0;
 		this.sprites = actors;
 	}
+
 	
 }
