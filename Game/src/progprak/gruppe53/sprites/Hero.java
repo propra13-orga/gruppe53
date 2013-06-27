@@ -96,12 +96,12 @@ public class Hero extends CombatObject {
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isUp()) {
-			dy = lastdy = -2;
+			dy = lastdy = -1;
 			// lastdx = 0;
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isDown()) {
-			dy = lastdy = 2;
+			dy = lastdy = 1;
 			// lastdx = 0;
 		}
 
@@ -111,12 +111,12 @@ public class Hero extends CombatObject {
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isLeft()) {
-			dx = lastdx = -2;
+			dx = lastdx = -1;
 			lastdy = 0;
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isRight()) {
-			dx = lastdx = 2;
+			dx = lastdx = 1;
 			lastdy = 0;
 		}
 
@@ -300,7 +300,7 @@ public class Hero extends CombatObject {
 		long current = System.nanoTime();
 		if(current - lastRecover >= 1e9){
 			if(mana <= maxMana-(8+talentTree.getTalent(7))){
-				mana = mana + 8 + talentTree.getTalent(7);
+				mana = mana + 8 + ((int)(talentTree.getTalent(7)*1.5));
 			}
 			if(health <= maxHealth-(talentTree.getTalent(6))){
 				health = health+talentTree.getTalent(6);
