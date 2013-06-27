@@ -31,6 +31,7 @@ public class Hero extends CombatObject {
 	private int spawnX, spawnY;
 
 	private int lifes = 3;
+	private int maxLevel = 54;
 
 	private long lastRecover = 0;
 
@@ -306,7 +307,9 @@ public class Hero extends CombatObject {
 				health = health+talentTree.getTalent(6);
 			}
 			money = money + talentTree.getTalent(11);
-			exp = exp + talentTree.getTalent(8);
+			if(heroLevel <= maxLevel){
+				exp = exp + talentTree.getTalent(8);
+			}
 			lastRecover = current;
 		}
 	}
@@ -315,7 +318,9 @@ public class Hero extends CombatObject {
 	public void doneKill(CombatObject combatObject) {
 		super.doneKill(combatObject);
 		money += 50;
-		exp += 25 + 5 * talentTree.getTalent(5);
+		if(heroLevel <= maxLevel){
+			exp += 25 + 5 * talentTree.getTalent(5);			
+		}
 		if (combatObject instanceof BossEnemy) {
 			gameLogic.switchLevel(((BossEnemy) combatObject).getNextLevel());
 		}

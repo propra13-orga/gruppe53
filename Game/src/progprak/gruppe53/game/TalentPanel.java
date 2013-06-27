@@ -2,6 +2,7 @@ package progprak.gruppe53.game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,21 +75,20 @@ public class TalentPanel extends JPanel {
 			}
 		});
 
-		talent1 = new JPanel() //{
+		talent1 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = 6809444458569759690L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Maximal HP:"
-						+ gameLogic.getHero().getTalentTree().getTalent(1)
-						+ "/5", 80, 10);
+				g.drawString("Maximal HP (5)", 70, 10);
 			}
-		}*/;
+		};
 		button2.addActionListener(new ActionListener() {
 
 			@Override
@@ -96,21 +96,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(1);
 			}
 		});
-		talent2 = new JPanel() //{
+		talent2 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = -4152248316606299828L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Maximal Mana"
-						+ gameLogic.getHero().getTalentTree().getTalent(2)
-						+ "/5", 80, 10);
+				g.drawString("Maximal Mana (5)", 65, 10);
 			}
-		}*/;
+		};
 		button3.addActionListener(new ActionListener() {
 
 			@Override
@@ -118,21 +117,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(2);
 			}
 		});
-		talent3 = new JPanel() //{
+		talent3 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = -8408144610168840045L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Armor Bonus"
-						+ gameLogic.getHero().getTalentTree().getTalent(3)
-						+ "/5", 80, 10);
+				g.drawString("Armor Bonus (1)", 70, 10);
 			}
-		}*/;
+		};
 		button4.addActionListener(new ActionListener() {
 
 			@Override
@@ -141,21 +139,20 @@ public class TalentPanel extends JPanel {
 			}
 		});
 
-		talent4 = new JPanel() //{
+		talent4 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = 9089404986526239752L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Upgraded Healpotions"
-						+ gameLogic.getHero().getTalentTree().getTalent(4)
-						+ "/5", 80, 10);
+				g.drawString("Upgraded LifePotions (5)", 41, 10);
 			}
-		}*/;
+		};
 		button5.addActionListener(new ActionListener() {
 
 			@Override
@@ -163,21 +160,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(4);
 			}
 		});
-		talent5 = new JPanel() //{
+		talent5 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = 8805351483514477851L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Upgraded Manapotions"
-						+ gameLogic.getHero().getTalentTree().getTalent(5)
-						+ "/5", 80, 10);
+				g.drawString("Upgraded ManaPotions (5)", 41, 10);
 			}
-		}*/;
+		};
 		button6.addActionListener(new ActionListener() {
 
 			@Override
@@ -185,21 +181,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(5);
 			}
 		});
-		talent6 = new JPanel() //{
+		talent6 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = 3668354450987356722L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Increased Experiencerate"
-						+ gameLogic.getHero().getTalentTree().getTalent(6)
-						+ "/5", 80, 10);
+				g.drawString("Upgraded Experiencerate (5)", 38, 10);
 			}
-		}*/;
+		};
 		button7.addActionListener(new ActionListener() {
 
 			@Override
@@ -207,21 +202,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(6);
 			}
 		});
-		talent7 = new JPanel() //{
+		talent7 = new JPanel() {
 			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = 276982124425888518L;
+		 * 
+		 */
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Health Regeneration"
-						+ gameLogic.getHero().getTalentTree().getTalent(7)
-						+ "/5", 80, 10);
+				g.drawString("Life Regenration (5)", 60, 10);
 			}
-		}*/;
+		};
 		button8.addActionListener(new ActionListener() {
 
 			@Override
@@ -229,21 +223,22 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(7);
 			}
 		});
-		talent8 = new JPanel() //{
+
+		talent8 = new JPanel() {
 			/**
 			 * 
 			 */
-			/*private static final long serialVersionUID = -121259327350214129L;
+
+			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Mana Regenration"
-						+ gameLogic.getHero().getTalentTree().getTalent(8)
-						+ "/5", 80, 10);
+				g.drawString("Mana Regenration (7)", 53, 10);
 			}
-		}*/;
+		};
+
 		button9.addActionListener(new ActionListener() {
 
 			@Override
@@ -251,21 +246,21 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(8);
 			}
 		});
-		talent9 = new JPanel() //{
+		talent9 = new JPanel() {
 			/**
 			 * 
 			 */
-			/*private static final long serialVersionUID = -5883970746108560897L;
+
+			private static final long serialVersionUID = -5883970746108560897L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Experience Regeneration"
-						+ gameLogic.getHero().getTalentTree().getTalent(9)
-						+ "/5", 80, 10);
+				g.drawString("Experience Regeneration (7)", 40, 10);
 			}
-		}*/;
+		};
+
 		button10.addActionListener(new ActionListener() {
 
 			@Override
@@ -273,21 +268,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(9);
 			}
 		});
-		talent10 = new JPanel() //{
+		talent10 = new JPanel() {
+
 			/**
 			 * 
 			 */
-			/*private static final long serialVersionUID = 346982580841007019L;
+			private static final long serialVersionUID = -3102176724700588912L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Increased Damage"
-						+ gameLogic.getHero().getTalentTree().getTalent(11)
-						+ "/5", 80, 10);
+				g.drawString("Increased Damage (3)", 50, 10);
 			}
-		}*/;
+		};
 		button11.addActionListener(new ActionListener() {
 
 			@Override
@@ -295,21 +289,20 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(10);
 			}
 		});
-		talent11 = new JPanel() //{
+		talent11 = new JPanel() {
 			/**
 			 * 
 			 */
-			/*private static final long serialVersionUID = -1779312139582535352L;
+			private static final long serialVersionUID = 584946302480038906L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Multifireballs"
-						+ gameLogic.getHero().getTalentTree().getTalent(11)
-						+ "/1", 80, 10);
+				g.drawString("Multifireballs (1)", 60, 10);
 			}
-		}*/;
+
+		};
 		button12.addActionListener(new ActionListener() {
 
 			@Override
@@ -317,19 +310,17 @@ public class TalentPanel extends JPanel {
 				game.getPlayer().talentButtonClicked(11);
 			}
 		});
-		talent12 = new JPanel()//{
-			/**
-			 * 
-			 */
-			/*private static final long serialVersionUID = 5522572243012397709L;
+		talent12 = new JPanel() {
+
+			private static final long serialVersionUID = 5522572243012397709L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Gold Regeneration" + gameLogic.getHero().getTalentTree().getTalent(12) + "/5", 80, 10);
+				g.drawString("Gold Regeneration (5)", 50, 10);
 			}
-		}*/;
+		};
 
 		button4.setEnabled(false);
 		button5.setEnabled(false);
@@ -378,60 +369,59 @@ public class TalentPanel extends JPanel {
 		if (hero.getTalentTree().getTalent(2) >= 1) {
 			button6.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(3) >= 3){
+		if (hero.getTalentTree().getTalent(3) >= 3) {
 			button7.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(4) >= 3){
+		if (hero.getTalentTree().getTalent(4) >= 3) {
 			button8.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(5) >= 3){
+		if (hero.getTalentTree().getTalent(5) >= 3) {
 			button9.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(6) >= 3){
+		if (hero.getTalentTree().getTalent(6) >= 3) {
 			button10.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(7) >= 3){
+		if (hero.getTalentTree().getTalent(7) >= 3) {
 			button11.setEnabled(true);
 		}
-		if (hero.getTalentTree().getTalent(8) >= 3){
+		if (hero.getTalentTree().getTalent(8) >= 3) {
 			button12.setEnabled(true);
 		}
-		
-		
-		if(hero.getTalentTree().getTalent(0) == 5){
+
+		if (hero.getTalentTree().getTalent(0) >= 5) {
 			button1.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(1) == 5){
+		if (hero.getTalentTree().getTalent(1) >= 5) {
 			button2.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(2) == 1){
+		if (hero.getTalentTree().getTalent(2) >= 1) {
 			button3.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(3) == 5){
+		if (hero.getTalentTree().getTalent(3) >= 5) {
 			button4.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(4) == 5){
+		if (hero.getTalentTree().getTalent(4) >= 5) {
 			button5.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(5) == 5){
+		if (hero.getTalentTree().getTalent(5) >= 5) {
 			button6.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(6) == 5){
+		if (hero.getTalentTree().getTalent(6) >= 5) {
 			button7.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(7) == 5){
+		if (hero.getTalentTree().getTalent(7) >= 7) {
 			button8.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(8) == 5){
+		if (hero.getTalentTree().getTalent(8) >= 7) {
 			button9.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(9) == 5){
+		if (hero.getTalentTree().getTalent(9) >= 1) {
 			button10.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(10) == 5){
+		if (hero.getTalentTree().getTalent(10) >= 1) {
 			button11.setEnabled(false);
 		}
-		if(hero.getTalentTree().getTalent(11) == 5){
+		if (hero.getTalentTree().getTalent(11) >= 5) {
 			button12.setEnabled(false);
 		}
 
