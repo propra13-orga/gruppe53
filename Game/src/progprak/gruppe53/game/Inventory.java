@@ -18,7 +18,7 @@ public class Inventory implements Serializable {
 	private transient GameLogic gameLogic;
 	
 	public Inventory(Hero hero,GameLogic gameLogic) {
-		items = new Item[inventorySlots];
+		items = new Item[inventorySlots+1];
 		this.hero = hero;
 		this.gameLogic = gameLogic;
 	}
@@ -61,8 +61,9 @@ public class Inventory implements Serializable {
 			}
 			else {
 				if(items[slotNumber] instanceof Weapon){
+					items[inventorySlots] = weapon;
 					weapon = (Weapon) items[slotNumber];
-					items[slotNumber] = null;
+					items[slotNumber] = items[inventorySlots];
 					gameLogic.addSprite(weapon);
 				}
 				else {

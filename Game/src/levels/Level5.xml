@@ -24,32 +24,35 @@
 	<traps>
 		<trap>99:230</trap>
 		<trap>98:348</trap>
-		<trap>152:420</trap>
-		<trap>180:518</trap>
+		<trap>99:492</trap>
 		<trap>114:564</trap>
-		<trap>313:521</trap>
+		<trap>252:573</trap>
 		<trap>392:572</trap>
+		<trap>459:519</trap>
 		<trap>528:570</trap>
 		<trap>586:518</trap>
-		<trap>651:572</trap>
-		<trap>729:570</trap>
-		<trap>732:434</trap>
+		<trap>678:506</trap>
 		<trap>674:362</trap>
-		<trap>675:233</trap>
+		<trap>733:295</trap>
 		<trap>731:161</trap>
-		<trap>732:37</trap>
+		<trap>672:99</trap>
 		<trap>255:33</trap>
+		<trap>354:62</trap>
 		<trap>587:62</trap>
+		<trap>286:139</trap>
+		<trap>406:413</trap>
 		<trap>573:410</trap>
 		<trap>445:161</trap>
 		<trap>387:256</trap>
 		<trap>40:155</trap>
 		<trap>83:108</trap>
 		<trap>158:142</trap>
+		<trap>571:309</trap>
+		<trap>158:409</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>114:389;0.0:1.5</fireballtrap>
-		<fireballtrap>723:83;0.0:1.0</fireballtrap>
+		<fireballtrap>104:537;0.0:1.0</fireballtrap>
+		<fireballtrap>718:88;1.0:0.0</fireballtrap>
 	</fireballtraps>
 	<fireballwavetraps>
 	</fireballwavetraps>

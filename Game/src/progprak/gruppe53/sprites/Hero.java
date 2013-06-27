@@ -96,12 +96,12 @@ public class Hero extends CombatObject {
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isUp()) {
-			dy = lastdy = -1;
+			dy = lastdy = -2;
 			// lastdx = 0;
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isDown()) {
-			dy = lastdy = 1;
+			dy = lastdy = 2;
 			// lastdx = 0;
 		}
 
@@ -111,12 +111,12 @@ public class Hero extends CombatObject {
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isLeft()) {
-			dx = lastdx = -1;
+			dx = lastdx = -2;
 			lastdy = 0;
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isRight()) {
-			dx = lastdx = 1;
+			dx = lastdx = 2;
 			lastdy = 0;
 		}
 
@@ -157,6 +157,37 @@ public class Hero extends CombatObject {
 			exp = exp - reqExp;
 			reqExp = heroLevel * 100;
 		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot1()){
+			inventory.slotClicked(0);
+		}		
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot2()){
+			inventory.slotClicked(1);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot3()){
+			inventory.slotClicked(2);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot4()){
+			inventory.slotClicked(3);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot5()){
+			inventory.slotClicked(4);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot6()){
+			inventory.slotClicked(5);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot7()){
+			inventory.slotClicked(6);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot8()){
+			inventory.slotClicked(7);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot9()){
+			inventory.slotClicked(8);
+		}
+		if(gameLogic.getPlayer().getKeyboardInput().isSlot10()){
+			inventory.slotClicked(9);
+		}
+		
 
 	}
 
