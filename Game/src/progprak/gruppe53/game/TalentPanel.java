@@ -318,7 +318,7 @@ public class TalentPanel extends JPanel {
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
-				g.drawString("Gold Regeneration (5)", 50, 10);
+				g.drawString("Movementspeed (1)", 50, 10);
 			}
 		};
 
@@ -415,13 +415,13 @@ public class TalentPanel extends JPanel {
 		if (hero.getTalentTree().getTalent(8) >= 7) {
 			button9.setEnabled(false);
 		}
-		if (hero.getTalentTree().getTalent(9) >= 1) {
+		if (hero.getTalentTree().getTalent(9) >= 3) {
 			button10.setEnabled(false);
 		}
 		if (hero.getTalentTree().getTalent(10) >= 1) {
 			button11.setEnabled(false);
 		}
-		if (hero.getTalentTree().getTalent(11) >= 5) {
+		if (hero.getTalentTree().getTalent(11) >= 1) {
 			button12.setEnabled(false);
 		}
 
