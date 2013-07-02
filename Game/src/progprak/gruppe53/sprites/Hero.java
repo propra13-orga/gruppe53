@@ -4,6 +4,7 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
+import progprak.gruppe53.game.Player;
 import progprak.gruppe53.game.Shop;
 import progprak.gruppe53.game.TalentTree;
 import progprak.gruppe53.items.Armor;
@@ -44,6 +45,8 @@ public class Hero extends CombatObject {
 	private boolean shopOpen = false;
 	private boolean talents = false;
 
+	private Player player;
+
 	public Hero(int xPos, int yPos, GameLogic gameLogic) {
 		super(xPos, yPos, "images/held.png", gameLogic);
 		this.gameLogic = gameLogic;
@@ -69,6 +72,9 @@ public class Hero extends CombatObject {
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING, this);
 	}
 
+	public void setPlayer(Player player){
+		this.player = player;
+	}
 	@Override
 	public void doLogic(long delta) {
 		recover();
@@ -77,82 +83,82 @@ public class Hero extends CombatObject {
 			this.weapon.setOwner(this);
 		}
 		armor = inventory.getArmor();
-		talents = gameLogic.getPlayer().getKeyboardInput().isTalentTree();
-		shopOpen = gameLogic.getPlayer().getKeyboardInput().isShop();
+		talents = player.getKeyboardInput().isTalentTree();
+		shopOpen = player.getKeyboardInput().isShop();
 		maxHealth = 100 + talentTree.getTalent(0) * 20;
 		maxMana = 1000 + talentTree.getTalent(1) * 200;
-		if (gameLogic.getPlayer().getInventorySlotClicked() != -1) {
-			inventory.slotClicked(gameLogic.getPlayer()
+		if (player.getInventorySlotClicked() != -1) {
+			inventory.slotClicked(player
 					.getInventorySlotClicked());
-			gameLogic.getPlayer().resetInventorySlotClicked();
+			player.resetInventorySlotClicked();
 		}
-		if (gameLogic.getPlayer().getShopSlotClicked() != -1) {
-			shop.slotClicked(gameLogic.getPlayer().getShopSlotClicked());
-			gameLogic.getPlayer().resetShopSlotClicked();
+		if (player.getShopSlotClicked() != -1) {
+			shop.slotClicked(player.getShopSlotClicked());
+			player.resetShopSlotClicked();
 		}
-		if (gameLogic.getPlayer().getTalentButtonClicked() != -1) {
-			talentTree.talentButtonClicked(gameLogic.getPlayer()
+		if (player.getTalentButtonClicked() != -1) {
+			talentTree.talentButtonClicked(player
 					.getTalentButtonClicked());
-			gameLogic.getPlayer().resetTalentButtonClicked();
+			player.resetTalentButtonClicked();
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isUp()) {
+		if (player.getKeyboardInput().isUp()) {
 			dy = -1-talentTree.getTalent(11);
 			lastdy = -1;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isDown()) {
+		if (player.getKeyboardInput().isDown()) {
 			dy = 1+talentTree.getTalent(11);
 			lastdy = 1;
 		}
 
-		if (!gameLogic.getPlayer().getKeyboardInput().isUp()
-				&& !gameLogic.getPlayer().getKeyboardInput().isDown()) {
+		if (!player.getKeyboardInput().isUp()
+				&& !player.getKeyboardInput().isDown()) {
 			dy = 0;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isLeft()) {
+		if (player.getKeyboardInput().isLeft()) {
 			dx = -1-talentTree.getTalent(11);
 			lastdx = -1;
 			lastdy = 0;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isRight()) {
+		if (player.getKeyboardInput().isRight()) {
 			dx = 1+talentTree.getTalent(11);
 			lastdx = 1;
 			lastdy = 0;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isRight()
-				&& gameLogic.getPlayer().getKeyboardInput().isUp()) {
+		if (player.getKeyboardInput().isRight()
+				&& player.getKeyboardInput().isUp()) {
 			lastdx = 1;
 			lastdy = -1;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isRight()
-				&& gameLogic.getPlayer().getKeyboardInput().isDown()) {
+		if (player.getKeyboardInput().isRight()
+				&& player.getKeyboardInput().isDown()) {
 			lastdx = 1;
 			lastdy = 1;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isLeft()
-				&& gameLogic.getPlayer().getKeyboardInput().isUp()) {
+		if (player.getKeyboardInput().isLeft()
+				&& player.getKeyboardInput().isUp()) {
 			lastdx = -1;
 			lastdy = -1;
 		}
 
-		if (gameLogic.getPlayer().getKeyboardInput().isLeft()
-				&& gameLogic.getPlayer().getKeyboardInput().isDown()) {
+		if (player.getKeyboardInput().isLeft()
+				&& player.getKeyboardInput().isDown()) {
 			lastdx = -1;
 			lastdy = 1;
 		}
 
-		if (!gameLogic.getPlayer().getKeyboardInput().isLeft()
-				&& !gameLogic.getPlayer().getKeyboardInput().isRight()) {
+		if (!player.getKeyboardInput().isLeft()
+				&& !player.getKeyboardInput().isRight()) {
 			dx = 0;
 		}
 		if (weapon != null) {
-			weapon.attack(gameLogic.getPlayer().getKeyboardInput().isAttack());
+			weapon.attack(player.getKeyboardInput().isAttack());
 		}
 		if (exp >= reqExp) {
 			heroLevel += 1;
@@ -160,34 +166,34 @@ public class Hero extends CombatObject {
 			exp = exp - reqExp;
 			reqExp = heroLevel * 100;
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot1()){
+		if(player.getKeyboardInput().isSlot1()){
 			inventory.slotClicked(0);
 		}		
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot2()){
+		if(player.getKeyboardInput().isSlot2()){
 			inventory.slotClicked(1);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot3()){
+		if(player.getKeyboardInput().isSlot3()){
 			inventory.slotClicked(2);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot4()){
+		if(player.getKeyboardInput().isSlot4()){
 			inventory.slotClicked(3);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot5()){
+		if(player.getKeyboardInput().isSlot5()){
 			inventory.slotClicked(4);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot6()){
+		if(player.getKeyboardInput().isSlot6()){
 			inventory.slotClicked(5);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot7()){
+		if(player.getKeyboardInput().isSlot7()){
 			inventory.slotClicked(6);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot8()){
+		if(player.getKeyboardInput().isSlot8()){
 			inventory.slotClicked(7);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot9()){
+		if(player.getKeyboardInput().isSlot9()){
 			inventory.slotClicked(8);
 		}
-		if(gameLogic.getPlayer().getKeyboardInput().isSlot10()){
+		if(player.getKeyboardInput().isSlot10()){
 			inventory.slotClicked(9);
 		}
 		

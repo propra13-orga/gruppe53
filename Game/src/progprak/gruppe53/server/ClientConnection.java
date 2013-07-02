@@ -7,19 +7,20 @@ import java.net.Socket;
 
 import progprak.gruppe53.game.Player;
 
-public class ClientConnection implements Runnable{
-	
+public class ClientConnection{
+
 	private Socket clientSocket;
 	private ObjectInputStream objectIn;
 	private ObjectOutputStream objectOut;
 	private Player player;
 	private ServerResponse serverResponse;
-	
-	
-	public ClientConnection(Socket clientSocket) {
-				
+	private int id;
+
+	public ClientConnection(Socket clientSocket,int id) {
+		this.id = id;
 		this.clientSocket = clientSocket;
-		
+
+
 		try {
 			objectIn = new ObjectInputStream(clientSocket.getInputStream());
 			objectOut = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -27,25 +28,53 @@ public class ClientConnection implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		doInitializations();
+
 	}
 
 
-	@Override
-	public void run() {
-		while(true){
-			try {
-				player = (Player) objectIn.readObject();
-				if(serverResponse != null){
-					objectOut.writeObject(serverResponse);
-					objectOut.reset();
+	private void doInitializations() {
+		Thread rec = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(true){
+					try {
+						//System.out.println("rec:" + id);
+						player = (Player) objectIn.readObject();
+					} catch (ClassNotFoundException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
 				}
-			} 
-			catch (IOException | ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
 			}
-		}
+		});
+
+		Thread sen = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(true){
+					try{
+						//System.out.println("sen:" + id);
+						if(serverResponse != null){
+							objectOut.writeObject(serverResponse);
+							objectOut.reset();
+						}
+					}
+					catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		rec.start();
+		sen.start();		
 	}
+
 
 
 	/**
