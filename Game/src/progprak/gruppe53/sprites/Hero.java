@@ -5,7 +5,6 @@ import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Inventory;
 import progprak.gruppe53.game.PickupCollisionEvent;
 import progprak.gruppe53.game.Shop;
-import progprak.gruppe53.game.ShopPanel;
 import progprak.gruppe53.game.TalentTree;
 import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Weapon;
@@ -98,13 +97,13 @@ public class Hero extends CombatObject {
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isUp()) {
-			dy = lastdy = -1;
-			// lastdx = 0;
+			dy = -1-talentTree.getTalent(11);
+			lastdy = -1;
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isDown()) {
-			dy = lastdy = 1;
-			// lastdx = 0;
+			dy = 1+talentTree.getTalent(11);
+			lastdy = 1;
 		}
 
 		if (!gameLogic.getPlayer().getKeyboardInput().isUp()
@@ -113,12 +112,14 @@ public class Hero extends CombatObject {
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isLeft()) {
-			dx = lastdx = -1;
+			dx = -1-talentTree.getTalent(11);
+			lastdx = -1;
 			lastdy = 0;
 		}
 
 		if (gameLogic.getPlayer().getKeyboardInput().isRight()) {
-			dx = lastdx = 1;
+			dx = 1+talentTree.getTalent(11);
+			lastdx = 1;
 			lastdy = 0;
 		}
 
@@ -302,12 +303,12 @@ public class Hero extends CombatObject {
 		long current = System.nanoTime();
 		if(current - lastRecover >= 1e9){
 			if(mana <= maxMana-(8+talentTree.getTalent(7))){
-				mana = mana + 8 + ((int)(talentTree.getTalent(7)*1.5));
+				mana = mana + 8 + ((talentTree.getTalent(7)*2));
 			}
 			if(health <= maxHealth-(talentTree.getTalent(6))){
 				health = health+talentTree.getTalent(6);
 			}
-			money = money + talentTree.getTalent(11);
+
 			if(heroLevel <= maxLevel){
 				exp = exp + talentTree.getTalent(8);
 			}

@@ -11,7 +11,7 @@ public class TalentTree implements Serializable {
 	private Hero hero;
 	private transient GameLogic gameLogic;
 	private int[] talent = {0,0,0,0,0,0,0,0,0,0,0,0};
-	private int[] talentMax = {5,5,1,5,5,5,5,7,7,3,1,5};
+	private int[] talentMax = {5,5,1,5,5,5,5,7,7,3,1,1};
 	public TalentTree(Hero hero,GameLogic gameLogic) {
 		this.hero = hero;
 		this.gameLogic = gameLogic;
