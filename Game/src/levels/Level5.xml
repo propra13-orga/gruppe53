@@ -51,8 +51,8 @@
 		<trap>158:409</trap>
 	</traps>
 	<fireballtraps>
-		<fireballtrap>104:537;0.0:1.0</fireballtrap>
-		<fireballtrap>718:88;1.0:0.0</fireballtrap>
+		<fireballtrap>114:535;2.0:0.0</fireballtrap>
+		<fireballtrap>715:61;0.0:2.0</fireballtrap>
 	</fireballtraps>
 	<fireballwavetraps>
 	</fireballwavetraps>
@@ -70,7 +70,6 @@
 	<goal></goal>
 	<levelswitch type="wall" direction="0">350:128;levels/Level6.xml</levelswitch>
 	<walls>
-		<wall>0:0</wall>
 		<wall>0:32</wall>
 		<wall>0:64</wall>
 		<wall>0:96</wall>
@@ -309,5 +308,6 @@
 		<wall>542:128</wall>
 		<wall>574:128</wall>
 		<wall>96:192</wall>
+		<wall>0:0</wall>
 	</walls>
 </level>

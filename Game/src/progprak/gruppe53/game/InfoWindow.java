@@ -125,7 +125,9 @@ public class InfoWindow extends JPanel {
 		this.lifes = hero.getLifes();
 		this.heroLevel = hero.getLevel();
 		this.talentPoint = hero.getTalentPoint();
-		inventoryPanel.render(hero.getInventory().getItems(),hero.getInventory().getWeapon());
+		inventoryPanel.render(hero.getInventory().getItems(),
+				hero.getInventory().getWeapon(),
+				hero.getInventory().getArmor());
 		infoPanel.repaint();
 	}
 

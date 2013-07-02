@@ -7,6 +7,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import progprak.gruppe53.items.Armor;
 import progprak.gruppe53.items.Item;
 import progprak.gruppe53.items.Weapon;
 
@@ -73,10 +74,11 @@ private static final long serialVersionUID = 1L;
 	public InventorySlot getArmorSlot(){
 		return armorSlot;
 	}
-	public void render(Item items[], Weapon weapon){
+	public void render(Item items[], Weapon weapon,Armor armor){
 		for(int i=0;i<inventorySlots;i++){
 			inventorySlot[i].render(items[i]);
 		}
 		weaponSlot.render(weapon);
+		armorSlot.render(armor);
 	}
 }

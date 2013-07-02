@@ -80,7 +80,7 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 				left=true;
 			if(keyCode==KeyEvent.VK_D)
 				right=true;
-			if(keyCode==KeyEvent.VK_SPACE)
+			if(keyCode==KeyEvent.VK_ENTER)
 				attack=true;
 			if(keyCode==KeyEvent.VK_NUMPAD1)
 				slot1=true;			
@@ -112,7 +112,7 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 				left=false;
 			if(keyCode==KeyEvent.VK_D)
 				right=false;
-			if(keyCode==KeyEvent.VK_SPACE)
+			if(keyCode==KeyEvent.VK_ENTER)
 				attack=false;
 			if(keyCode==KeyEvent.VK_E)
 				shop=!shop;
