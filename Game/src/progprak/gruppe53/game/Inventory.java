@@ -66,7 +66,13 @@ public class Inventory implements Serializable {
 					items[slotNumber] = items[inventorySlots];
 					gameLogic.addSprite(weapon);
 				}
-				else {
+				else if(items[slotNumber] instanceof Armor){
+					items[inventorySlots] = armor;
+					armor = (Armor) items[slotNumber];
+					items[slotNumber] = items[inventorySlots];
+					gameLogic.addSprite(armor);
+				}
+				else{
 					items[slotNumber] .use();
 					items[slotNumber] = null;
 				}

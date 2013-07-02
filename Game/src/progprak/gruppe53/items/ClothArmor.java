@@ -29,9 +29,5 @@ public class ClothArmor extends Armor {
 	}
 	
 	
-	public int isarmorLVL()
-	{
-		return armorLVL;
-	}
 
 }
