@@ -31,6 +31,7 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 	private boolean attack	= false;
 	private boolean shop = false;
 	private boolean talentTree = false;
+	private long lastSlot;
 
 
 	/**
@@ -72,6 +73,7 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 	public boolean dispatchKeyEvent(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		if(e.getID() == KeyEvent.KEY_PRESSED){
+			long current = System.nanoTime();
 			if(keyCode==KeyEvent.VK_W)
 				up=true;
 			if(keyCode==KeyEvent.VK_S)
@@ -82,26 +84,46 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 				right=true;
 			if(keyCode==KeyEvent.VK_ENTER)
 				attack=true;
-			if(keyCode==KeyEvent.VK_NUMPAD1)
-				slot1=true;			
-			if(keyCode==KeyEvent.VK_NUMPAD2)
+			if(keyCode==KeyEvent.VK_NUMPAD1 && current - lastSlot >= 1e9 ){
+				slot1=true;
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD2 && current - lastSlot >= 1e9){
 				slot2=true;
-			if(keyCode==KeyEvent.VK_NUMPAD3)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD3 && current - lastSlot >= 1e9){
 				slot3=true;
-			if(keyCode==KeyEvent.VK_NUMPAD4)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD4 && current - lastSlot >= 1e9){
 				slot4=true;
-			if(keyCode==KeyEvent.VK_NUMPAD5)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD5 && current - lastSlot >= 1e9){
 				slot5=true;
-			if(keyCode==KeyEvent.VK_NUMPAD6)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD6 && current - lastSlot >= 1e9){
 				slot6=true;
-			if(keyCode==KeyEvent.VK_NUMPAD7)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD7 && current - lastSlot >= 1e9){
 				slot7=true;
-			if(keyCode==KeyEvent.VK_NUMPAD8)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD8 && current - lastSlot >= 1e9){
 				slot8=true;
-			if(keyCode==KeyEvent.VK_NUMPAD9)
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD9 && current - lastSlot >= 1e9){
 				slot9=true;
-			if(keyCode==KeyEvent.VK_NUMPAD0)
-				slot10=true;				
+				lastSlot = current;
+			}
+			if(keyCode==KeyEvent.VK_NUMPAD0 && current - lastSlot >= 1e9){
+				slot10=true;
+				lastSlot = current;
+			}
 		}
 		else if(e.getID() == KeyEvent.KEY_RELEASED){
 			if(keyCode==KeyEvent.VK_W)
