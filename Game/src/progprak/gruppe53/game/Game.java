@@ -114,7 +114,7 @@ public class Game implements Runnable {
 						hero = sr.getHero();
 					}
 					else {
-						gameLogic.tick(delta,player);
+						gameLogic.tick(delta,player,null);
 						actors = gameLogic.getActors();
 						hero = gameLogic.getHero();
 					}
