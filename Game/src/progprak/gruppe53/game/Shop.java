@@ -32,6 +32,7 @@ public class Shop implements Serializable{
 			hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
 			hero.getInventory().addItem(items[slotNumber]);
 			items[slotNumber] = null;
+			items[slotNumber] = new HealthPotion(gameLogic);
 		}
 	}
 
