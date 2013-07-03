@@ -10,6 +10,7 @@ public class CollisionEvent {
 	public static final int EVENT_SWITCH_LEVEL			= 4;
 	public static final int EVENT_GOAL					= 5;
 	public static final int EVENT_PICKUP				= 6;
+	public static final int EVENT_USE_LEVER				= 7;
 	
 	public static final int DIRECTION_HORIZONTAL		= 1;
 	public static final int DIRECTION_VERTICAL			= 2;
@@ -81,6 +82,12 @@ public class CollisionEvent {
 		}
 		else {
 			//TODO: ERROR
+		}
+	}
+	
+	public void resetLever(){
+		if(event == EVENT_USE_LEVER){
+			
 		}
 	}
 	/**

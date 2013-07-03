@@ -9,6 +9,7 @@ public class LevelSwitch extends Sprite implements Collidable{
 	
 	private transient CollisionEvent collisionEvent;
 
+
 	public LevelSwitch(int x, int y, String newLevel) {
 		super(x,y,"images/entrance2.png");
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_SWITCH_LEVEL,this);
@@ -23,8 +24,6 @@ public class LevelSwitch extends Sprite implements Collidable{
 
 	@Override
 	public void doLogic(long delta) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
