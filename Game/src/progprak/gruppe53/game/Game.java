@@ -56,7 +56,7 @@ public class Game implements Runnable {
 
 	private ObjectOutputStream serverObjectOut;
 	
-	private boolean client = false;
+	private boolean client = true;
 
 	private ObjectInputStream serverObjectIn;
 
