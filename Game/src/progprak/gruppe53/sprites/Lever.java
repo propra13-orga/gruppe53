@@ -11,35 +11,24 @@ public class Lever extends Sprite implements Collidable{
 
 	private transient CollisionEvent collisionEvent;
 	
-	private boolean leverUsed;
-	private long lastUsed;
+	private boolean leverStatus;
 	
 	protected boolean handleEvents = true;
 	
 	protected transient GameLogic gameLogic;
 	
-	public Lever(int x, int y, String imagePath, GameLogic gameLogic) {
+	public Lever(int x, int y, String imagePath, GameLogic gameLogic, Wall wall1, Wall wall2, Wall wall3) {
 		super(x, y, imagePath);
-		this.gameLogic = gameLogic;
-		doInitialisation();
+		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_USE_LEVER,this);
+		collisionEvent.setNewLeverStatus(this,wall1,wall2,wall3);
 	}
 
-	private void doInitialisation() {
-		initCollisionEvent();
-		
-	}
 
-	private void initCollisionEvent() {
-		collisionEvent = new LeverCollisionEvent(0, this);
-		
-	}
+
 
 	@Override
 	public void doLogic(long delta){
-		long current = System.nanoTime();
-		if(leverUsed && current - lastUsed >= 2e9){
-			leverUsed = false;
-		}
+
 	}
 
 	@Override
@@ -47,4 +36,7 @@ public class Lever extends Sprite implements Collidable{
 		return collisionEvent;
 	}
 	
+	public void setStatus(){
+		leverStatus = !leverStatus;
+	}
 }

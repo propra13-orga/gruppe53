@@ -1,5 +1,8 @@
 package progprak.gruppe53.game;
 
+import progprak.gruppe53.sprites.Lever;
+import progprak.gruppe53.sprites.Wall;
+
 public class CollisionEvent {
 
 	
@@ -22,6 +25,7 @@ public class CollisionEvent {
 	private int newX,newY;
 	private String newLevel;
 	public Collidable actor;
+	private long lastLeverSwitch;
 	
 	public CollisionEvent(int event,Collidable actor){
 		this.event = event;
@@ -85,9 +89,20 @@ public class CollisionEvent {
 		}
 	}
 	
-	public void resetLever(){
-		if(event == EVENT_USE_LEVER){
-			
+	public void setNewLeverStatus(Lever lever, Wall wall1, Wall wall2, Wall wall3){
+		long current = System.nanoTime();
+		if(event == EVENT_USE_LEVER && current - lastLeverSwitch >= 2e9){
+			lever.setStatus();
+			if(wall1 != null){
+				wall1.setStatus();
+			}
+			if(wall2 != null){
+				wall2.setStatus();
+			}
+			if(wall3 != null){
+				wall3.setStatus();
+			}
+			lastLeverSwitch = current;
 		}
 	}
 	/**
