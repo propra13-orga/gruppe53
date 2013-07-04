@@ -72,9 +72,10 @@ public class Hero extends CombatObject {
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING, this);
 	}
 
-	public void setPlayer(Player player){
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
 	@Override
 	public void doLogic(long delta) {
 		recover();
@@ -88,8 +89,7 @@ public class Hero extends CombatObject {
 		maxHealth = 100 + talentTree.getTalent(0) * 20;
 		maxMana = 1000 + talentTree.getTalent(1) * 200;
 		if (player.getInventorySlotClicked() != -1) {
-			inventory.slotClicked(player
-					.getInventorySlotClicked());
+			inventory.slotClicked(player.getInventorySlotClicked());
 			player.resetInventorySlotClicked();
 		}
 		if (player.getShopSlotClicked() != -1) {
@@ -97,18 +97,17 @@ public class Hero extends CombatObject {
 			player.resetShopSlotClicked();
 		}
 		if (player.getTalentButtonClicked() != -1) {
-			talentTree.talentButtonClicked(player
-					.getTalentButtonClicked());
+			talentTree.talentButtonClicked(player.getTalentButtonClicked());
 			player.resetTalentButtonClicked();
 		}
 
 		if (player.getKeyboardInput().isUp()) {
-			dy = -1-talentTree.getTalent(11);
+			dy = -1 - talentTree.getTalent(11);
 			lastdy = -1;
 		}
 
 		if (player.getKeyboardInput().isDown()) {
-			dy = 1+talentTree.getTalent(11);
+			dy = 1 + talentTree.getTalent(11);
 			lastdy = 1;
 		}
 
@@ -118,13 +117,13 @@ public class Hero extends CombatObject {
 		}
 
 		if (player.getKeyboardInput().isLeft()) {
-			dx = -1-talentTree.getTalent(11);
+			dx = -1 - talentTree.getTalent(11);
 			lastdx = -1;
 			lastdy = 0;
 		}
 
 		if (player.getKeyboardInput().isRight()) {
-			dx = 1+talentTree.getTalent(11);
+			dx = 1 + talentTree.getTalent(11);
 			lastdx = 1;
 			lastdy = 0;
 		}
@@ -164,39 +163,38 @@ public class Hero extends CombatObject {
 			heroLevel += 1;
 			talentPoint += 1;
 			exp = exp - reqExp;
-			reqExp = heroLevel * 100;
+			reqExp = heroLevel * 50 + 25;
 		}
-		if(player.getKeyboardInput().isSlot1()){
+		if (player.getKeyboardInput().isSlot1()) {
 			inventory.slotClicked(0);
-		}		
-		if(player.getKeyboardInput().isSlot2()){
+		}
+		if (player.getKeyboardInput().isSlot2()) {
 			inventory.slotClicked(1);
 		}
-		if(player.getKeyboardInput().isSlot3()){
+		if (player.getKeyboardInput().isSlot3()) {
 			inventory.slotClicked(2);
 		}
-		if(player.getKeyboardInput().isSlot4()){
+		if (player.getKeyboardInput().isSlot4()) {
 			inventory.slotClicked(3);
 		}
-		if(player.getKeyboardInput().isSlot5()){
+		if (player.getKeyboardInput().isSlot5()) {
 			inventory.slotClicked(4);
 		}
-		if(player.getKeyboardInput().isSlot6()){
+		if (player.getKeyboardInput().isSlot6()) {
 			inventory.slotClicked(5);
 		}
-		if(player.getKeyboardInput().isSlot7()){
+		if (player.getKeyboardInput().isSlot7()) {
 			inventory.slotClicked(6);
 		}
-		if(player.getKeyboardInput().isSlot8()){
+		if (player.getKeyboardInput().isSlot8()) {
 			inventory.slotClicked(7);
 		}
-		if(player.getKeyboardInput().isSlot9()){
+		if (player.getKeyboardInput().isSlot9()) {
 			inventory.slotClicked(8);
 		}
-		if(player.getKeyboardInput().isSlot10()){
+		if (player.getKeyboardInput().isSlot10()) {
 			inventory.slotClicked(9);
 		}
-		
 
 	}
 
@@ -304,18 +302,18 @@ public class Hero extends CombatObject {
 	public void drainMana(int manaCost) {
 		mana -= manaCost;
 	}
-	
+
 	public void recover() {
 		long current = System.nanoTime();
-		if(current - lastRecover >= 1e9){
-			if(mana <= maxMana-(8+talentTree.getTalent(7))){
-				mana = mana + 8 + ((talentTree.getTalent(7)*2));
+		if (current - lastRecover >= 1e9) {
+			if (mana <= maxMana - (8 + talentTree.getTalent(7))) {
+				mana = mana + 8 + ((talentTree.getTalent(7) * 2));
 			}
-			if(health <= maxHealth-(talentTree.getTalent(6))){
-				health = health+talentTree.getTalent(6);
+			if (health <= maxHealth - (talentTree.getTalent(6))) {
+				health = health + talentTree.getTalent(6);
 			}
 
-			if(heroLevel <= maxLevel){
+			if (heroLevel <= maxLevel) {
 				exp = exp + talentTree.getTalent(8);
 			}
 			lastRecover = current;
@@ -326,8 +324,8 @@ public class Hero extends CombatObject {
 	public void doneKill(CombatObject combatObject) {
 		super.doneKill(combatObject);
 		money += 50;
-		if(heroLevel <= maxLevel){
-			exp += 25 + 5 * talentTree.getTalent(5);			
+		if (heroLevel <= maxLevel) {
+			exp += 25 + 5 * talentTree.getTalent(5);
 		}
 		if (combatObject instanceof BossEnemy) {
 			gameLogic.switchLevel(((BossEnemy) combatObject).getNextLevel());
@@ -335,8 +333,7 @@ public class Hero extends CombatObject {
 	}
 
 	public void addHealth(int aHp) {
-		health += aHp
-				+ (aHp / 5 * talentTree.getTalent(3));
+		health += aHp + (aHp / 5 * talentTree.getTalent(3));
 		if (health > maxHealth) {
 			health = maxHealth;
 		}
