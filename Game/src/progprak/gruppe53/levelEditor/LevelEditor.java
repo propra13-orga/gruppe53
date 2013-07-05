@@ -25,6 +25,7 @@ import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.WoodenSword;
 import progprak.gruppe53.sprites.EnemyGhost;
+import progprak.gruppe53.sprites.EnemyOldManNPC;
 import progprak.gruppe53.sprites.Fireball;
 import progprak.gruppe53.sprites.FireballTrap;
 import progprak.gruppe53.sprites.FireballTrap2;
@@ -51,6 +52,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_WALL = "wall";
 	private static final String OBJECT_MULTIWALL = "multiwall";
 	private static final String ENEMY_GHOST = "enemyGhost";
+	private static final String ENEMY_SPIDER = "enemySpider";
 	private static final String TRAP_SPEARS = "trapSpears";
 	private static final String TRAP_FIREBALL = "trapFireball";
 	private static final String TRAP_FIREBALL2 = "trapFireball2";
@@ -207,6 +209,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		enemyGhost.setActionCommand(ENEMY_GHOST);
 		enemyGhost.addActionListener(this);
 		tools.add(enemyGhost);
+		JButton enemySpider = new JButton(new ImageIcon(ImageLoader.loadImage("images/OldManNPC.png")));
+		enemySpider.setActionCommand(ENEMY_SPIDER);
+		enemySpider.addActionListener(this);
+		tools.add(enemySpider);
 		JButton trapSpears = new JButton(new ImageIcon(ImageLoader.loadImage("images/groundTrap1.png")));
 		trapSpears.setActionCommand(TRAP_SPEARS);
 		trapSpears.addActionListener(this);
@@ -318,6 +324,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "enemyGhost");
 			level.setCursor(c);
 			currentSprite = actionCommand;			
+		}
+		
+		else if (actionCommand == ENEMY_SPIDER) {
+			image = ImageLoader.loadImage("images/OldManNPC.png");
+			c = toolkit.createCustomCursor(image,  new Point(0, 0), "enemySpider");
+			level.setCursor(c);
+			currentSprite = actionCommand;
 		}
 		
 		else if (actionCommand == TRAP_SPEARS) {
@@ -498,6 +511,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 				sprites.add(new EnemyGhost(e.getX(),e.getY(),null));
 			}
 		} 
+		else if (currentSprite == ENEMY_SPIDER) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+				sprites.add(new EnemyOldManNPC(e.getX(),e.getY(),null));
+			}
+		}
 		else if (currentSprite == TRAP_SPEARS) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new GroundTrap(e.getX(),e.getY(),null));

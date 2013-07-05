@@ -35,7 +35,7 @@ public class ChargingBoss extends BossEnemy {
 			dy = 0;
 			dx = 0;
 		}
-		pause = System.nanoTime() + (long)((5L)*1e8);	
+		pause = System.nanoTime() + (long)((5L)*1e8);
 	}
 	
 	public void doLogic(long delta) {

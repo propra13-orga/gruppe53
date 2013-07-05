@@ -16,6 +16,7 @@ import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
 import progprak.gruppe53.sprites.ChargingBoss;
 import progprak.gruppe53.sprites.EnemyGhost;
+import progprak.gruppe53.sprites.EnemyOldManNPC;
 import progprak.gruppe53.sprites.FireballTrap;
 import progprak.gruppe53.sprites.FireballTrap2;
 import progprak.gruppe53.sprites.FireballWaveTrap;
@@ -245,6 +246,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		int enemyY = Integer.parseInt(enemyData[1]);
 		if(attributes.getValue("type").equals("ghost")){
 			sprites.add(new EnemyGhost(enemyX, enemyY,gameLogic));
+		}
+		else if(attributes.getValue("type").equals("spider")){
+			sprites.add(new EnemyOldManNPC(enemyX, enemyY, gameLogic));
 		}
 		else if(attributes.getValue("type").equals("wizboss")){
 			sprites.add(new WizardBoss(enemyX, enemyY,gameLogic));

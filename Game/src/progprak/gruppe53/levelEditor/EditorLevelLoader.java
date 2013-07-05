@@ -12,6 +12,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.sprites.EnemyGhost;
+import progprak.gruppe53.sprites.EnemyOldManNPC;
 import progprak.gruppe53.sprites.FireballTrap;
 import progprak.gruppe53.sprites.FireballTrap2;
 import progprak.gruppe53.sprites.FireballWaveTrap;
@@ -91,8 +92,11 @@ public class EditorLevelLoader extends DefaultHandler {
 		case "level.walls.wall":
 			spawnWall(content);
 			break;
-		case "level.enemies.enemy":
-			spawnEnemy(content);
+		case "level.enemies.ghost":
+			spawnEnemyGhost(content);
+			break;
+		case "level.enemies.spider":
+			spawnEnemySpider(content);
 			break;
 		case "level.traps.trap":
 			spawnTrap(content);
@@ -206,11 +210,18 @@ public class EditorLevelLoader extends DefaultHandler {
 		sprites.add(new GroundTrap(trapX, trapY,null));		
 	}
 
-	private void spawnEnemy(String content) {
+	private void spawnEnemyGhost(String content) {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
 		sprites.add(new EnemyGhost(enemyX, enemyY,null));		
+	}
+	
+	private void spawnEnemySpider(String content) {
+		String enemyData[] = content.split(":");
+		int enemyX = Integer.parseInt(enemyData[0]);
+		int enemyY = Integer.parseInt(enemyData[1]);
+		sprites.add(new EnemyOldManNPC(enemyX, enemyY,null));		
 	}
 
 	private void spawnWall(String content) {

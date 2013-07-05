@@ -11,8 +11,8 @@
 		<enemy type="ghost">689:144</enemy>
 		<enemy type="ghost">128:294</enemy>
 		<enemy type="ghost">115:347</enemy>
-		<enemy type="ghost">183:575</enemy>
-		<enemy type="ghost">408:481</enemy>
+		<enemy type="spider">183:570</enemy>
+		<enemy type="spider">408:476</enemy>
 	</enemies>
 	<traps>
 		<trap>297:338</trap>
@@ -137,11 +137,11 @@
 		<wall>672:608</wall>
 		<wall>704:608</wall>
 		<wall>736:608</wall>
-		<wall>32:131</wall>
-		<wall>64:131</wall>
-		<wall>96:131</wall>
-		<wall>128:131</wall>
-		<wall>160:131</wall>
+		<wall>32:132</wall>
+		<wall>64:132</wall>
+		<wall>96:132</wall>
+		<wall>128:132</wall>
+		<wall>160:132</wall>
 		<wall>256:32</wall>
 		<wall>256:64</wall>
 		<wall>256:96</wall>
@@ -152,38 +152,38 @@
 		<wall>256:256</wall>
 		<wall>256:288</wall>
 		<wall>256:320</wall>
-		<wall>32:427</wall>
-		<wall>64:427</wall>
-		<wall>96:427</wall>
-		<wall>128:427</wall>
-		<wall>160:427</wall>
-		<wall>192:427</wall>
-		<wall>224:427</wall>
-		<wall>256:427</wall>
-		<wall>288:427</wall>
-		<wall>320:427</wall>
-		<wall>352:427</wall>
-		<wall>384:427</wall>
-		<wall>416:427</wall>
-		<wall>448:427</wall>
-		<wall>480:427</wall>
-		<wall>512:427</wall>
-		<wall>544:427</wall>
-		<wall>576:427</wall>
-		<wall>608:427</wall>
-		<wall>640:427</wall>
-		<wall>672:427</wall>
-		<wall>514:395</wall>
-		<wall>514:363</wall>
-		<wall>514:331</wall>
-		<wall>514:299</wall>
-		<wall>514:267</wall>
-		<wall>514:235</wall>
-		<wall>514:203</wall>
-		<wall>514:171</wall>
-		<wall>514:139</wall>
-		<wall>514:107</wall>
-		<wall>514:75</wall>
+		<wall>32:428</wall>
+		<wall>64:428</wall>
+		<wall>96:428</wall>
+		<wall>128:428</wall>
+		<wall>160:428</wall>
+		<wall>192:428</wall>
+		<wall>224:428</wall>
+		<wall>256:428</wall>
+		<wall>288:428</wall>
+		<wall>320:428</wall>
+		<wall>352:428</wall>
+		<wall>384:428</wall>
+		<wall>416:428</wall>
+		<wall>448:428</wall>
+		<wall>480:428</wall>
+		<wall>512:428</wall>
+		<wall>544:428</wall>
+		<wall>576:428</wall>
+		<wall>608:428</wall>
+		<wall>640:428</wall>
+		<wall>672:428</wall>
+		<wall>514:396</wall>
+		<wall>514:364</wall>
+		<wall>514:332</wall>
+		<wall>514:300</wall>
+		<wall>514:268</wall>
+		<wall>514:236</wall>
+		<wall>514:204</wall>
+		<wall>514:172</wall>
+		<wall>514:140</wall>
+		<wall>514:108</wall>
+		<wall>514:76</wall>
 		<wall>736:513</wall>
 		<wall>704:513</wall>
 		<wall>672:513</wall>

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.sprites.EnemyGhost;
+import progprak.gruppe53.sprites.EnemyOldManNPC;
 import progprak.gruppe53.sprites.FireballTrap;
 import progprak.gruppe53.sprites.FireballWaveTrap;
 import progprak.gruppe53.sprites.Goal;
@@ -31,6 +32,7 @@ public class LevelSaver {
 		String input = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" + "\n"+ "<level>" + "\n";
 		input += createSpawnXml();
 		input += createEnemyGhostXml();
+		input += createEnemySpiderXml();
 		input += createTrapXml();
 		input += createFireballTrapXml();
 		input += createFireballWaveTrapXml();
@@ -83,6 +85,19 @@ public class LevelSaver {
 		enemyGhostXml += "	</enemies>";
 		enemyGhostXml += "\n";
 		return enemyGhostXml;
+	}
+	
+	private String createEnemySpiderXml() {
+		String enemySpiderXml = "	<enemies>" + "\n";
+		for (int i=0; i < sprites.size(); i++) {
+			Sprite sprite = sprites.get(i);
+			if (sprite instanceof EnemyOldManNPC) {
+				enemySpiderXml += "		<enemy type=\"spider\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
+			}
+		}
+		enemySpiderXml += "	</enemies>";
+		enemySpiderXml += "\n";
+		return enemySpiderXml;
 	}
 	private String createTrapXml() {
 		String trapXml = "	<traps>" + "\n";
