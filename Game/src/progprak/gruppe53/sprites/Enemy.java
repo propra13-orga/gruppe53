@@ -6,7 +6,7 @@ import progprak.gruppe53.game.GameLogic;
 public abstract class Enemy extends CombatObject implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
-	protected double health = 20;
+
 	
 	public Enemy(int x, int y,String imagePath,GameLogic gameLogic){
 		super(x,y,imagePath,gameLogic);

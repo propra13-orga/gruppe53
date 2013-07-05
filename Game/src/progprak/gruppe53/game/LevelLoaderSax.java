@@ -31,6 +31,7 @@ import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
 import progprak.gruppe53.sprites.WizardBoss;
+import progprak.gruppe53.sprites.OldManNPCBoss;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
@@ -258,6 +259,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 		else if(attributes.getValue("type").equals("necboss")){
 			sprites.add(new NecromancerBoss(enemyX, enemyY,gameLogic));
+		}
+		else if(attributes.getValue("type").equals("oldmanboss")){
+			sprites.add(new OldManNPCBoss(enemyX, enemyY,gameLogic));
 		}
 	}
 
