@@ -4,7 +4,7 @@ import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
-public class Lever extends Sprite implements Collidable{
+public class PressurePlate extends Sprite implements Collidable{
 
 	private static final long serialVersionUID = 4963724950755414037L;
 
@@ -16,7 +16,7 @@ public class Lever extends Sprite implements Collidable{
 	
 	protected transient GameLogic gameLogic;
 	
-	public Lever(int x, int y, String imagePath, GameLogic gameLogic, Wall wall1, Wall wall2, Wall wall3) {
+	public PressurePlate(int x, int y, String imagePath, GameLogic gameLogic, Wall wall1, Wall wall2, Wall wall3) {
 		super(x, y, imagePath);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_USE_LEVER,this);
 		collisionEvent.setNewLeverStatus(this,wall1,wall2,wall3);
