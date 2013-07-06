@@ -13,7 +13,7 @@ public class OldManNPCBoss extends BossEnemy implements Shooter{
 		super(x, y, "images/OldManNPC.png",gameLogic);
 		health = 50;
 		dx = 1;
-		nextLevel = "levels/Level7.xml";
+		nextLevel = "levels/GoalLevel.xml";
 		
 	}
 	

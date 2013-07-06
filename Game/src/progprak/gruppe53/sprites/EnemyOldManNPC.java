@@ -38,7 +38,12 @@ public class EnemyOldManNPC extends Enemy {
 	
 	@Override
 	protected void handleDie() {
-		gameLogic.addSprite(new EnemyGhost((int)gameLogic.getHero().getX(),(int)gameLogic.getHero().getY(), gameLogic));
+		if(getX() <= gameLogic.getHero().getX()){
+			gameLogic.addSprite(new EnemyGhost((int)gameLogic.getHero().getX()-20,(int)gameLogic.getHero().getY(), gameLogic));
+		}
+		else {
+			gameLogic.addSprite(new EnemyGhost((int)gameLogic.getHero().getX()+20,(int)gameLogic.getHero().getY(),gameLogic));
+		}
 		gameLogic.removeSprite(this);
 	}
 }

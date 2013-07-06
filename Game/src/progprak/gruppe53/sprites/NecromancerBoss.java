@@ -13,7 +13,7 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 	public NecromancerBoss(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/tentacel1.png",gameLogic);
 		health = 80;
-		nextLevel = "levels/GoalLevel.xml";
+		nextLevel = "levels/Level10.xml";
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
 	}

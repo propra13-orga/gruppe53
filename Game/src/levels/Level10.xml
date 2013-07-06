@@ -46,7 +46,7 @@
 		<healthpotion>573:393</healthpotion>
 	</healthpotions>
 	<goal></goal>
-	<levelswitch type="wall" direction="1">768:512;levels/Level9.xml</levelswitch>
+	<levelswitch type="wall" direction="1">768:512;levels/Level11.xml</levelswitch>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>
