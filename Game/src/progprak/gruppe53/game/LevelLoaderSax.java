@@ -248,7 +248,7 @@ public class LevelLoaderSax extends DefaultHandler {
 		if(attributes.getValue("type").equals("ghost")){
 			sprites.add(new EnemyGhost(enemyX, enemyY,gameLogic));
 		}
-		else if(attributes.getValue("type").equals("spider")){
+		else if(attributes.getValue("type").equals("oldman")){
 			sprites.add(new EnemyOldManNPC(enemyX, enemyY, gameLogic));
 		}
 		else if(attributes.getValue("type").equals("wizboss")){

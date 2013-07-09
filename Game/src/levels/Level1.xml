@@ -11,8 +11,8 @@
 		<enemy type="ghost">689:144</enemy>
 		<enemy type="ghost">128:294</enemy>
 		<enemy type="ghost">115:347</enemy>
-		<enemy type="spider">183:570</enemy>
-		<enemy type="spider">408:476</enemy>
+		<enemy type="oldman">183:570</enemy>
+		<enemy type="oldman">408:476</enemy>
 	</enemies>
 	<traps>
 		<trap>297:338</trap>
