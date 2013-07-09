@@ -24,6 +24,7 @@ public class Hero extends CombatObject {
 	private Shop shop;
 	private TalentTree talentTree;
 
+	private int speed = 1;
 	private int lastdx = 0;
 	private int lastdy = 1;
 
@@ -102,13 +103,13 @@ public class Hero extends CombatObject {
 		}
 
 		if (player.getKeyboardInput().isUp()) {
-			dy = -1 - talentTree.getTalent(11);
-			lastdy = -1;
+			dy = -speed - talentTree.getTalent(11);
+			lastdy = -speed;
 		}
 
 		if (player.getKeyboardInput().isDown()) {
-			dy = 1 + talentTree.getTalent(11);
-			lastdy = 1;
+			dy = speed + talentTree.getTalent(11);
+			lastdy = speed;
 		}
 
 		if (!player.getKeyboardInput().isUp()
@@ -117,39 +118,39 @@ public class Hero extends CombatObject {
 		}
 
 		if (player.getKeyboardInput().isLeft()) {
-			dx = -1 - talentTree.getTalent(11);
-			lastdx = -1;
+			dx = -speed - talentTree.getTalent(11);
+			lastdx = -speed;
 			lastdy = 0;
 		}
 
 		if (player.getKeyboardInput().isRight()) {
-			dx = 1 + talentTree.getTalent(11);
-			lastdx = 1;
+			dx = speed + talentTree.getTalent(11);
+			lastdx = speed;
 			lastdy = 0;
 		}
 
 		if (player.getKeyboardInput().isRight()
 				&& player.getKeyboardInput().isUp()) {
-			lastdx = 1;
-			lastdy = -1;
+			lastdx = speed;
+			lastdy = -speed;
 		}
 
 		if (player.getKeyboardInput().isRight()
 				&& player.getKeyboardInput().isDown()) {
-			lastdx = 1;
-			lastdy = 1;
+			lastdx = speed;
+			lastdy = speed;
 		}
 
 		if (player.getKeyboardInput().isLeft()
 				&& player.getKeyboardInput().isUp()) {
-			lastdx = -1;
-			lastdy = -1;
+			lastdx = -speed;
+			lastdy = -speed;
 		}
 
 		if (player.getKeyboardInput().isLeft()
 				&& player.getKeyboardInput().isDown()) {
-			lastdx = -1;
-			lastdy = 1;
+			lastdx = -speed;
+			lastdy = speed;
 		}
 
 		if (!player.getKeyboardInput().isLeft()
