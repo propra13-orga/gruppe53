@@ -1,6 +1,6 @@
 package progprak.gruppe53.game;
 
-import progprak.gruppe53.sprites.Lever;
+import progprak.gruppe53.sprites.PressurePlate;
 import progprak.gruppe53.sprites.Wall;
 
 public class CollisionEvent {
@@ -89,7 +89,7 @@ public class CollisionEvent {
 		}
 	}
 	
-	public void setNewLeverStatus(Lever lever, Wall wall1, Wall wall2, Wall wall3){
+	public void setNewLeverStatus(PressurePlate lever, Wall wall1, Wall wall2, Wall wall3){
 		long current = System.nanoTime();
 		if(event == EVENT_USE_LEVER && current - lastLeverSwitch >= 2e9){
 			lever.setStatus();
