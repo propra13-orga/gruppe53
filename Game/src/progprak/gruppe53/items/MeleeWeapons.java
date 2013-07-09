@@ -42,7 +42,7 @@ abstract public class MeleeWeapons extends Weapon {
 	@Override
 	public void setOwner(Hero owner) {
 		super.setOwner(owner);
-		attackCe = new DamageCollisionEvent(damage, owner.getFaction(), owner);
+		attackCe = new DamageCollisionEvent((int)(damage*(1+gameLogic.getHero().getTalentTree().getTalent(9)*0.3)), owner.getFaction(), owner);
 	}
 
 
