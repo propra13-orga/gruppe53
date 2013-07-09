@@ -11,6 +11,6 @@
 		
 	</traps>
 	<enemies>
-		<enemy type="spider">300:300</enemy>
+		<enemy type="oldman">300:300</enemy>
 	</enemies>
 </level>

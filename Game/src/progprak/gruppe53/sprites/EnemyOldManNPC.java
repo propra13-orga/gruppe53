@@ -8,7 +8,7 @@ public class EnemyOldManNPC extends Enemy {
 
 	private static final long serialVersionUID = 2838843254158087591L;
 	
-	private double speed = 2;
+	private double speed = 1;
 	
 	
 	public EnemyOldManNPC(int x, int y, GameLogic gameLogic) {
