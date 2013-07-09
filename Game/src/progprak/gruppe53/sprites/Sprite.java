@@ -77,11 +77,11 @@ abstract public class Sprite  implements Drawable,Movable,Serializable  {
 	public void setAngle(double angle) {
 		this.angle = angle;
 	}
-	public Rectangle getHorizontalCollsionRect(){
-		return new Rectangle((int)(getX()+dx), (int)(getY()), (int)getWidth(), (int)getHeight());
+	public Rectangle2D.Double getHorizontalCollsionRect(){
+		return new Rectangle2D.Double((int)(getX()+dx), (int)(getY()), (int)getWidth(), (int)getHeight());
 	}
-	public Rectangle getVerticalCollsionRect(){
-		return new Rectangle((int)(getX()), (int)(getY()+dy), (int)getWidth(), (int)getHeight());
+	public Rectangle2D.Double getVerticalCollsionRect(){
+		return new Rectangle2D.Double((int)(getX()), (int)(getY()+dy), (int)getWidth(), (int)getHeight());
 	}
 	public BufferedImage getImage(){
 		return ImageLoader.loadImage(imagePath);

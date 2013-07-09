@@ -8,30 +8,32 @@ public class EnemyOldManNPC extends Enemy {
 
 	private static final long serialVersionUID = 2838843254158087591L;
 	
+	private double speed = 2;
+	
 	
 	public EnemyOldManNPC(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/OldManNPC.png",gameLogic);
-		dx = 1;
+		dx = speed;
 		health = 2;
 
 	}
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
-		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && dy == -1){
-			dx = 1;
+		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && Math.signum(dy) == -1){
+			dx = speed;
 			dy = 0;
 		}
-		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && dy == 1){
-			dx = -1;
+		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && Math.signum(dy) == 1){
+			dx = -speed;
 			dy = 0;
 		}
-		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && dx == 1 ){
+		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && Math.signum(dx) == 1 ){
 			dx = 0;
-			dy = 1;
+			dy = speed;
 		}
-		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && dx == -1 ){
+		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && Math.signum(dx) == -1 ){
 			dx = 0;
-			dy = -1;
+			dy = -speed;
 		}
 		handleEvents = false;
 	}

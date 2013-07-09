@@ -8,9 +8,9 @@
 		<wall>32-736:608</wall>
 	</walls>
 	<traps>
-		<trap>400:400</trap>-
+		
 	</traps>
 	<enemies>
-		<enemy type="ghost">300:300</enemy>
+		<enemy type="spider">300:300</enemy>
 	</enemies>
 </level>
