@@ -163,7 +163,7 @@ public class Hero extends CombatObject {
 			heroLevel += 1;
 			talentPoint += 1;
 			exp = exp - reqExp;
-			reqExp = heroLevel * 50 + 25;
+			reqExp = heroLevel * 30 + 25;
 		}
 		if (player.getKeyboardInput().isSlot1()) {
 			inventory.slotClicked(0);

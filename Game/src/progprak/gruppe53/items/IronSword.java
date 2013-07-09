@@ -1,7 +1,6 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
 public class IronSword extends MeleeWeapons {
@@ -19,31 +18,18 @@ public class IronSword extends MeleeWeapons {
 		draw = false;
 		doInitalizations();
 	}
+
 	private void doInitalizations(){
 		price = 50;
 		ww = 16;
 		wh = 7;
+		xOffset = 11;
+		yOffset = 7;
 		notAttackCe = collisionEvent;
-		attackCe = new DamageCollisionEvent(3, 1,this);
+		damage = 15;
 	}
 	@Override
 	public void doLogic(long delta){
 		
-	}
-	@Override
-	public void attack(boolean attack) {
-		if(attack){
-			setX(owner.getX()+26);
-			setY(owner.getY()+22); 
-			setWidth(ww);
-			setHeight(wh);
-			draw = true;
-			collisionEvent = attackCe;
-		}
-		else {
-			setWidth(setHeight(setX(setY(0))));
-			draw = false;
-			collisionEvent = notAttackCe;
-		}
 	}
 }

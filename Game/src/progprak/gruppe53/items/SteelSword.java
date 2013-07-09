@@ -1,7 +1,6 @@
 package progprak.gruppe53.items;
 
 import progprak.gruppe53.game.CollisionEvent;
-import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
 public class SteelSword extends MeleeWeapons {
@@ -24,27 +23,13 @@ public class SteelSword extends MeleeWeapons {
 		price = 50;
 		ww = 16;
 		wh = 7;
+		xOffset = 11;
+		yOffset = 7;
 		notAttackCe = collisionEvent;
-		attackCe = new DamageCollisionEvent(4, 1,this);
+		damage = 20;
 	}
 	@Override
 	public void doLogic(long delta){
 		
-	}
-	@Override
-	public void attack(boolean attack) {
-		if(attack){
-			setX(owner.getX()+26);
-			setY(owner.getY()+22); 
-			setWidth(ww);
-			setHeight(wh);
-			draw = true;
-			collisionEvent = attackCe;
-		}
-		else {
-			setWidth(setHeight(setX(setY(0))));
-			draw = false;
-			collisionEvent = notAttackCe;
-		}
 	}
 }
