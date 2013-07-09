@@ -55,7 +55,7 @@ public class Game implements Runnable {
 
 
 	
-	private boolean client = true;
+	private boolean client = false;
 
 
 
@@ -107,7 +107,6 @@ public class Game implements Runnable {
 						sr = server.getServerResponse();
 						actors = sr.getActors();
 						hero = sr.getHero();
-						System.out.println("möp");
 					}
 					else {
 						gameLogic.tick(delta,player,null);

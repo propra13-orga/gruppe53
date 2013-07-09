@@ -38,6 +38,7 @@ public class ServerConnection {
 				while(true){
 					try {
 						serverResponse = (ServerResponse) objectIn.readObject();
+						System.out.println(serverResponse);
 					} catch (ClassNotFoundException | IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -55,6 +56,7 @@ public class ServerConnection {
 						try {
 							objectOut.writeObject(player);
 							objectOut.reset();
+							System.out.println("test");
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
