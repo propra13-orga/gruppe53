@@ -43,7 +43,7 @@ public class Game implements Runnable {
 	
 
 	
-	private String startLevel = "levels/TestLevel.xml";
+	private String startLevel = "levels/Level1.xml";
 
 
 

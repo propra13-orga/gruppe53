@@ -12,7 +12,7 @@ public class EnemyGhost extends Enemy {
 		super(x, y, "images/ghost1.png",gameLogic);
 		dx = Math.random()*3-1.5;
 		dy = Math.random()*3-1.5;
-		health = 2;
+		health = 20;
 	}
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){

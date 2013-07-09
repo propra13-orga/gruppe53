@@ -8,11 +8,12 @@ public class OldManNPCBoss extends BossEnemy implements Shooter{
 	private static final long serialVersionUID = 2838843254158087591L;
 	
 	private int castOrder=1;
+	private double speed = 3;
 		
 	public OldManNPCBoss(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/OldManNPC.png",gameLogic);
 		health = 50;
-		dx = 1;
+		dx = speed;
 		nextLevel = "levels/GoalLevel.xml";
 		
 	}
@@ -20,32 +21,32 @@ public class OldManNPCBoss extends BossEnemy implements Shooter{
 	private void shootFireballs(){
 		if(castOrder == 1){
 			gameLogic.addSprite(new Fireball((int)this.getX()-20,(int)this.getY(),gameLogic, this,-1.5,0,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()-18.5),(int)(this.getY()+7.6),gameLogic, this,-0.33,0.57,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()-18.5),(int)(this.getY()+7.6),gameLogic, this,-0.57,0.33,2));
 			gameLogic.addSprite(new Fireball((int)(this.getX()-14.1),(int)(this.getY()+14.1),gameLogic, this,-1.0575,1.0575,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()-7.6),(int)(this.getY()+18.5),gameLogic, this,-0.57,0.33,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()-7.6),(int)(this.getY()+18.5),gameLogic, this,-0.33,0.57,2));
 			gameLogic.addSprite(new Fireball((int)this.getX(),(int)this.getY()+20,gameLogic, this,0,1.5,2));
 		}
 		else if(castOrder == 2){
 			gameLogic.addSprite(new Fireball((int)this.getX(),(int)this.getY()-20,gameLogic, this,0,-1.5,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()-7.6),(int)(this.getY()-18.5),gameLogic, this,-0.57,-0.33,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()-7.6),(int)(this.getY()-18.5),gameLogic, this,-0.33,-0.57,2));
 			gameLogic.addSprite(new Fireball((int)(this.getX()-14.1),(int)(this.getY()-14.1),gameLogic, this,-1.0575,-1.0575,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()-18.5),(int)(this.getY()-7.6),gameLogic, this,-0.33,-0.57,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()-18.5),(int)(this.getY()-7.6),gameLogic, this,-0.57,-0.33,2));
 			gameLogic.addSprite(new Fireball((int)this.getX()-20,(int)this.getY(),gameLogic, this,-1.5,0,2));
 			
 		}
 		else if(castOrder == 3){
 			gameLogic.addSprite(new Fireball((int)this.getX()+20,(int)this.getY(),gameLogic, this,1.5,0,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()+18.5),(int)(this.getY()-7.6),gameLogic, this,0.33,-0.57,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()+18.5),(int)(this.getY()-7.6),gameLogic, this,0.57,-0.33,2));
 			gameLogic.addSprite(new Fireball((int)(this.getX()+14.1),(int)(this.getY()-14.1),gameLogic, this,1.0575,-1.0575,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()+7.6),(int)(this.getY()-18.5),gameLogic, this,0.57,-0.33,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()+7.6),(int)(this.getY()-18.5),gameLogic, this,0.33,-0.57,2));
 			gameLogic.addSprite(new Fireball((int)this.getX(),(int)this.getY()-20,gameLogic, this,0,-1.5,2));
 			
 		}
 		else if(castOrder == 4){
 			gameLogic.addSprite(new Fireball((int)this.getX(),(int)this.getY()+20,gameLogic, this,0,1.5,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()+7.6),(int)(this.getY()+18.5),gameLogic, this,0.57,0.33,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()+7.6),(int)(this.getY()+18.5),gameLogic, this,0.33,0.57,2));
 			gameLogic.addSprite(new Fireball((int)(this.getX()+14.1),(int)(this.getY()+14.1),gameLogic, this,1.0575,1.0575,2));
-			gameLogic.addSprite(new Fireball((int)(this.getX()+18.5),(int)(this.getY()+7.6),gameLogic, this,0.33,0.57,2));
+			gameLogic.addSprite(new Fireball((int)(this.getX()+18.5),(int)(this.getY()+7.6),gameLogic, this,0.57,0.33,2));
 			gameLogic.addSprite(new Fireball((int)this.getX()+20,(int)this.getY(),gameLogic, this,1.5,0,2));
 			
 		}
@@ -56,35 +57,27 @@ public class OldManNPCBoss extends BossEnemy implements Shooter{
 	}
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
-		/*if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL){
-			dx = 0;
+		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && Math.signum(dy) == -1){
+			shootFireballs();
+			dx = speed;
 			dy = 0;
 		}
-		else if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL){
-			dy = 0;
-			dx = 0;
-		}*/
-		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && dy == -1){
+		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && Math.signum(dy) == 1){
 			shootFireballs();
-			dx = 1;
+			dx = -speed;
 			dy = 0;
 		}
-		if(ce.getDirection() == CollisionEvent.DIRECTION_VERTICAL && dy == 1){
-			shootFireballs();
-			dx = -1;
-			dy = 0;
-		}
-		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && dx == 1 ){
+		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && Math.signum(dx) == 1 ){
 			shootFireballs();
 			dx = 0;
-			dy = 1;
+			dy = speed;
 		}
-		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && dx == -1 ){
+		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL && Math.signum(dx) == -1 ){
 			shootFireballs();
 			dx = 0;
-			dy = -1;
+			dy = -speed;
 		}
-
+		handleEvents = false;
 	}
 	
 	public void doLogic(long delta) {

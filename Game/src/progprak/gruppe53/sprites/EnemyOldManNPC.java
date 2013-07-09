@@ -14,7 +14,7 @@ public class EnemyOldManNPC extends Enemy {
 	public EnemyOldManNPC(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/OldManNPC.png",gameLogic);
 		dx = speed;
-		health = 2;
+		health = 20;
 
 	}
 	@Override

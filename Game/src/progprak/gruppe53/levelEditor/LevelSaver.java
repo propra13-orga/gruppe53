@@ -32,7 +32,7 @@ public class LevelSaver {
 		String input = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" + "\n"+ "<level>" + "\n";
 		input += createSpawnXml();
 		input += createEnemyGhostXml();
-		input += createEnemySpiderXml();
+		input += createEnemyOldManNPCXml();
 		input += createTrapXml();
 		input += createFireballTrapXml();
 		input += createFireballWaveTrapXml();
@@ -87,17 +87,17 @@ public class LevelSaver {
 		return enemyGhostXml;
 	}
 	
-	private String createEnemySpiderXml() {
-		String enemySpiderXml = "	<enemies>" + "\n";
+	private String createEnemyOldManNPCXml() {
+		String enemyOldManNPCXml = "	<enemies>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof EnemyOldManNPC) {
-				enemySpiderXml += "		<enemy type=\"spider\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
+				enemyOldManNPCXml += "		<enemy type=\"spider\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
 			}
 		}
-		enemySpiderXml += "	</enemies>";
-		enemySpiderXml += "\n";
-		return enemySpiderXml;
+		enemyOldManNPCXml += "	</enemies>";
+		enemyOldManNPCXml += "\n";
+		return enemyOldManNPCXml;
 	}
 	private String createTrapXml() {
 		String trapXml = "	<traps>" + "\n";

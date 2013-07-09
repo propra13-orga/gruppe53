@@ -95,8 +95,8 @@ public class EditorLevelLoader extends DefaultHandler {
 		case "level.enemies.ghost":
 			spawnEnemyGhost(content);
 			break;
-		case "level.enemies.spider":
-			spawnEnemySpider(content);
+		case "level.enemies.oldman":
+			spawnEnemyOldManNPC(content);
 			break;
 		case "level.traps.trap":
 			spawnTrap(content);
@@ -217,7 +217,7 @@ public class EditorLevelLoader extends DefaultHandler {
 		sprites.add(new EnemyGhost(enemyX, enemyY,null));		
 	}
 	
-	private void spawnEnemySpider(String content) {
+	private void spawnEnemyOldManNPC(String content) {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
