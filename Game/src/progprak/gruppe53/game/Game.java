@@ -51,14 +51,12 @@ public class Game implements Runnable {
 
 	private Player player;
 
-	private Socket server;
+	private ServerConnection server;
 
 
-	private ObjectOutputStream serverObjectOut;
 	
-	private boolean client = false;
+	private boolean client = true;
 
-	private ObjectInputStream serverObjectIn;
 
 
 	
@@ -85,9 +83,8 @@ public class Game implements Runnable {
 		gameLogic.switchLevel(startLevel);
 		if (client) {
 			try {
-				server = new Socket("localhost", 6116);
-				serverObjectOut = new ObjectOutputStream(server.getOutputStream());
-				serverObjectIn = new ObjectInputStream(server.getInputStream());
+				Socket serverSocket = new Socket("localhost", 6116);
+				server = new ServerConnection(serverSocket);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -106,12 +103,11 @@ public class Game implements Runnable {
 				computeDelta();
 				if(alive){
 					if (client) {
-						serverObjectOut.writeObject(player);
-						serverObjectOut.reset();
-						sr = null;
-						sr = (ServerResponse) serverObjectIn.readObject();
+						server.send(player);
+						sr = server.getServerResponse();
 						actors = sr.getActors();
 						hero = sr.getHero();
+						System.out.println("möp");
 					}
 					else {
 						gameLogic.tick(delta,player,null);
@@ -122,7 +118,7 @@ public class Game implements Runnable {
 				gameFrame.render(delta,actors,hero);
 				Thread.sleep(10);
 			}
-			catch(InterruptedException | IOException | ClassNotFoundException e){
+			catch(InterruptedException e){
 				e.printStackTrace();
 			}
 		}

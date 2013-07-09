@@ -1,29 +1,26 @@
-package progprak.gruppe53.server;
+package progprak.gruppe53.game;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import progprak.gruppe53.game.Player;
+import progprak.gruppe53.server.ServerResponse;
 
-public class ClientConnection{
+public class ServerConnection {
 
-	private Socket clientSocket;
+	private Socket serverSocket;
 	private ObjectInputStream objectIn;
 	private ObjectOutputStream objectOut;
 	private Player player;
 	private ServerResponse serverResponse;
-	private int id;
 
-	public ClientConnection(Socket clientSocket,int id) {
-		this.id = id;
-		this.clientSocket = clientSocket;
-
+	public ServerConnection(Socket serverSocket) {
+		this.serverSocket = serverSocket;
 
 		try {
-			objectOut = new ObjectOutputStream(clientSocket.getOutputStream());
-			objectIn = new ObjectInputStream(clientSocket.getInputStream());
+			objectOut = new ObjectOutputStream(serverSocket.getOutputStream());
+			objectIn = new ObjectInputStream(serverSocket.getInputStream());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,15 +37,12 @@ public class ClientConnection{
 			public void run() {
 				while(true){
 					try {
-						//System.out.println("rec:" + id);
-						player = (Player) objectIn.readObject();
+						serverResponse = (ServerResponse) objectIn.readObject();
 					} catch (ClassNotFoundException | IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
 				}
-
 			}
 		});
 
@@ -57,16 +51,14 @@ public class ClientConnection{
 			@Override
 			public void run() {
 				while(true){
-					try{
-						//System.out.println("sen:" + id);
-						if(serverResponse != null){
-							objectOut.writeObject(serverResponse);
+					if(player != null){
+						try {
+							objectOut.writeObject(player);
 							objectOut.reset();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-					}
-					catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
 				}
 			}
@@ -85,8 +77,13 @@ public class ClientConnection{
 	}
 
 
-	public void send(ServerResponse serverResponse) {
-		this.serverResponse = serverResponse;
+	public void send(Player player) {
+		this.player = player;
+	}
+
+
+	public ServerResponse getServerResponse() {
+		return serverResponse;
 	}
 
 }
