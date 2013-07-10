@@ -5,9 +5,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import progprak.gruppe53.server.ServerResponse;
+import progprak.gruppe53.serverOld.ServerResponse;
 
-public class ServerConnection {
+public class ServerConnectionOld {
 
 	private Socket serverSocket;
 	private ObjectInputStream objectIn;
@@ -15,7 +15,7 @@ public class ServerConnection {
 	private Player player;
 	private ServerResponse serverResponse;
 
-	public ServerConnection(Socket serverSocket) {
+	public ServerConnectionOld(Socket serverSocket) {
 		this.serverSocket = serverSocket;
 
 		try {

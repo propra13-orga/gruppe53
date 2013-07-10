@@ -6,7 +6,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import progprak.gruppe53.server.ServerResponse;
+
+import progprak.gruppe53.serverOld.ServerResponse;
 import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
 
@@ -51,11 +52,8 @@ public class Game implements Runnable {
 
 	private Player player;
 
-	private ServerConnection server;
-
-
 	
-	private boolean client = false;
+	private boolean client = true;
 
 
 
@@ -81,15 +79,6 @@ public class Game implements Runnable {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(player.getKeyboardInput());
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
-		if (client) {
-			try {
-				Socket serverSocket = new Socket("localhost", 6116);
-				server = new ServerConnection(serverSocket);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 	@Override
@@ -102,17 +91,9 @@ public class Game implements Runnable {
 			try {
 				computeDelta();
 				if(alive){
-					if (client) {
-						server.send(player);
-						sr = server.getServerResponse();
-						actors = sr.getActors();
-						hero = sr.getHero();
-					}
-					else {
-						gameLogic.tick(delta,player,null);
-						actors = gameLogic.getActors();
-						hero = gameLogic.getHero();
-					}
+					gameLogic.tick(delta,player,null);
+					actors = gameLogic.getActors();
+					hero = gameLogic.getHero();
 				}
 				gameFrame.render(delta,actors,hero);
 				Thread.sleep(10);
