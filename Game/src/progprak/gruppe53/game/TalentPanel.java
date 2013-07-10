@@ -26,6 +26,11 @@ public class TalentPanel extends JPanel {
 	private JButton button1, button2, button3, button4, button5, button6,
 			button7, button8, button9, button10, button11, button12;
 
+	/**
+	 * @param game
+	 *            : Requires the Game Initialises the TalentPanel for all
+	 *            Players
+	 */
 	public TalentPanel(Game game) {
 
 		this.game = game;
@@ -33,6 +38,9 @@ public class TalentPanel extends JPanel {
 
 	}
 
+	/**
+	 * Does the Objects Initializations
+	 */
 	private void doInitalizations() {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
@@ -42,6 +50,7 @@ public class TalentPanel extends JPanel {
 
 		talentPanel.setLayout(new GridLayout(0, 3, 50, 25));
 
+		// Creates buttons with the Talents' Icon
 		button1 = new JButton(new ImageIcon(
 				ImageLoader.loadImage("images/entrance.png")));
 		button2 = new JButton(new ImageIcon(
@@ -67,14 +76,19 @@ public class TalentPanel extends JPanel {
 		button12 = new JButton(new ImageIcon(
 				ImageLoader.loadImage("images/goldReg.png")));
 
+		// Adds an ActionListener to Button1
 		button1.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 0.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(0);
 			}
 		});
 
+		// Creates JPanel talent1
 		talent1 = new JPanel() {
 			/**
 		 * 
@@ -83,19 +97,27 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected with Button1
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
 				g.drawString("Maximal HP (5)", 70, 10);
 			}
 		};
+
+		// Adds ActionListener to Button2
 		button2.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 1.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(1);
 			}
 		});
+
+		// Creates JPanel talent2
 		talent2 = new JPanel() {
 			/**
 		 * 
@@ -104,19 +126,27 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected with Button2
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
 				g.drawString("Maximal Mana (5)", 65, 10);
 			}
 		};
+
+		// Adds ActionListener to Button3
 		button3.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 2.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(2);
 			}
 		});
+
+		// Creates JPanel talent3
 		talent3 = new JPanel() {
 			/**
 		 * 
@@ -125,6 +155,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected with Button3
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -134,11 +165,15 @@ public class TalentPanel extends JPanel {
 		button4.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 3.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(3);
 			}
 		});
 
+		// Creates JPanel talent4
 		talent4 = new JPanel() {
 			/**
 		 * 
@@ -147,6 +182,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected to Button4
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -156,10 +192,15 @@ public class TalentPanel extends JPanel {
 		button5.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 4.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(4);
 			}
 		});
+
+		// Creates JPanel talent5
 		talent5 = new JPanel() {
 			/**
 		 * 
@@ -168,6 +209,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected to Button5
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -177,10 +219,15 @@ public class TalentPanel extends JPanel {
 		button6.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 5.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(5);
 			}
 		});
+
+		// Creates JPanel talent6
 		talent6 = new JPanel() {
 			/**
 		 * 
@@ -189,6 +236,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected with Button6
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -198,10 +246,15 @@ public class TalentPanel extends JPanel {
 		button7.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 6.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(6);
 			}
 		});
+
+		// Creates JPanel talent7
 		talent7 = new JPanel() {
 			/**
 		 * 
@@ -210,6 +263,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected with Button7
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -219,11 +273,15 @@ public class TalentPanel extends JPanel {
 		button8.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 7.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(7);
 			}
 		});
 
+		// Creates JPanel talent8
 		talent8 = new JPanel() {
 			/**
 			 * 
@@ -232,6 +290,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -121259327350214129L;
 
 			@Override
+			// Contains Information about the Talent connected with Button8
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -242,10 +301,15 @@ public class TalentPanel extends JPanel {
 		button9.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 8.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(8);
 			}
 		});
+
+		// Creates JPanel talent9
 		talent9 = new JPanel() {
 			/**
 			 * 
@@ -254,6 +318,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -5883970746108560897L;
 
 			@Override
+			// Contains Information about the Talent connected with Button9
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -264,10 +329,15 @@ public class TalentPanel extends JPanel {
 		button10.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 9.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(9);
 			}
 		});
+
+		// Creates JPanel talent 10
 		talent10 = new JPanel() {
 
 			/**
@@ -276,6 +346,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = -3102176724700588912L;
 
 			@Override
+			// Contains Information about the Talent connected with Button10
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -285,10 +356,15 @@ public class TalentPanel extends JPanel {
 		button11.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 10.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(10);
 			}
 		});
+
+		// Creates JPanel talent11
 		talent11 = new JPanel() {
 			/**
 			 * 
@@ -296,6 +372,7 @@ public class TalentPanel extends JPanel {
 			private static final long serialVersionUID = 584946302480038906L;
 
 			@Override
+			// Contains Information about the Talent connected with Button11
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -306,15 +383,21 @@ public class TalentPanel extends JPanel {
 		button12.addActionListener(new ActionListener() {
 
 			@Override
+			// If the Button is clicked,
+			// it uses the Players function talentButtonClicked,
+			// with ID 11.
 			public void actionPerformed(ActionEvent e) {
 				game.getPlayer().talentButtonClicked(11);
 			}
 		});
+
+		// Creates JPanel talent12
 		talent12 = new JPanel() {
 
 			private static final long serialVersionUID = 5522572243012397709L;
 
 			@Override
+			// Contains Information about the Talent connected with Button12
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.setColor(Color.BLUE);
@@ -322,6 +405,7 @@ public class TalentPanel extends JPanel {
 			}
 		};
 
+		// Disables all Buttons, that shall not be used from beginning on
 		button4.setEnabled(false);
 		button5.setEnabled(false);
 		button6.setEnabled(false);
@@ -331,6 +415,7 @@ public class TalentPanel extends JPanel {
 		button10.setEnabled(false);
 		button11.setEnabled(false);
 		button12.setEnabled(false);
+		// Adds the Buttons and Panels to the talentPanel
 		talentPanel.add(button1);
 		talentPanel.add(button2);
 		talentPanel.add(button3);
@@ -359,6 +444,11 @@ public class TalentPanel extends JPanel {
 		setPreferredSize(getPreferredSize());
 	}
 
+	/**
+	 * @param hero
+	 *            : Requires the Hero Manages the ability of the different
+	 *            Buttons
+	 */
 	public void render(Hero hero) {
 		if (hero.getTalentTree().getTalent(0) >= 3) {
 			button4.setEnabled(true);
