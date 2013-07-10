@@ -50,7 +50,7 @@ public class Inventory implements Serializable {
 	}
 
 	/**
-	 * @param Required new Item for Inventory
+	 * @param item: Required new Item for Inventory
 	 * Adds the new Item to an empty InventorySlot
 	 */
 	public void addItem(Item item) {
@@ -70,7 +70,7 @@ public class Inventory implements Serializable {
 	}
 
 	/**
-	 * @param Required the SlotNumber
+	 * @param slotNumber: Required the SlotNumber
 	 * Uses the Item in the Inventoryslot with the SlotNumber
 	 */
 	public void slotClicked(int slotNumber) {
