@@ -311,7 +311,7 @@ public class Hero extends CombatObject {
 				mana = mana + 8 + ((talentTree.getTalent(7) * 2));
 			}
 			if (health <= maxHealth - (talentTree.getTalent(6))) {
-				health = health + talentTree.getTalent(6);
+				health = health + Math.floor(talentTree.getTalent(6)/2);
 			}
 
 			if (heroLevel <= maxLevel) {
