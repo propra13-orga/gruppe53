@@ -17,6 +17,11 @@ public class InventorySlot extends JPanel{
 
 	private int slotNumber;
 
+	/**
+	 * @param sa: Requires a SlotAction
+	 * @param slotNumber: Has a SlotNumber
+	 * Initialises an Inventoryslot with the Number "slotNumber"
+	 */
 	public InventorySlot(SlotAction sa,int slotNumber){
 		slotAction = sa;
 		this.slotNumber = slotNumber;
@@ -64,16 +69,29 @@ public class InventorySlot extends JPanel{
 		}
 	}
 
-
+	/**
+	 * @param slotAction: Requires a SlotAction
+	 * sets the Objects SlotAction to the parameters' SlotAction
+	 */
 	public void setSlotAction(SlotAction slotAction) {
 		this.slotAction = slotAction;
 	}
+	
+	/**
+	 * @param item: Requires an Item
+	 * If the current Item is different to the Parameters' Item,
+	 * it is switched and calls repaint.
+	 */
 	public void render(Item item){
 		if(this.item != item){
 			this.item = item;
 			repaint();
 		}
 	}
+	
+	/**
+	 * @return Returns the Slots slotNumber
+	 */
 	public int getSlotNumber() {
 		return slotNumber;
 	}

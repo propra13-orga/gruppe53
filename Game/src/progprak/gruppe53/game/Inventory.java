@@ -17,6 +17,11 @@ public class Inventory implements Serializable {
 	private Hero hero;
 	private transient GameLogic gameLogic;
 	
+	/**
+	 * @param hero: Requires a Hero
+	 * @param gameLogic: Requires the gameLogic
+	 * Initialises the Inventory of the Hero
+	 */
 	public Inventory(Hero hero,GameLogic gameLogic) {
 		items = new Item[inventorySlots+1];
 		this.hero = hero;

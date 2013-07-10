@@ -26,6 +26,10 @@ public class InventoryPanel extends JPanel {
 	private Game game;
 	private SlotAction useAction;
 
+	/**
+	 * @param game: Requires the Game
+	 * Initialises the InventoryPanel for all Players
+	 */
 	public InventoryPanel(Game game) {
 		super();
 		this.game = game;
@@ -86,7 +90,7 @@ public class InventoryPanel extends JPanel {
 	 * @param weapon: Requires the Weaponslot
 	 * @param armor: Requires the Armorslot
 	 * 
-	 * calls functions "render" of the differen Slots.
+	 * calls functions "render" of the different Slots.
 	 */
 	public void render(Item items[], Weapon weapon, Armor armor) {
 		for (int i = 0; i < inventorySlots; i++) {
