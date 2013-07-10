@@ -13,7 +13,7 @@ public class CollisionEvent {
 	public static final int EVENT_SWITCH_LEVEL			= 4;
 	public static final int EVENT_GOAL					= 5;
 	public static final int EVENT_PICKUP				= 6;
-	public static final int EVENT_USE_LEVER				= 7;
+	public static final int EVENT_PLATE_PRESSED			= 7;
 	
 	public static final int DIRECTION_HORIZONTAL		= 1;
 	public static final int DIRECTION_VERTICAL			= 2;
@@ -89,19 +89,11 @@ public class CollisionEvent {
 		}
 	}
 	
-	public void setNewLeverStatus(PressurePlate lever, Wall wall1, Wall wall2, Wall wall3){
+	public void setNewLeverStatus(PressurePlate pressurePlate, Wall wall1, Wall wall2, Wall wall3){
 		long current = System.nanoTime();
-		if(event == EVENT_USE_LEVER && current - lastLeverSwitch >= 2e9){
-			lever.setStatus();
-			if(wall1 != null){
-				wall1.setStatus();
-			}
-			if(wall2 != null){
-				wall2.setStatus();
-			}
-			if(wall3 != null){
-				wall3.setStatus();
-			}
+		if(event == EVENT_PLATE_PRESSED && current - lastLeverSwitch >= 2e9){
+
+			
 			lastLeverSwitch = current;
 		}
 	}
