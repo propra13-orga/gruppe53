@@ -18,6 +18,7 @@ public class PressurePlate extends Sprite implements Collidable{
 	public PressurePlate(int x, int y, String imagePath) {
 		super(x,y,imagePath);
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_PLATE_PRESSED,this);
+		collisionEvent.setNewStatus( null, null, null);
 	}
 
 	@Override

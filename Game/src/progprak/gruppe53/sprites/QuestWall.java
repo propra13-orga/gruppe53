@@ -31,5 +31,17 @@ public class QuestWall extends Sprite implements Collidable{
 
 	public void setStatus(){
 		visible = !visible;
+		if (visible) {
+			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_MASSIVE,
+					this);
+			this.imagePath = "images/wall.png";
+		} else {
+			collisionEvent = new CollisionEvent(CollisionEvent.EVENT_NOTHING,
+					this);
+			this.imagePath = "";
+		}
+
 	}
+
 }
+

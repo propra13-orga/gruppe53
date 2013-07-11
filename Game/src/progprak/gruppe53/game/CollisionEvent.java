@@ -1,7 +1,6 @@
 package progprak.gruppe53.game;
 
-import progprak.gruppe53.sprites.PressurePlate;
-import progprak.gruppe53.sprites.Wall;
+import progprak.gruppe53.sprites.QuestWall;
 
 public class CollisionEvent {
 
@@ -89,7 +88,7 @@ public class CollisionEvent {
 		}
 	}
 	
-	public void setNewLeverStatus(PressurePlate pressurePlate, Wall wall1, Wall wall2, Wall wall3){
+	public void setNewStatus(QuestWall QuestWall1, QuestWall QuestWall2, QuestWall QuestWall3){
 		long current = System.nanoTime();
 		if(event == EVENT_PLATE_PRESSED && current - lastLeverSwitch >= 2e9){
 
