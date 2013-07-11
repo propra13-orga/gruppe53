@@ -2,6 +2,7 @@ package progprak.gruppe53.levelEditor;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -10,7 +11,11 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import progprak.gruppe53.items.ClothArmor;
 import progprak.gruppe53.items.HealthPotion;
+import progprak.gruppe53.items.PinkGlitterWand;
+import progprak.gruppe53.items.WoodenSword;
+import progprak.gruppe53.sprites.ChargingBoss;
 import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.EnemyOldManNPC;
 import progprak.gruppe53.sprites.EnemySpider;
@@ -20,10 +25,14 @@ import progprak.gruppe53.sprites.FireballWaveTrap;
 import progprak.gruppe53.sprites.Goal;
 import progprak.gruppe53.sprites.GroundTrap;
 import progprak.gruppe53.sprites.LevelSwitch;
+import progprak.gruppe53.sprites.NecromancerBoss;
+import progprak.gruppe53.sprites.OldManNPC;
+import progprak.gruppe53.sprites.OldManNPCBoss;
 import progprak.gruppe53.sprites.PortalEntrance;
 import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
+import progprak.gruppe53.sprites.WizardBoss;
 
 public class EditorLevelLoader extends DefaultHandler {
 	
@@ -93,14 +102,8 @@ public class EditorLevelLoader extends DefaultHandler {
 		case "level.walls.wall":
 			spawnWall(content);
 			break;
-		case "level.enemies.ghost":
-			spawnEnemyGhost(content);
-			break;
-		case "level.enemies.oldman":
-			spawnEnemyOldManNPC(content);
-			break;
-		case "level.enemies.spider":
-			spawnEnemySpider(content);
+		case "level.enemies.enemy":
+			spawnEnemy(content);
 			break;
 		case "level.traps.trap":
 			spawnTrap(content);
@@ -123,15 +126,44 @@ public class EditorLevelLoader extends DefaultHandler {
 		case "level.spawn":
 			setHeroSpawnPoint(content);
 			break;
+		case "level.npc":
+			setNpc(content);
+			break;
 		case "level.healthpotions.healthpotion":
-			spawnHealthPotions(content);
+			spawnHealthPotion(content);
 			break;
 		case "level.fireballwavetraps.fireballwavetrap":
 			spawnFireballWaveTrap(content);
 			break;
+		case "level.items.item":
+			spawnItem(content);
+			break;
 		default:
 			break;
 		}
+	}
+	
+	private void spawnItem(String content) {
+		String itemEntry[] = content.split(":");
+		int xLocation = Integer.parseInt(itemEntry[0]);
+		int yLocation = Integer.parseInt(itemEntry[1]);
+		if(attributes.getValue("type").equals("pinkglitterwand")){
+			sprites.add(new PinkGlitterWand(xLocation,yLocation, null));
+		}
+		else if(attributes.getValue("type").equals("woodensword")){
+			sprites.add(new WoodenSword(xLocation,yLocation, null));
+		}
+		else if(attributes.getValue("type").equals("clotharmor")){
+			sprites.add(new ClothArmor(xLocation,yLocation, null));
+		}
+	}
+	
+	private void setNpc(String content) {
+		String npcData[] = content.split(";");
+		String npcEntry[] = npcData[0].split(":");
+		int xLocation = Integer.parseInt(npcEntry[0]);
+		int yLocation = Integer.parseInt(npcEntry[1]);
+		sprites.add(new OldManNPC(xLocation,yLocation,null, npcData[1]));		
 	}
 
 	private void setGoal(String content) {
@@ -214,25 +246,31 @@ public class EditorLevelLoader extends DefaultHandler {
 		sprites.add(new GroundTrap(trapX, trapY,null));		
 	}
 
-	private void spawnEnemyGhost(String content) {
+	private void spawnEnemy(String content) {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
 		int enemyY = Integer.parseInt(enemyData[1]);
-		sprites.add(new EnemyGhost(enemyX, enemyY,null));		
-	}
-	
-	private void spawnEnemyOldManNPC(String content) {
-		String enemyData[] = content.split(":");
-		int enemyX = Integer.parseInt(enemyData[0]);
-		int enemyY = Integer.parseInt(enemyData[1]);
-		sprites.add(new EnemyOldManNPC(enemyX, enemyY,null));		
-	}
-	
-	private void spawnEnemySpider(String content) {
-		String enemyData[] = content.split(":");
-		int enemyX = Integer.parseInt(enemyData[0]);
-		int enemyY = Integer.parseInt(enemyData[1]);
-		sprites.add(new EnemySpider(enemyX, enemyY, null));
+		if(attributes.getValue("type").equals("ghost")){
+			sprites.add(new EnemyGhost(enemyX, enemyY,null));
+		}
+		else if(attributes.getValue("type").equals("spider")){
+			sprites.add(new EnemySpider(enemyX, enemyY, null));
+		}
+		else if(attributes.getValue("type").equals("oldman")){
+			sprites.add(new EnemyOldManNPC(enemyX, enemyY, null));
+		}
+		else if(attributes.getValue("type").equals("wizboss")){
+			sprites.add(new WizardBoss(enemyX, enemyY,null));
+		}
+		else if(attributes.getValue("type").equals("chargeboss")){
+			sprites.add(new ChargingBoss(enemyX, enemyY,null));
+		}
+		else if(attributes.getValue("type").equals("necboss")){
+			sprites.add(new NecromancerBoss(enemyX, enemyY,null));
+		}
+		else if(attributes.getValue("type").equals("oldmanboss")){
+			sprites.add(new OldManNPCBoss(enemyX, enemyY,null));
+		}
 	}
 
 	private void spawnWall(String content) {
@@ -261,7 +299,7 @@ public class EditorLevelLoader extends DefaultHandler {
 			}
 		}
 	}
-	private void spawnHealthPotions(String content) {
+	private void spawnHealthPotion(String content) {
 		String healthPotionData[] = content.split(":");
 		int healthPotionX = Integer.parseInt(healthPotionData[0]);
 		int healthPotionY = Integer.parseInt(healthPotionData[1]);
