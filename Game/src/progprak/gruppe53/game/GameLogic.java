@@ -15,13 +15,14 @@ public class GameLogic {
 	private String level;
 
 
-	private Hero heros[];
+	private ArrayList<Hero> heros;
 	private Player player;
 	private Player player2;
 
 
 	public GameLogic() {
-		heros = new Hero[2];
+		
+		heros = new ArrayList<Hero>();
 		sprites =  new ArrayList<Sprite>();
 		doInitalizations();
 
@@ -31,7 +32,7 @@ public class GameLogic {
 		addHero(hero,0);
 	}
 	public void addHero(Hero hero,int playerId){
-		heros[playerId] = hero;
+		heros.add(playerId,hero);
 	}
 
 	private void doInitalizations(){
@@ -41,16 +42,16 @@ public class GameLogic {
 	//Do Logics for every Sprite-Object
 	protected void doLogic(long delta){
 		actors = (ArrayList<Sprite>) sprites.clone();
-		heros[0].setPlayer(player);
-		heros[0].doLogic(delta);
-		heros[0].testForCollision();
-		heros[0].resetHandleEvents();
-		if(heros[1] != null){
+		heros.get(0).setPlayer(player);
+		heros.get(0).doLogic(delta);
+		heros.get(0).testForCollision();
+		heros.get(0).resetHandleEvents();
+		if(heros.size() > 1 && heros.get(1) != null){
 			if(player2 != null){
-				heros[1].setPlayer(player2);
-				heros[1].doLogic(delta);
-				heros[1].testForCollision();
-				heros[1].resetHandleEvents();
+				heros.get(1).setPlayer(player2);
+				heros.get(1).doLogic(delta);
+				heros.get(1).testForCollision();
+				heros.get(1).resetHandleEvents();
 			}
 		}
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
@@ -63,9 +64,9 @@ public class GameLogic {
 		} 
 	}
 	protected void move(long delta){
-		heros[0].move(delta);
-		if(heros[1] != null){
-			heros[1].move(delta);
+		heros.get(0).move(delta);
+		if(heros.size() > 1 && heros.get(1) != null){
+			heros.get(1).move(delta);
 		}
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
@@ -81,8 +82,8 @@ public class GameLogic {
 		ArrayList<Sprite> sp = new ArrayList<Sprite>();
 		LevelLoaderSax.generateLevel(newLevel,sp, this);
 		sprites = sp;
-		if(heros[0].getWeapon() != null){
-			sprites.add(heros[0].getWeapon());
+		if(heros.get(0).getWeapon() != null){
+			sprites.add(heros.get(0).getWeapon());
 		}
 		actors = (ArrayList<Sprite>) sprites.clone();
 	}
@@ -107,10 +108,10 @@ public class GameLogic {
 	}
 
 	public Hero getHero(int i) {
-		return heros[i];
+		return heros.get(i);
 	}
 	public Hero getHero(){
-		return heros[0];
+		return heros.get(0);
 	}
 
 	public void removeSprite(Sprite s) {
@@ -145,11 +146,11 @@ public class GameLogic {
 	}
 	public ArrayList<Sprite> getActors(int playerId) {
 		ArrayList<Sprite> tmp = (ArrayList<Sprite>) actors.clone();
-		if(playerId == 0 && heros[1] != null){
-			tmp.add(heros[1]);
+		if(playerId == 0 && heros.size() > 1 && heros.get(1) != null){
+			tmp.add(heros.get(1));
 		}
 		else {
-			tmp.add(heros[0]);
+			tmp.add(heros.get(0));
 		}
 		return tmp;
 	}
