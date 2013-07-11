@@ -10,15 +10,16 @@ public class SpiderWebBall extends Projectile implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
-
+	private double slowFactor;
 	
-	public SpiderWebBall(int x, int y, GameLogic gameLogic, Shooter shooter, double dx, double dy, int faction){
+	public SpiderWebBall(int x, int y, GameLogic gameLogic, Shooter shooter, double dx, double dy, int faction, double slowFactor){
 		super(x,y,"images/spiderweb.png", gameLogic,shooter);
 		this.setWidth(16);
 		this.setHeight(16);
 		this.dx = dx;
 		this.dy = dy;
 		this.faction = faction;
+		this.slowFactor = slowFactor;
 		doInitalizations();
 	}
 	
@@ -36,7 +37,7 @@ public class SpiderWebBall extends Projectile implements Collidable{
 	@Override
 	protected void doneDamage() {
 		super.doneDamage();
-		
+		gameLogic.getHero().setSlow(slowFactor);
 		gameLogic.removeSprite(this);
 		shooter.shootRemoved();
 	}
