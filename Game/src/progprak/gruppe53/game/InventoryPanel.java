@@ -86,11 +86,13 @@ public class InventoryPanel extends JPanel {
 	}
 
 	/**
+	 * 
+	 * calls functions "render" of the different Slots.
+	 * 
 	 * @param items: Requires the Inventoryslots
 	 * @param weapon: Requires the Weaponslot
 	 * @param armor: Requires the Armorslot
-	 * 
-	 * calls functions "render" of the different Slots.
+	 *  
 	 */
 	public void render(Item items[], Weapon weapon, Armor armor) {
 		for (int i = 0; i < inventorySlots; i++) {
