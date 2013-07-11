@@ -1,6 +1,6 @@
 package progprak.gruppe53.game;
 
-import progprak.gruppe53.sprites.QuestWall;
+import java.awt.geom.Point2D;
 
 public class CollisionEvent {
 
@@ -24,7 +24,7 @@ public class CollisionEvent {
 	private int newX,newY;
 	private String newLevel;
 	public Collidable actor;
-	private long lastLeverSwitch;
+	private Point2D[] walls;
 	
 	public CollisionEvent(int event,Collidable actor){
 		this.event = event;
@@ -88,12 +88,9 @@ public class CollisionEvent {
 		}
 	}
 	
-	public void setNewStatus(QuestWall QuestWall1, QuestWall QuestWall2, QuestWall QuestWall3){
-		long current = System.nanoTime();
-		if(event == EVENT_PLATE_PRESSED && current - lastLeverSwitch >= 2e9){
-
-			
-			lastLeverSwitch = current;
+	public void setNewStatus(Point2D walls[]){
+		if(event == EVENT_PLATE_PRESSED){
+			this.walls = walls;
 		}
 	}
 	/**
@@ -110,5 +107,8 @@ public class CollisionEvent {
 	}
 	public void setActor(Collidable actor) {
 		this.actor = actor;
+	}
+	public Point2D[] getQuestWalls() {
+		return walls;
 	}
 }

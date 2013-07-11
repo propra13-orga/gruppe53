@@ -106,14 +106,15 @@ abstract public class CombatObject extends Sprite implements Collidable{
 			}
 			else if (ce.getEvent() == CollisionEvent.EVENT_TELEPORT) {
 				handleTeleportEvent(ce.getNewX(),ce.getNewY());
-
 			}
 			else if (ce.getEvent() == CollisionEvent.EVENT_GOAL){
 				handleGoalEvent(ce);
 			}
 			else if(ce.getEvent() == CollisionEvent.EVENT_SWITCH_LEVEL){
 				handleSwitchLevelEvent(ce);
-				
+			}
+			else if (ce.getEvent() == CollisionEvent.EVENT_PLATE_PRESSED){
+				handlePressurePlateEvent(ce);
 			}
 		}
 		
@@ -141,6 +142,10 @@ abstract public class CombatObject extends Sprite implements Collidable{
 		handleEvents = true;
 	}
 	protected void doneDamage() {
+		
+	}
+
+	protected void handlePressurePlateEvent(CollisionEvent ce) {
 		
 	}
 }

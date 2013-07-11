@@ -348,6 +348,17 @@ public class Hero extends CombatObject {
 		super.handleSwitchLevelEvent(ce);
 		gameLogic.switchLevel(ce.getNewLevel());
 	}
+	
+	@Override
+	protected void handlePressurePlateEvent(CollisionEvent ce) {
+		super.handlePressurePlateEvent(ce);
+		((PressurePlate) ce.getActor()).press();
+		if(!((PressurePlate) ce.getActor()).isPressed()){
+			((PressurePlate) ce.getActor()).setPressed(true);
+			gameLogic.switchQuestWalls(ce.getQuestWalls());
+		}
+		
+	}
 
 	/**
 	 * @return the lifes
