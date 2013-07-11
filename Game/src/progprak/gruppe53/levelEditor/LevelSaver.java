@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.EnemyOldManNPC;
+import progprak.gruppe53.sprites.EnemySpider;
 import progprak.gruppe53.sprites.FireballTrap;
 import progprak.gruppe53.sprites.FireballWaveTrap;
 import progprak.gruppe53.sprites.Goal;
@@ -33,6 +34,7 @@ public class LevelSaver {
 		input += createSpawnXml();
 		input += createEnemyGhostXml();
 		input += createEnemyOldManNPCXml();
+		input += createEnemySpiderXml();
 		input += createTrapXml();
 		input += createFireballTrapXml();
 		input += createFireballWaveTrapXml();
@@ -92,12 +94,25 @@ public class LevelSaver {
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof EnemyOldManNPC) {
-				enemyOldManNPCXml += "		<enemy type=\"spider\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
+				enemyOldManNPCXml += "		<enemy type=\"oldman\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" +"\n";
 			}
 		}
 		enemyOldManNPCXml += "	</enemies>";
 		enemyOldManNPCXml += "\n";
 		return enemyOldManNPCXml;
+	}
+	
+	private String createEnemySpiderXml() {
+		String enemySpiderXml = "	<enemies>" + "/n";
+		for( int i=0; i<sprites.size();i++) {
+			Sprite sprite = sprites.get(i);
+			if( sprite instanceof EnemySpider) {
+				enemySpiderXml += "		<enemy type=\"spider\">" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</enemy>" + "\n";
+			}
+		}
+		enemySpiderXml += "  </enemies>";
+		enemySpiderXml += "\n";
+		return enemySpiderXml;
 	}
 	private String createTrapXml() {
 		String trapXml = "	<traps>" + "\n";
