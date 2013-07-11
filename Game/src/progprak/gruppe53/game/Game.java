@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import progprak.gruppe53.serverOld.ServerResponse;
@@ -53,7 +54,13 @@ public class Game implements Runnable {
 	private Player player;
 
 	
-	private boolean client = true;
+	private boolean client = false;
+
+	private Socket clientSocket;
+
+	private ObjectOutputStream oos;
+
+	private ObjectInputStream ois;
 
 
 
@@ -79,6 +86,17 @@ public class Game implements Runnable {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(player.getKeyboardInput());
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
+		if(client){
+			try {
+				clientSocket = new Socket("localhost",12108);
+				oos = new ObjectOutputStream(clientSocket.getOutputStream());
+				ois = new ObjectInputStream(clientSocket.getInputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 	@Override
@@ -86,14 +104,28 @@ public class Game implements Runnable {
 		started = true;
 		ArrayList<Sprite> actors = null;
 		Hero hero = null;
-		ServerResponse sr;
+		ServerResponse sr = null;
 		while(started){
 			try {
 				computeDelta();
 				if(alive){
+					if(client){
+						try {
+							oos.writeObject(player);
+							oos.reset();
+							sr = (ServerResponse) ois.readObject();
+						} catch (IOException | ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 					gameLogic.tick(delta,player,null);
 					actors = gameLogic.getActors();
 					hero = gameLogic.getHero();
+					if(sr!=null){
+						actors = sr.getActors();
+						hero = sr.getHero();
+					}
 				}
 				gameFrame.render(delta,actors,hero);
 				Thread.sleep(10);

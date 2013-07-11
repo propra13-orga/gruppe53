@@ -64,6 +64,9 @@ public class GameLogic {
 	}
 	protected void move(long delta){
 		heros[0].move(delta);
+		if(heros[1] != null){
+			heros[1].move(delta);
+		}
 		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			s.move(delta);
@@ -142,7 +145,7 @@ public class GameLogic {
 	}
 	public ArrayList<Sprite> getActors(int playerId) {
 		ArrayList<Sprite> tmp = (ArrayList<Sprite>) actors.clone();
-		if(playerId == 0){
+		if(playerId == 0 && heros[1] != null){
 			tmp.add(heros[1]);
 		}
 		else {
