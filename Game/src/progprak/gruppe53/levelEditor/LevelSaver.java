@@ -103,7 +103,7 @@ public class LevelSaver {
 	}
 	
 	private String createEnemySpiderXml() {
-		String enemySpiderXml = "	<enemies>" + "/n";
+		String enemySpiderXml = "	<enemies>" + "\n";
 		for( int i=0; i<sprites.size();i++) {
 			Sprite sprite = sprites.get(i);
 			if( sprite instanceof EnemySpider) {
