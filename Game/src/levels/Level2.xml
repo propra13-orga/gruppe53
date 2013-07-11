@@ -2,8 +2,16 @@
 <level>
 	<spawn>374:46</spawn>
 	<enemies>
-		<enemy type="ghost">235:342</enemy>
-		<enemy type="ghost">552:341</enemy>
+		<enemy type="ghost">239:335</enemy>
+		<enemy type="ghost">527:337</enemy>
+		<enemy type="ghost">718:465</enemy>
+		<enemy type="ghost">127:523</enemy>
+	</enemies>
+	<enemies>
+		<enemy type="oldman">508:42</enemy>
+		<enemy type="oldman">287:262</enemy>
+	</enemies>
+	<enemies>
 	</enemies>
 	<traps>
 		<trap>359:101</trap>
@@ -48,6 +56,8 @@
 		<fireballtrap>203:388;2.0:0.0</fireballtrap>
 		<fireballtrap>580:414;-2.0:0.0</fireballtrap>
 	</fireballtraps>
+	<fireballwavetraps>
+	</fireballwavetraps>
 	<portals>
 	</portals>
 	<healthpotions>

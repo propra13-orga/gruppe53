@@ -6,6 +6,10 @@
 	</enemies>
 	<enemies>
 	</enemies>
+   <enemies>
+   		<enemy type="spider">580:312</enemy>
+		<enemy type="spider">206:326</enemy>
+  </enemies>
 	<traps>
 	</traps>
 	<fireballtraps>
@@ -15,8 +19,8 @@
 	<portals>
 	</portals>
 	<healthpotions>
-				<healthpotion>375:170</healthpotion>
-				<healthpotion>370:300</healthpotion>
+		<healthpotion>375:170</healthpotion>
+		<healthpotion>370:300</healthpotion>
 	</healthpotions>
 	<goal></goal>
 	<walls>

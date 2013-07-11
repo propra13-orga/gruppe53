@@ -2,17 +2,15 @@
 <level>
 	<spawn>725:48</spawn>
 	<enemies>
-		<enemy type="ghost">460:62</enemy>
-		<enemy type="ghost">253:42</enemy>
-		<enemy type="ghost">40:263</enemy>
-		<enemy type="ghost">444:177</enemy>
-		<enemy type="ghost">333:237</enemy>
-		<enemy type="ghost">718:284</enemy>
-		<enemy type="ghost">681:467</enemy>
-		<enemy type="ghost">472:528</enemy>
-		<enemy type="ghost">540:319</enemy>
-		<enemy type="ghost">355:361</enemy>
 	</enemies>
+	<enemies>
+		<enemy type="oldman">83:43</enemy>
+		<enemy type="oldman">335:255</enemy>
+	</enemies>
+	<enemies>
+		<enemy type="spider">515:326</enemy>
+		<enemy type="spider">413:191</enemy>
+ 	 </enemies>
 	<traps>
 		<trap>331:507</trap>
 		<trap>252:566</trap>
