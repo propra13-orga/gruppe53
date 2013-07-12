@@ -12,6 +12,7 @@ public class ChargingBoss extends BossEnemy {
 		super(x, y, "images/Monster1.png",gameLogic);
 		health = 50;
 		nextLevel = "levels/Level7.xml";
+		damageType = 3;
 		chargeAttack(gameLogic.getHero().getX(), gameLogic.getHero().getY());
 		
 	}

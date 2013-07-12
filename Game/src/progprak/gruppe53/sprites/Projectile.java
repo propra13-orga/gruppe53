@@ -30,4 +30,5 @@ abstract public class Projectile extends CombatObject {
 		// TODO Auto-generated method stub
 		super.handleTeleportEvent(newX, newY);
 	}
+	
 }

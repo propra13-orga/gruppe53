@@ -15,7 +15,7 @@ public class EnemyOldManNPC extends Enemy {
 		super(x, y, "images/OldManNPC.png",gameLogic);
 		dx = speed;
 		health = 20;
-
+		damageType = 3;
 	}
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){

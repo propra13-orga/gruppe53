@@ -18,6 +18,7 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		nextLevel = "levels/Level4.xml";
 		dx = 0;
 		dy = 2;
+		damageType = 5;
 	}
 	
 	private void shootGreenFireball(){

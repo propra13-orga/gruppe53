@@ -20,6 +20,11 @@ public class LeatherArmor extends Armor {
 	{
 		super(0,0,"",gameLogic);
 		armorLVL = 2;
+		blowResistance = 0.2;
+		pierceResistance = 0.2;
+		bluntResistance = 0.3;
+		fireResistance = -0.2;
+		arcaneResistance = 0;
 	}
 
 	@Override

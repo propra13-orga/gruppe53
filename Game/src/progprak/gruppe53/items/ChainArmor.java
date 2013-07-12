@@ -20,6 +20,11 @@ public class ChainArmor extends Armor {
 	{
 		super(0,0,"",gameLogic);
 		armorLVL = 3;
+		blowResistance = 0.3;
+		pierceResistance = 0.4;
+		bluntResistance = 0.5;
+		fireResistance = -0.5;
+		arcaneResistance = -0.4;
 	}
 
 	@Override

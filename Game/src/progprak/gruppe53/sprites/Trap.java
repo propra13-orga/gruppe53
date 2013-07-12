@@ -7,7 +7,6 @@ import progprak.gruppe53.game.GameLogic;
 public abstract class Trap extends CombatObject implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
-
 	
 	public Trap(int x, int y,String imagePath,GameLogic gameLogic){
 		super(x,y,imagePath,gameLogic);
@@ -29,5 +28,6 @@ public abstract class Trap extends CombatObject implements Collidable{
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
 

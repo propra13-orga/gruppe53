@@ -19,6 +19,7 @@ public class GreenFireball extends Projectile implements Collidable{
 		this.dx = dx;
 		this.dy = dy;
 		this.faction = faction;
+		damageType = 4;
 		doInitalizations();
 	}
 	

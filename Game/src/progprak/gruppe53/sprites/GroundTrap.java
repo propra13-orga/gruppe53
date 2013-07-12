@@ -11,6 +11,7 @@ public class GroundTrap extends Trap {
 
 	public GroundTrap(int x, int y,GameLogic gameLogic) {
 		super(x, y, "images/groundTrap1.png",gameLogic);
+		damageType = 2;
 	}
 
 

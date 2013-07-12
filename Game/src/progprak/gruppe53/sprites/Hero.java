@@ -370,7 +370,23 @@ public class Hero extends CombatObject {
 	@Override
 	protected double damageReduce() {
 		if (armor != null) {
-			return 1 / ((armor.getarmorLVL() + talentTree.getTalent(2)) * 1.3);
+			if (takenDamageType == 1) {
+			return 1 / ((armor.getArmorLVL() + talentTree.getTalent(2)) * 1.3)*(1+armor.getBlowResistance());
+			}
+			else if (takenDamageType == 2) {
+				return 1 / ((armor.getArmorLVL() + talentTree.getTalent(2)) * 1.3)*(1+armor.getPierceResistance());
+			}
+			else if (takenDamageType == 3) {
+				return 1 / ((armor.getArmorLVL() + talentTree.getTalent(2)) * 1.3)*(1+armor.getBluntResistance());
+			}
+			else if (takenDamageType == 4) {
+				return 1 / ((armor.getArmorLVL() + talentTree.getTalent(2)) * 1.3)*(1+armor.getFireResistance());
+			}
+			else if (takenDamageType == 5) {
+				return 1 / ((armor.getArmorLVL() + talentTree.getTalent(2)) * 1.3)*(1+armor.getArcaneResistance());
+			}
+			else
+				return 1 / ((armor.getArmorLVL() + talentTree.getTalent(2)) * 1.3);
 		} else
 			return 1;
 	}

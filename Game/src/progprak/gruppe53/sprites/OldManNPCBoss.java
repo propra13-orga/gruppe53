@@ -15,6 +15,7 @@ public class OldManNPCBoss extends BossEnemy implements Shooter{
 		health = 50;
 		dx = speed;
 		nextLevel = "levels/GoalLevel.xml";
+		damageType = 1;
 		
 	}
 	

@@ -16,6 +16,7 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 		nextLevel = "levels/Level10.xml";
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
+		damageType = 1;
 	}
 	
 	private void shootFireball(double xPosition, double yPosition){

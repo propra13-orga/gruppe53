@@ -13,6 +13,11 @@ public class ClothArmor extends Armor {
 	public ClothArmor(int x, int y,GameLogic gameLogic) {
 		super(x, y, "images/clothArmor.png",gameLogic);
 		armorLVL = 1;
+		blowResistance = 0.1;
+		pierceResistance = 0.1;
+		bluntResistance = 0.2;
+		fireResistance = -0.3;
+		arcaneResistance = -0.1;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -27,6 +32,8 @@ public class ClothArmor extends Armor {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 	
 

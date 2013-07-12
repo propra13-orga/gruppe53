@@ -17,6 +17,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	protected double health = 1;
 	protected double maxHealth = 1;
 	protected long lastDamage = 0L;
+	protected int damageType;
+	protected int takenDamageType;
 	
 	
 	protected transient CollisionEvent collisionEvent;
@@ -67,7 +69,8 @@ abstract public class CombatObject extends Sprite implements Collidable{
 				if((current - lastDamage)> 1e9){
 					lastDamage = current;
 					((CombatObject)de.getActor()).doneDamage();
-					if((health -= (de.getDamage()*damageReduce())) <= 0){
+					takenDamageType = ((CombatObject) de.getActor()).getDamageType();
+					if((health -= (de.getDamage()*damageReduce())*(0.75+Math.random()*0.5)) <= 0){
 						((CombatObject)de.getActor()).doneKill(this);
 						handleDie();
 					}
@@ -147,5 +150,9 @@ abstract public class CombatObject extends Sprite implements Collidable{
 
 	protected void handlePressurePlateEvent(CollisionEvent ce) {
 		
+	}
+	
+	public int getDamageType() {
+		return damageType;
 	}
 }

@@ -18,7 +18,8 @@ public class Fireball extends Projectile implements Collidable{
 		this.dx = dx;
 		this.dy = dy;
 		this.faction = faction;
-		doInitalizations();
+		damageType = 4;
+		doInitalizations();		
 	}
 	
 	@Override
