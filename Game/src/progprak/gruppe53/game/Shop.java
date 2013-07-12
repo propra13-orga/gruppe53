@@ -31,11 +31,11 @@ public class Shop implements Serializable {
 	}
 
 	public void slotClicked(int slotNumber) {
-		if (items[slotNumber] != null) {
-			hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
-			hero.getInventory().addItem(items[slotNumber]);
-			items[slotNumber] = null;
-			items[slotNumber] = new HealthPotion(gameLogic);
+		if (items[slotNumber] != null && hero.getMoney() >= items[slotNumber].getPrice() && hero.getInventory().hasFreeSlot()) {
+				hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
+				hero.getInventory().addItem(items[slotNumber]);
+				items[slotNumber] = null;
+				items[slotNumber] = new HealthPotion(gameLogic);
 		}
 	}
 
