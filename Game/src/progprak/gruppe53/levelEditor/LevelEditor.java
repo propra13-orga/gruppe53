@@ -227,14 +227,17 @@ public class LevelEditor extends JFrame implements ActionListener,
 		trapSpears.addActionListener(this);
 		tools.add(trapSpears);
 		JButton trapFireball = new JButton(new ImageIcon(ImageLoader.loadImage("images/FireballRedEditor.png")));
+		trapFireball.setPreferredSize(new Dimension(66,42));
 		trapFireball.setActionCommand(TRAP_FIREBALL);
 		trapFireball.addActionListener(this);
 		tools.add(trapFireball);
 		JButton trapFireball2 = new JButton("FBT");
+		trapFireball2.setPreferredSize(new Dimension(66,42));
 		trapFireball2.setActionCommand(TRAP_FIREBALL2);
 		trapFireball2.addActionListener(this);
 		tools.add(trapFireball2);
 		JButton fireballWaveTrap = new JButton(new ImageIcon(ImageLoader.loadImage("images/FireballGreen.png")));
+		fireballWaveTrap.setPreferredSize(new Dimension(66,42));
 		fireballWaveTrap.setActionCommand(TRAP_FIREBALLWAVE);
 		fireballWaveTrap.addActionListener(this);
 		tools.add(fireballWaveTrap);
@@ -242,10 +245,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		portal.setActionCommand(OBJECT_PORTAL);
 		portal.addActionListener(this);
 		tools.add(portal);
-		JButton levelSwitch = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance2.png")));
+		/*JButton levelSwitch = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance2.png")));
 		levelSwitch.setActionCommand(OBJECT_LEVELSWITCH);
 		levelSwitch.addActionListener(this);
-		tools.add(levelSwitch);
+		tools.add(levelSwitch);*/
 		JButton goal = new JButton(new ImageIcon(ImageLoader.loadImage("images/exit.png")));
 		goal.setActionCommand(OBJECT_GOAL);
 		goal.addActionListener(this);
