@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.EnemyOldManNPC;
@@ -15,6 +16,7 @@ import progprak.gruppe53.sprites.Goal;
 import progprak.gruppe53.sprites.GroundTrap;
 import progprak.gruppe53.sprites.LevelSwitch;
 import progprak.gruppe53.sprites.PortalEntrance;
+import progprak.gruppe53.sprites.PressurePlate;
 import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
@@ -42,6 +44,7 @@ public class LevelSaver {
 		input += createHealthPotionXml();
 		input += createGoalXml();
 		input += createLevelSwitchXml();
+		input += createPressurePlateXml();
 		input += createWallXml();
 		input += "</level>";
 		createFile(input);
@@ -61,6 +64,21 @@ public class LevelSaver {
 			e.printStackTrace();
 		}
 
+	}
+	private String createPressurePlateXml() {
+			String pressurePlateXml = " <pressureplates>";
+			for (int i=0; i < sprites.size(); i++) {
+				Sprite sprite = sprites.get(i);
+				if (sprite instanceof PressurePlate) {
+					int x = (int)sprite.getX();
+					int y = (int)sprite.getY();
+					pressurePlateXml += LevelEditor.saveData[x][y];
+				}
+			}
+			pressurePlateXml += "	</pressureplates>";
+			pressurePlateXml += "\n";
+			return pressurePlateXml;
+				
 	}
 
 	private String createSpawnXml() {

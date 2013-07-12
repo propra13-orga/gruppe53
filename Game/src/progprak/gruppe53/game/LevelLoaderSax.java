@@ -1,7 +1,9 @@
 package progprak.gruppe53.game;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -27,12 +29,13 @@ import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.LevelSwitch;
 import progprak.gruppe53.sprites.NecromancerBoss;
 import progprak.gruppe53.sprites.OldManNPC;
+import progprak.gruppe53.sprites.OldManNPCBoss;
 import progprak.gruppe53.sprites.PortalEntrance;
+import progprak.gruppe53.sprites.PressurePlate;
 import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
 import progprak.gruppe53.sprites.WizardBoss;
-import progprak.gruppe53.sprites.OldManNPCBoss;
 
 public class LevelLoaderSax extends DefaultHandler {
 	
@@ -119,6 +122,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		case "level.portals.portal":
 			spawnPortal(content);
 			break;
+		case "level.pressureplates.pressureplate":
+			spawnPressurePlate(content);
+			break;
 		case "level.levelswitch":
 			spawnLevelSwitch(content);
 			break;
@@ -143,6 +149,24 @@ public class LevelLoaderSax extends DefaultHandler {
 		default:
 			break;
 		}
+	}
+	
+	@SuppressWarnings("null")
+	private void spawnPressurePlate (String content) {
+		String pressurePlateData [] = content.split("-");
+		String pressurePlateLocation [] = pressurePlateData [0].split(":");
+		String imagePath = pressurePlateData [1];
+		String wallCoordinates [] = pressurePlateData [2].split(";");
+		int xLocation = Integer.parseInt(pressurePlateLocation[0]);
+		int yLocation = Integer.parseInt(pressurePlateLocation[1]);
+		Point2D affectedWalls [] = null;
+		for (int i=0;i<=wallCoordinates.length;i++) {
+			String location [] = wallCoordinates [i].split(":");
+			int x = Integer.parseInt(location [0]);
+			int y = Integer.parseInt(location [1]);			
+			affectedWalls [i].setLocation(x,y);
+		}
+		sprites.add(new PressurePlate(xLocation,yLocation,imagePath,affectedWalls));
 	}
 
 	private void spawnItem(String content) {

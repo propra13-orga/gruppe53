@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,6 +36,7 @@ import progprak.gruppe53.sprites.Goal;
 import progprak.gruppe53.sprites.GroundTrap;
 import progprak.gruppe53.sprites.LevelSwitch;
 import progprak.gruppe53.sprites.PortalEntrance;
+import progprak.gruppe53.sprites.PressurePlate;
 import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
@@ -67,6 +69,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String OBJECT_JACKET = "clothArmor";
 	private static final String OBJECT_HEALTHPOTION = "healthPotion";
 	private static final String OBJECT_WALLLEVELSWITCH = "wallLevelSwitch";
+	private static final String OBJECT_PRESSUREPLATE = "pressurePlate";
 	private static final String SAVE = "save";
 	private static final String DELETE = "delete";
 	private static final String LOAD = "load";
@@ -265,6 +268,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		wallLevelSwitch.setActionCommand(OBJECT_WALLLEVELSWITCH);
 		wallLevelSwitch.addActionListener(this);
 		tools.add(wallLevelSwitch);
+		JButton pressurePlate = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance2.png")));
+		pressurePlate.setActionCommand(OBJECT_PRESSUREPLATE);
+		pressurePlate.addActionListener(this);
+		tools.add(pressurePlate);
 		/*JButton clothArmor = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
 		clothArmor.setActionCommand(OBJECT_JACKET);
 		clothArmor.addActionListener(this);
@@ -425,6 +432,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (actionCommand == OBJECT_WALLLEVELSWITCH) {
 			image = ImageLoader.loadImage("images/tor1.png");
 			c = toolkit.createCustomCursor(image, new Point(0, 0), "wallLevelSwitch");
+			level.setCursor(c);
+			currentSprite = actionCommand;
+		}
+		
+		else if (actionCommand == OBJECT_PRESSUREPLATE) {
+			image = ImageLoader.loadImage("images/entrance2.png");
+			c = toolkit.createCustomCursor(image, new Point(0, 0), "pressurePlate");
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
@@ -606,6 +620,13 @@ public class LevelEditor extends JFrame implements ActionListener,
 				sprites.add(new HealthPotion(e.getX(),e.getY(), null));
 			}
 		}
+		else if (currentSprite == OBJECT_PRESSUREPLATE) {
+			if(checkCollision(e.getX(),e.getY(),32,32)==false){
+				xPosition = e.getX();
+				yPosition = e.getY();
+				new AttributeDialog(this,OBJECT_PRESSUREPLATE);
+			}
+		}
 		else if (currentSprite == DELETE) {
 			int x = e.getX();
 			int y = e.getY();
@@ -678,6 +699,9 @@ public class LevelEditor extends JFrame implements ActionListener,
 						else if(sprite instanceof WallLevelSwitch){							
 							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
+						else if(sprite instanceof PressurePlate){							
+							new AttributeDialog(this,OBJECT_PRESSUREPLATE);
+						}
 					}
 					if(sprite.getY()>=y && sprite.getY()<y+1){
 						deleteNumber = i;
@@ -699,6 +723,9 @@ public class LevelEditor extends JFrame implements ActionListener,
 						}
 						else if(sprite instanceof WallLevelSwitch){							
 							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
+						}
+						else if(sprite instanceof PressurePlate){							
+							new AttributeDialog(this,OBJECT_PRESSUREPLATE);
 						}
 					}
 				}
@@ -724,6 +751,9 @@ public class LevelEditor extends JFrame implements ActionListener,
 						else if(sprite instanceof WallLevelSwitch){							
 							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
 						}
+						else if(sprite instanceof PressurePlate){							
+							new AttributeDialog(this,OBJECT_PRESSUREPLATE);
+						}
 					}
 					if(sprite.getY()<=y && sprite.getY()+size>y){
 						deleteNumber = i;
@@ -745,6 +775,9 @@ public class LevelEditor extends JFrame implements ActionListener,
 						}
 						else if(sprite instanceof WallLevelSwitch){							
 							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
+						}
+						else if(sprite instanceof PressurePlate){							
+							new AttributeDialog(this,OBJECT_PRESSUREPLATE);
 						}
 					}
 				}
@@ -769,6 +802,9 @@ public class LevelEditor extends JFrame implements ActionListener,
 						}
 						else if(sprite instanceof WallLevelSwitch){							
 							new AttributeDialog(this,OBJECT_WALLLEVELSWITCH);
+						}
+						else if(sprite instanceof PressurePlate){							
+							new AttributeDialog(this,OBJECT_PRESSUREPLATE);
 						}
 					}
 				}
@@ -935,6 +971,11 @@ public class LevelEditor extends JFrame implements ActionListener,
 		else if (spriteType == "wallLevelSwitch"){
 			sprites.add(new WallLevelSwitch(xPosition,yPosition,AttributeDialog.attribute1,AttributeDialog.attribute5));
 			LevelEditor.saveData[xPosition][yPosition]="	<levelswitch type=\"wall\" direction=\"" + AttributeDialog.attribute1 + "\">" + xPosition + ":" + yPosition + ";" + AttributeDialog.attribute5 + "</levelswitch>" + "\n";
+			((GamePanel)level).render(1,sprites);
+			level.repaint();
+		}
+		else if (spriteType == "pressurePlate"){
+			sprites.add(new PressurePlate(xPosition,yPosition,AttributeDialog.attribute5,AttributeDialog.attribute8));
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}
