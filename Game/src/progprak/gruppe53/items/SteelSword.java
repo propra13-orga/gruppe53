@@ -9,7 +9,7 @@ public class SteelSword extends BlowMeleeWeapons {
 
 
 	public SteelSword(int x, int y,GameLogic gameLogic){
-		super( x, y, "images/sword.png", gameLogic);
+		super( x, y, "images/steelSwordField.png", gameLogic);
 		
 		doInitalizations();
 	}

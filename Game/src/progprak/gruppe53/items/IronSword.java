@@ -8,7 +8,7 @@ public class IronSword extends BlowMeleeWeapons {
 	private static final long serialVersionUID = 123456789L;
 	
 	public IronSword(int x, int y,GameLogic gameLogic){
-		super( x, y, "images/sword.png", gameLogic);
+		super( x, y, "images/ironSwordField.png", gameLogic);
 		
 		doInitalizations();
 	}

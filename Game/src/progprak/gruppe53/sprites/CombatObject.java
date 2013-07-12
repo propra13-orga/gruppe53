@@ -13,7 +13,6 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	private static final long serialVersionUID = -6996362585746746561L;
 	
 	protected int faction = 0;
-
 	protected double health = 1;
 	protected double maxHealth = 1;
 	protected long lastDamage = 0L;

@@ -12,7 +12,7 @@ public class WoodenSword extends BlowMeleeWeapons {
 
 
 	public WoodenSword(int x, int y,GameLogic gameLogic){
-		super( x, y, "images/sword.png", gameLogic);
+		super( x, y, "images/woodenSwordField.png", gameLogic);
 		
 		doInitalizations();
 	}
