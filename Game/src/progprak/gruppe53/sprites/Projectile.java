@@ -22,6 +22,7 @@ abstract public class Projectile extends CombatObject {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	@Override
 	protected void handleDamageEvent(CollisionEvent ce) {
 	}

@@ -19,6 +19,7 @@ import progprak.gruppe53.items.WoodenSword;
 import progprak.gruppe53.items.SteelSword;
 import progprak.gruppe53.items.IronSword;
 import progprak.gruppe53.items.StoneSword;
+import progprak.gruppe53.items.CasterSword;
 import progprak.gruppe53.sprites.ChargingBoss;
 import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.EnemyOldManNPC;
@@ -189,6 +190,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 		else if(attributes.getValue("type").equals("stonesword")){
 			sprites.add(new StoneSword(xLocation,yLocation, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("castersword")){
+			sprites.add(new CasterSword(xLocation,yLocation, gameLogic));
 		}
 		else if(attributes.getValue("type").equals("clotharmor")){
 			sprites.add(new ClothArmor(xLocation,yLocation, gameLogic));

@@ -36,6 +36,7 @@ abstract public class CombatObject extends Sprite implements Collidable{
 	protected void doInitalizations() {
 		initCollisionEvent();
 	}
+	
 	protected void initCollisionEvent() {
 		collisionEvent = new DamageCollisionEvent(10,faction,this);
 	}
