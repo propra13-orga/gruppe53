@@ -3,6 +3,7 @@ package progprak.gruppe53.levelEditor;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ public class AttributeDialog extends JDialog implements ActionListener {
 	public static String attribute8;
 	public static double attribute6;
 	public static double attribute7;
+	public static Point2D affectedWallsArray [] = null;
 	private LevelEditor le;
 
 	private String spriteType = "";
@@ -224,6 +226,13 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			else if (spriteType == "pressurePlate") {
 				attribute5 = "images/" + textField5.getText() + ".png";
 				attribute8 = textField2.getText();
+				String wallCoordinates [] = attribute8.split(";");
+				for (int i=0;i<=wallCoordinates.length;i++) {
+					String location [] = wallCoordinates [i].split(":");
+					int x = Integer.parseInt(location [0]);
+					int y = Integer.parseInt(location [1]);			
+					affectedWallsArray [i].setLocation(x,y);
+				}
 			}
 			le.addSprite(spriteType);
 			dispose();
