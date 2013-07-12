@@ -24,7 +24,6 @@ public class ImageLoader {
 					images.put(imagePath, image);
 
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

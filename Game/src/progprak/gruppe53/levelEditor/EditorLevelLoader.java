@@ -163,7 +163,7 @@ public class EditorLevelLoader extends DefaultHandler {
 			int y = Integer.parseInt(location [1]);			
 			affectedWalls [i].setLocation(x,y);
 		}
-		sprites.add(new PressurePlate(xLocation,yLocation,imagePath,affectedWalls));
+		sprites.add(new PressurePlate(xLocation,yLocation,affectedWalls));
 		LevelEditor.saveData [xLocation] [yLocation] = "		<pressureplate>" + xLocation + ":" + yLocation + "-" + imagePath + "-" + pressurePlateData [2] + "</pressureplate>" + "\n";
 	}
 	

@@ -975,7 +975,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.repaint();
 		}
 		else if (spriteType == "pressurePlate"){
-			sprites.add(new PressurePlate(xPosition,yPosition,AttributeDialog.attribute5,AttributeDialog.attribute8));
+			//sprites.add(new PressurePlate(xPosition,yPosition,AttributeDialog.attribute5,AttributeDialog.attribute8));
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}
