@@ -155,8 +155,7 @@ public class LevelLoaderSax extends DefaultHandler {
 	private void spawnPressurePlate (String content) {
 		String pressurePlateData [] = content.split("-");
 		String pressurePlateLocation [] = pressurePlateData [0].split(":");
-		String imagePath = pressurePlateData [1];
-		String wallCoordinates [] = pressurePlateData [2].split(";");
+		String wallCoordinates [] = pressurePlateData [1].split(";");
 		int xLocation = Integer.parseInt(pressurePlateLocation[0]);
 		int yLocation = Integer.parseInt(pressurePlateLocation[1]);
 		Point2D affectedWalls [] = null;
@@ -166,7 +165,7 @@ public class LevelLoaderSax extends DefaultHandler {
 			int y = Integer.parseInt(location [1]);			
 			affectedWalls [i].setLocation(x,y);
 		}
-		sprites.add(new PressurePlate(xLocation,yLocation,imagePath,affectedWalls));
+		sprites.add(new PressurePlate(xLocation,yLocation,affectedWalls));
 	}
 
 	private void spawnItem(String content) {

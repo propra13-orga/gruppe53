@@ -20,8 +20,8 @@ public class PressurePlate extends Sprite implements Collidable {
 				this);
 	}
 
-	public PressurePlate(int x, int y, String imagePath, Point2D walls[]) {
-		super(x, y, imagePath);
+	public PressurePlate(int x, int y,Point2D walls[]) {
+		super(x, y, "images/entrance2.png");
 		collisionEvent = new CollisionEvent(CollisionEvent.EVENT_PLATE_PRESSED,this);
 		collisionEvent.setNewStatus(walls);
 

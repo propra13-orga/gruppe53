@@ -90,7 +90,7 @@ public class GameLogic {
 			sprites.add(heros.get(0).getWeapon());
 		}
 		Point2D tmp[] = {new Point2D.Double(0,0),new Point2D.Double(0,32),new Point2D.Double(32,0)};
-		sprites.add(new PressurePlate(120, 44,"images/goldreg.png", tmp));
+		sprites.add(new PressurePlate(120, 44, tmp));
 		actors = (ArrayList<Sprite>) sprites.clone();
 	}
 

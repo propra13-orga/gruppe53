@@ -173,10 +173,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			setVisible(true);
 		}
 		else if (spriteType == "pressurePlate") {
-			text.add(label14);
-			text.add(textField5);
 			text.add(label15);
 			text.add(textField2);
+			text.add(label10);
+			text.add(textField1);
 			text.add(label8);
 			text.add(textField3);
 			text.add(label9);
@@ -224,7 +224,6 @@ public class AttributeDialog extends JDialog implements ActionListener {
 				attribute2 = Integer.parseInt(textField2.getText());
 			}
 			else if (spriteType == "pressurePlate") {
-				attribute5 = "images/" + textField5.getText() + ".png";
 				attribute8 = textField2.getText();
 				String wallCoordinates [] = attribute8.split(";");
 				for (int i=0;i<=wallCoordinates.length;i++) {
