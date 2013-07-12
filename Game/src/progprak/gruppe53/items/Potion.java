@@ -10,9 +10,15 @@ public abstract class Potion extends Item implements Collidable{
 		protected Hero owner;
 		protected int price = 0;
 		
+		/**
+		 * Constructor of Potions you can find on the field
+		 * @param String imagePath: Requires the images
+		 * @param GameLogic: Requires the GameLogic
+		 */
 		public Potion(int x, int y, String imagePath,GameLogic gameLogic) {
 			super(x, y, imagePath,gameLogic);
 		}
+		// setOwner determines the Hero as the owner of Potions
 		public void setOwner(Hero owner){
 			this.owner = owner;
 		}

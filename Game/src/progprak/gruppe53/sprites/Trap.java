@@ -8,7 +8,11 @@ public abstract class Trap extends CombatObject implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
 
-	
+	/**
+	 * Constructor of our Traps.
+	 * @param String imagePath: Determines the images of Traps.
+	 * @param GameLogic: Requires the GameLogic
+	 */
 	public Trap(int x, int y,String imagePath,GameLogic gameLogic){
 		super(x,y,imagePath,gameLogic);
 		faction = 2;
@@ -21,6 +25,7 @@ public abstract class Trap extends CombatObject implements Collidable{
 	}
 
 	@Override
+	// Determines the collisionEvent if you collide with a Trap.
 	public CollisionEvent getCollisionEvent() {
 		return collisionEvent;
 	}
@@ -30,4 +35,3 @@ public abstract class Trap extends CombatObject implements Collidable{
 		
 	}
 }
-
