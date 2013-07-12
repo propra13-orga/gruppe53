@@ -25,6 +25,7 @@ public class AttributeDialog extends JDialog implements ActionListener {
 	public static int attribute3;
 	public static int attribute4;
 	public static String attribute5;
+	public static String attribute8;
 	public static double attribute6;
 	public static double attribute7;
 	private LevelEditor le;
@@ -67,7 +68,7 @@ public class AttributeDialog extends JDialog implements ActionListener {
 		JLabel label5 = new JLabel(attributeLabel5);
 		String attributeLabel6 = "TeleportYLocation:";
 		JLabel label6 = new JLabel(attributeLabel6);
-		String attributeLabel7 = "LevelPath:";
+		String attributeLabel7 = "LevelName:";
 		JLabel label7 = new JLabel(attributeLabel7);
 		String attributeLabel8 = "Not required";
 		JLabel label8 = new JLabel(attributeLabel8);
@@ -79,6 +80,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 		JLabel label12 = new JLabel(attributeLabel10);
 		String attributeLabel11 = "YRespawn:";
 		JLabel label13 = new JLabel(attributeLabel11);
+		String attributeLabel12 = "ImageName";
+		JLabel label14 = new JLabel(attributeLabel12);
+		String attributeLabel13 = "Affected Walls";
+		JLabel label15 = new JLabel(attributeLabel13);
 		String msgString1 = "Please enter Attributes:";
 		JLabel titelLabel = new JLabel(msgString1);
 		JButton saveButton = new JButton(btnString1);
@@ -165,6 +170,17 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			text.add(textField4);
 			setVisible(true);
 		}
+		else if (spriteType == "pressurePlate") {
+			text.add(label14);
+			text.add(textField5);
+			text.add(label15);
+			text.add(textField2);
+			text.add(label8);
+			text.add(textField3);
+			text.add(label9);
+			text.add(textField4);
+			setVisible(true);
+		}
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == btnString2){
@@ -204,6 +220,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			else if (spriteType == "fireballWaveTrap") {
 				attribute1 = Integer.parseInt(textField1.getText());
 				attribute2 = Integer.parseInt(textField2.getText());
+			}
+			else if (spriteType == "pressurePlate") {
+				attribute5 = "images/" + textField5.getText() + ".png";
+				attribute8 = textField2.getText();
 			}
 			le.addSprite(spriteType);
 			dispose();
