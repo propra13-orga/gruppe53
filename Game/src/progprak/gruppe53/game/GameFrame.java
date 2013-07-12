@@ -7,6 +7,9 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.text.DefaultCaret;
 
 import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
@@ -33,6 +36,8 @@ public class GameFrame extends JFrame {
 	private Game game;
 	
 	private Menu menu;
+
+	private JTextArea chatWindow;
 	
 	public GameFrame(String title,Game game) {
 		super(title);
@@ -69,9 +74,15 @@ public class GameFrame extends JFrame {
 		mainPane.add(talentPanel, new Integer(0));
 
 		
+		chatWindow = new JTextArea();
+		chatWindow.setEditable(false);
+		((DefaultCaret)chatWindow.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		JScrollPane chatScroll = new JScrollPane(chatWindow);
+		add(chatScroll,BorderLayout.EAST);
+		
 
 
-		add(mainPane);
+		add(mainPane,BorderLayout.CENTER);
 		add(menu,BorderLayout.NORTH);
 		add(infoWindow,BorderLayout.SOUTH);
 		pack();
@@ -80,7 +91,7 @@ public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = -3116185873584567253L;
 
-	public synchronized void render(long delta, ArrayList<Sprite> actors, Hero hero) {
+	public void render(long delta, ArrayList<Sprite> actors, Hero hero) {
 		showShop(hero.isShopOpen());
 		showTalentTree(hero.isTalentTree());
 		gamePanel.render(delta,actors,hero);

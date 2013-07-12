@@ -22,12 +22,8 @@ public class GamePanel extends JPanel{
 	/*
 	 * All Sprites to draw on the panel
 	 */
-	ArrayList<Sprite> sprites;
+	private ArrayList<Sprite> sprites;
 	
-	
-	
-	int speed=10;
-
 
 	
 	public GamePanel() {
@@ -47,7 +43,9 @@ public class GamePanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		for(ListIterator<Sprite> it = sprites.listIterator();it.hasNext();){
+		ArrayList<Sprite> actors = (ArrayList<Sprite>) sprites.clone();
+		
+		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(s.isDraw()){
 				s.drawObjects(g);
