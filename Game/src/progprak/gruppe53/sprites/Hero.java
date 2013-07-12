@@ -169,37 +169,36 @@ public class Hero extends CombatObject {
 			exp = exp - reqExp;
 			reqExp = heroLevel * 20 + 25;
 		}
-		if (player.getKeyboardInput().isSlot1()) {
+		if(player.getKeyboardInput().isSlot()[0]){
 			inventory.slotClicked(0);
 		}
-		if (player.getKeyboardInput().isSlot2()) {
+		if(player.getKeyboardInput().isSlot()[1]){
 			inventory.slotClicked(1);
 		}
-		if (player.getKeyboardInput().isSlot3()) {
+		if(player.getKeyboardInput().isSlot()[2]){
 			inventory.slotClicked(2);
 		}
-		if (player.getKeyboardInput().isSlot4()) {
+		if(player.getKeyboardInput().isSlot()[3]){
 			inventory.slotClicked(3);
 		}
-		if (player.getKeyboardInput().isSlot5()) {
+		if(player.getKeyboardInput().isSlot()[4]){
 			inventory.slotClicked(4);
 		}
-		if (player.getKeyboardInput().isSlot6()) {
+		if(player.getKeyboardInput().isSlot()[5]){
 			inventory.slotClicked(5);
 		}
-		if (player.getKeyboardInput().isSlot7()) {
+		if(player.getKeyboardInput().isSlot()[6]){
 			inventory.slotClicked(6);
 		}
-		if (player.getKeyboardInput().isSlot8()) {
+		if(player.getKeyboardInput().isSlot()[7]){
 			inventory.slotClicked(7);
 		}
-		if (player.getKeyboardInput().isSlot9()) {
+		if(player.getKeyboardInput().isSlot()[8]){
 			inventory.slotClicked(8);
 		}
-		if (player.getKeyboardInput().isSlot10()) {
+		if(player.getKeyboardInput().isSlot()[9]){
 			inventory.slotClicked(9);
 		}
-
 	}
 
 	/**

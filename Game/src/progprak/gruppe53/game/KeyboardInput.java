@@ -4,35 +4,23 @@ import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
 
-public class KeyboardInput implements KeyEventDispatcher,Serializable {
-	
+public class KeyboardInput implements KeyEventDispatcher, Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7895064104386555018L;
-	//Directions
-	private boolean up 		= false;
-	private boolean down 	= false;
-	private boolean left	= false;
-	private boolean right	= false;
-	private boolean slot1   = false;
-	private boolean slot2   = false;
-	private boolean slot3   = false;
-	private boolean slot4   = false;
-	private boolean slot5   = false;
-	private boolean slot6   = false;
-	private boolean slot7   = false;
-	private boolean slot8   = false;
-	private boolean slot9   = false;
-	private boolean slot10   = false;
-	
-	
-	
-	private boolean attack	= false;
+	// Directions
+	private boolean up = false;
+	private boolean down = false;
+	private boolean left = false;
+	private boolean right = false;
+	private boolean[] slot = { false, false, false, false, false, false, false,
+			false, false, false };
+
+	private boolean attack = false;
 	private boolean shop = false;
 	private boolean talentTree = false;
-	private long lastSlot;
-
 
 	/**
 	 * @return the up
@@ -72,95 +60,54 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-		if(e.getID() == KeyEvent.KEY_PRESSED){
-			long current = System.nanoTime();
-			if(keyCode==KeyEvent.VK_W)
-				up=true;
-			if(keyCode==KeyEvent.VK_S)
-				down=true;
-			if(keyCode==KeyEvent.VK_A)
-				left=true;
-			if(keyCode==KeyEvent.VK_D)
-				right=true;
-			if(keyCode==KeyEvent.VK_ENTER)
-				attack=true;
-			if(keyCode==KeyEvent.VK_NUMPAD1 && current - lastSlot >= 1e9 ){
-				slot1=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD2 && current - lastSlot >= 1e9){
-				slot2=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD3 && current - lastSlot >= 1e9){
-				slot3=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD4 && current - lastSlot >= 1e9){
-				slot4=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD5 && current - lastSlot >= 1e9){
-				slot5=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD6 && current - lastSlot >= 1e9){
-				slot6=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD7 && current - lastSlot >= 1e9){
-				slot7=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD8 && current - lastSlot >= 1e9){
-				slot8=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD9 && current - lastSlot >= 1e9){
-				slot9=true;
-				lastSlot = current;
-			}
-			if(keyCode==KeyEvent.VK_NUMPAD0 && current - lastSlot >= 1e9){
-				slot10=true;
-				lastSlot = current;
-			}
-		}
-		else if(e.getID() == KeyEvent.KEY_RELEASED){
-			if(keyCode==KeyEvent.VK_W)
-				up=false;
-			if(keyCode==KeyEvent.VK_S)
-				down=false;
-			if(keyCode==KeyEvent.VK_A)
-				left=false;
-			if(keyCode==KeyEvent.VK_D)
-				right=false;
-			if(keyCode==KeyEvent.VK_ENTER)
-				attack=false;
-			if(keyCode==KeyEvent.VK_E)
-				shop=!shop;
-			if(keyCode==KeyEvent.VK_R)
-				talentTree=!talentTree;
-			if(keyCode==KeyEvent.VK_NUMPAD1)
-				slot1=false;			
-			if(keyCode==KeyEvent.VK_NUMPAD2)
-				slot2=false;
-			if(keyCode==KeyEvent.VK_NUMPAD3)
-				slot3=false;
-			if(keyCode==KeyEvent.VK_NUMPAD4)
-				slot4=false;
-			if(keyCode==KeyEvent.VK_NUMPAD5)
-				slot5=false;
-			if(keyCode==KeyEvent.VK_NUMPAD6)
-				slot6=false;
-			if(keyCode==KeyEvent.VK_NUMPAD7)
-				slot7=false;
-			if(keyCode==KeyEvent.VK_NUMPAD8)
-				slot8=false;
-			if(keyCode==KeyEvent.VK_NUMPAD9)
-				slot9=false;
-			if(keyCode==KeyEvent.VK_NUMPAD0)
-				slot10=false;
-			
+		if (e.getID() == KeyEvent.KEY_PRESSED) {
+			if (keyCode == KeyEvent.VK_W)
+				up = true;
+			if (keyCode == KeyEvent.VK_S)
+				down = true;
+			if (keyCode == KeyEvent.VK_A)
+				left = true;
+			if (keyCode == KeyEvent.VK_D)
+				right = true;
+			if (keyCode == KeyEvent.VK_ENTER)
+				attack = true;
+
+		} else if (e.getID() == KeyEvent.KEY_RELEASED) {
+			if (keyCode == KeyEvent.VK_W)
+				up = false;
+			if (keyCode == KeyEvent.VK_S)
+				down = false;
+			if (keyCode == KeyEvent.VK_A)
+				left = false;
+			if (keyCode == KeyEvent.VK_D)
+				right = false;
+			if (keyCode == KeyEvent.VK_ENTER)
+				attack = false;
+			if (keyCode == KeyEvent.VK_E)
+				shop = !shop;
+			if (keyCode == KeyEvent.VK_R)
+				talentTree = !talentTree;
+			if (keyCode == KeyEvent.VK_NUMPAD1)
+				slot[0] = !slot[0];
+			if (keyCode == KeyEvent.VK_NUMPAD2)
+				slot[1] = !slot[1];
+			if (keyCode == KeyEvent.VK_NUMPAD3)
+				slot[2] = !slot[2];
+			if (keyCode == KeyEvent.VK_NUMPAD4)
+				slot[3] = !slot[3];
+			if (keyCode == KeyEvent.VK_NUMPAD5)
+				slot[4] = !slot[4];
+			if (keyCode == KeyEvent.VK_NUMPAD6)
+				slot[5] = !slot[5];
+			if (keyCode == KeyEvent.VK_NUMPAD7)
+				slot[6] = !slot[6];
+			if (keyCode == KeyEvent.VK_NUMPAD8)
+				slot[7] = !slot[7];
+			if (keyCode == KeyEvent.VK_NUMPAD9)
+				slot[8] = !slot[8];
+			if (keyCode == KeyEvent.VK_NUMPAD0)
+				slot[9] = !slot[9];
+
 		}
 		return false;
 	}
@@ -168,49 +115,12 @@ public class KeyboardInput implements KeyEventDispatcher,Serializable {
 	public boolean isShop() {
 		return shop;
 	}
-	
+
 	public boolean isTalentTree() {
 		return talentTree;
 	}
-	
-	public boolean isSlot1() {
-		return slot1;
-	}
-	
-	public boolean isSlot2() {
-		return slot2;
-	}
-	
-	public boolean isSlot3() {
-		return slot3;
-	}
-	
-	public boolean isSlot4() {
-		return slot4;
-	}
-	
-	public boolean isSlot5() {
-		return slot5;
-	}
-	
-	public boolean isSlot6() {
-		return slot6;
-	}
-	
-	public boolean isSlot7() {
-		return slot7;
-	}
-	
-	public boolean isSlot8() {
-		return slot8;
-	}
-	
-	public boolean isSlot9() {
-		return slot9;
-	}
-	
-	public boolean isSlot10() {
-		return slot10;
-	}
 
+	public boolean[] isSlot(){
+		return slot;
+	}
 }
