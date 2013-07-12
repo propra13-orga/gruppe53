@@ -171,33 +171,43 @@ public class Hero extends CombatObject {
 		}
 		if(player.getKeyboardInput().isSlot()[0]){
 			inventory.slotClicked(0);
+			player.getKeyboardInput().setSlot(0);
 		}
 		if(player.getKeyboardInput().isSlot()[1]){
 			inventory.slotClicked(1);
+			player.getKeyboardInput().setSlot(1);
 		}
 		if(player.getKeyboardInput().isSlot()[2]){
 			inventory.slotClicked(2);
+			player.getKeyboardInput().setSlot(2);
 		}
 		if(player.getKeyboardInput().isSlot()[3]){
 			inventory.slotClicked(3);
+			player.getKeyboardInput().setSlot(3);
 		}
 		if(player.getKeyboardInput().isSlot()[4]){
 			inventory.slotClicked(4);
+			player.getKeyboardInput().setSlot(4);
 		}
 		if(player.getKeyboardInput().isSlot()[5]){
 			inventory.slotClicked(5);
+			player.getKeyboardInput().setSlot(5);
 		}
 		if(player.getKeyboardInput().isSlot()[6]){
 			inventory.slotClicked(6);
+			player.getKeyboardInput().setSlot(6);
 		}
 		if(player.getKeyboardInput().isSlot()[7]){
 			inventory.slotClicked(7);
+			player.getKeyboardInput().setSlot(7);
 		}
 		if(player.getKeyboardInput().isSlot()[8]){
 			inventory.slotClicked(8);
+			player.getKeyboardInput().setSlot(8);
 		}
 		if(player.getKeyboardInput().isSlot()[9]){
 			inventory.slotClicked(9);
+			player.getKeyboardInput().setSlot(9);
 		}
 	}
 

@@ -71,6 +71,25 @@ public class KeyboardInput implements KeyEventDispatcher, Serializable {
 				right = true;
 			if (keyCode == KeyEvent.VK_ENTER)
 				attack = true;
+			if (keyCode == KeyEvent.VK_NUMPAD2)
+				slot[1] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD3)
+				slot[2] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD4)
+				slot[3] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD5)
+				slot[4] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD6)
+				slot[5] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD7)
+				slot[6] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD8)
+				slot[7] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD9)
+				slot[8] = true;
+			if (keyCode == KeyEvent.VK_NUMPAD0)
+				slot[9] = true;
+
 
 		} else if (e.getID() == KeyEvent.KEY_RELEASED) {
 			if (keyCode == KeyEvent.VK_W)
@@ -88,25 +107,7 @@ public class KeyboardInput implements KeyEventDispatcher, Serializable {
 			if (keyCode == KeyEvent.VK_R)
 				talentTree = !talentTree;
 			if (keyCode == KeyEvent.VK_NUMPAD1)
-				slot[0] = !slot[0];
-			if (keyCode == KeyEvent.VK_NUMPAD2)
-				slot[1] = !slot[1];
-			if (keyCode == KeyEvent.VK_NUMPAD3)
-				slot[2] = !slot[2];
-			if (keyCode == KeyEvent.VK_NUMPAD4)
-				slot[3] = !slot[3];
-			if (keyCode == KeyEvent.VK_NUMPAD5)
-				slot[4] = !slot[4];
-			if (keyCode == KeyEvent.VK_NUMPAD6)
-				slot[5] = !slot[5];
-			if (keyCode == KeyEvent.VK_NUMPAD7)
-				slot[6] = !slot[6];
-			if (keyCode == KeyEvent.VK_NUMPAD8)
-				slot[7] = !slot[7];
-			if (keyCode == KeyEvent.VK_NUMPAD9)
-				slot[8] = !slot[8];
-			if (keyCode == KeyEvent.VK_NUMPAD0)
-				slot[9] = !slot[9];
+				slot[0] = true;
 
 		}
 		return false;
@@ -122,5 +123,9 @@ public class KeyboardInput implements KeyEventDispatcher, Serializable {
 
 	public boolean[] isSlot(){
 		return slot;
+	}
+	
+	public void setSlot(int slotNumber){
+		slot[slotNumber] = false;
 	}
 }
