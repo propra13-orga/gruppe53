@@ -3,7 +3,7 @@ package progprak.gruppe53.items;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
-public class SteelSword extends MeleeWeapons {
+public class SteelSword extends BlowMeleeWeapons {
 
 	private static final long serialVersionUID = 123456789L;
 
