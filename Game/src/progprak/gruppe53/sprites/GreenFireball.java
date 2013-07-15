@@ -41,6 +41,7 @@ public class GreenFireball extends Projectile implements Collidable{
 		System.out.println(de.getFaction());
 		System.out.println(faction);
 		if (de.getFaction() == 1){
+			faction = 3;
 			collisionEvent.setActor(de.getActor());
 			dx *= -1;
 			faction = 3;
