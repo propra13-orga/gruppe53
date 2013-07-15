@@ -1,14 +1,12 @@
 package progprak.gruppe53.game;
 
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.ListIterator;
 
 import progprak.gruppe53.sprites.CombatObject;
 import progprak.gruppe53.sprites.Hero;
-import progprak.gruppe53.sprites.PressurePlate;
 import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 
@@ -89,8 +87,6 @@ public class GameLogic {
 		if(heros.get(0).getWeapon() != null){
 			sprites.add(heros.get(0).getWeapon());
 		}
-		Point2D tmp[] = {new Point2D.Double(0,0),new Point2D.Double(0,32),new Point2D.Double(32,0)};
-		sprites.add(new PressurePlate(120, 44, tmp));
 		actors = (ArrayList<Sprite>) sprites.clone();
 	}
 
