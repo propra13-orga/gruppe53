@@ -11,7 +11,7 @@ public class LeatherArmor extends Armor {
 	private static final long serialVersionUID = 1L;
 
 	public LeatherArmor(int x, int y,GameLogic gameLogic) {
-		super(x, y, "images/leatherArmorField",gameLogic);
+		super(x, y, "images/leatherArmorField.png",gameLogic);
 		armorLVL = 2;
 		// TODO Auto-generated constructor stub
 	}

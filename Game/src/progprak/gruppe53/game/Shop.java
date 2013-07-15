@@ -32,11 +32,50 @@ public class Shop implements Serializable {
 
 	public void slotClicked(int slotNumber) {
 		if (items[slotNumber] != null && hero.getMoney() >= items[slotNumber].getPrice() && hero.getInventory().hasFreeSlot()) {
-				hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
-				hero.getInventory().addItem(items[slotNumber]);
-				items[slotNumber] = null;
-				items[slotNumber] = new HealthPotion(gameLogic);
+				if(items[slotNumber] instanceof HealthPotion){
+					hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
+					hero.getInventory().addItem(items[slotNumber]);
+					items[slotNumber] = null;
+					items[slotNumber] = new HealthPotion(gameLogic);
+				}
+				else if(items[slotNumber] instanceof ManaPotion){
+					hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
+					hero.getInventory().addItem(items[slotNumber]);
+					items[slotNumber] = null;
+					items[slotNumber] = new ManaPotion(gameLogic);
+				}
+				else if(items[slotNumber] instanceof RejuvenationPotion){
+					hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
+					hero.getInventory().addItem(items[slotNumber]);
+					items[slotNumber] = null;
+					items[slotNumber] = new RejuvenationPotion(gameLogic);
+				}
+				else{
+					hero.setMoney(hero.getMoney() - items[slotNumber].getPrice());
+					hero.getInventory().addItem(items[slotNumber]);
+					items[slotNumber] = null;
+				}
 		}
+	}
+	
+	public void newItem(Item newItem){
+		if(hasEmptySlot()){
+			for(int i=0 ; i< shopSlots; i++){
+				if(items[i] == null){
+					items[i] = newItem;
+					break;
+				}
+			}
+		}
+	}
+	
+	public boolean hasEmptySlot(){
+		for(int i = 0; i<shopSlots; i++){
+			if(items[i]== null){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

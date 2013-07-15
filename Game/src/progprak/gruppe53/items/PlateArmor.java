@@ -11,7 +11,7 @@ public class PlateArmor extends Armor {
 	private static final long serialVersionUID = 1L;
 
 	public PlateArmor(int x, int y,GameLogic gameLogic) {
-		super(x, y, "images/plateArmorField",gameLogic);
+		super(x, y, "images/plateArmorField.png",gameLogic);
 		armorLVL = 4;
 		// TODO Auto-generated constructor stub
 	}
