@@ -13,6 +13,9 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import progprak.gruppe53.items.ClothArmor;
+import progprak.gruppe53.items.ChainArmor;
+import progprak.gruppe53.items.LeatherArmor;
+import progprak.gruppe53.items.PlateArmor;
 import progprak.gruppe53.items.HealthPotion;
 import progprak.gruppe53.items.PinkGlitterWand;
 import progprak.gruppe53.items.WoodenSword;
@@ -199,6 +202,15 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 		else if(attributes.getValue("type").equals("clotharmor")){
 			sprites.add(new ClothArmor(xLocation,yLocation, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("chainarmor")){
+			sprites.add(new ChainArmor(xLocation,yLocation, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("leatherarmor")){
+			sprites.add(new LeatherArmor(xLocation,yLocation, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("platearmor")){
+			sprites.add(new PlateArmor(xLocation,yLocation, gameLogic));
 		}
 	}
 
