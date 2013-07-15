@@ -14,7 +14,7 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	
 	public WizardBoss(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/bug.png",gameLogic);
-		health = 70;
+		health = 30;
 		nextLevel = "levels/Level4.xml";
 		dx = 0;
 		dy = 2;

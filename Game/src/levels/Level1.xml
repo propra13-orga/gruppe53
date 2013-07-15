@@ -7,6 +7,9 @@
 		<item type="steelsword">47:44</item>
 		<item type="ironsword">47:44</item>
 		<item type="castersword">47:44</item>
+		<item type="leatherarmor">47:44</item>
+		<item type="chainarmor">47:44</item>
+		<item type="platearmor">47:44</item>
 	</items>
 	<spawn>47:44</spawn>
 	<enemies>

@@ -38,6 +38,7 @@ public class GreenFireball extends Projectile implements Collidable{
 	protected void handleDamageEvent(CollisionEvent ce) {
 		DamageCollisionEvent de = (DamageCollisionEvent) ce ;
 		if (de.getFaction() == 1){
+			faction = 3;
 			collisionEvent.setActor(de.getActor());
 			dx *= -1;
 		}

@@ -82,7 +82,7 @@ public class Inventory implements Serializable {
 		if(items[slotNumber] != null){
 			// if the Slot is empty, the click has no effect
 			if(hero.isShopOpen()){
-				hero.setMoney(hero.getMoney() + items[slotNumber].getPrice()/2);
+				hero.setMoney(hero.getMoney() + (int)items[slotNumber].getPrice()/2);
 				hero.getShop().newItem(items[slotNumber]);
 				items[slotNumber] = null;
 			}
