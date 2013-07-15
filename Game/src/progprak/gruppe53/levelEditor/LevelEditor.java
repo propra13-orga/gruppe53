@@ -257,7 +257,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 		spawn.setActionCommand(OBJECT_SPAWN);
 		spawn.addActionListener(this);
 		tools.add(spawn);
-		JButton woodenSword = new JButton(new ImageIcon(ImageLoader.loadImage("images/sword.png")));
+		JButton woodenSword = new JButton(new ImageIcon(ImageLoader.loadImage("images/woodenSwordInventory.png")));
 		woodenSword.setPreferredSize(new Dimension(66,42));
 		woodenSword.setActionCommand(OBJECT_SWORD);
 		woodenSword.addActionListener(this);
