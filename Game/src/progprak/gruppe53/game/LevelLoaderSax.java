@@ -24,6 +24,9 @@ import progprak.gruppe53.sprites.ChargingBoss;
 import progprak.gruppe53.sprites.EnemyGhost;
 import progprak.gruppe53.sprites.EnemyOldManNPC;
 import progprak.gruppe53.sprites.EnemySpider;
+import progprak.gruppe53.sprites.EnemyCharger;
+import progprak.gruppe53.sprites.EnemyWizard;
+import progprak.gruppe53.sprites.EnemyNecromancer;
 import progprak.gruppe53.sprites.FireballTrap;
 import progprak.gruppe53.sprites.FireballTrap2;
 import progprak.gruppe53.sprites.FireballWaveTrap;
@@ -293,6 +296,15 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 		else if(attributes.getValue("type").equals("oldman")){
 			sprites.add(new EnemyOldManNPC(enemyX, enemyY, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("wizard")){
+			sprites.add(new EnemyWizard(enemyX, enemyY, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("charger")){
+			sprites.add(new EnemyCharger(enemyX, enemyY, gameLogic));
+		}
+		else if(attributes.getValue("type").equals("necromancer")){
+			sprites.add(new EnemyNecromancer(enemyX, enemyY, gameLogic));
 		}
 		else if(attributes.getValue("type").equals("wizboss")){
 			sprites.add(new WizardBoss(enemyX, enemyY,gameLogic));
