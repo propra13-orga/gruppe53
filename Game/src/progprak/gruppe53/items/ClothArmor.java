@@ -11,7 +11,7 @@ public class ClothArmor extends Armor {
 	private static final long serialVersionUID = 1L;
 
 	public ClothArmor(int x, int y,GameLogic gameLogic) {
-		super(x, y, "images/clothArmor.png",gameLogic);
+		super(x, y, "images/clothArmorField.png",gameLogic);
 		armorLVL = 1;
 		blowResistance = 0.1;
 		pierceResistance = 0.1;

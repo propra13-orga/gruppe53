@@ -11,7 +11,7 @@ public class ChainArmor extends Armor {
 	private static final long serialVersionUID = 1L;
 
 	public ChainArmor(int x, int y,GameLogic gameLogic) {
-		super(x, y, "",gameLogic);
+		super(x, y, "images/chainArmorField.png",gameLogic);
 		armorLVL = 3;
 		// TODO Auto-generated constructor stub
 	}
