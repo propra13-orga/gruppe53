@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<level>
+	<spawn>32:32</spawn>
+	<spawn>32:576</spawn>
+	<items>
+		<item type="ironsword">64:64</item>
+		<item type="pinkglitterwand">64:96</item>
+		<item type="chainarmor">96:64</item>
+		<item type="castersword">64:416</item>
+		<item type="steelsword">64:448</item>
+		<item type="leatherarmor">96:416</item>
+	</items>
+	<enemies>
+		<enemy type="spider">600:350</enemy>
+		<enemy type="spider">632:250</enemy>
+		<enemy type="spider">550:300</enemy>
+		<enemy type="spider">480:325</enemy>
+		<enemy type="spider">600:400</enemy>
+		<enemy type="spider">600:500</enemy>
+		<enemy type="spider">600:100</enemy>
+		<enemy type="charger">192:100</enemy>
+		<enemy type="charger">192:200</enemy>
+		<enemy type="charger">192:300</enemy>
+		<enemy type="charger">192:400</enemy>
+		<enemy type="charger">192:500</enemy>
+	    <enemy type="wizard">734:32</enemy>
+	</enemies>
+	<walls>
+		Rahmen
+		<wall>0:0-608</wall>
+		<wall>768:0-608</wall>
+		<wall>32-736:0</wall>
+		<wall>32-736:608</wall>
+		Spielfeld
+		<wall>160:0-576</wall>
+	</walls>
+	<levelswitch type="wall" direction="1">768:304;levels/CoOp-Level3.xml</levelswitch>
+</level>

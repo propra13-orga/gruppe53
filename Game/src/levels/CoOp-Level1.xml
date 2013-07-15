@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<level>
+	<spawn>32:32</spawn>
+	<spawn>32:336</spawn>
+	
+	<walls>
+		Rahmen
+		<wall>0:0-608</wall>
+		<wall>768:0-608</wall>
+		<wall>32-736:0</wall>
+		<wall>32-736:608</wall>
+		Kreuz
+		<wall>32-596:304</wall>
+		<wall>384:0-576</wall>
+		Zielblock
+		<wall>596:224-384</wall>
+		<wall>596-768:224</wall>
+		<wall>596-768:384</wall>
+	</walls>
+	<levelswitch type="wall" direction="1">768:304;levels/CoOp-Level2.xml</levelswitch>
+</level>

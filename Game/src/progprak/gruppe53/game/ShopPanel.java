@@ -7,7 +7,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import progprak.gruppe53.items.Item;
-import progprak.gruppe53.items.Weapon;
 
 public class ShopPanel extends JPanel {
 
