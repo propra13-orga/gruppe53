@@ -41,6 +41,10 @@ public class EditorLevelLoader extends DefaultHandler {
 	private ArrayList<Sprite> sprites;
 	private StringBuilder elementName;
 	private Attributes attributes;
+	private static ArrayList<Point2D> affectedWallsArrayList = new ArrayList<Point2D>();
+	private static Point2D affectedWallsArray [] = null;
+	private static ArrayList<String> levelSaverArrayList = new ArrayList<String>();
+	private static String levelSaverArray [];
 
 	public EditorLevelLoader(ArrayList<Sprite> sp) {
 		this.sprites = sp;
@@ -148,22 +152,32 @@ public class EditorLevelLoader extends DefaultHandler {
 		}
 	}
 	
-	@SuppressWarnings("null")
-	private void spawnPressurePlate (String content) {
-		String pressurePlateData [] = content.split("-");
-		String pressurePlateLocation [] = pressurePlateData [0].split(":");
-		String wallCoordinates [] = pressurePlateData [1].split(";");
-		int xLocation = Integer.parseInt(pressurePlateLocation[0]);
-		int yLocation = Integer.parseInt(pressurePlateLocation[1]);
-		Point2D affectedWalls [] = null;
-		for (int i=0;i<=wallCoordinates.length;i++) {
-			String location [] = wallCoordinates [i].split(":");
-			int x = Integer.parseInt(location [0]);
-			int y = Integer.parseInt(location [1]);			
-			affectedWalls [i].setLocation(x,y);
+	private void spawnPressurePlate(String content) {
+		String pressurePlateData[] = content.split("-");
+		String wallCoordinates [] = pressurePlateData[1].split(";");
+		String plateLocation [] = pressurePlateData[0].split(":");
+		int xLocation = Integer.parseInt(plateLocation[0]);
+		int yLocation = Integer.parseInt(plateLocation[1]);
+		 for (int i=0;i<wallCoordinates.length;i++) {
+			 String location [] = wallCoordinates [i].split(":");
+			 int x = Integer.parseInt(location [0]);
+			 int y = Integer.parseInt(location [1]);
+			  Point2D obj = new Point2D.Double(x,y);
+			 affectedWallsArrayList.add(obj);
+			 String string = x + ":" + y;
+			 levelSaverArrayList.add(string);
 		}
-		sprites.add(new PressurePlate(xLocation,yLocation,affectedWalls));
-		LevelEditor.saveData [xLocation] [yLocation] = "		<pressureplate>" + xLocation + ":" + yLocation + "-" + "-" + pressurePlateData [2] + "</pressureplate>" + "\n";
+		affectedWallsArray = affectedWallsArrayList.toArray(new Point2D[affectedWallsArrayList.size()]);
+		sprites.add(new PressurePlate(xLocation, yLocation, affectedWallsArray));
+		levelSaverArray = levelSaverArrayList.toArray(new String[levelSaverArrayList.size()]);
+		LevelEditor.saveData[xLocation][yLocation]="	<pressureplate>" + xLocation + ":" + yLocation + "-";
+		for (int i = 0; i<levelSaverArray.length;i++) {
+			LevelEditor.saveData[xLocation][yLocation]+= levelSaverArray[i];
+			if (i != levelSaverArray.length - 1) {
+				LevelEditor.saveData[xLocation][yLocation]+= ";";
+			}
+		}
+		LevelEditor.saveData[xLocation][yLocation]+="</pressureplate>" + "\n";
 	}
 	
 	private void spawnItem(String content) {

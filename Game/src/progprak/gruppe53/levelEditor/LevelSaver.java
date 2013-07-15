@@ -66,7 +66,7 @@ public class LevelSaver {
 
 	}
 	private String createPressurePlateXml() {
-			String pressurePlateXml = " <pressureplates>";
+			String pressurePlateXml = " <pressureplates>" + "\n";
 			for (int i=0; i < sprites.size(); i++) {
 				Sprite sprite = sprites.get(i);
 				if (sprite instanceof PressurePlate) {
@@ -75,7 +75,7 @@ public class LevelSaver {
 					pressurePlateXml += LevelEditor.saveData[x][y];
 				}
 			}
-			pressurePlateXml += "	</pressureplates>";
+			pressurePlateXml += "</pressureplates>";
 			pressurePlateXml += "\n";
 			return pressurePlateXml;
 				

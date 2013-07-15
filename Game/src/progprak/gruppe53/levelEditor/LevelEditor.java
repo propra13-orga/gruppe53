@@ -979,6 +979,14 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		else if (spriteType == "pressurePlate"){
 			sprites.add(new PressurePlate(xPosition,yPosition,AttributeDialog.affectedWallsArray));
+			LevelEditor.saveData[xPosition][yPosition]="	<pressureplate>" + xPosition + ":" + yPosition + "-";
+			for (int i = 0; i<AttributeDialog.levelSaverArray.length;i++) {
+				LevelEditor.saveData[xPosition][yPosition]+= AttributeDialog.levelSaverArray[i];
+				if (i != AttributeDialog.levelSaverArray.length - 1) {
+					LevelEditor.saveData[xPosition][yPosition]+= ";";
+				}
+			}
+			LevelEditor.saveData[xPosition][yPosition]+="</pressureplate>" + "\n";
 			((GamePanel)level).render(1,sprites);
 			level.repaint();
 		}

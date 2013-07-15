@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -29,7 +30,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 	public static String attribute8;
 	public static double attribute6;
 	public static double attribute7;
+	public static ArrayList<Point2D> affectedWallsArrayList = new ArrayList<Point2D>();
 	public static Point2D affectedWallsArray [] = null;
+	public static ArrayList<String> levelSaverArrayList = new ArrayList<String>();
+	public static String levelSaverArray [];
 	private LevelEditor le;
 
 	private String spriteType = "";
@@ -224,14 +228,19 @@ public class AttributeDialog extends JDialog implements ActionListener {
 				attribute2 = Integer.parseInt(textField2.getText());
 			}
 			else if (spriteType == "pressurePlate") {
-				attribute8 = textField2.getText();
-				String wallCoordinates [] = attribute8.split(";");
-				for (int i=0;i<=wallCoordinates.length;i++) {
-					String location [] = wallCoordinates [i].split(":");
-					int x = Integer.parseInt(location [0]);
-					int y = Integer.parseInt(location [1]);			
-					affectedWallsArray [i].setLocation(x,y);
-				}
+				 attribute8 = textField2.getText();
+				 String wallCoordinates [] = attribute8.split(";");
+				 for (int i=0;i<wallCoordinates.length;i++) {
+					 String location [] = wallCoordinates [i].split(":");
+					 int x = Integer.parseInt(location [0]);
+					 int y = Integer.parseInt(location [1]);
+					  Point2D obj = new Point2D.Double(x,y);
+					 affectedWallsArrayList.add(obj);
+					 String string = x + ":" + y;
+					 levelSaverArrayList.add(string);
+				 }
+				 affectedWallsArray = affectedWallsArrayList.toArray(new Point2D[affectedWallsArrayList.size()]);
+				 levelSaverArray = levelSaverArrayList.toArray(new String[levelSaverArrayList.size()]);
 			}
 			le.addSprite(spriteType);
 			dispose();

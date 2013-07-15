@@ -54,6 +54,8 @@ public class LevelLoaderSax extends DefaultHandler {
 	private GameLogic gameLogic;
 	private StringBuilder elementName;
 	private Attributes attributes;
+	private static ArrayList<Point2D> affectedWallsArrayList = new ArrayList<Point2D>();
+	private static Point2D affectedWallsArray [] = null;
 
 	public LevelLoaderSax(ArrayList<Sprite> sp, GameLogic gameLogic) {
 		this.sprites = sp;
@@ -166,21 +168,21 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 	}
 
-	@SuppressWarnings("null")
 	private void spawnPressurePlate(String content) {
 		String pressurePlateData[] = content.split("-");
-		String pressurePlateLocation[] = pressurePlateData[0].split(":");
-		String wallCoordinates[] = pressurePlateData[1].split(";");
-		int xLocation = Integer.parseInt(pressurePlateLocation[0]);
-		int yLocation = Integer.parseInt(pressurePlateLocation[1]);
-		Point2D affectedWalls[] = null;
-		for (int i = 0; i <= wallCoordinates.length; i++) {
-			String location[] = wallCoordinates[i].split(":");
-			int x = Integer.parseInt(location[0]);
-			int y = Integer.parseInt(location[1]);
-			affectedWalls[i].setLocation(x, y);
+		String wallCoordinates [] = pressurePlateData[1].split(";");
+		String plateLocation [] = pressurePlateData[0].split(":");
+		int xLocation = Integer.parseInt(plateLocation[0]);
+		int yLocation = Integer.parseInt(plateLocation[1]);
+		 for (int i=0;i<wallCoordinates.length;i++) {
+			 String location [] = wallCoordinates [i].split(":");
+			 int x = Integer.parseInt(location [0]);
+			 int y = Integer.parseInt(location [1]);
+			  Point2D obj = new Point2D.Double(x,y);
+			 affectedWallsArrayList.add(obj);
 		}
-		sprites.add(new PressurePlate(xLocation, yLocation, affectedWalls));
+		affectedWallsArray = affectedWallsArrayList.toArray(new Point2D[affectedWallsArrayList.size()]);
+		sprites.add(new PressurePlate(xLocation, yLocation, affectedWallsArray));
 	}
 
 	private void spawnItem(String content) {

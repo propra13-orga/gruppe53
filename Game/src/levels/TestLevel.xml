@@ -2,13 +2,13 @@
 <level>
 	<spawn></spawn>
 	<enemies>
-		<enemy type="ghost">497:89</enemy>
+		<enemy type="ghost">465:175</enemy>
 	</enemies>
 	<enemies>
-		<enemy type="oldman">566:199</enemy>
+		<enemy type="oldman">585:207</enemy>
 	</enemies>
 	<enemies>
-		<enemy type="spider">392:339</enemy>
+		<enemy type="spider">407:367</enemy>
   </enemies>
 	<traps>
 	</traps>
