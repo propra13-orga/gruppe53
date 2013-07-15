@@ -5,17 +5,16 @@ import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
-public class WizardBoss extends BossEnemy implements Shooter {
+public class EnemyWizard extends Enemy implements Shooter{
 	private static final long serialVersionUID = 2838843254158087591L;
 	
 	private long cooldown = 0;
 	private int castOrder = 0;
 	private double lastdy;
 	
-	public WizardBoss(int x, int y, GameLogic gameLogic) {
+	public EnemyWizard(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/bug.png",gameLogic);
-		health = 70;
-		nextLevel = "levels/Level4.xml";
+		health = 40;
 		dx = 0;
 		dy = 2;
 		damageType = 5;

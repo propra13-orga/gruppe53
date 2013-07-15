@@ -4,16 +4,15 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
-public class NecromancerBoss extends BossEnemy implements Shooter {
+public class EnemyNecromancer extends Enemy implements Shooter {
 	private static final long serialVersionUID = 1L;
 	
 	private long cooldown = 0;
 	private int castOrder = 3;
 	
-	public NecromancerBoss(int x, int y, GameLogic gameLogic) {
+	public EnemyNecromancer(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/tentacel1.png",gameLogic);
-		health = 140;
-		nextLevel = "levels/Level10.xml";
+		health = 70;
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
 		damageType = 1;

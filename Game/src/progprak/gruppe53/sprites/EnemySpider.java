@@ -18,7 +18,7 @@ public class EnemySpider extends Enemy implements Shooter{
 		dx = Math.random()*3-1.5;
 		dy = Math.random()*3-1.5;
 		this.slowFactor = 0.5;
-		health = 20;
+		health = 25;
 		damageType = 2;
 	}
 	

@@ -3,15 +3,14 @@ package progprak.gruppe53.sprites;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
-public class ChargingBoss extends BossEnemy {
+public class EnemyCharger extends Enemy {
 	private static final long serialVersionUID = 2838843254158087591L;
 	
 	private long pause;
 		
-	public ChargingBoss(int x, int y, GameLogic gameLogic) {
+	public EnemyCharger(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/Monster1.png",gameLogic);
-		health = 100;
-		nextLevel = "levels/Level7.xml";
+		health = 50;
 		damageType = 3;
 		chargeAttack(gameLogic.getHero().getX(), gameLogic.getHero().getY());
 		
