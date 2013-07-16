@@ -65,7 +65,9 @@ public class Game implements Runnable {
 
 
 
-	
+	/****
+	 * Main Constructor
+	 */
 	public Game() {
 		doInitalizations();
 	}
@@ -89,17 +91,7 @@ public class Game implements Runnable {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(player.getKeyboardInput());
 		last = System.nanoTime();
 		gameLogic.switchLevel(startLevel);
-		if(client){
-			try {
-				clientSocket = new Socket("localhost",12108);
-				oos = new ObjectOutputStream(clientSocket.getOutputStream());
-				ois = new ObjectInputStream(clientSocket.getInputStream());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
+
 	}
 
 	@Override
@@ -208,6 +200,19 @@ public class Game implements Runnable {
 
 	public void chat(String text) {
 		chatMessages.add(text);		
+	}
+
+
+	public void setClient(String server) {
+		client = true;
+		try {
+			clientSocket = new Socket(server,12108);
+			oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			ois = new ObjectInputStream(clientSocket.getInputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 
 }

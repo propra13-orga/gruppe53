@@ -15,9 +15,11 @@ public class TalentTree implements Serializable {
 	private int[] talentMax = { 5, 5, 1, 5, 5, 5, 5, 7, 7, 3, 1, 1 };
 
 	/**
-	 * @param hero: Requires the Hero
-	 * @param gameLogic: Requires the GameLogic
 	 * Initializes the Heros TalentTree
+	 * 
+	 * @param hero Requires the Hero
+	 * @param gameLogic Requires the GameLogic
+	 * 
 	 */
 	public TalentTree(Hero hero, GameLogic gameLogic) {
 		this.hero = hero;
