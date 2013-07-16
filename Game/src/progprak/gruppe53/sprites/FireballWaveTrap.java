@@ -2,7 +2,9 @@ package progprak.gruppe53.sprites;
 
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
-
+/** 
+ * A trap that shoots rows of fireballs
+ */
 public class FireballWaveTrap extends CombatObject implements Shooter {
 	private static final long serialVersionUID = 2838843254158087591L;
 	
@@ -11,12 +13,26 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 	private int amount;
 	private int direction;
 
+	/** 
+	 * The constructor for the FireballWaveTrap class
+	 * @param x The x-coordinate of the fireballwavetrap
+	 * @param y The y-coordinate of the fireballwavetrap
+	 * @param gameLogic The game loop
+	 * @param amount The amount of fireballs in one row
+	 * @param direction The direction of the rows
+	 */
 	public FireballWaveTrap(int x, int y,GameLogic gameLogic, int amount, int direction) {
 		super(x, y, null, gameLogic);
 		castOrder = amount;
 		this.amount = amount;
 		this.direction = direction;
 	}
+	
+	/** 
+	 * A second constructor used in the Editor to make the fireballwavetrap visible
+	 * for other parameters, refer to the other FireballWaveTrap constructor
+	 * @param imagePath The path to the image that displays the fireballwavetrap in the editor
+	 */
 	public FireballWaveTrap(int x, int y,GameLogic gameLogic, int amount, int direction, String imagePath) {
 		super(x, y, imagePath, gameLogic);
 		castOrder = amount;
@@ -24,6 +40,10 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 		this.direction = direction;
 	}
 
+	/** 
+	 * The game loop
+	 * @param delta The time the last loop took
+	 */
 	@Override
 	public void doLogic(long delta) {
 		if(System.nanoTime() >= cooldown){
@@ -135,11 +155,18 @@ public class FireballWaveTrap extends CombatObject implements Shooter {
 		}
 	}
 
+	/** 
+	 * Tells the trap that there is no longer a fireball shot by it in the game
+	 */
 	@Override
 	public void shootRemoved() {
 		
 	}
 
+	/** 
+	 * Tells the trap it killed something
+	 * @param combatObject The combatobject that got killed
+	 */
 	@Override
 	public void doneKill(CombatObject combatObject) {
 		
