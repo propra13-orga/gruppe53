@@ -20,6 +20,7 @@ public class GameLogic {
 	private ArrayList<Hero> heros;
 	private Player player;
 	private Player player2;
+	private boolean loose;
 
 
 	public GameLogic() {
@@ -93,7 +94,9 @@ public class GameLogic {
 
 	public Vector<Sprite> testForCollision(Sprite a){
 		Vector<Sprite> cs = new Vector<Sprite>();
-		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
+		ArrayList<Sprite> t = (ArrayList<Sprite>) actors.clone();
+		t.add(heros.get(0));
+		for(ListIterator<Sprite> it = t.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(a!=s){
 				if(s instanceof Collidable && s.getRectangle().intersects(a.getHorizontalCollsionRect())){
@@ -133,19 +136,35 @@ public class GameLogic {
 	}
 
 	public void loose() {
-		// TODO Auto-generated method stub
+		this.loose = true;
 
 	}
 	public void win() {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/**
+	 * 
+	 * One Tick from the GameLoop
+	 * @param delta 
+	 * @param player The first Player
+	 * @param player2 The Second Player
+	 */
 	public void tick(long delta, Player player, Player player2) {
 		this.player = player;
 		this.player2 = player2;
-		doLogic(delta);				
-		move(delta);
+		if(!loose){
+			doLogic(delta);				
+			move(delta);
+		}
 	}
+	
+	/**
+	 * 
+	 * @param playerId The Id of the Player in Multiplayer
+	 * @return ArrayList the Actors
+	 */
 	public ArrayList<Sprite> getActors(int playerId) {
 		ArrayList<Sprite> tmp = (ArrayList<Sprite>) actors.clone();
 		if(playerId == 0 && heros.size() > 1 && heros.get(1) != null){
