@@ -117,6 +117,12 @@ public class GameFrame extends JFrame {
 
 	public void render(long delta, ArrayList<Sprite> actors, Hero hero) {
 		showShop(hero.isShopOpen());
+		if(hero.isSpeechPaneShow()){
+			showSpeechPane(hero.getSpeechPaneText());
+		}
+		else {
+			hideSpeechPane();
+		}
 		showTalentTree(hero.isTalentTree());
 		gamePanel.render(delta,actors,hero);
 		menu.render();

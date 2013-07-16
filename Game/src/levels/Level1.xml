@@ -42,6 +42,7 @@
 		<trap>69:378</trap>
 		<trap>129:93</trap>
 	</traps>
+	<npc>89:44;Arschloch!!!</npc>
 	<fireballtraps>
 		<fireballtrap>563:327;1.0:-1.0</fireballtrap>
 		<fireballtrap>44:245;1.0:0.0</fireballtrap>
