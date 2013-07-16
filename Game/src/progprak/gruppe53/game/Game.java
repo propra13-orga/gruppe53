@@ -95,6 +95,9 @@ public class Game implements Runnable {
 	}
 
 	@Override
+	/***
+	 * The GameLoop, almost everything happens in here
+	 */
 	public void run() {
 		started = true;
 		ArrayList<Sprite> actors = null;
@@ -135,6 +138,9 @@ public class Game implements Runnable {
 	}
 		
 
+	/**
+	 * Restart the Game
+	 */
 	public void restart() {
 		gameLogic = new GameLogic();
 		gameLogic.addHero(new Hero(0, 0, gameLogic));
@@ -143,10 +149,17 @@ public class Game implements Runnable {
 		alive = true;
 	}
 
+	/**
+	 * Load another Level
+	 * @param newLevel Path to the new Level
+	 */
 	public void switchLevel(String newLevel) {
 		gameLogic.switchLevel(newLevel);
 	}
 
+	/**
+	 * Starts the Game(what a surprise)
+	 */
 	public void startGame() {
 		if(!started){
 			Thread t = new Thread(this);
@@ -193,16 +206,26 @@ public class Game implements Runnable {
 		return player;
 	}
 	
+	/**
+	 * 
+	 * @return the gameLogic
+	 */
 	public GameLogic getGameLogic(){
 		return gameLogic;
 	}
 
-
+	/**
+	 * Sets the Chat
+	 */
 	public void chat(String text) {
 		chatMessages.add(text);		
 	}
 
 
+	/**
+	 * Run as Client
+	 * @param server URI of the Server
+	 */
 	public void setClient(String server) {
 		client = true;
 		try {
