@@ -55,7 +55,7 @@ public class Game implements Runnable {
 	private Player player;
 
 	
-	private boolean client = true;
+	private boolean client = false;
 
 	private Socket clientSocket;
 
