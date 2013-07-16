@@ -9,10 +9,7 @@
 		<item type="steelsword">64:448</item>
 		<item type="leatherarmor">96:416</item>
 	</items>
-	<enemies>
-	</enemies>
-	<enemies>
-	</enemies>
+	<npc>40:250;Nom nom nom</npc>
 	<enemies>
 		<enemy type="spider">600:350</enemy>
 		<enemy type="spider">632:250</enemy>

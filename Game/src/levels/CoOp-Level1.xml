@@ -7,6 +7,10 @@
 	</enemies>
 	<enemies>
   </enemies>
+  	<npc>89:44;Sometimes its better to split your team up!
+Like in every Horrormovie .. </npc>
+  	
+  
 	<traps>
 	</traps>
 	<fireballtraps>
@@ -175,3 +179,4 @@
 		<wall>756:384</wall>
 	</walls>
 </level>
+
