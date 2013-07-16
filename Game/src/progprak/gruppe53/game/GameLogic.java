@@ -20,6 +20,7 @@ public class GameLogic {
 	private ArrayList<Hero> heros;
 	private Player player;
 	private Player player2;
+	private boolean loose;
 
 
 	public GameLogic() {
@@ -135,7 +136,7 @@ public class GameLogic {
 	}
 
 	public void loose() {
-		// TODO Auto-generated method stub
+		this.loose = true;
 
 	}
 	public void win() {
@@ -153,8 +154,10 @@ public class GameLogic {
 	public void tick(long delta, Player player, Player player2) {
 		this.player = player;
 		this.player2 = player2;
-		doLogic(delta);				
-		move(delta);
+		if(!loose){
+			doLogic(delta);				
+			move(delta);
+		}
 	}
 	
 	/**
