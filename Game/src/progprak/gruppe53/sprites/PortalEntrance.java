@@ -9,6 +9,14 @@ public class PortalEntrance extends Sprite implements Collidable{
 
 	private transient CollisionEvent collisionEvent;
 	
+	
+	/**
+	 * Portals are used to teleport the Hero in the same Level
+	 * @param x   X Position of the Portal
+	 * @param y   Y Position of the Portal
+	 * @param newX  Heros target X Coordinate
+	 * @param newY  Heros target Y Coordinate
+	 */
 	public PortalEntrance(int x, int y,int newX, int newY)
 	{
 		super(x,y,"images/entrance.png");

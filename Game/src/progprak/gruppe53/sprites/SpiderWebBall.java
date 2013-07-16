@@ -12,6 +12,18 @@ public class SpiderWebBall extends Projectile implements Collidable{
 
 	private double slowFactor;
 	
+	/**
+	 * See class Projectile
+	 * 
+	 * @param x
+	 * @param y
+	 * @param gameLogic
+	 * @param shooter
+	 * @param dx
+	 * @param dy
+	 * @param faction
+	 * @param slowFactor defines the slowFactor, if a target Object gets hit
+	 */
 	public SpiderWebBall(int x, int y, GameLogic gameLogic, Shooter shooter, double dx, double dy, int faction, double slowFactor){
 		super(x,y,"images/spiderweb.png", gameLogic,shooter);
 		this.setWidth(16);

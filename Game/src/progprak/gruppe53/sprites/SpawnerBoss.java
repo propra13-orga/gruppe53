@@ -10,6 +10,12 @@ public class SpawnerBoss extends BossEnemy implements Shooter {
 	private long cooldown = 0;
 	private int castOrder = 3;
 	
+	/**
+	 *  See class "BossEnemy"
+	 * @param x
+	 * @param y
+	 * @param gameLogic
+	 */
 	public SpawnerBoss(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/totenkopf.png",gameLogic);
 		health = 500;
@@ -81,6 +87,14 @@ public class SpawnerBoss extends BossEnemy implements Shooter {
 	public void doneKill(CombatObject combatObject) {
 	}
 	
+	/**
+	 * defines the actions of the SpawnerBoss 
+	 * castOrder: 1 , shoots Fireballs
+	 * castOrder: 2 , shoots Fireballs and spawns Spiders
+	 * castOrder: 3 , shoots Fireballs and spawns Ghosts
+	 * castOrder: 4 , shoots Fireballs and spawns Charger
+	 * castOrder: 5 , shoots Fireballs and spawns Necromancer
+	 */
 	public void doLogic(long delta) {
 		if (System.nanoTime() >= cooldown) {
 			if (castOrder == 3) {
