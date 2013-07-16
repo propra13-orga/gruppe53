@@ -4,7 +4,11 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
+import sun.net.www.content.text.plain;
 
+/** 
+ * A Boss that is immune to damage dealt by the hero and shoots fireballs
+ */
 public class WizardBoss extends BossEnemy implements Shooter {
 	private static final long serialVersionUID = 2838843254158087591L;
 	
@@ -12,6 +16,12 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	private int castOrder = 0;
 	private double lastdy;
 	
+	/** 
+	 * The constructor for the WizardBoss class
+	 * @param x The x-coordinate for the boss
+	 * @param y The y-coordinate for the boss
+	 * @param gameLogic the game loop
+	 */
 	public WizardBoss(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/bug.png",gameLogic);
 		health = 30;
@@ -26,6 +36,9 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		arcaneResistance = 0.5;
 	}
 	
+	/** 
+	 * Shoots a green fireball that can be bounced back by the hero
+	 */
 	private void shootGreenFireball(){
 		lastdy = dy;
 		dy = 0;
@@ -33,6 +46,10 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		castOrder = 0;
 		cooldown = System.nanoTime() + (long)((6L)*1e9);
 	}
+	
+	/** 
+	 * Shoots fireballs
+	 */
 	private void shootFireballs(){
 		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2,-0.5,2));
 		gameLogic.addSprite(new Fireball((int)getX()-20,(int)getY()+8,gameLogic,this,-2.5,-0.25,2));
@@ -43,6 +60,10 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		cooldown = System.nanoTime() + (long)((1L)*1e9);
 	}
 	
+	/** 
+	 * Changes the direction of the boss if he hits a wall
+	 * @param ce The collisionevent that tells the boss he hit a wall
+	 */
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){
 		if(ce.getDirection() == CollisionEvent.DIRECTION_HORIZONTAL)dx *= -1;
@@ -58,6 +79,11 @@ public class WizardBoss extends BossEnemy implements Shooter {
 	@Override
 	public void doneKill(CombatObject combatObject) {
 	}
+	
+	/** 
+	 * Makes the boss immune to damage dealt by the hero
+	 * @param ce The collisionevent that tells the boss a damageevent has occured
+	 */
 	@Override
 	protected void handleDamageEvent(CollisionEvent ce) {
 		DamageCollisionEvent de = (DamageCollisionEvent) ce;
@@ -66,6 +92,10 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		}
 	}
 	
+	/** 
+	 * The game loop
+	 * @param delta The time the last loop took
+	 */
 	public void doLogic(long delta) {
 		if (System.nanoTime() >= cooldown) {
 			if (dy == 0) dy = lastdy;
@@ -78,6 +108,9 @@ public class WizardBoss extends BossEnemy implements Shooter {
 			
 		}
 	}
+	/** 
+	 * Handles the death of the boss and the switch to the next level
+	 */
 	protected void handleDie() {
 		super.handleDie();
 		gameLogic.switchLevel(nextLevel);
