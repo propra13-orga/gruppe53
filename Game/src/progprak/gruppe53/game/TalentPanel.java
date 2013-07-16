@@ -28,7 +28,7 @@ public class TalentPanel extends JPanel {
 
 	/**
 	 * @param game
-	 *            : Requires the Game Initialises the TalentPanel for all
+	 *            : Requires the Game Initializes the TalentPanel for all
 	 *            Players
 	 */
 	public TalentPanel(Game game) {
