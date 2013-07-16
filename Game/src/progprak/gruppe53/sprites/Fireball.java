@@ -43,7 +43,8 @@ public class Fireball extends Projectile implements Collidable{
 	}
 	
 	/** 
-	 * The event that removes the fireball if it hits the wall
+	 * The method that removes the fireball if it hits the wall
+	 * @param ce The collisionevent that tells the fireball it hit a wall
 	 */
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce) {
@@ -51,12 +52,21 @@ public class Fireball extends Projectile implements Collidable{
 		gameLogic.removeSprite(this);
 		shooter.shootRemoved();
 	}
+	
+	/** 
+	 * The method that tells the fireball it dealt damage
+	 */
 	@Override
 	protected void doneDamage() {
 		super.doneDamage();
 		gameLogic.removeSprite(this);
 		shooter.shootRemoved();
 	}
+	
+	/** 
+	 * The method that tells the fireball it killed something
+	 * @param The combatobject that was killed by the fireball
+	 */
 	@Override
 	protected void doneKill(CombatObject combatObject) {
 		shooter.doneKill(combatObject);
