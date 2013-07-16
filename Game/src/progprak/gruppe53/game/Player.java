@@ -1,6 +1,7 @@
 package progprak.gruppe53.game;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Player implements Serializable{
@@ -13,6 +14,7 @@ public class Player implements Serializable{
 	private int inventorySlotClicked = -1;
 	private int shopSlotClicked = -1;
 	private int talentButtonClicked = -1;
+	private ArrayList<String> chatMessages;
 	
 	public Player() {
 		keyboardInput = new KeyboardInput();
@@ -65,4 +67,13 @@ public class Player implements Serializable{
 	public void talentButtonClicked(int buttonNumber){
 		talentButtonClicked = buttonNumber;
 	}
+
+	public void addChat(ArrayList<String> chatMessages) {
+		this.chatMessages = chatMessages;
+	}
+	public ArrayList<String> getChatMessages() {
+		System.out.println(chatMessages);
+		return chatMessages;
+	}
+	
 }

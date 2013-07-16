@@ -1,5 +1,6 @@
 package progprak.gruppe53.game;
 
+import java.awt.Container;
 import java.awt.KeyboardFocusManager;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,7 +9,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-import progprak.gruppe53.serverOld.ServerResponse;
+import progprak.gruppe53.server.ServerResponse;
 import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
 
@@ -54,13 +55,15 @@ public class Game implements Runnable {
 	private Player player;
 
 	
-	private boolean client = false;
+	private boolean client = true;
 
 	private Socket clientSocket;
 
 	private ObjectOutputStream oos;
 
 	private ObjectInputStream ois;
+
+	private ArrayList<String> chatMessages;
 
 
 
@@ -79,6 +82,8 @@ public class Game implements Runnable {
 
 	private void doInitalizations() {
 		player = new Player();
+		chatMessages = new ArrayList<String>();
+		player.addChat(chatMessages);
 		gameLogic = new GameLogic();
 		gameFrame = new GameFrame("Game", this);
 		gameLogic.addHero(new Hero(0, 0, gameLogic));
@@ -110,8 +115,9 @@ public class Game implements Runnable {
 				computeDelta();
 				if(alive){
 					if(client){
-						try {
+						try {							
 							oos.writeObject(player);
+							chatMessages.clear();
 							oos.reset();
 							sr = (ServerResponse) ois.readObject();
 						} catch (IOException | ClassNotFoundException e) {
@@ -125,6 +131,7 @@ public class Game implements Runnable {
 					if(sr!=null){
 						actors = sr.getActors();
 						hero = sr.getHero();
+						gameFrame.setChat(sr.getChatMessages());
 					}
 				}
 				gameFrame.render(delta,actors,hero);
@@ -198,6 +205,11 @@ public class Game implements Runnable {
 	
 	public GameLogic getGameLogic(){
 		return gameLogic;
+	}
+
+
+	public void chat(String text) {
+		chatMessages.add(text);		
 	}
 
 }

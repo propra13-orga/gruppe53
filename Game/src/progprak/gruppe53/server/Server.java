@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Player;
-import progprak.gruppe53.serverOld.ServerResponse;
 import progprak.gruppe53.sprites.Hero;
 
 public class Server implements Runnable {
@@ -101,9 +100,9 @@ public class Server implements Runnable {
 				if(player1 != null){
 					gameLogic.tick(0, player1, player2);
 				}
-				clients.get(0).send(new ServerResponse(gameLogic.getActors(0), gameLogic.getHero(0)));
+				clients.get(0).send(new ServerResponse(gameLogic.getActors(0), gameLogic.getHero(0),serverWindow.getChatMessages()));
 				if(clients.size() > 1 && clients.get(1) != null){
-					clients.get(1).send(new ServerResponse(gameLogic.getActors(1), gameLogic.getHero(1)));
+					clients.get(1).send(new ServerResponse(gameLogic.getActors(1), gameLogic.getHero(1),serverWindow.getChatMessages()));
 				}
 				try {
 					Thread.sleep(10);

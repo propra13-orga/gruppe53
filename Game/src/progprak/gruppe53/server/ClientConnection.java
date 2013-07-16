@@ -6,7 +6,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import progprak.gruppe53.game.Player;
-import progprak.gruppe53.serverOld.ServerResponse;
 
 public class ClientConnection implements Runnable {
 
@@ -48,6 +47,7 @@ public class ClientConnection implements Runnable {
 			try {
 				server.getServerWindow().log("Client" + id + ": wait for Data");
 				player = (Player) ois.readObject();
+				server.getServerWindow().chat(player.getChatMessages());
 				server.getServerWindow().log("Client" + id + ": recieved: " + player);
 				server.getServerWindow().log("Client" + id + ": send Data");
 				oos.writeObject(serverResponse);
