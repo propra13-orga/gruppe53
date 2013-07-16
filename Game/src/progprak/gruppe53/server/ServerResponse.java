@@ -11,10 +11,12 @@ public class ServerResponse implements Serializable {
 	private static final long serialVersionUID = 7232893035781983031L;
 	private ArrayList<Sprite> actors;
 	private Hero hero;
+	private ArrayList<String> chatMessages;
 
-	public ServerResponse(ArrayList<Sprite> arrayList, Hero hero) {
+	public ServerResponse(ArrayList<Sprite> arrayList, Hero hero, ArrayList<String> chatMessages) {
 		this.actors = arrayList;
 		this.hero	= hero;
+		this.chatMessages = chatMessages;
 	}
 
 	/**
@@ -29,5 +31,9 @@ public class ServerResponse implements Serializable {
 	 */
 	public Hero getHero() {
 		return hero;
+	}
+	
+	public ArrayList<String> getChatMessages() {
+		return chatMessages;
 	}
 }

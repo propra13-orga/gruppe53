@@ -4,11 +4,17 @@ package progprak.gruppe53.game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.text.DefaultCaret;
 
 import progprak.gruppe53.sprites.Hero;
@@ -38,6 +44,8 @@ public class GameFrame extends JFrame {
 	private Menu menu;
 
 	private JTextArea chatWindow;
+
+	private JTextField chatTextField;
 	
 	public GameFrame(String title,Game game) {
 		super(title);
@@ -74,11 +82,26 @@ public class GameFrame extends JFrame {
 		mainPane.add(talentPanel, new Integer(0));
 
 		
+		JPanel chatPanel = new JPanel(new BorderLayout());
 		chatWindow = new JTextArea();
 		chatWindow.setEditable(false);
 		((DefaultCaret)chatWindow.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 		JScrollPane chatScroll = new JScrollPane(chatWindow);
-		add(chatScroll,BorderLayout.EAST);
+		chatPanel.add(chatScroll,BorderLayout.CENTER);
+		chatTextField = new JTextField(20);
+		
+		chatTextField.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				game.chat(chatTextField.getText());
+				chatTextField.setText(null);
+			}
+		});
+		
+		chatPanel.add(chatTextField,BorderLayout.NORTH);
+		chatPanel.setPreferredSize(chatPanel.getPreferredSize());
+		add(chatPanel,BorderLayout.EAST);
 		
 
 
@@ -133,6 +156,14 @@ public class GameFrame extends JFrame {
 	
 	public Game getGame(){
 		return game;
+	}
+
+	public void setChat(ArrayList<String> chatMessages) {
+		chatWindow.setText("");
+		for (Iterator iterator = chatMessages.iterator(); iterator.hasNext();) {
+			String string = (String) iterator.next();
+			chatWindow.append(string + "\n");
+		}
 	}
 
 
