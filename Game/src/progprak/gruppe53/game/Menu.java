@@ -66,8 +66,10 @@ public class Menu extends JPanel {
 				clientBtn.setEnabled(false);
 			}
 		});
+		clientBtn.setFocusable(false);
 		add(clientBtn);
 		server = new JTextField(10);
+		server.addActionListener(null);
 		add(server);
 		
 		setPreferredSize(getPreferredSize());

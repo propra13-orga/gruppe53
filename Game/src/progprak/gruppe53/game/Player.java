@@ -72,7 +72,6 @@ public class Player implements Serializable{
 		this.chatMessages = chatMessages;
 	}
 	public ArrayList<String> getChatMessages() {
-		System.out.println(chatMessages);
 		return chatMessages;
 	}
 	
