@@ -44,7 +44,7 @@ public class Game implements Runnable {
 	
 
 	
-	private String startLevel = "levels/Level6.xml";
+	private String startLevel = "levels/Level1.xml";
 
 
 
