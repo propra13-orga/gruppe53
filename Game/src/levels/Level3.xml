@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
+	<items>
+		<item type="stonesword">40:305</item>
+		<item type="leatherarmor">40:305</item>
+	</items>
 	<spawn>40:305</spawn>
 	<enemies>
 		<enemy type="wizboss">598:339</enemy>

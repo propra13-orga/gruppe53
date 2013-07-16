@@ -2,6 +2,8 @@
 <level>
 	<items>
 		<item type="pinkglitterwand">40:305</item>
+		<item type="ironsword">40:305</item>
+		<item type="chainarmor">40:305</item>
 	</items>
 	<spawn>40:305</spawn>
 	<enemies>
