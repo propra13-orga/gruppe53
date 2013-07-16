@@ -13,6 +13,11 @@ public class ChargingBoss extends BossEnemy {
 		health = 100;
 		nextLevel = "levels/Level7.xml";
 		damageType = 3;
+		blowResistance = 0.3;
+		pierceResistance = 0.3;
+		bluntResistance = 0.3;
+		fireResistance = -0.3;
+		arcaneResistance = -0.5;
 		chargeAttack(gameLogic.getHero().getX(), gameLogic.getHero().getY());
 		
 	}

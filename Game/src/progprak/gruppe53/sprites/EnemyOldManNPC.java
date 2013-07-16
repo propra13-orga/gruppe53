@@ -16,6 +16,11 @@ public class EnemyOldManNPC extends Enemy {
 		dx = speed;
 		health = 20;
 		damageType = 3;
+		blowResistance = 0.2;
+		pierceResistance = 0.1;
+		bluntResistance = -0.3;
+		fireResistance = -0.3;
+		arcaneResistance = 0.3;
 	}
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){

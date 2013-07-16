@@ -23,7 +23,7 @@ abstract public class Weapon extends Item implements Collidable {
 	protected int ww = 0;
 	protected int wh = 0;
 
-
+	protected int damageType;
 
 	
 	public Weapon(int x, int y, String imagePath,GameLogic gameLogic) {
@@ -56,6 +56,9 @@ abstract public class Weapon extends Item implements Collidable {
 		else {
 			setWidth(setHeight(setX(setY(0))));
 		}
+	}
+	public int getDamageType() {
+		return damageType;
 	}
 	
 }

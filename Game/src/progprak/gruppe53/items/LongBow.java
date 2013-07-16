@@ -13,7 +13,7 @@ public class LongBow extends RangeWeapon{
 
 	public LongBow(int x, int y,GameLogic gameLogic) {
 		super(x, y, "",gameLogic);
-		
+		damageType = 2;
 		doInitalizations();
 
 	}

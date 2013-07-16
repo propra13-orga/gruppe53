@@ -14,6 +14,11 @@ public class EnemyGhost extends Enemy {
 		dy = Math.random()*3-1.5;
 		health = 20;
 		damageType = 5;
+		blowResistance = 0.3;
+		pierceResistance = 0.4;
+		bluntResistance = 0.2;
+		fireResistance = -0.3;
+		arcaneResistance = 0.5;
 	}
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce){

@@ -12,6 +12,11 @@ public class EnemyCharger extends Enemy {
 		super(x, y, "images/Monster1.png",gameLogic);
 		health = 50;
 		damageType = 3;
+		blowResistance = 0.3;
+		pierceResistance = 0.3;
+		bluntResistance = 0.3;
+		fireResistance = -0.2;
+		arcaneResistance = -0.5;
 		chargeAttack(gameLogic.getHero().getX(), gameLogic.getHero().getY());
 		
 	}

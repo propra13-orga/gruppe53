@@ -17,6 +17,11 @@ public class NecromancerBoss extends BossEnemy implements Shooter {
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
 		damageType = 1;
+		blowResistance = 0.2;
+		pierceResistance = 0.3;
+		bluntResistance = -0.4;
+		fireResistance = 0.2;
+		arcaneResistance = 0.3;
 	}
 	
 	private void shootFireball(double xPosition, double yPosition){

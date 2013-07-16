@@ -14,7 +14,7 @@ public class FireStaff extends RangeWeapon{
 
 	public FireStaff(int x, int y,GameLogic gameLogic) {
 		super(x, y, "",gameLogic);
-		
+		damageType = 4;
 		doInitalizations();
 
 	}
