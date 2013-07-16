@@ -73,4 +73,9 @@ public class WizardBoss extends BossEnemy implements Shooter {
 			
 		}
 	}
+	protected void handleDie() {
+		super.handleDie();
+		gameLogic.switchLevel(nextLevel);
+	}
+	
 }
