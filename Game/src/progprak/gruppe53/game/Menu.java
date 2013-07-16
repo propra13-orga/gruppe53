@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Menu extends JPanel {
 
@@ -19,6 +20,10 @@ public class Menu extends JPanel {
 	private JButton startBtn;
 
 	private JButton restartBtn;
+	
+	private JButton clientBtn;
+	
+	private JTextField server;
 	
 	
 	public Menu(Game game) {
@@ -52,6 +57,18 @@ public class Menu extends JPanel {
 		restartBtn.setEnabled(false);
 		add(restartBtn);
 		
+		clientBtn = new JButton("client");
+		clientBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				game.setClient(server.getText());
+				clientBtn.setEnabled(false);
+			}
+		});
+		add(clientBtn);
+		server = new JTextField(10);
+		add(server);
 		
 		setPreferredSize(getPreferredSize());
 	}
