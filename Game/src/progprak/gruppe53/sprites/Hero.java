@@ -50,6 +50,10 @@ public class Hero extends CombatObject {
 
 	private Player player;
 
+	private boolean speechPaneShow;
+
+	private String speechPaneText;
+
 	public Hero(int xPos, int yPos, GameLogic gameLogic) {
 		super(xPos, yPos, "images/held.png", gameLogic);
 		this.gameLogic = gameLogic;
@@ -461,4 +465,16 @@ public class Hero extends CombatObject {
 			slow = 1;
 		}
 	}
+
+	public void showSpeechPane(boolean b, String speech) {
+		this.speechPaneShow = b;
+		this.speechPaneText = speech;
+		
+	}
+	public String getSpeechPaneText() {
+		return speechPaneText;
+	}
+	public boolean isSpeechPaneShow() {
+		return speechPaneShow;
+	};
 }

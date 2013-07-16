@@ -93,7 +93,9 @@ public class GameLogic {
 
 	public Vector<Sprite> testForCollision(Sprite a){
 		Vector<Sprite> cs = new Vector<Sprite>();
-		for(ListIterator<Sprite> it = actors.listIterator();it.hasNext();){
+		ArrayList<Sprite> t = (ArrayList<Sprite>) actors.clone();
+		t.add(heros.get(0));
+		for(ListIterator<Sprite> it = t.listIterator();it.hasNext();){
 			Sprite s = it.next();
 			if(a!=s){
 				if(s instanceof Collidable && s.getRectangle().intersects(a.getHorizontalCollsionRect())){

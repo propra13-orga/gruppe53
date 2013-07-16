@@ -17,12 +17,14 @@ public class OldManNPC extends FriendlyNPC {
 
 	@Override
 	public void doLogic(long delta) {
-		// game.hideSpeechPane();
+		gameLogic.getHero().showSpeechPane(false, "");
 	}
 
 	protected void handleCollisionEvent(CollisionEvent ce) {
-		if (ce.actor instanceof Hero) {
-			// game.showSpeechPane(speech);
+		System.out.println("test1");
+		if (ce.getActor() instanceof Hero) {
+			System.out.println("test");
+			((Hero) ce.getActor()).showSpeechPane(true,speech);
 		}
 	}
 }
