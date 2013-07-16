@@ -48,6 +48,12 @@ import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
 import progprak.gruppe53.sprites.WizardBoss;
 
+
+/** 
+ * The LevelLoader
+ * Loads the levels from the textfiles whenever
+ * the game switches to a new level
+ */
 public class LevelLoaderSax extends DefaultHandler {
 
 	private ArrayList<Sprite> sprites;
@@ -57,11 +63,22 @@ public class LevelLoaderSax extends DefaultHandler {
 	private static ArrayList<Point2D> affectedWallsArrayList = new ArrayList<Point2D>();
 	private static Point2D affectedWallsArray [] = null;
 
+	/** 
+	 * The constructor for the LevelLoader
+	 * @param sp The list of sprites
+	 * @param gameLogic the gameLogic / Loop
+	 */
 	public LevelLoaderSax(ArrayList<Sprite> sp, GameLogic gameLogic) {
 		this.sprites = sp;
 		this.gameLogic = gameLogic;
 	}
-
+	
+	/** 
+	 * starts up the level generation process
+	 * @param level The levelfile to load from
+	 * @param sp The list of sprites
+	 * @param gameLogic the gameLogic / Loop
+	 */
 	public static void generateLevel(String level, ArrayList<Sprite> sp,
 			GameLogic gameLogic) {
 		try {
@@ -81,12 +98,18 @@ public class LevelLoaderSax extends DefaultHandler {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/** 
+	 * The endDocument method for SAX
+	 */
 	@Override
 	public void endDocument() throws SAXException {
 		super.endDocument();
 	}
-
+	
+	/** 
+	 * The endElement method for SAX
+	 */
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
@@ -97,12 +120,18 @@ public class LevelLoaderSax extends DefaultHandler {
 		elementName.delete(start, elementName.length());
 	}
 
+	/** 
+	 * The startDocument method for SAX
+	 */
 	@Override
 	public void startDocument() throws SAXException {
 		super.startDocument();
 		elementName = new StringBuilder();
 	}
 
+	/** 
+	 * The startElement method for SAX
+	 */
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
@@ -115,6 +144,9 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 	}
 
+	/** 
+	 * The characters method for SAX
+	 */
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
@@ -168,6 +200,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 	}
 
+	/** 
+	 * creates Pressureplates
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnPressurePlate(String content) {
 		String pressurePlateData[] = content.split("-");
 		String wallCoordinates [] = pressurePlateData[1].split(";");
@@ -185,6 +221,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		sprites.add(new PressurePlate(xLocation, yLocation, affectedWallsArray));
 	}
 
+	/** 
+	 * creates all equipment
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnItem(String content) {
 		String itemEntry[] = content.split(":");
 		int xLocation = Integer.parseInt(itemEntry[0]);
@@ -212,6 +252,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 	}
 
+	/** 
+	 * creates NPCs
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void setNpc(String content) {
 		String npcData[] = content.split(";");
 		String npcEntry[] = npcData[0].split(":");
@@ -220,6 +264,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		sprites.add(new OldManNPC(xLocation, yLocation, gameLogic, npcData[1]));
 	}
 
+	/** 
+	 * creates the goal
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void setGoal(String content) {
 		String goalEntry[] = content.split(":");
 		int xLocation = Integer.parseInt(goalEntry[0]);
@@ -227,6 +275,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		sprites.add(new Goal(xLocation, yLocation));
 	}
 
+	/** 
+	 * creates portals
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnPortal(String content) {
 		String portalData[] = content.split(";");
 		String portalEntry[] = portalData[0].split(":");
@@ -239,6 +291,10 @@ public class LevelLoaderSax extends DefaultHandler {
 				endLocationX, endLocationY));
 	}
 
+	/** 
+	 * sets the spawnpoint
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void setHeroSpawnPoint(String content) {
 		String spawnArray[] = content.split(":");
 		Hero hero = gameLogic.getHero();
@@ -247,6 +303,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		// sprites.add(hero);
 	}
 
+	/** 
+	 * creates a levelswitch / door
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnLevelSwitch(String content) {
 		String levelSwitchData[] = content.split(";");
 		String levelSwitchLocation[] = levelSwitchData[0].split(":");
@@ -263,6 +323,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 	}
 
+	/** 
+	 * creates fireballTraps that spawns fireballs
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnFireballTrap(String content) {
 		String fireballTrapData[] = content.split(";");
 		String fireballTrapLocation[] = fireballTrapData[0].split(":");
@@ -278,6 +342,10 @@ public class LevelLoaderSax extends DefaultHandler {
 				xMovement, yMovement));
 	}
 
+	/** 
+	 * creates more customizable versions of the fireballTrap
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnFireballTrap2(String content) {
 		String fireballTrapData[] = content.split(";");
 		String fireballTrapLocation[] = fireballTrapData[0].split(":");
@@ -293,6 +361,10 @@ public class LevelLoaderSax extends DefaultHandler {
 				xMovement, yMovement, xRespawn, yRespawn));
 	}
 
+	/** 
+	 * creates groundTraps
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnTrap(String content) {
 		String trapData[] = content.split(":");
 		int trapX = Integer.parseInt(trapData[0]);
@@ -300,6 +372,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		sprites.add(new GroundTrap(trapX, trapY, gameLogic));
 	}
 
+	/** 
+	 * creates all enemies
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnEnemy(String content) {
 		String enemyData[] = content.split(":");
 		int enemyX = Integer.parseInt(enemyData[0]);
@@ -330,6 +406,10 @@ public class LevelLoaderSax extends DefaultHandler {
 
 	}
 
+	/** 
+	 * creates the walls
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnWall(String content) {
 		String wallData[] = content.split(":");
 		String wallDataX[] = wallData[0].split("-");
@@ -355,6 +435,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		}
 	}
 
+	/** 
+	 * creates the potions
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnHealthPotion(String content) {
 		String healthPotionData[] = content.split(":");
 		int healthPotionX = Integer.parseInt(healthPotionData[0]);
@@ -362,6 +446,10 @@ public class LevelLoaderSax extends DefaultHandler {
 		sprites.add(new HealthPotion(healthPotionX, healthPotionY, gameLogic));
 	}
 
+	/** 
+	 * creates special fireballTraps that spawn multiple fireballs in a row
+	 * @param content the parsed content of the levelfile 
+	 */
 	private void spawnFireballWaveTrap(String content) {
 		String fireballWaveTrapData[] = content.split(";");
 		String fireballWaveTrapEntry[] = fireballWaveTrapData[0].split(":");

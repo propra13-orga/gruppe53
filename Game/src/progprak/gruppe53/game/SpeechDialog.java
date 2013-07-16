@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/** 
+ * A speechdialog for NPCs
+ * This class is no longer in use
+ */
 public class SpeechDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1;
 	
@@ -20,6 +23,11 @@ public class SpeechDialog extends JDialog implements ActionListener {
 	
 	private String msgString2;
 
+	/** 
+	 * The contructor for the speechdialog
+	 * @param speech What the NPC says
+	 * @param answer what the player can answer
+	 */
 	public SpeechDialog(String speech, String answer) {
 		
 		getContentPane().setLayout(new BorderLayout());
@@ -45,6 +53,11 @@ public class SpeechDialog extends JDialog implements ActionListener {
 		
 		
 	}
+	
+	/** 
+	 * the Method that sets the function of the button
+	 * @param e the ActionEvent that triggers this method
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == msgString2){
 			speechDialogOpened = false;

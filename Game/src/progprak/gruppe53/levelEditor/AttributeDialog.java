@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/** 
+ * The dialog that allows the user to set additional attributes for sprites
+ */
 public class AttributeDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1;
 	
@@ -43,6 +45,11 @@ public class AttributeDialog extends JDialog implements ActionListener {
 	private static final int DEFAULT_WINDOW_WIDTH = 200;
 	private static final int DEFAULT_WINDOW_HEIGHT = 215;
 
+	/** 
+	 * The constructor for the AttributeDialog
+	 * @param parent the LevelEditor class
+	 * @param spriteType the type of sprite that calls the AttributeDialog
+	 */
 	public AttributeDialog(LevelEditor parent, String spriteType) {
 		super();
 		le = parent;
@@ -188,6 +195,10 @@ public class AttributeDialog extends JDialog implements ActionListener {
 			setVisible(true);
 		}
 	}
+	/** 
+	 * The method that sets the function of the buttons
+	 * @param e the actionevent that triggers this method
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == btnString2){
 			if (le.isEdited == true) {

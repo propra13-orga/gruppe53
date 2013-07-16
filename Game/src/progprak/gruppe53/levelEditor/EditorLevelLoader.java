@@ -35,7 +35,10 @@ import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
 import progprak.gruppe53.sprites.WizardBoss;
-
+/** 
+ * The LevelLoader counterpart for the Editor
+ * For documentation, please refer to the LevelLoader class
+ */
 public class EditorLevelLoader extends DefaultHandler {
 	
 	private ArrayList<Sprite> sprites;

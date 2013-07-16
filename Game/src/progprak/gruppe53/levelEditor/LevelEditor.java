@@ -41,6 +41,9 @@ import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
 
+/** 
+ * The main class for the leveleditor
+ */
 public class LevelEditor extends JFrame implements ActionListener,
 		MouseListener {
 	private static final long serialVersionUID = 1;
@@ -75,20 +78,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private static final String LOAD = "load";
 	private static final String EDIT = "edit";
 	private static final String GETXY = "getxy";
-	//private static final String SELECT = "select";
+	
 	
 	
 	private String labelString1 = "X: ";
 	private String labelString2 = "Y: ";
-	/*
-	Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-	private String labelString3 = "XSpeed: ";
-	private String labelString4 = "YSpeed: ";
-	private String labelString5 = "XSpawn: ";
-	private String labelString6 = "YSpawn: ";
-	private String labelString7 = "TeleportLocation: ";
-	private String labelString8 = "NextLevelPath: ";
-	*/
+	
 	private int xPosition;
 	private int yPosition;
 	private int multiWallStartX = 0;
@@ -97,7 +92,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private boolean multiWallStarted = false;
 	public static String saveData[][]=new String[801][641];
 	public boolean isEdited = false;
-	
+	/** 
+	 * The main method for the leveleditor
+	 * @param args command string parameter
+	 */
 	public static void main(String[] args) {
 		new LevelEditor();
 
@@ -108,16 +106,14 @@ public class LevelEditor extends JFrame implements ActionListener,
 	
 	private JTextField attribute1, attribute2;
 	private JLabel attributeLabel1, attributeLabel2;
-	/*
-	Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-	attribute3, attribute4, attribute5, attribute6;
-	attributeLabel3, attributeLabel4, attributeLabel5, attributeLabel6;
-	*/
 
 	private ArrayList<Sprite> sprites;
 	private String currentSprite = "";
 	private String saveFileName = "";
 	
+	/** 
+	 * The contructor for the LevelEditor class
+	 */
 	public LevelEditor() {
 		super(WINDOW_NAME);
 		setupEditor();
@@ -127,8 +123,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		level.repaint();
 	}
 
+	/** 
+	 * Sets up the layout of the editor as well as all buttons
+	 */
 	private void setupEditor() {
-		// Setzt Groesse und Position des Fensters und der noetigen Panels
 		sprites = new ArrayList<Sprite>();
 		setTitle(WINDOW_NAME);
 		setSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
@@ -146,17 +144,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attribute2 = new JTextField(10);
 		attributeLabel1 = new JLabel(labelString1);
 		attributeLabel2 = new JLabel(labelString2);
-		/*
-		Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-		attribute3 = new JTextField(10);
-		attribute4 = new JTextField(10);
-		attribute5 = new JTextField(10);
-		attribute6 = new JTextField(10);
-		
-		JButton saveAttributes = new JButton("Save");
-		saveAttributes.setPreferredSize(new Dimension(66,20));
-		*/
-				
 		
 		separator.setPreferredSize(new Dimension(SEPARATOR_WIDTH,GAMEPANEL_HEIGHT));
 		tools.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH - GAMEPANEL_WIDTH - SEPARATOR_WIDTH, GAMEPANEL_HEIGHT));
@@ -170,16 +157,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 
 		level.addMouseListener(this);
 
-		/*
-		Rest vom alten Layout - vorerst nicht mehr n�tig
-		JPanel editorPanel = new JPanel();
-		editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.X_AXIS));
-		editorPanel.add(level);
-		editorPanel.add(separator);
-		editorPanel.add(tools);
-		add(editorPanel,BorderLayout.CENTER);
-		add(attributeBar,BorderLayout.SOUTH);
-		*/
 		add(level,BorderLayout.WEST);
 		add(separator,BorderLayout.CENTER);
 		add(tools,BorderLayout.EAST);
@@ -189,15 +166,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attributeBar.add(attribute1);
 		attributeBar.add(attributeLabel2);
 		attributeBar.add(attribute2);
-		/*
-		Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-		attributeBar.add(attribute3);
-		attributeBar.add(attribute4);
-		attributeBar.add(attribute5);
-		attributeBar.add(attribute6);
-		attributeBar.add(saveAttributes);
-		*/
-		
 	}
 
 	private void setupTools() {
@@ -245,10 +213,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		portal.setActionCommand(OBJECT_PORTAL);
 		portal.addActionListener(this);
 		tools.add(portal);
-		/*JButton levelSwitch = new JButton(new ImageIcon(ImageLoader.loadImage("images/entrance2.png")));
-		levelSwitch.setActionCommand(OBJECT_LEVELSWITCH);
-		levelSwitch.addActionListener(this);
-		tools.add(levelSwitch);*/
 		JButton goal = new JButton(new ImageIcon(ImageLoader.loadImage("images/exit.png")));
 		goal.setActionCommand(OBJECT_GOAL);
 		goal.addActionListener(this);
@@ -275,10 +239,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		pressurePlate.setActionCommand(OBJECT_PRESSUREPLATE);
 		pressurePlate.addActionListener(this);
 		tools.add(pressurePlate);
-		/*JButton clothArmor = new JButton(new ImageIcon(ImageLoader.loadImage("images/hero.png")));
-		clothArmor.setActionCommand(OBJECT_JACKET);
-		clothArmor.addActionListener(this);
-		tools.add(clothArmor);*/
 		JButton save = new JButton("Save");
 		save.setPreferredSize(new Dimension(66,42));
 		save.setActionCommand(SAVE);
@@ -304,13 +264,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 		getxy.setActionCommand(GETXY);
 		getxy.addActionListener(this);
 		tools.add(getxy);
-		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-		JButton select = new JButton("Sel");
-		select.setPreferredSize(new Dimension(66,42));
-		select.setActionCommand(SELECT);
-		select.addActionListener(this);
-		tools.add(select);
-		*/
 	}
 
 	@Override
@@ -477,14 +430,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.setCursor(c);
 			currentSprite = actionCommand;
 		}
-		
-		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-		else if (actionCommand == SELECT) {
-			c = Cursor.getDefaultCursor();
-			level.setCursor(c);
-			currentSprite = actionCommand;
-		}
-		*/
 	}
 
 	@Override
@@ -817,49 +762,6 @@ public class LevelEditor extends JFrame implements ActionListener,
 			attribute1.setText("" + e.getX());
 			attribute2.setText("" + e.getY());
 		}
-		/* Zum Auswaehlen von Sprites am Feld - unfertig, vorerst deaktiviert
-		else if (currentSprite == SELECT){
-			int x = e.getX();
-			int y = e.getY();
-			for(int i=0;i<sprites.size();i++){
-				Sprite sprite = sprites.get(i);
-				int size = 32;
-				
-				if(sprite instanceof FireballTrap){
-					size = 16;
-					
-				}
-				if(sprite instanceof FireballTrap){
-				if(sprite.getX()<=x && sprite.getX()+size>x){
-					if(sprite.getY()<=y && sprite.getY()+size>y){
-						
-						attribute1.setText("" + sprite.getX());
-					}
-					if(sprite.getY()>=y && sprite.getY()<y){
-						
-						attribute1.setText("" + sprite.getX());
-					}
-				}
-				if(sprite.getX()>=x && sprite.getX()<x){
-					if(sprite.getY()>=y && sprite.getY()<y){
-						
-						attribute1.setText("" + sprite.getX());
-					}
-					if(sprite.getY()<=y && sprite.getY()+size>y){
-						
-						attribute1.setText("" + sprite.getX());
-					}
-				}
-				if(sprite.getX()==x && sprite.getX()==x){
-					if(sprite.getY()==y && sprite.getY()==y){
-						
-						attribute1.setText("" + sprite.getX());
-					}
-				}
-				}
-			}
-		}
-		*/
 		((GamePanel)level).render(1,sprites);
 		level.repaint();
 	}

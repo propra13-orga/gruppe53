@@ -86,9 +86,9 @@ public class Hero extends CombatObject {
 		weapon = inventory.getWeapon();
 		if (weapon != null) {
 			this.weapon.setOwner(this);
+			damageType = weapon.getDamageType();
 		}
 		armor = inventory.getArmor();
-		damageType = weapon.getDamageType();
 		talents = player.getKeyboardInput().isTalentTree();
 		shopOpen = player.getKeyboardInput().isShop();
 		maxHealth = 100 + talentTree.getTalent(0) * 20;
