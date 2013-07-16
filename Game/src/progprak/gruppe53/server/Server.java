@@ -64,7 +64,7 @@ public class Server implements Runnable {
 						Thread t = new Thread(clients.get(clientCount));
 						t.start();
 						if(clientCount > 0){
-							gameLogic.addHero(new Hero(400, 400, gameLogic), clientCount);
+							gameLogic.addHero(new Hero((int)gameLogic.getHero().getX(), (int)gameLogic.getHero().getY(), gameLogic), clientCount);
 						}
 						clientCount++;
 					} catch (IOException e) {

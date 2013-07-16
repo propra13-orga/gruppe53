@@ -142,12 +142,26 @@ public class GameLogic {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/**
+	 * 
+	 * One Tick from the GameLoop
+	 * @param delta 
+	 * @param player The first Player
+	 * @param player2 The Second Player
+	 */
 	public void tick(long delta, Player player, Player player2) {
 		this.player = player;
 		this.player2 = player2;
 		doLogic(delta);				
 		move(delta);
 	}
+	
+	/**
+	 * 
+	 * @param playerId The Id of the Player in Multiplayer
+	 * @return ArrayList the Actors
+	 */
 	public ArrayList<Sprite> getActors(int playerId) {
 		ArrayList<Sprite> tmp = (ArrayList<Sprite>) actors.clone();
 		if(playerId == 0 && heros.size() > 1 && heros.get(1) != null){
