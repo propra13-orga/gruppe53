@@ -13,7 +13,7 @@ public class SpawnerBoss extends BossEnemy implements Shooter {
 	public SpawnerBoss(int x, int y, GameLogic gameLogic) {
 		super(x, y, "images/totenkopf.png",gameLogic);
 		health = 500;
-		nextLevel = "levels/CoOp-Goal.xml";
+		nextLevel = "levels/GoalLevel.xml";
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
 		damageType = 1;
