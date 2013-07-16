@@ -17,6 +17,11 @@ public class SpawnerBoss extends BossEnemy implements Shooter {
 		dx = Math.random()*5-2.5;
 		dy = Math.random()*5-2.5;
 		damageType = 1;
+		blowResistance = -0.4;
+		pierceResistance = 0.1;
+		bluntResistance = -0.5;
+		fireResistance = 0.3;
+		arcaneResistance = -0.5;
 	}
 	
 	private void shootFireball(double xPosition, double yPosition){

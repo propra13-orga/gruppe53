@@ -20,6 +20,11 @@ public class EnemySpider extends Enemy implements Shooter{
 		this.slowFactor = 0.5;
 		health = 25;
 		damageType = 2;
+		blowResistance = 0.3;
+		pierceResistance = -0.3;
+		bluntResistance = 0.4;
+		fireResistance = -0.4;
+		arcaneResistance = -0.2;
 	}
 	
 	@Override

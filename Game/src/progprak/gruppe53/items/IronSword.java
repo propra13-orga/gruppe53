@@ -9,7 +9,7 @@ public class IronSword extends BlowMeleeWeapons {
 	
 	public IronSword(int x, int y,GameLogic gameLogic){
 		super( x, y, "images/ironSwordField.png", gameLogic);
-		
+		damageType = 1;
 		doInitalizations();
 	}
 	public IronSword(GameLogic gameLogic){

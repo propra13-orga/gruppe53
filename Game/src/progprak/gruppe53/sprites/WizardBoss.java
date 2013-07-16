@@ -19,6 +19,11 @@ public class WizardBoss extends BossEnemy implements Shooter {
 		dx = 0;
 		dy = 2;
 		damageType = 5;
+		blowResistance = -0.5;
+		pierceResistance = -0.4;
+		bluntResistance = -0.5;
+		fireResistance = 0.2;
+		arcaneResistance = 0.5;
 	}
 	
 	private void shootGreenFireball(){

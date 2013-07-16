@@ -13,7 +13,7 @@ public class ShortBow extends RangeWeapon{
 
 	public ShortBow(int x, int y,GameLogic gameLogic) {
 		super(x, y, "", gameLogic);
-		
+		damageType = 2;
 		doInitalizations();
 
 	}

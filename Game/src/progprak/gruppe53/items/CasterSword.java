@@ -14,7 +14,7 @@ public class CasterSword extends RangeWeapon{
 
 	public CasterSword(int x, int y,GameLogic gameLogic) {
 		super(x, y, "images/castSwordField.png", gameLogic);
-		
+		damageType = 5;
 		doInitalizations();
 
 	}

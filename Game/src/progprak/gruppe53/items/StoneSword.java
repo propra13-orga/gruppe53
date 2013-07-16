@@ -10,7 +10,7 @@ public class StoneSword extends BlowMeleeWeapons {
 	
 	public StoneSword(int x, int y,GameLogic gameLogic){
 		super( x, y, "images/stonedSwordField.png", gameLogic);
-		
+		damageType = 3;
 		doInitalizations();
 	}
 	public StoneSword(GameLogic gameLogic){

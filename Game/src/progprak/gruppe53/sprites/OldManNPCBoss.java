@@ -16,7 +16,11 @@ public class OldManNPCBoss extends BossEnemy implements Shooter{
 		dx = speed;
 		nextLevel = "levels/GoalLevel.xml";
 		damageType = 1;
-		
+		blowResistance = 0.2;
+		pierceResistance = 0.1;
+		bluntResistance = -0.3;
+		fireResistance = -0.3;
+		arcaneResistance = 0.3;
 	}
 	
 	private void shootFireballs(){

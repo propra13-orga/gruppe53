@@ -13,7 +13,7 @@ public class CrossBow extends Weapon{
 
 	public CrossBow(int x, int y,GameLogic gameLogic) {
 		super(x, y, "", gameLogic);
-		
+		damageType = 2;
 		doInitalizations();
 
 	}

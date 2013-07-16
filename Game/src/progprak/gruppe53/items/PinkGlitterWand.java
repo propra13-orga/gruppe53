@@ -14,7 +14,7 @@ public class PinkGlitterWand extends RangeWeapon{
 
 	public PinkGlitterWand(int x, int y,GameLogic gameLogic) {
 		super(x, y, "images/pinkwand.png", gameLogic);
-		
+		damageType = 4;
 		doInitalizations();
 
 	}
