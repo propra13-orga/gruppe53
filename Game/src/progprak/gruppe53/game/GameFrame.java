@@ -54,6 +54,7 @@ public class GameFrame extends JFrame {
 	}
 
 	private void doInitalizations() {
+		setResizable(false);
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 	

@@ -24,11 +24,6 @@ public class RangeWeapon extends Weapon implements Shooter {
 	}
 
 	@Override
-	public void attack(boolean attack) {
-		
-	}
-
-	@Override
 	public void shootRemoved() {
 		// TODO Auto-generated method stub
 

@@ -42,7 +42,7 @@ abstract public class Weapon extends Item implements Collidable {
 			xDrawOffset = xOffset;
 			yDrawOffset = yOffset;
 		}
-		drawWeapon(attack);
+		System.out.println(xDrawOffset);
 	}
 	
 	protected void drawWeapon(boolean draw) {
