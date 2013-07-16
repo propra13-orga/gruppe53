@@ -35,12 +35,12 @@ public class Server implements Runnable {
 		doInitializations();
 	}
 
-	public void doInitializations(){
+	private void doInitializations(){
 		serverWindow.log("Startup");
 		started = true;
 		gameLogic = new GameLogic();
 		gameLogic.addHero(new Hero(0, 0, gameLogic));
-		gameLogic.switchLevel("levels/TestLevel.xml");
+		gameLogic.switchLevel("levels/CoOp-Level1.xml");
 		clients = new ArrayList<ClientConnection>();
 		Thread t = new Thread(new Runnable() {
 
