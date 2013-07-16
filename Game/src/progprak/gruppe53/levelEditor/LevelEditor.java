@@ -438,7 +438,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 
 	/** 
-	 * Adds the currently selected sprite to the gamepanel on click
+	 * Adds the currently selected sprite to the gamepanel on click, calls the attributedialog for additional parameters or calls the Save / Load / Edit / Delete / Get methods
 	 * @param the mouseevent that triggers this method
 	 */
 	@Override
@@ -852,12 +852,25 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 		return false;
 	}
+	
+	/** 
+	 * Sets the filename under which the created level is saved
+	 */
 	public void setSaveFileName(String saveFileName){
 		this.saveFileName = saveFileName;
 	}
+	
+	/** 
+	 * Calls the levelsaver to save the created level
+	 */
 	public void saveLevel(){
 		new LevelSaver(saveFileName, sprites).saveLevel();
 	}
+	
+	/** 
+	 * Loads an existing level into the editor using the editorlevelloader
+	 * @param newLevel The path to the level to be loaded
+	 */
 	public void loadLevel(String newLevel){
 		ArrayList<Sprite> sp = new ArrayList<Sprite>();
 		EditorLevelLoader.generateLevel(newLevel,sp);
@@ -865,6 +878,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		((GamePanel)level).render(1,sprites);
 		level.repaint();
 	}
+	
+	/** 
+	 * Adds the sprites with additional parameters to the gamepanel after they have been set in the attributedialog
+	 */
 	public void addSprite(String spriteType){
 		if (spriteType == "trapFireball"){
 			sprites.add(new FireballTrap(xPosition,yPosition,null,AttributeDialog.attribute6,AttributeDialog.attribute7,"images/FireballRed.png"));
@@ -916,6 +933,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 			level.repaint();
 		}
 	}
+	
+	/** 
+	 * After a sprite was edited, this method deletes the old sprite
+	 */
 	public void deleteEdited() {
 		sprites.remove(deleteNumber);
 	}

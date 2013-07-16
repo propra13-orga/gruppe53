@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/** 
+ * The dialog used to save levels
+ */
 public class SaveDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1;
 	
@@ -22,6 +25,10 @@ public class SaveDialog extends JDialog implements ActionListener {
 	private static final int DEFAULT_WINDOW_WIDTH = 320;
 	private static final int DEFAULT_WINDOW_HEIGHT = 160;
 
+	/** 
+	 * The constructor for the SaveDialog class
+	 * @param parent The LevelEditor class
+	 */
 	public SaveDialog(LevelEditor parent) {
 		super();
 		le = parent;
@@ -55,6 +62,11 @@ public class SaveDialog extends JDialog implements ActionListener {
 		add(buttons);
 		setVisible(true);
 	}
+	
+	/** 
+	 * The method that sets the effects of the buttons
+	 * @param e The actionevent that triggers this method
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == btnString2){
 			dispose();

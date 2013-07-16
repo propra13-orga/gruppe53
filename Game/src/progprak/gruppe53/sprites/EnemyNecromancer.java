@@ -4,6 +4,10 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
+/** 
+ * An enemy that shoots fireballs and spawns ghosts. Behaves similar to NecromancerBoss
+ * See NecromancerBoss for documentation
+ */
 public class EnemyNecromancer extends Enemy implements Shooter {
 	private static final long serialVersionUID = 1L;
 	

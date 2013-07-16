@@ -5,12 +5,22 @@ import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
+/** 
+ * A fireball projectile
+ */
 public class Fireball extends Projectile implements Collidable{
 	
 	private static final long serialVersionUID = 1L;
-
-
 	
+	/** 
+	 * The constructor for the Fireball class
+	 * @param x the x-coordinate for the fireball
+	 * @param y the y-coordinate for the fireball
+	 * @param gameLogic the game loop
+	 * @param shooter The shooter of the fireball
+	 * @param dx The x-speed of the fireball
+	 * @param dy The y-speed of the fireball
+	 */
 	public Fireball(int x, int y, GameLogic gameLogic, Shooter shooter, double dx, double dy, int faction){
 		super(x,y,"images/FireballRed.png", gameLogic,shooter);
 		this.setWidth(16);
@@ -22,11 +32,19 @@ public class Fireball extends Projectile implements Collidable{
 		doInitalizations();		
 	}
 	
+	/** 
+	 * The game loop
+	 * @param delta The time the last loop took
+	 */
 	@Override
 	public void doLogic(long delta){
 		
 
 	}
+	
+	/** 
+	 * The event that removes the fireball if it hits the wall
+	 */
 	@Override
 	protected void handleMassiveEvent(CollisionEvent ce) {
 		super.handleMassiveEvent(ce);

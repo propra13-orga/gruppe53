@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <level>
-	<items>
-		<item type="clotharmor">47:44</item>
-		<item type="woodensword">47:44</item>
-		<item type="stonesword">47:44</item>
-		<item type="steelsword">47:44</item>
-		<item type="ironsword">47:44</item>
-		<item type="castersword">47:44</item>
-		<item type="leatherarmor">47:44</item>
-		<item type="chainarmor">47:44</item>
-		<item type="platearmor">47:44</item>
-	</items>
 	<spawn>47:44</spawn>
 	<enemies>
 		<enemy type="ghost">598:339</enemy>
@@ -18,6 +7,10 @@
 		<enemy type="ghost">128:294</enemy>
 		<enemy type="ghost">115:347</enemy>
 	</enemies>
+	<enemies>
+	</enemies>
+	<enemies>
+  </enemies>
 	<traps>
 		<trap>297:338</trap>
 		<trap>336:339</trap>
@@ -47,6 +40,11 @@
 		<fireballtrap>44:245;1.0:0.0</fireballtrap>
 		<fireballtrap>220:327;-1.0:0.0</fireballtrap>
 	</fireballtraps>
+	<fireballtraps2>
+		<fireballtrap>563:327;1.0:-1.0</fireballtrap>
+		<fireballtrap>44:245;1.0:0.0</fireballtrap>
+		<fireballtrap>220:327;-1.0:0.0</fireballtrap>
+	</fireballtraps2>
 	<fireballwavetraps>
 	</fireballwavetraps>
 	<portals>
@@ -55,6 +53,9 @@
 	</healthpotions>
 	<goal></goal>
 	<levelswitch type="wall" direction="1">768:576;levels/Level2.xml</levelswitch>
+ <pressureplates>
+	<pressureplate>48:470-55:522;86:522</pressureplate>
+</pressureplates>
 	<walls>
 		<wall>0:0</wall>
 		<wall>0:32</wall>
@@ -209,5 +210,7 @@
 		<wall>160:513</wall>
 		<wall>128:513</wall>
 		<wall>96:513</wall>
+		<wall>64:513</wall>
+		<wall>32:513</wall>
 	</walls>
 </level>

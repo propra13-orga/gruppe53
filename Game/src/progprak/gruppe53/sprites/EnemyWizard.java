@@ -5,6 +5,10 @@ import progprak.gruppe53.game.DamageCollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Shooter;
 
+/** 
+ * An Enemy that is immune to damage dealt by the hero and shoots fireballs. Behaves similar to WizardBoss
+ * See WizardBoss for documentation
+ */
 public class EnemyWizard extends Enemy implements Shooter{
 	private static final long serialVersionUID = 2838843254158087591L;
 	

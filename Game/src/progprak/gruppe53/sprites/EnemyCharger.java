@@ -3,6 +3,10 @@ package progprak.gruppe53.sprites;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 
+/** 
+ * An Enemy that charges the Hero. Behaves similar to ChargingBoss
+ * See ChargingBoss for Documentation
+ */
 public class EnemyCharger extends Enemy {
 	private static final long serialVersionUID = 2838843254158087591L;
 	

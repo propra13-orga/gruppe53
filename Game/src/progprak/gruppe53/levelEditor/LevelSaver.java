@@ -21,16 +21,27 @@ import progprak.gruppe53.sprites.Sprite;
 import progprak.gruppe53.sprites.Wall;
 import progprak.gruppe53.sprites.WallLevelSwitch;
 
+/** 
+ * The class that creates the level files 
+ */
 public class LevelSaver {
 	private String fileName = "";
 	private ArrayList<Sprite> sprites;
 
+	/** 
+	 * The contructor for the LevelSaver class
+	 * @param fileName The name the level should be saved under
+	 * @param sprites2 The list of all sprites in the level
+	 */
 	public LevelSaver(String fileName, ArrayList<Sprite> sprites2) {
 		this.fileName = fileName;
 		this.sprites = sprites2;
 	}
 
 
+	/** 
+	 * The method that combines all created text into one
+	 */
 	public void saveLevel() {
 		String input = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" + "\n"+ "<level>" + "\n";
 		input += createSpawnXml();
@@ -39,6 +50,7 @@ public class LevelSaver {
 		input += createEnemySpiderXml();
 		input += createTrapXml();
 		input += createFireballTrapXml();
+		input += createFireballTrap2Xml();
 		input += createFireballWaveTrapXml();
 		input += createPortalXml();
 		input += createHealthPotionXml();
@@ -51,6 +63,10 @@ public class LevelSaver {
 
 	}
 
+	/** 
+	 * The method that creates the level file
+	 * @param input The input created by the saveLevel method
+	 */
 	private void createFile(String input) {
 		File file = new File("./Game/src/levels/" + fileName + ".xml");
 		try {
@@ -63,8 +79,11 @@ public class LevelSaver {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
+	/** 
+	 * Creates the string required to save pressureplates
+	 * @return The String for pressureplates
+	 */
 	private String createPressurePlateXml() {
 			String pressurePlateXml = " <pressureplates>" + "\n";
 			for (int i=0; i < sprites.size(); i++) {
@@ -81,6 +100,10 @@ public class LevelSaver {
 				
 	}
 
+	/** 
+	 * Creates the string required to save the spawn
+	 * @return The String for the spawn
+	 */
 	private String createSpawnXml() {
 		String spawnXml = "	<spawn>";
 		for (int i = 0; i < sprites.size(); i++) {
@@ -94,6 +117,10 @@ public class LevelSaver {
 		return spawnXml;
 	}
 	
+	/** 
+	 * Creates the string required to save ghost enemies
+	 * @return The String for ghost enemies
+	 */
 	private String createEnemyGhostXml() {
 		String enemyGhostXml = "	<enemies>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -107,6 +134,10 @@ public class LevelSaver {
 		return enemyGhostXml;
 	}
 	
+	/** 
+	 * Creates the string required to save old man enemies
+	 * @return The String for old man enemies
+	 */
 	private String createEnemyOldManNPCXml() {
 		String enemyOldManNPCXml = "	<enemies>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -120,6 +151,10 @@ public class LevelSaver {
 		return enemyOldManNPCXml;
 	}
 	
+	/** 
+	 * Creates the string required to save spider enemies
+	 * @return The String for spider enemies
+	 */
 	private String createEnemySpiderXml() {
 		String enemySpiderXml = "	<enemies>" + "\n";
 		for( int i=0; i<sprites.size();i++) {
@@ -132,6 +167,11 @@ public class LevelSaver {
 		enemySpiderXml += "\n";
 		return enemySpiderXml;
 	}
+	
+	/** 
+	 * Creates the string required to save traps
+	 * @return The String for traps
+	 */
 	private String createTrapXml() {
 		String trapXml = "	<traps>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -144,12 +184,13 @@ public class LevelSaver {
 		trapXml += "\n";
 		return trapXml;
 	}
+	
+	/** 
+	 * Creates the string required to save walls
+	 * @return The String for walls
+	 */
 	private String createWallXml() {
 		String wallXml = "	<walls>" + "\n";
-		/*
-		Aussenwaende -  hier nicht mehr noetig
-		String wallXml += "		<wall>0:0-608</wall>" + "\n" + "		<wall>768:0-608</wall>" + "\n" + "		<wall>32-736:0</wall>" + "\n" + "		<wall>32-736:608</wall>" + "\n"
-		*/
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof Wall) {
@@ -161,6 +202,10 @@ public class LevelSaver {
 		return wallXml;
 	}
 	
+	/** 
+	 * Creates the string required to save fireballtraps
+	 * @return The String for fireballtraps
+	 */
 	private String createFireballTrapXml() {
 		String fireballTrapXml = "	<fireballtraps>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -176,22 +221,29 @@ public class LevelSaver {
 		return fireballTrapXml;
 	}
 	
-	/* 
-	Fuer spaeter um mehrere Goals moeglich zu machen
-	private String createGoalXml() {
-		String goalXml = "	<goals>" + "\n";
+	/** 
+	 * Creates the string required to save advanced fireballtraps
+	 * @return The String for advanced fireballtraps
+	 */
+	private String createFireballTrap2Xml() {
+		String fireballTrap2Xml = "	<fireballtraps2>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
-			if (sprite instanceof Goal) {
-				goalXml += "		<goal>" + ((int)sprite.getX()) + ":" + ((int)sprite.getY()) + "</goal>" +"\n";
+			if (sprite instanceof FireballTrap) {
+				int x = (int)sprite.getX();
+				int y = (int)sprite.getY();
+				fireballTrap2Xml += LevelEditor.saveData[x][y];
 			}
 		}
-		goalXml += "	</goals>";
-		goalXml += "\n";
-		return goalXml;
+		fireballTrap2Xml += "	</fireballtraps2>";
+		fireballTrap2Xml += "\n";
+		return fireballTrap2Xml;
 	}
-	*/
 	
+	/** 
+	 * Creates the string required to save the goal
+	 * @return The String for the goal
+	 */
 	private String createGoalXml() {
 		String goalXml = "	<goal>";
 		for (int i = 0; i < sprites.size(); i++) {
@@ -205,6 +257,10 @@ public class LevelSaver {
 		return goalXml;
 	}
 	
+	/** 
+	 * Creates the string required to save portals
+	 * @return The String for portals
+	 */
 	private String createPortalXml() {
 		String portalXml = "	<portals>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -219,6 +275,11 @@ public class LevelSaver {
 		portalXml += "\n";
 		return portalXml;
 	}
+	
+	/** 
+	 * Creates the string required to save potions
+	 * @return The String for potions
+	 */
 	private String createHealthPotionXml() {
 		String healthPotionXml = "	<healthpotions>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {
@@ -231,8 +292,13 @@ public class LevelSaver {
 		healthPotionXml += "\n";
 		return healthPotionXml;
 	}
+	
+	/** 
+	 * Creates the string required to save the levelswitch
+	 * @return The String for the levelswitch
+	 */
 	private String createLevelSwitchXml() {
-		String levelSwitchXml = "";//	<levelswitches>" + "\n";
+		String levelSwitchXml = "";
 		for (int i=0; i < sprites.size(); i++) {
 			Sprite sprite = sprites.get(i);
 			if (sprite instanceof WallLevelSwitch) {
@@ -246,10 +312,13 @@ public class LevelSaver {
 				levelSwitchXml += LevelEditor.saveData[x][y];
 			}
 		}
-		//levelSwitchXml += "	</levelswitches>";
-		//levelSwitchXml += "\n";
 		return levelSwitchXml;
 	}
+	
+	/** 
+	 * Creates the string required to save fireballwavetraps
+	 * @return The String for fireballwavetraps
+	 */
 	private String createFireballWaveTrapXml() {
 		String fireballWaveTrapXml = "	<fireballwavetraps>" + "\n";
 		for (int i=0; i < sprites.size(); i++) {

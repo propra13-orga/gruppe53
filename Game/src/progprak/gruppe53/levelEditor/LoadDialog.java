@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/** 
+ * the dialog used to load a level into the editor
+ */
 public class LoadDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1;
 	
@@ -23,6 +26,10 @@ public class LoadDialog extends JDialog implements ActionListener {
 	private static final int DEFAULT_WINDOW_WIDTH = 320;
 	private static final int DEFAULT_WINDOW_HEIGHT = 160;
 
+	/** 
+	 * The constructor for the LoadDialog
+	 * @param parent The LevelEditor class
+	 */
 	public LoadDialog(LevelEditor parent) {
 		super();
 		le = parent;
@@ -56,6 +63,11 @@ public class LoadDialog extends JDialog implements ActionListener {
 		add(buttons);
 		setVisible(true);
 	}
+	
+	/** 
+	 * The method that sets the effects of the buttons
+	 * @param e The actionevent that triggers this method
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == btnString2){
 			dispose();

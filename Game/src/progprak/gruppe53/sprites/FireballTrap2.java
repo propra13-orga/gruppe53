@@ -21,6 +21,7 @@ public class FireballTrap2 extends CombatObject implements Shooter {
 		this.yRespawn = yRespawn;
 		gameLogic.addSprite(new Fireball((int)(this.getX()+getWidth()/2), (int)(this.getY()+getHeight()/2), gameLogic,this, xMovement, yMovement, 2));
 	}
+	
 	public FireballTrap2(int x, int y,GameLogic gameLogic, double xMovement, double yMovement, int xRespawn, int yRespawn, String imagePath) {
 		super(x, y, imagePath, gameLogic);
 		this.gameLogic = gameLogic;
@@ -28,7 +29,6 @@ public class FireballTrap2 extends CombatObject implements Shooter {
 		this.yMovement = yMovement;
 		this.xRespawn = xRespawn;
 		this.yRespawn = yRespawn;
-		//game.getGameLogic().addSprite(new Fireball((int)(this.x+width/2), (int)(this.y+height/2), game,this, xMovement, yMovement, 2));
 	}
 
 	@Override
