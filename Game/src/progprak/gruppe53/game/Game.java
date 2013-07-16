@@ -1,12 +1,10 @@
 package progprak.gruppe53.game;
 
-import java.awt.Container;
 import java.awt.KeyboardFocusManager;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import progprak.gruppe53.server.ServerResponse;
@@ -55,7 +53,7 @@ public class Game implements Runnable {
 	private Player player;
 
 	
-	private boolean client = true;
+	private boolean client = false;
 
 	private Socket clientSocket;
 

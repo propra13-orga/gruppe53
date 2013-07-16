@@ -3,7 +3,7 @@ package progprak.gruppe53.server;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.ListIterator;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -43,7 +43,7 @@ public class ServerWindow extends JPanel {
 	}
 	public void chat(ArrayList<String> chatMessages) {
 		this.chatMessages.addAll(chatMessages);
-		for (Iterator iterator = chatMessages.iterator(); iterator.hasNext();) {
+		for (ListIterator<String> iterator = chatMessages.listIterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			chatWindow.append(string + "\n");
 		}

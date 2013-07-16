@@ -7,7 +7,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.ListIterator;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -160,7 +160,7 @@ public class GameFrame extends JFrame {
 
 	public void setChat(ArrayList<String> chatMessages) {
 		chatWindow.setText("");
-		for (Iterator iterator = chatMessages.iterator(); iterator.hasNext();) {
+		for (ListIterator<String> iterator = chatMessages.listIterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			chatWindow.append(string + "\n");
 		}
