@@ -112,7 +112,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	private String saveFileName = "";
 	
 	/** 
-	 * The contructor for the LevelEditor class
+	 * The constructor for the LevelEditor class
 	 */
 	public LevelEditor() {
 		super(WINDOW_NAME);
@@ -124,7 +124,7 @@ public class LevelEditor extends JFrame implements ActionListener,
 	}
 
 	/** 
-	 * Sets up the layout of the editor as well as all buttons
+	 * Sets up the layout of the editor
 	 */
 	private void setupEditor() {
 		sprites = new ArrayList<Sprite>();
@@ -168,8 +168,10 @@ public class LevelEditor extends JFrame implements ActionListener,
 		attributeBar.add(attribute2);
 	}
 
+	/** 
+	 * Sets up all buttons for the leveleditor
+	 */
 	private void setupTools() {
-		//Alle Buttons in der Toolbar
 		JButton wall = new JButton(new ImageIcon(ImageLoader.loadImage("images/wall.png")));
 		wall.setActionCommand(OBJECT_WALL);
 		wall.addActionListener(this);
@@ -266,9 +268,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		tools.add(getxy);
 	}
 
+	/** 
+	 * Sets the effects of the buttons
+	 * @param e the actionevent that triggers this method
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Sagt dem Editor welcher Button geklickt wurde und setzt den jeweiligen Custom Cursor
 		String actionCommand = e.getActionCommand();
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image image;
@@ -432,9 +437,12 @@ public class LevelEditor extends JFrame implements ActionListener,
 		}
 	}
 
+	/** 
+	 * Adds the currently selected sprite to the gamepanel on click
+	 * @param the mouseevent that triggers this method
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//Fuehrt je nachdem welcher Button zuvor geklickt wurde die passende Aktion aus
 		if (currentSprite == OBJECT_WALL) {
 			if(checkCollision(e.getX(),e.getY(),32,32)==false){
 				sprites.add(new Wall(e.getX(),e.getY()));
@@ -765,26 +773,41 @@ public class LevelEditor extends JFrame implements ActionListener,
 		((GamePanel)level).render(1,sprites);
 		level.repaint();
 	}
+	/** 
+	 * Required method for the mouselistener - empty
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
 	}
 
+	/** 
+	 * Required method for the mouselistener - empty
+	 */
 	@Override
-	public void mouseReleased(MouseEvent e) {
-	
-		
+	public void mouseReleased(MouseEvent e) {	
 	}
 
+	/** 
+	 * Required method for the mouselistener - empty
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		
 	}
 
+	/** 
+	 * Required method for the mouselistener - empty
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
-		
 	}
+	
+	/** 
+	 * Checks if the sprite that should be placed collides with another sprite already on the field
+	 * @param x The x-coordinate of the sprite to be placed
+	 * @param y The y-coordinate of the sprite to be placed
+	 * @param width The width of the sprite to be placed
+	 * @param heigth The heigth of the sprite to be placed
+	 */
 	private boolean checkCollision(int x, int y, int width, int heigth){
 		//Prueft beim setzen von Sprites aufs Feld ob dort nicht bereits etwas ist, falls ja wird kein neuer Sprite gesetzt
 		for(int i=0;i<sprites.size();i++){

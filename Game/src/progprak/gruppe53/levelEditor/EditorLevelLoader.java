@@ -171,6 +171,7 @@ public class EditorLevelLoader extends DefaultHandler {
 			 levelSaverArrayList.add(string);
 		}
 		affectedWallsArray = affectedWallsArrayList.toArray(new Point2D[affectedWallsArrayList.size()]);
+		affectedWallsArrayList.clear();
 		sprites.add(new PressurePlate(xLocation, yLocation, affectedWallsArray));
 		levelSaverArray = levelSaverArrayList.toArray(new String[levelSaverArrayList.size()]);
 		LevelEditor.saveData[xLocation][yLocation]="	<pressureplate>" + xLocation + ":" + yLocation + "-";

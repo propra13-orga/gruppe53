@@ -218,6 +218,7 @@ public class LevelLoaderSax extends DefaultHandler {
 			 affectedWallsArrayList.add(obj);
 		}
 		affectedWallsArray = affectedWallsArrayList.toArray(new Point2D[affectedWallsArrayList.size()]);
+		affectedWallsArrayList.clear();
 		sprites.add(new PressurePlate(xLocation, yLocation, affectedWallsArray));
 	}
 
