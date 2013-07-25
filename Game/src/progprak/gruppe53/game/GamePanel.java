@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import javax.swing.JPanel;
 
-import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
+import progprak.gruppe53.sprites.characters.Hero;
 
 public class GamePanel extends JPanel{
 

@@ -4,8 +4,8 @@ import progprak.gruppe53.game.Collidable;
 import progprak.gruppe53.game.CollisionEvent;
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.PickupCollisionEvent;
-import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
+import progprak.gruppe53.sprites.characters.Hero;
 
 abstract public class Item extends Sprite implements Collidable {
 

@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import progprak.gruppe53.game.GameLogic;
 import progprak.gruppe53.game.Player;
-import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.sprites.characters.Hero;
 
 public class Server implements Runnable {
 

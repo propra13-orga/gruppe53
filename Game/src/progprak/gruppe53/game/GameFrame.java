@@ -17,8 +17,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultCaret;
 
-import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.game.shop.ShopPanel;
+import progprak.gruppe53.game.talentTree.TalentPanel;
 import progprak.gruppe53.sprites.Sprite;
+import progprak.gruppe53.sprites.characters.Hero;
 
 public class GameFrame extends JFrame {
 

@@ -2,8 +2,8 @@ package progprak.gruppe53.server;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
+import progprak.gruppe53.sprites.characters.Hero;
 
 public class ServerResponse implements Serializable {
 

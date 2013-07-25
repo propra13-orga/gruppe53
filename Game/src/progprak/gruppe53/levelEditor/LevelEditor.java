@@ -22,24 +22,24 @@ import javax.swing.JTextField;
 
 import progprak.gruppe53.game.GamePanel;
 import progprak.gruppe53.game.ImageLoader;
-import progprak.gruppe53.items.ClothArmor;
-import progprak.gruppe53.items.HealthPotion;
-import progprak.gruppe53.items.WoodenSword;
-import progprak.gruppe53.sprites.EnemyGhost;
-import progprak.gruppe53.sprites.EnemyOldManNPC;
-import progprak.gruppe53.sprites.EnemySpider;
-import progprak.gruppe53.sprites.Fireball;
-import progprak.gruppe53.sprites.FireballTrap;
-import progprak.gruppe53.sprites.FireballTrap2;
-import progprak.gruppe53.sprites.FireballWaveTrap;
-import progprak.gruppe53.sprites.Goal;
-import progprak.gruppe53.sprites.GroundTrap;
-import progprak.gruppe53.sprites.LevelSwitch;
-import progprak.gruppe53.sprites.PortalEntrance;
-import progprak.gruppe53.sprites.PressurePlate;
+import progprak.gruppe53.items.armor.ClothArmor;
+import progprak.gruppe53.items.meleeWeapons.WoodenSword;
+import progprak.gruppe53.items.potions.HealthPotion;
 import progprak.gruppe53.sprites.Sprite;
-import progprak.gruppe53.sprites.Wall;
-import progprak.gruppe53.sprites.WallLevelSwitch;
+import progprak.gruppe53.sprites.enemies.EnemyGhost;
+import progprak.gruppe53.sprites.enemies.EnemyOldManNPC;
+import progprak.gruppe53.sprites.enemies.EnemySpider;
+import progprak.gruppe53.sprites.objects.Goal;
+import progprak.gruppe53.sprites.objects.GroundTrap;
+import progprak.gruppe53.sprites.objects.LevelSwitch;
+import progprak.gruppe53.sprites.objects.PortalEntrance;
+import progprak.gruppe53.sprites.objects.PressurePlate;
+import progprak.gruppe53.sprites.objects.Wall;
+import progprak.gruppe53.sprites.objects.WallLevelSwitch;
+import progprak.gruppe53.sprites.projectils.Fireball;
+import progprak.gruppe53.sprites.projectils.FireballTrap;
+import progprak.gruppe53.sprites.projectils.FireballTrap2;
+import progprak.gruppe53.sprites.projectils.FireballWaveTrap;
 
 /** 
  * The main class for the leveleditor

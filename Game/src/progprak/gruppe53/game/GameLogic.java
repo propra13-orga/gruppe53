@@ -6,9 +6,9 @@ import java.util.Vector;
 import java.util.ListIterator;
 
 import progprak.gruppe53.sprites.CombatObject;
-import progprak.gruppe53.sprites.Hero;
 import progprak.gruppe53.sprites.Sprite;
-import progprak.gruppe53.sprites.Wall;
+import progprak.gruppe53.sprites.characters.Hero;
+import progprak.gruppe53.sprites.objects.Wall;
 
 public class GameLogic {
 

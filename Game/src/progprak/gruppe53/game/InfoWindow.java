@@ -10,7 +10,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-import progprak.gruppe53.sprites.Hero;
+import progprak.gruppe53.game.inventory.InventoryPanel;
+import progprak.gruppe53.sprites.characters.Hero;
 
 
 public class InfoWindow extends JPanel {
